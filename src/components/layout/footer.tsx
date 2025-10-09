@@ -12,7 +12,7 @@ const footerLinkColumns = {
     people: [
         { name: "Vision, Values & Commitments", href: "/about" },
         { name: "Leadership", href: "/team" },
-        { name: "bechtel.org", href: "#" },
+        { name: "A&T.org", href: "#" },
     ],
     projects: [
         { name: "View More Projects", href: "/projects" },
@@ -26,9 +26,9 @@ const footerLinkColumns = {
         { name: "More", href: "/about" },
     ],
     careers: [
-        { name: "Why Bechtel", href: "/careers" },
+        { name: "Why A&T", href: "/careers" },
         { name: "Career Opportunities", href: "/careers" },
-        { name: "Life at Bechtel", href: "/careers" },
+        { name: "Life at A&T", href: "/careers" },
     ],
 };
 
@@ -104,9 +104,9 @@ export function Footer() {
                                 <Phone size={16} />
                                 <span>+1 571-392-6300</span>
                             </a>
-                            <a href="mailto:webmas@bechtel.com" className="flex items-center gap-2 hover:text-white">
+                            <a href="mailto:webmas@A&T.com" className="flex items-center gap-2 hover:text-white">
                                 <Mail size={16} />
-                                <span>webmas@bechtel.com</span>
+                                <span>webmas@A&T.com</span>
                             </a>
                         </div>
 
@@ -137,7 +137,7 @@ export function Footer() {
                                 <Link href="#" className="bg-white text-gray-800 rounded-full p-2 block hover:bg-gray-200 transition-colors"><Youtube size={18} /></Link>
                             </div>
                             <p className="mt-8 text-xs text-gray-500">
-                                &copy; {new Date().getFullYear()} Bechtel Corporation. All Rights Reserved.
+                                &copy; {new Date().getFullYear()} A&T Corporation. All Rights Reserved.
                             </p>
                         </div>
                     </div>

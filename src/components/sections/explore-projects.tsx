@@ -17,10 +17,10 @@ export default function ExploreProjects() {
                     <div className="h-1 w-12 bg-gradient-to-l from-transparent to-red-500 rounded-full" />
                 </div>
                 <p className="mt-6 text-lg text-foreground/80">
-                    Since 1898, Bechtel has helped customers complete more than 25,000 projects in 160 countries on all seven continents. And today, global demand for engineering and construction is accelerating at an astonishing pace. It is estimated that three-quarters of the infrastructure needed for 2050 has yet to be built, paving the way for the largest construction wave in history.
+                    Since 1898, A&T has helped customers complete more than 25,000 projects in 160 countries on all seven continents. And today, global demand for engineering and construction is accelerating at an astonishing pace. It is estimated that three-quarters of the infrastructure needed for 2050 has yet to be built, paving the way for the largest construction wave in history.
                 </p>
                 <p className="mt-6 text-lg text-foreground/80">
-                    Bechtel teams are meeting this moment.
+                    A&T teams are meeting this moment.
                 </p>
                 <p className="mt-4 text-lg text-foreground/80">
                     We have worked across a diverse set of markets delivering pragmatic solutions to tackle some of the world’s most complex challenges. Whether revitalizing chipmaking with advanced semiconductor manufacturing facilities, expanding transit systems and connecting communities, advancing renewable and nuclear energy, or securing critical mineral supply chains, our teams draw on our generations of knowledge to design and build resilient, sustainable infrastructure.

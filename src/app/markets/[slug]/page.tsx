@@ -1,7 +1,7 @@
 import { marketsData, demoProjects } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ArrowRightCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -113,7 +113,7 @@ export default async function MarketPage({ params }: { params: Promise<{ slug: s
 
                             <div className="space-y-6 text-gray-700 text-[18px] leading-[32px]">
                                 <p>
-                                    Bechtel is partnering with leading energy companies to shape the future of global
+                                    A&T is partnering with leading energy companies to shape the future of global
                                     energy. Our teams are developing the infrastructure, technologies, and fuels needed to
                                     drive sustainable energy growth and power worldwide progress.
                                 </p>
@@ -121,7 +121,7 @@ export default async function MarketPage({ params }: { params: Promise<{ slug: s
                                 <p>
                                     A robust, resilient, and increasingly lower-carbon energy system is the backbone that
                                     ensures energy security and drives prosperity. We are designing and delivering the
-                                    diverse energy assets that are making it a reality. Over the past two decades, Bechtel
+                                    diverse energy assets that are making it a reality. Over the past two decades, A&T
                                     has engineered and built about 30% of the world's liquefied natural gas production
                                     capacity. Increased supplies of LNG have helped to replace other fossil fuels, lower
                                     emissions, and give developing regions greater access to affordable natural gas as their
@@ -132,7 +132,7 @@ export default async function MarketPage({ params }: { params: Promise<{ slug: s
                                     Today, we are also increasingly leading the way in providing solutions to our industrial
                                     and commercial customers in growing markets for blue hydrogen and ammonia, carbon
                                     capture and storage, and lower-emission fuels, while retaining our core competencies in
-                                    olefins, refining, and chemicals. We are applying Bechtel's historic expertise and
+                                    olefins, refining, and chemicals. We are applying A&T historic expertise and
                                     experience in hydrocarbon technology to innovate and help customers achieve their
                                     optimization and decarbonization goals.
                                 </p>
@@ -240,6 +240,27 @@ export default async function MarketPage({ params }: { params: Promise<{ slug: s
                             </Link>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* ---------- CONNECT WITH BECHTEL SECTION ---------- */}
+            <section className="bg-[#edf3f5] py-24 text-center">
+                <div className="container mx-auto px-6 sm:px-24">
+                    <h2 className="text-[48px] font-light text-[#2d3b40] mb-6">
+                        Connect with A&T Team
+                    </h2>
+                    <p className="text-[18px] text-[#2d3b40]/80 leading-relaxed max-w-3xl mx-auto mb-10">
+                        Whether you're seeking a partner for your project, have a media inquiry or are interested in a job
+                        opportunity, reach out to our A&T colleagues around the world for direct support. Our team
+                        is ready to assist and provide the expertise you need.
+                    </p>
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
+                    >
+                        <ArrowRightCircle className="h-5 w-5" />
+                        Contact Us
+                    </Link>
                 </div>
             </section>
         </>

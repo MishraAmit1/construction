@@ -23,10 +23,10 @@ export function Legacy() {
               Creating a <br />Lasting Legacy
             </h2>
             <p className="mt-6 text-lg text-foreground/80">
-              In 1898, Warren A. Bechtel left Peabody, Kansas in search of construction work and opportunity out West. It was the first chapter in a history that would go on to span 126 years, 160 countries, and 25,000 projects. What began as a small construction outfit evolved alongside the needs of a growing nation and a rapidly changing world.
+              In 1898, Warren A. A&T left Peabody, Kansas in search of construction work and opportunity out West. It was the first chapter in a history that would go on to span 126 years, 160 countries, and 25,000 projects. What began as a small construction outfit evolved alongside the needs of a growing nation and a rapidly changing world.
             </p>
             <p className="mt-4 text-lg text-foreground/80">
-              While much has changed at Bechtel, the desire to explore new frontiers has remained a driving force. Our history is a history of being first to market, providing proof of concept, and going where no one has.
+              While much has changed at A&T, the desire to explore new frontiers has remained a driving force. Our history is a history of being first to market, providing proof of concept, and going where no one has.
             </p>
             <p className="mt-4 text-lg text-foreground/80">
               We built the first nuclear power plant to produce electricity. We constructed the first pipeline under the Arctic. We were one of the first American construction companies to establish a presence in Saudi Arabia. We built the facilities that produced the first U.S. LNG exports in more than 40 years.

@@ -32,7 +32,7 @@ export const marketsData = [
     key: "Energy" as MarketKey,
     title: "Energy",
     description:
-      "Bechtel is delivering the diverse infrastructure, sustainable technologies, and fuels needed to meet the world’s rising energy demand in the coming decades.",
+      "A&T is delivering the diverse infrastructure, sustainable technologies, and fuels needed to meet the world’s rising energy demand in the coming decades.",
     hero: {
       imageUrl:
         "https://www.bechtel.com/wp-content/uploads/2024/10/energy-market.webp",
