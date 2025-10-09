@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { qualityPeopleImage } from '@/lib/data';
-import { ArrowRightCircle } from 'lucide-react';
+import { ArrowRight, ArrowRightCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function QualityPeople() {
@@ -23,15 +23,27 @@ export function QualityPeople() {
             <h2 className="font-headline text-4xl lg:text-5xl font-bold leading-tight">
               Defined by the Quality of Our People
             </h2>
-            <div className="mt-8">
-               <Link
-                href="/team"
-                className="group inline-flex items-center text-lg font-semibold text-red-400 transition-colors duration-300 hover:text-white focus:outline-none"
+            <div className="mt-12">
+              <Link
+                href="/about"
+                className={cn(
+                  'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                  'px-6 py-2 text-base font-semibold bg-transparent text-white transition-all duration-500 ease-out',
+                  'min-h-[56px]' // fixed minimum height
+                )}
               >
-                  <div className="h-10 w-10 mr-4 rounded-full bg-red-600 text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                    <ArrowRightCircle className="h-6 w-6"/>
-                  </div>
-                  <span>The People Behind the Projects</span>
+                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                <span className="relative z-10 flex items-center">
+                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 
+                  group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-3 group-hover:mr-0 h-10 w-10">
+                    <ArrowRight className="h-5 w-5" />
+                  </span>
+                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
+                    The People Behind the Projects
+                  </span>
+                  <ArrowRight className="h-5 w-5 opacity-0 transition-all duration-500 group-hover:w-5
+                   group-hover:opacity-100 group-hover:text-white group-hover:ml-3" />
+                </span>
               </Link>
             </div>
           </div>

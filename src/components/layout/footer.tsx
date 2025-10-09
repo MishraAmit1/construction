@@ -1,99 +1,87 @@
-import { Building2, Linkedin, Facebook, Twitter, Youtube } from "lucide-react";
+import { Linkedin, Facebook, Twitter, Youtube, Phone, Mail } from "lucide-react";
 import Link from "next/link";
-import logo from "../../app/public/logo-removebg-preview (3).png"
+import Image from "next/image";
 
-const footerLinks = {
+// IMPORTANT: Apne logo ko `public` folder me rakhein aur yahaan path ko `/` se shuru karein.
+// For example: public/logo.png -> "/logo.png"
+// Maine aapke original path ko aese hi assume kiya hai.
+import logo from "../../app/public/logo-removebg-preview (3).png";
+
+// Image ke hisaab se links update kiye gaye hain
+const footerLinkColumns = {
     people: [
-        { name: "Our Vision", href: "/about" },
+        { name: "Vision, Values & Commitments", href: "/about" },
         { name: "Leadership", href: "/team" },
+        { name: "bechtel.org", href: "#" },
     ],
     projects: [
         { name: "View More Projects", href: "/projects" },
-        { name: "Our Expertise", href: "/about" },
+        { name: "Markets", href: "/projects" },
+        { name: "Regions", href: "/projects" },
     ],
     approach: [
         { name: "Safety", href: "/about" },
         { name: "Services", href: "/about" },
         { name: "Ethics", href: "/about" },
+        { name: "More", href: "/about" },
     ],
     careers: [
-        { name: "Why Veritas", href: "/careers" },
+        { name: "Why Bechtel", href: "/careers" },
         { name: "Career Opportunities", href: "/careers" },
+        { name: "Life at Bechtel", href: "/careers" },
     ],
-    company: [
-        { name: "History", href: "/projects" },
-        { name: "Contact", href: "/enquiry" },
-        { name: "Media", href: "#" },
-        { name: "Blog", href: "#" },
-        { name: "Suppliers", href: "#" },
-        { name: "Annual Reports", href: "#" },
-    ]
 };
 
+// Ye links heading jaise hain, isliye alag se define kiye hain
+const companyLinks = [
+    { name: "History", href: "/projects" },
+    { name: "Contact", href: "/enquiry" },
+    { name: "Media", href: "#" },
+    { name: "Blog", href: "#" },
+    { name: "Suppliers", href: "#" },
+    { name: "Annual Reports", href: "#" },
+];
+
+const legalLinks = {
+    column1: [
+        { name: "Privacy Policy", href: "/privacy" },
+        { name: "Modern Slavery Act Statement", href: "#" },
+        { name: "Ethics", href: "#" },
+    ],
+    column2: [
+        { name: "Australia Privacy Policy", href: "#" },
+        { name: "Terms of Use", href: "/terms" },
+    ]
+}
 
 export function Footer() {
     return (
-        <footer className="bg-primary text-primary-foreground">
+        // Image jaisa background color use kiya hai (#212C36)
+        <footer className="bg-[#212C36] text-gray-300">
             <div className="container mx-auto max-w-7xl px-4 py-16">
-                <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-                    {/* People */}
-                    <div className="col-span-1">
-                        <h3 className="font-headline text-lg font-bold mb-4">People</h3>
+                {/* === TOP LINKS SECTION === */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">
+                    {/* People, Projects, etc. ke liye mapping */}
+                    {Object.entries(footerLinkColumns).map(([key, links]) => (
+                        <div key={key} className="col-span-1">
+                            <h3 className="text-white font-bold mb-4 capitalize">{key}</h3>
+                            <ul className="space-y-3">
+                                {links.map(link => (
+                                    <li key={link.name}>
+                                        <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                    {/* Company links (History, Contact, etc.) */}
+                    <div className="md:col-span-2">
                         <ul className="space-y-3">
-                            {footerLinks.people.map(link => (
+                            {companyLinks.map(link => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="text-sm text-primary-foreground/80 hover:text-white transition-colors">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/* Projects */}
-                    <div className="col-span-1">
-                        <h3 className="font-headline text-lg font-bold mb-4">Projects</h3>
-                        <ul className="space-y-3">
-                            {footerLinks.projects.map(link => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-sm text-primary-foreground/80 hover:text-white transition-colors">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/* Approach */}
-                    <div className="col-span-1">
-                        <h3 className="font-headline text-lg font-bold mb-4">Approach</h3>
-                        <ul className="space-y-3">
-                            {footerLinks.approach.map(link => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-sm text-primary-foreground/80 hover:text-white transition-colors">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/* Careers */}
-                    <div className="col-span-1">
-                        <h3 className="font-headline text-lg font-bold mb-4">Careers</h3>
-                        <ul className="space-y-3">
-                            {footerLinks.careers.map(link => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="text-sm text-primary-foreground/80 hover:text-white transition-colors">
-                                        {link.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    {/* Company */}
-                    <div className="col-span-1">
-                        <ul className="space-y-3">
-                            {footerLinks.company.map(link => (
-                                <li key={link.name}>
-                                    <Link href={link.href} className="font-headline text-lg font-bold text-primary-foreground hover:text-white transition-colors">
+                                    <Link href={link.href} className="text-white font-bold hover:text-gray-300 transition-colors">
                                         {link.name}
                                     </Link>
                                 </li>
@@ -102,41 +90,56 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-16 border-t border-primary-foreground/20 pt-8">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                        <div className="md:col-span-3 flex items-center gap-4">
-                            <Link href="/" className="flex items-center gap-2">
-                                <Building2 className="h-8 w-8" />
-                                <span className="font-headline text-xl font-bold leading-tight">
-                                    A&T
-                                </span>
+                {/* === BOTTOM SECTION === */}
+                <div className="mt-16 border-t border-gray-700 pt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+                        {/* Column 1: Logo & Contact Info */}
+                        <div className="md:col-span-4 lg:col-span-3 space-y-4 text-sm">
+                            <Link href="/">
+                                {/* Next.js Image component use kiya hai optimization ke liye */}
+                                <Image src={logo} alt="Company Logo" width={150} height={50} className="mb-4" />
                             </Link>
-                        </div>
-                        <div className="md:col-span-6">
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
-                                <div>
-                                    <Link href="/privacy" className="text-primary-foreground/80 hover:text-white">Privacy Policy</Link>
-                                </div>
-                                <div>
-                                    <Link href="#" className="text-primary-foreground/80 hover:text-white">Modern Slavery Act Statement</Link>
-                                </div>
-                                <div>
-                                    <Link href="/terms" className="text-primary-foreground/80 hover:text-white">Terms of Use</Link>
-                                </div>
-                            </div>
+                            <a href="tel:+15713926300" className="flex items-center gap-2 hover:text-white">
+                                <Phone size={16} />
+                                <span>+1 571-392-6300</span>
+                            </a>
+                            <a href="mailto:webmas@bechtel.com" className="flex items-center gap-2 hover:text-white">
+                                <Mail size={16} />
+                                <span>webmas@bechtel.com</span>
+                            </a>
                         </div>
 
-                        <div className="md:col-span-3 flex items-center justify-start md:justify-end gap-4">
-                            <div className="flex gap-4">
-                                <Link href="#" className="text-primary-foreground/80 hover:text-white"><Linkedin className="h-5 w-5" /></Link>
-                                <Link href="#" className="text-primary-foreground/80 hover:text-white"><Facebook className="h-5 w-5" /></Link>
-                                <Link href="#" className="text-primary-foreground/80 hover:text-white"><Twitter className="h-5 w-5" /></Link>
-                                <Link href="#" className="text-primary-foreground/80 hover:text-white"><Youtube className="h-5 w-5" /></Link>
-                            </div>
+                        {/* Column 2: Legal Links */}
+                        <div className="md:col-span-5 lg:col-span-6 grid grid-cols-2 gap-8 text-sm">
+                            <ul className="space-y-3">
+                                {legalLinks.column1.map(link => (
+                                    <li key={link.name}>
+                                        <Link href={link.href} className="text-gray-400 hover:text-white">{link.name}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                            <ul className="space-y-3">
+                                {legalLinks.column2.map(link => (
+                                    <li key={link.name}>
+                                        <Link href={link.href} className="text-gray-400 hover:text-white">{link.name}</Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    </div>
-                    <div className="mt-8 text-center md:text-right text-sm text-primary-foreground/60">
-                        <p>&copy; {new Date().getFullYear()} A&TInfrastructure Group. All Rights Reserved.</p>
+
+                        {/* Column 3: Social Media & Copyright */}
+                        <div className="md:col-span-3 lg:col-span-3 flex flex-col items-start md:items-end">
+                            <div className="flex gap-3">
+                                <Link href="#" className="bg-white text-gray-800 rounded-full p-2 block hover:bg-gray-200 transition-colors"><Linkedin size={18} /></Link>
+                                <Link href="#" className="bg-white text-gray-800 rounded-full p-2 block hover:bg-gray-200 transition-colors"><Facebook size={18} /></Link>
+                                <Link href="#" className="bg-white text-gray-800 rounded-full p-2 block hover:bg-gray-200 transition-colors"><Twitter size={18} /></Link>
+                                <Link href="#" className="bg-white text-gray-800 rounded-full p-2 block hover:bg-gray-200 transition-colors"><Youtube size={18} /></Link>
+                            </div>
+                            <p className="mt-8 text-xs text-gray-500">
+                                &copy; {new Date().getFullYear()} Bechtel Corporation. All Rights Reserved.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

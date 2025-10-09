@@ -16,21 +16,24 @@
     font-weight: bold;
     font-style: normal;
   }
-  
+
   :root {
-    --background: 220 13% 96%; /* #F0F2F5 */
+    --background: 220 13% 96%;
+    /* #F0F2F5 */
     --foreground: 215 28% 17%;
     --card: 0 0% 100%;
     --card-foreground: 215 28% 17%;
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 17%;
-    --primary: 212 47% 18%; /* #182C40 */
+    --primary: 212 47% 18%;
+    /* #182C40 */
     --primary-foreground: 0 0% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 28 80% 52%; /* #E67E22 */
+    --accent: 28 80% 52%;
+    /* #E67E22 */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -46,6 +49,7 @@
     --header-height: 84px;
     --footer-height: 400px;
   }
+
   .dark {
     --background: 212 47% 10%;
     --foreground: 0 0% 98%;
@@ -78,7 +82,43 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.6s ease-out;
+}
+
+/* Custom Scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #dc2626;
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #b91c1c;
 }

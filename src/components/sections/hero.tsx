@@ -10,19 +10,15 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi
 } from '@/components/ui/carousel';
-import { ArrowUpRight } from 'lucide-react';
-import { Progress } from '@/components/ui/progress';
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import hero from "../../app/public/hero.png";
 import { heroImage, featuredContent } from '@/lib/data';
 
 export function Hero() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const total = featuredContent.length;
 
   React.useEffect(() => {
     if (!api) return;
@@ -35,80 +31,82 @@ export function Hero() {
   }, [api]);
 
   return (
-    <section className="relative h-[95vh] min-h-[750px] w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
         src={hero}
         alt={heroImage.description}
         fill
-        className="object-cover"
         priority
+        className="object-cover"
       />
-      {/* Overlays for video-like depth */}
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
 
-      {/* Content shifted upward now */}
-      <div className="relative z-10 flex h-full flex-col justify-center items-start text-white">
-        <div className="container max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2  items-center">
-            {/* Left Text Block */}
-            <div>
-              <h1 className="text-[110px] leading-[110px] drop-shadow-2xl">
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/50" />
+
+      <div className="relative z-10 h-full flex flex-col justify-center">
+        <div className="container mx-auto px-8 lg:px-16 xl:px-20">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+
+            {/* Left Text */}
+            <div className="max-w-4xl text-left -mt-20">
+              <h1 className="text-[clamp(48px,9vw,112px)] leading-[1.05] font-medium mb-8 text-white tracking-tight">
                 We Live for a<br />Challenge
               </h1>
-              <p className="mt-6 max-w-xl text-lg text-white/95 drop-shadow-lg">
+              <p className="text-[clamp(18px,2vw,22px)] leading-relaxed text-white/90 max-w-3xl">
                 At Veritas, we partner with our customers to bring their ambitions to life,
-                delivering projects that make a lasting, meaningful difference for people and communities
-                across India.
+                delivering projects that make a lasting, meaningful difference for people
+                and communities across India.
               </p>
             </div>
 
-            {/* Right Carousel Floating Card */}
-            <div className="relative flex justify-center md:justify-end mt-8">
-              <Carousel setApi={setApi} className="max-w-sm w-full relative">
+            {/* Right Carousel Card – shifted further down */}
+            <div className="relative w-[340px] lg:w-[330px] mt-44">   {/* ⬅️ yahan mt‑44 se aur niche gaya */}
+
+              {/* Ghost shadow behind */}
+              <div className="absolute -left-4 top-4 h-full w-full rounded-2xl bg-white/10 ring-1 ring-black/10 backdrop-blur-md -z-10" />
+
+              <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
-                  {featuredContent.map((item, index) => (
+                  {featuredContent.map((item, i) => (
                     <CarouselItem key={item.id}>
-                      <Card className="border-0 rounded-2xl shadow-2xl bg-white/95 backdrop-blur-sm">
+                      <Card className="relative border-0 rounded-[12px] bg-white shadow-[0_6px_24px_rgba(0,0,0,0.1)] overflow-hidden">
                         <CardContent className="p-0">
-                          <div className="overflow-hidden rounded-t-2xl">
+                          {/* Top image with slight rounding */}
+                          <div className="relative h-[180px] w-full overflow-hidden rounded-t-[12px]">
                             <Image
                               src={item.image.imageUrl}
                               alt={item.image.description}
-                              width={600}
-                              height={300}
-                              className="object-cover w-full h-48"
-                              data-ai-hint={item.image.imageHint}
+                              fill
+                              className="object-cover"
                             />
                           </div>
 
-                          <div className="p-6">
-                            <h3 className="font-headline text-xl font-semibold text-gray-900 mb-3">
+                          {/* Text + controls */}
+                          <div className="p-[20px]">
+                            <h3 className="text-[15.5px] font-medium text-[#111] leading-snug mb-6">
                               {item.title}
                             </h3>
 
-                            <div className="flex items-center justify-between gap-3">
-                              {/* Progress dots & red line */}
-                              <div className="flex-1">
-                                <div className="flex gap-[4px] mb-1">
-                                  {featuredContent.map((_, i) => (
-                                    <span
-                                      key={i}
-                                      className={`h-1.5 w-4 rounded-full transition-all ${i === current ? 'bg-red-600' : 'bg-gray-300'}`}
-                                    ></span>
-                                  ))}
-                                </div>
-                                <Progress
-                                  value={((current + 1) / total) * 100}
-                                  className="h-1 bg-gray-200 [&>div]:bg-red-600"
-                                />
+                            <div className="flex items-center justify-between">
+                              {/* Progress: active red bar + small dots */}
+                              <div className="flex items-center gap-[5px]">
+                                {featuredContent.map((_, index) => (
+                                  <div
+                                    key={index}
+                                    className={
+                                      index === current
+                                        ? 'h-[4px] w-[28px] rounded-full bg-[#e60000]'
+                                        : 'h-[8px] w-[8px] rounded-full bg-[#d8d8d8]'
+                                    }
+                                  />
+                                ))}
                               </div>
 
-                              {/* Red Circular Arrow */}
-                              <Link href="#" className="ml-2 hover:scale-110 transition-transform">
-                                <div className="h-12 w-12 flex items-center justify-center rounded-full bg-rose-100 text-red-600">
-                                  <ArrowUpRight className="h-6 w-6" />
+                              {/* Circle arrow (soft pink bg) */}
+                              <Link href="#" className="group">
+                                <div className="h-[46px] w-[46px] flex items-center justify-center rounded-full bg-[#ffe5e5] group-hover:bg-[#ffdcdc] transition">
+                                  <ArrowUpRight className="h-5 w-5 text-[#e60000]" />
                                 </div>
                               </Link>
                             </div>
@@ -118,14 +116,24 @@ export function Hero() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-
-                {/* Arrows like Bechtel’s */}
-                <div className="absolute inset-y-0 -right-16 hidden md:flex items-center gap-2">
-                  <CarouselPrevious className="static rounded-full bg-white/90 hover:bg-white text-black border-none shadow-md" />
-                  <CarouselNext className="static rounded-full bg-white/90 hover:bg-white text-black border-none shadow-md" />
-                </div>
               </Carousel>
+
+              {/* 🎯 Arrows moved to left & right of card */}
+              <button
+                onClick={() => api?.scrollPrev()}
+                className="absolute top-1/2 -left-6 -translate-y-1/2 h-10 w-10 rounded-full bg-white/95 hover:bg-white shadow-md flex items-center justify-center"
+              >
+                <ChevronLeft className="h-5 w-5 text-gray-900" />
+              </button>
+
+              <button
+                onClick={() => api?.scrollNext()}
+                className="absolute top-1/2 -right-6 -translate-y-1/2 h-10 w-10 rounded-full bg-white/95 hover:bg-white shadow-md flex items-center justify-center"
+              >
+                <ChevronRight className="h-5 w-5 text-gray-900" />
+              </button>
             </div>
+
           </div>
         </div>
       </div>

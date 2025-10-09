@@ -1,11 +1,18 @@
+import ExploreProjects from '@/components/sections/explore-projects';
+import MarketsExplorer from '@/components/sections/markets-explorer';
 import { Projects } from '@/components/sections/projects';
+import ProjectsHeader from '@/components/sections/projects-header';
+import ProjectsSearchBar from '@/components/sections/projects-search-bar';
+import { WhereWeWork } from '@/components/sections/weherewework';
 
 export default function ProjectsPage() {
   return (
-    <section className="py-16 sm:py-24 bg-secondary/50">
-      <div className="container">
-        <Projects />
-      </div>
-    </section>
+    <>
+      <ProjectsHeader />
+      <ProjectsSearchBar />
+      <ExploreProjects />
+      <MarketsExplorer />
+      <WhereWeWork />
+    </>
   );
 }
