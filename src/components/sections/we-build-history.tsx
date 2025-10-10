@@ -4,43 +4,69 @@ import { cn } from '@/lib/utils';
 
 export function WeBuildHistory() {
   return (
-    <section className="py-16 sm:py-24 bg-background xl:px-28">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="font-headline text-4xl lg:text-[64px] font-medium text-primary leading-[70.4px]">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+      <div className="container px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
+
+          {/* Left side - Title & Button */}
+          <div className="text-center md:text-left">
+            {/* Heading - Responsive sizing */}
+            <h2 className="font-headline 
+                         text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] 
+                         font-medium text-primary 
+                         leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-[70.4px]">
               We Build History
             </h2>
-            <div className="mt-12">
+
+            {/* CTA Button - Responsive */}
+            <div className="mt-8 sm:mt-10 md:mt-12">
               <Link
                 href="/about"
                 className={cn(
                   'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
-                  'px-6 py-2 text-base font-semibold text-red-600 transition-all duration-500 ease-out',
-                  'min-h-[48px]' // fixed minimum height
+                  'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                  'text-sm sm:text-base font-semibold text-red-600',
+                  'transition-all duration-500 ease-out',
+                  'min-h-[44px] sm:min-h-[48px]',
+                  'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
                 )}
               >
-                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-                <span className="relative z-10 flex items-center">
-                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
-                   group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-3 group-hover:mr-0 h-8 w-8">
-                    <ArrowRight className="h-5 w-5" />
+                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 
+                               group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                <span className="relative z-10 flex items-center justify-center md:justify-start">
+                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white 
+                                 transition-all duration-500 group-hover:w-0 group-hover:opacity-0 
+                                 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 
+                                 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                   </span>
-                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white text-xl">
+                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white 
+                                 text-[16px] sm:text-[18px] md:text-[19px] lg:text-[20px] xl:text-[21px]">
                     Explore More Projects
                   </span>
-                  <ArrowRight className="h-5 w-5 opacity-0 transition-all duration-500 group-hover:w-5
-                   group-hover:opacity-100 group-hover:text-white group-hover:ml-3" />
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 
+                                       group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 
+                                       group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
                 </span>
               </Link>
             </div>
           </div>
-          <div className="space-y-6 text-foreground/80 text-[20px] leading-[30px]">
-            <p>
+
+          {/* Right side - Content */}
+          <div className="space-y-4 sm:space-y-5 md:space-y-6 
+                        text-center md:text-left 
+                        px-2 sm:px-4 md:px-0">
+            <p className="text-foreground/80 
+                        text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] 
+                        leading-[1.65] sm:leading-[1.7] md:leading-[1.75] lg:leading-[28px] xl:leading-[30px]
+                        max-w-2xl md:max-w-none mx-auto md:mx-0">
               The 21st century and beyond will be shaped by the world's ability to work at speed and at scale to meet fast-evolving needs for infrastructure, energy, advanced manufacturing, critical resources, environmental protection, and national security.
             </p>
-            <p>
-              For decades, we have risen to the occasion. With our unique expertise and experience, A&Tis purpose-built to tackle these challenges.
+            <p className="text-foreground/80 
+                        text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] 
+                        leading-[1.65] sm:leading-[1.7] md:leading-[1.75] lg:leading-[28px] xl:leading-[30px]
+                        max-w-2xl md:max-w-none mx-auto md:mx-0">
+              For decades, we have risen to the occasion. With our unique expertise and experience, A&T is purpose-built to tackle these challenges.
             </p>
           </div>
         </div>
