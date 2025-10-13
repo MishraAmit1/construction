@@ -12,6 +12,7 @@ const mainNavLinks = [
   { name: "PROJECTS", href: "/projects" },
   { name: "APPROACH", href: "/approach" },
   { name: "CAREERS", href: "/careers" },
+  { name: "CONTACT", href: "/contact" },
 ];
 
 export function Header() {

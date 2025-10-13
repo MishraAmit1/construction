@@ -1,22 +1,61 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bolt, Leaf, Factory, Pickaxe, Shield, Atom } from "lucide-react";
-import { marketsData, demoProjects } from "@/lib/data";
+import { ArrowRight, Bolt, Leaf, Factory, Pickaxe, Shield, Atom, Building2, LucideArrowRightToLine } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { Category, Project } from '@/lib/api/categories'; // Import types
+
 /* ---------------- Types ---------------- */
 
-type MarketKey =
-    | "Energy"
-    | "Environmental Cleanup"
-    | "Manufacturing & Technology"
-    | "Mining & Critical Minerals"
-    | "National Defense & Security"
-    | "Nuclear"
-    | "Infrastructure"
-    | "Renewables";
+// Icon mapping for categories
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    'border-infrastructure': Shield,
+    'road-construction': LucideArrowRightToLine,
+    'civil-contracts': Building2,
+    'renewable-energy': Leaf,
+    'energy': Bolt,
+    'environmental-cleanup': Leaf,
+    'manufacturing-technology': Factory,
+    'mining-critical-minerals': Pickaxe,
+    'national-defense-security': Shield,
+    'nuclear': Atom,
+    'infrastructure': Building2,
+};
+
+// Transform functions with fallback
+function transformCategoriesToMarkets(categories: Category[]): MarketContent[] {
+    return categories.map(cat => ({
+        key: cat.category_slug as MarketKey,
+        title: cat.category_name,
+        description: cat.tagline || 'Explore our expertise in this domain',
+        hero: {
+            // Ab ye already full URLs hongi from API
+            imageUrl: cat.banner_image || cat.thumbnail_image || 'https://via.placeholder.com/800x600/eee/666?text=No+Image',
+            alt: cat.category_name
+        },
+        icon: iconMap[cat.category_slug] || Building2
+    }));
+}
+
+function transformProjectsToDisplay(projects: any[]): ProjectDisplay[] {
+    return projects.map(proj => ({
+        id: proj.project_id,
+        title: proj.project_name,
+        location: proj.location || 'India',
+        description: proj.tagline || 'Strategic infrastructure project',
+        image: {
+            // Ab ye already full URLs hongi from API
+            imageUrl: proj.thumbnail_image || 'https://via.placeholder.com/800x600/eee/666?text=No+Image',
+            description: proj.tagline || proj.project_name,
+        },
+        market: proj.category_slug as MarketKey,
+        href: `/projects/${proj.project_slug}`
+    }));
+}
+
+type MarketKey = string; // Dynamic from database
 
 type ProjectImage = {
     imageUrl: string;
@@ -24,7 +63,7 @@ type ProjectImage = {
     imageHint?: string;
 };
 
-type Project = {
+type ProjectDisplay = {
     id: string | number;
     title: string;
     location?: string;
@@ -46,25 +85,32 @@ type MarketContent = {
  * Main component: categories carousel + sticky left hero + right project list per market.
  */
 export default function MarketsExplorer({
-    markets = marketsData,
-    projects = demoProjects,
+    categories = [],
+    projects = [],
 }: {
-    markets?: MarketContent[];
-    projects?: Project[];
+    categories?: any[];
+    projects?: any[];
 }) {
-    const [selectedMarket, setSelectedMarket] = useState<MarketKey>(markets[0].key);
+    // Transform database data
+    const markets = useMemo(() => transformCategoriesToMarkets(categories), [categories]);
+    const displayProjects = useMemo(() => transformProjectsToDisplay(projects), [projects]);
+
+    const [selectedMarket, setSelectedMarket] = useState<MarketKey>(
+        markets.length > 0 ? markets[0].key : ''
+    );
     const [topOffset, setTopOffset] = useState(0);
     const filterBarRef = useRef<HTMLDivElement>(null);
-    // Group projects by market
+
+    // Group projects by category_slug
     const projectsByMarket = useMemo(() => {
-        const map = new Map<MarketKey, Project[]>();
+        const map = new Map<MarketKey, ProjectDisplay[]>();
         markets.forEach((m) => map.set(m.key, []));
-        projects.forEach((p) => {
+        displayProjects.forEach((p) => {
             if (!map.has(p.market)) map.set(p.market, []);
             map.get(p.market)?.push(p);
         });
         return map;
-    }, [projects, markets]);
+    }, [displayProjects, markets]);
 
     // Refs to each market section for scroll-into-view
     const sectionRefs = useRef<Record<MarketKey, HTMLDivElement | null>>(
@@ -73,15 +119,15 @@ export default function MarketsExplorer({
             {} as Record<MarketKey, HTMLDivElement | null>
         )
     );
+
+    // Scroll effects
     useEffect(() => {
         let last = window.scrollY;
         const onScroll = () => {
             const cur = window.scrollY;
             if (cur < last) {
-                // user scrolling up → header becomes visible → push sticky bar down by navbar height
-                setTopOffset(80); // your header height (h‑20 ≈ 80px)
+                setTopOffset(80);
             } else if (cur > last) {
-                // scrolling down → header hides → reset
                 setTopOffset(0);
             }
             last = cur;
@@ -89,10 +135,11 @@ export default function MarketsExplorer({
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
+
     useEffect(() => {
         function updateActive() {
             const barBottom = filterBarRef.current?.getBoundingClientRect().bottom || 0;
-            const lineY = barBottom + 16; // bar ke just neeche ek invisible line ke jaise
+            const lineY = barBottom + 16;
 
             let bestKey: MarketKey | null = null;
             let closest = Infinity;
@@ -104,12 +151,10 @@ export default function MarketsExplorer({
                 const top = rect.top;
                 const bottom = rect.bottom;
 
-                // Agar section us line ko cross kar raha hai:
                 if (top <= lineY && bottom >= lineY) {
                     bestKey = m.key;
                     closest = 0;
                 } else {
-                    // warna distance dekho
                     const dist = Math.abs(top - lineY);
                     if (dist < closest) {
                         closest = dist;
@@ -136,7 +181,19 @@ export default function MarketsExplorer({
             window.removeEventListener("scroll", onScroll);
             window.removeEventListener("resize", onResize);
         };
-    }, [markets]);
+    }, [markets, selectedMarket]);
+
+    // Empty state
+    if (markets.length === 0) {
+        return (
+            <section className="py-20">
+                <div className="container mx-auto px-4 text-center">
+                    <p className="text-gray-500">No categories available.</p>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="relative py-8 sm:py-12 md:py-16 lg:py-20">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
@@ -164,7 +221,7 @@ export default function MarketsExplorer({
                         return (
                             <div
                                 key={m.key}
-                                id={`market-${slugify(m.key)}`}
+                                id={`market-${m.key}`}
                                 data-market-key={m.key}
                                 ref={(el) => (sectionRefs.current[m.key] = el)}
                                 className="scroll-mt-24 sm:scroll-mt-28"
@@ -181,7 +238,7 @@ export default function MarketsExplorer({
                                     <div className="lg:col-span-6">
                                         <div className="mb-4 sm:mb-6 flex items-end justify-between">
                                             <h3 className="text-[10px] sm:text-xs font-semibold tracking-widest text-foreground/70 uppercase">
-                                                Select {m.title} Projects
+                                                {m.title} Projects
                                             </h3>
                                             <div className="h-px bg-border w-1/2" />
                                         </div>
@@ -192,7 +249,7 @@ export default function MarketsExplorer({
                                             ))}
                                             {list.length === 0 && (
                                                 <div className="rounded-xl border bg-card text-muted-foreground p-4 sm:p-6">
-                                                    No projects found in {m.title}. Add some with market: "{m.key}".
+                                                    No projects found in {m.title}.
                                                 </div>
                                             )}
                                         </div>
@@ -247,7 +304,7 @@ function CategoriesBar({
                             )}
                         >
                             <Icon className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                            {m.key.toUpperCase()}
+                            {m.title.toUpperCase()}
                         </button>
                     );
                 })}
@@ -279,7 +336,7 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
                 </div>
 
                 <Link
-                    href={`/markets/${slugify(market.key)}`}
+                    href={`/markets/${market.key}`}
                     aria-label={`${market.title} details`}
                     className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-10 
                                inline-flex h-9 w-9 sm:h-12 sm:w-12 
@@ -294,7 +351,7 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
     );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project }: { project: ProjectDisplay }) {
     return (
         <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md">
             <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[480px] w-full">
@@ -335,7 +392,7 @@ function ProjectCard({ project }: { project: Project }) {
                 </div>
 
                 <Link
-                    href={`/projects/${slugify(project.title)}`}
+                    href={project.href || `/projects/${project.id}`}
                     aria-label={`${project.title} details`}
                     className="absolute bottom-2 sm:bottom-3 -rotate-[19deg] right-2 sm:right-3 z-10 
                                inline-flex h-8 w-8 sm:h-11 sm:w-11 
@@ -348,10 +405,4 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
         </div>
     );
-}
-
-/* ---------- Utils ---------- */
-
-function slugify(str: string) {
-    return str.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }

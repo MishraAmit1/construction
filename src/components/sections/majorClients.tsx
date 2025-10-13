@@ -3,25 +3,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils'; // Make sure to import cn utility
+import { cn } from '@/lib/utils';
+import type { Client } from '@/lib/api/clients';
 
-import logo1 from "../../app/public/Airports.png";
-import logo2 from "../../app/public/GAIL.svg";
-import logo3 from "../../app/public/Indian_Oil.svg";
-import logo4 from "../../app/public/Ircon_International.png";
-import logo5 from "../../app/public/Suzlon.svg";
-import logo6 from "../../app/public/rnco.jpg";
+interface MajorClientsProps {
+    clients: Client[];
+}
 
-const clients = [
-    { name: 'Airports', logo: logo1 },
-    { name: 'GAIL', logo: logo2 },
-    { name: 'Indian Oil', logo: logo3 },
-    { name: 'Ircon International', logo: logo4 },
-    { name: 'Suzlon', logo: logo5 },
-    { name: 'RNCO', logo: logo6 },
-];
-
-export default function MajorClients() {
+export default function MajorClients({ clients }: MajorClientsProps) {
     const [index, setIndex] = useState(0);
     const [visibleCount, setVisibleCount] = useState(4);
     const [isMobile, setIsMobile] = useState(false);
@@ -62,7 +51,7 @@ export default function MajorClients() {
 
     // Auto-play carousel (desktop only)
     useEffect(() => {
-        if (!isMobile) {
+        if (!isMobile && clients.length > visibleCount) {
             autoPlayRef.current = setInterval(() => {
                 handleNext();
             }, 3000);
@@ -73,9 +62,11 @@ export default function MajorClients() {
                 }
             };
         }
-    }, [isMobile, index]);
+    }, [isMobile, index, clients.length, visibleCount]);
 
     const handleNext = () => {
+        if (clients.length <= visibleCount) return;
+
         if (isMobile && scrollRef.current) {
             const itemWidth = scrollRef.current.scrollWidth / clients.length;
             scrollRef.current.scrollTo({
@@ -88,6 +79,8 @@ export default function MajorClients() {
     };
 
     const handlePrev = () => {
+        if (clients.length <= visibleCount) return;
+
         if (isMobile && scrollRef.current) {
             const itemWidth = scrollRef.current.scrollWidth / clients.length;
             scrollRef.current.scrollTo({
@@ -113,6 +106,9 @@ export default function MajorClients() {
 
     // Duplicated array for continuous slide on desktop
     const duplicatedClients = [...clients, ...clients];
+
+    // If no clients, don't render the section
+    if (!clients.length) return null;
 
     return (
         <section className="py-12 sm:py-16 md:py-20 bg-white">
@@ -143,8 +139,10 @@ export default function MajorClients() {
                             "hidden sm:flex p-2 sm:p-2.5 md:p-3",
                             "border border-gray-300 rounded-md z-20 bg-white",
                             "hover:bg-red-600 hover:text-white hover:border-red-600",
-                            "transition-all duration-200 flex-shrink-0"
+                            "transition-all duration-200 flex-shrink-0",
+                            clients.length <= visibleCount && "opacity-50 cursor-not-allowed"
                         )}
+                        disabled={clients.length <= visibleCount}
                         aria-label="Previous clients"
                     >
                         <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -168,13 +166,13 @@ export default function MajorClients() {
                                 "flex gap-3 sm:gap-4 md:gap-5 lg:gap-6",
                                 !isMobile && "transition-transform duration-700 ease-in-out"
                             )}
-                            style={!isMobile ? {
+                            style={!isMobile && clients.length > visibleCount ? {
                                 transform: `translateX(-${(index * 100) / visibleCount}%)`,
                             } : undefined}
                         >
                             {(isMobile ? clients : duplicatedClients).map((client, idx) => (
                                 <div
-                                    key={`${client.name}-${idx}`}
+                                    key={`${client.client_id}-${idx}`}
                                     className={cn(
                                         "flex-shrink-0 bg-white border border-gray-200",
                                         "rounded-lg shadow-sm hover:shadow-md transition-all",
@@ -188,14 +186,14 @@ export default function MajorClients() {
                                 >
                                     <div className="relative w-24 h-16 sm:w-28 sm:h-18 md:w-32 md:h-20 lg:w-36 lg:h-22 xl:w-40 xl:h-24">
                                         <Image
-                                            src={client.logo}
-                                            alt={client.name}
+                                            src={client.logo_url}
+                                            alt={client.client_name}
                                             fill
                                             className="object-contain"
                                         />
                                     </div>
                                     <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base font-medium text-gray-700 text-center">
-                                        {client.name}
+                                        {client.client_name}
                                     </p>
                                 </div>
                             ))}
@@ -209,8 +207,10 @@ export default function MajorClients() {
                             "hidden sm:flex p-2 sm:p-2.5 md:p-3",
                             "border border-gray-300 rounded-md z-20 bg-white",
                             "hover:bg-red-600 hover:text-white hover:border-red-600",
-                            "transition-all duration-200 flex-shrink-0"
+                            "transition-all duration-200 flex-shrink-0",
+                            clients.length <= visibleCount && "opacity-50 cursor-not-allowed"
                         )}
+                        disabled={clients.length <= visibleCount}
                         aria-label="Next clients"
                     >
                         <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -218,26 +218,28 @@ export default function MajorClients() {
                 </div>
 
                 {/* Mobile Navigation Dots */}
-                <div className="flex sm:hidden items-center justify-center gap-2 mt-6">
-                    {clients.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => handleDotClick(idx)}
-                            className={cn(
-                                "h-2 w-2 rounded-full transition-all duration-300",
-                                idx === index ? "bg-red-600 w-6" : "bg-gray-300"
-                            )}
-                            aria-label={`Go to client ${idx + 1}`}
-                        />
-                    ))}
-                </div>
+                {isMobile && clients.length > 1 && (
+                    <div className="flex sm:hidden items-center justify-center gap-2 mt-6">
+                        {clients.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => handleDotClick(idx)}
+                                className={cn(
+                                    "h-2 w-2 rounded-full transition-all duration-300",
+                                    idx === index ? "bg-red-600 w-6" : "bg-gray-300"
+                                )}
+                                aria-label={`Go to client ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
 
             <style jsx global>{`
-                .scrollbar-hide::-webkit-scrollbar {
-                    display: none;
-                }
-            `}</style>
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
         </section>
     );
 }

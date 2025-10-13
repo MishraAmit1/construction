@@ -1,5 +1,5 @@
+// next.config.js
 import type { NextConfig } from 'next';
-
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
@@ -13,27 +13,32 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
       },
       {
         protocol: 'https',
         hostname: 'www.bechtel.com',
-        port: '',
-        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
       },
+      // ⭐ ADD THIS FOR SUPABASE PUBLIC URL
+      {
+        protocol: 'https',
+        hostname: 'hdurfgtlqgpgjjnlbctu.supabase.co',
+      }
     ],
   },
 };
