@@ -35,7 +35,7 @@ import { uploadImage } from "@/lib/api/admin";
 const JoditEditorComponent = dynamic(() => import("@/components/JoditEditor"), {
   ssr: false,
 });
-// helo
+// helooo hiii
 export default function EditBlogPage({ params }: { params: { id: string } }) {
   const { id: blogId } = use(params);
   const router = useRouter();
