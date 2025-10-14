@@ -63,24 +63,24 @@ const navItems = [
     icon: FileText,
     description: "Blog Posts"
   },
-  {
-    name: "Media",
-    href: "/admin/media",
-    icon: ImageIcon,
-    description: "Image Gallery"
-  },
-  {
-    name: "Analytics",
-    href: "/admin/analytics",
-    icon: BarChart3,
-    description: "Site Analytics"
-  },
-  {
-    name: "Settings",
-    href: "/admin/settings",
-    icon: Settings,
-    description: "System Settings"
-  },
+  // {
+  //   name: "Media",
+  //   href: "/admin/media",
+  //   icon: ImageIcon,
+  //   description: "Image Gallery"
+  // },
+  // {
+  //   name: "Analytics",
+  //   href: "/admin/analytics",
+  //   icon: BarChart3,
+  //   description: "Site Analytics"
+  // },
+  // {
+  //   name: "Settings",
+  //   href: "/admin/settings",
+  //   icon: Settings,
+  //   description: "System Settings"
+  // },
 ];
 
 export default function Sidebar({
