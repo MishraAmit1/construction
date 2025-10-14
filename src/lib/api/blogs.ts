@@ -12,17 +12,18 @@ export interface Blog {
     meta_description: string | null
     meta_keywords: string | null
     is_published: boolean
+    reading_time: number | null
     created_at: string
     updated_at: string
 }
 
-export type BlogListItem = Pick<Blog, 'id' | 'title' | 'slug' | 'excerpt' | 'featured_image' | 'created_at'>
+export type BlogListItem = Pick<Blog, 'id' | 'title' | 'slug' | 'excerpt' | 'featured_image' | 'created_at' | 'reading_time'>
 
 // Get all published blogs
 export async function getAllBlogs(): Promise<BlogListItem[]> {
     const { data, error } = await supabase
         .from('blogs')
-        .select('id, title, slug, excerpt, featured_image, created_at')
+        .select('id, title, slug, excerpt, featured_image, created_at, reading_time')  // ⭐ ADD reading_time
         .eq('is_published', true)
         .order('created_at', { ascending: false })
 

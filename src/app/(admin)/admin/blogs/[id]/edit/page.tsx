@@ -35,7 +35,15 @@ import { uploadImage } from "@/lib/api/admin";
 const JoditEditorComponent = dynamic(() => import("@/components/JoditEditor"), {
   ssr: false,
 });
-// helooo hiii
+
+// ⭐ MOVE calculateReadingTime OUTSIDE component
+const calculateReadingTime = (content: string): number => {
+  const text = content.replace(/<[^>]*>/g, '');
+  const wordCount = text.trim().split(/\s+/).length;
+  const readingTime = Math.ceil(wordCount / 200);
+  return readingTime || 1;
+};
+
 export default function EditBlogPage({ params }: { params: { id: string } }) {
   const { id: blogId } = use(params);
   const router = useRouter();
@@ -59,11 +67,12 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
     meta_description: "",
     meta_keywords: "",
     is_published: false,
+    reading_time: 1, // ⭐ Change default to 1
     created_at: "",
     updated_at: "",
   });
 
-  // Fetch blog data
+  // ⭐ UPDATED Fetch blog data with auto-calculate
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -74,7 +83,14 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
           .single();
 
         if (error) throw error;
-        setFormData(data);
+
+        // ⭐ Auto-calculate reading_time if missing or 0
+        const processedData = {
+          ...data,
+          reading_time: data.reading_time || calculateReadingTime(data.content || '')
+        };
+
+        setFormData(processedData);
       } catch (err) {
         toast.error("Failed to fetch blog data");
         router.push("/admin/blogs");
@@ -113,9 +129,10 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
     setHasChanges(true);
   };
 
-  // Jodit editor content
+  // Update handleEditorChange
   const handleEditorChange = (content: string) => {
-    setFormData({ ...formData, content });
+    const readingTime = calculateReadingTime(content);
+    setFormData({ ...formData, content, reading_time: readingTime });
     setHasChanges(true);
   };
 
@@ -314,7 +331,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
             {/* Title */}
             <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
               <label className="block text-sm font-semibold text-slate-700 mb-3">
-                <Type className="w-4 h-4 inline mr-1" /> Title *
+                <Type className="w-4 h-4 inline mr-1" /> Title *
               </label>
               <input
                 type="text"
@@ -330,7 +347,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
             {/* Slug */}
             <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
               <label className="block text-sm font-semibold text-slate-700 mb-3">
-                <Hash className="w-4 h-4 inline mr-1" /> URL Slug
+                <Hash className="w-4 h-4 inline mr-1" /> URL Slug
               </label>
               <input
                 type="text"
@@ -364,7 +381,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
             {/* Featured Image */}
             <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
               <label className="block text-sm font-semibold text-slate-700 mb-3">
-                <ImageIcon className="w-4 h-4 inline mr-1" /> Featured Image
+                <ImageIcon className="w-4 h-4 inline mr-1" /> Featured Image
               </label>
               {formData.featured_image ? (
                 <div className="relative group rounded-xl overflow-hidden">
@@ -404,7 +421,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
                       Click to upload image
                     </p>
                     <p className="text-xs text-slate-500 mt-1">
-                      PNG, JPG, GIF & ≤ 5 MB
+                      PNG, JPG, GIF & ≤ 5 MB
                     </p>
                   </div>
                 </div>
@@ -422,9 +439,42 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
               {uploadingImage && (
                 <div className="mt-4 p-3 bg-indigo-50 rounded-lg flex items-center gap-2">
                   <div className="w-4 h-4 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin" />
-                  <p className="text-sm text-indigo-600">Uploading image…</p>
+                  <p className="text-sm text-indigo-600">Uploading image…</p>
                 </div>
               )}
+            </div>
+
+            {/* ⭐ Reading Time - UPDATED with real-time word count */}
+            <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+              <label className="text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                Reading Time (minutes)
+              </label>
+              <div className="flex items-center gap-4">
+                <input
+                  type="number"
+                  name="reading_time"
+                  value={formData.reading_time}
+                  onChange={handleInputChange}
+                  min="1"
+                  max="60"
+                  className="
+                    w-32 px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl
+                    focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white
+                    transition-all text-slate-900
+                  "
+                />
+                <div className="text-sm text-slate-500">
+                  {/* ⭐ Real-time word count */}
+                  <p>Actual words: ~{formData.content.replace(/<[^>]*>/g, '').trim().split(/\s+/).filter(w => w.length > 0).length}</p>
+                  <p className="text-xs mt-1">≈ {formData.reading_time} minute{formData.reading_time !== 1 ? 's' : ''} read</p>
+                </div>
+              </div>
+              <div className="mt-3 p-3 bg-blue-50 rounded-lg">
+                <p className="text-xs text-blue-700">
+                  💡 Tip: This value auto-adjusts based on your content length (200 words/min), but you can manually override it if needed.
+                </p>
+              </div>
             </div>
 
             {/* Publish */}
@@ -453,7 +503,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
             <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
               <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
                 <p className="text-sm text-slate-600 font-medium">
-                  Blog Content
+                  Blog Content
                 </p>
                 <div className="flex bg-white border border-slate-200 rounded-lg p-1">
                   <button
@@ -463,7 +513,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
                       : "text-slate-600 hover:text-slate-900"
                       }`}
                   >
-                    <Eye className="w-4 h-4 inline mr-1" /> Visual
+                    <Eye className="w-4 h-4 inline mr-1" /> Visual
                   </button>
                   <button
                     onClick={() => setEditorMode("source")}
@@ -472,7 +522,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
                       : "text-slate-600 hover:text-slate-900"
                       }`}
                   >
-                    <Code className="w-4 h-4 inline mr-1" /> HTML
+                    <Code className="w-4 h-4 inline mr-1" /> HTML
                   </button>
                 </div>
               </div>
@@ -497,14 +547,16 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
         )}
 
         {/* SEO tab */}
+        {/* SEO tab */}
         {activeTab === "seo" && (
           <div className="space-y-6 animate-fade-in">
+            {/* SEO Tips */}
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl">
               <div className="flex items-start gap-3">
                 <TrendingUp className="w-5 h-5 text-indigo-600" />
                 <div>
                   <p className="text-sm font-semibold text-indigo-900">
-                    SEO Optimization
+                    SEO Optimization
                   </p>
                   <p className="text-xs text-indigo-700">
                     Optimize these fields to improve search ranking.
@@ -516,7 +568,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
             {/* Meta Title */}
             <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
               <label className="block text-sm font-semibold text-slate-700 mb-3">
-                Meta Title
+                Meta Title
               </label>
               <input
                 type="text"
@@ -524,9 +576,111 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
                 value={formData.meta_title}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl
-                focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
-                placeholder="SEO optimized title..."
+        focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white
+        transition-all text-slate-900 placeholder:text-slate-400"
+                placeholder="SEO optimized title for search engines..."
               />
+              <div className="flex items-center justify-between mt-2">
+                <p className="text-xs text-slate-500">
+                  Ideal: 50-60 characters
+                </p>
+                <p
+                  className={`
+            text-xs font-semibold
+            ${formData.meta_title.length > 60
+                      ? "text-red-600"
+                      : formData.meta_title.length > 50
+                        ? "text-yellow-600"
+                        : "text-green-600"
+                    }
+          `}
+                >
+                  {formData.meta_title.length}/60
+                </p>
+              </div>
+            </div>
+
+            {/* Meta Description */}
+            <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+              <label className="block text-sm font-semibold text-slate-700 mb-3">
+                Meta Description
+              </label>
+              <textarea
+                name="meta_description"
+                value={formData.meta_description}
+                onChange={handleInputChange}
+                className="
+          w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl
+          focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white
+          transition-all text-slate-900 placeholder:text-slate-400 resize-none
+        "
+                rows={3}
+                placeholder="Compelling description for search results..."
+              />
+              <div className="flex items-center justify-between mt-2">
+                <p className="text-xs text-slate-500">
+                  Ideal: 150-160 characters
+                </p>
+                <p
+                  className={`
+            text-xs font-semibold
+            ${formData.meta_description.length > 160
+                      ? "text-red-600"
+                      : formData.meta_description.length > 150
+                        ? "text-yellow-600"
+                        : "text-green-600"
+                    }
+          `}
+                >
+                  {formData.meta_description.length}/160
+                </p>
+              </div>
+            </div>
+
+            {/* Keywords */}
+            <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+              <label className="block text-sm font-semibold text-slate-700 mb-3">
+                Focus Keywords
+              </label>
+              <input
+                type="text"
+                name="meta_keywords"
+                value={formData.meta_keywords}
+                onChange={handleInputChange}
+                className="
+          w-full px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl
+          focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white
+          transition-all text-slate-900 placeholder:text-slate-400
+        "
+                placeholder="keyword1, keyword2, keyword3..."
+              />
+              <p className="text-xs text-slate-500 mt-2">
+                Separate keywords with commas for better SEO targeting
+              </p>
+            </div>
+
+            {/* SEO Preview */}
+            <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border border-slate-200">
+              <h3 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
+                <Search className="w-4 h-4" />
+                Google Search Preview
+              </h3>
+              <div className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                <h4 className="text-blue-700 text-lg font-medium hover:underline cursor-pointer">
+                  {formData.meta_title ||
+                    formData.title ||
+                    "Your Blog Title Here"}
+                </h4>
+                <p className="text-green-700 text-sm mt-1 flex items-center gap-1">
+                  <Globe className="w-3 h-3" />
+                  yoursite.com › blog › {formData.slug || "your-blog-slug"}
+                </p>
+                <p className="text-slate-600 text-sm mt-2 line-clamp-2">
+                  {formData.meta_description ||
+                    formData.excerpt ||
+                    "Your blog description will appear here in search results..."}
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -540,10 +694,10 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
               <AlertTriangle className="w-6 h-6 text-red-600" />
             </div>
             <h3 className="text-xl font-bold text-center mb-2">
-              Delete Blog?
+              Delete Blog?
             </h3>
             <p className="text-slate-600 text-center mb-6">
-              Are you sure you want to delete “{formData.title}”? This cannot be undone.
+              Are you sure you want to delete "{formData.title}"? This cannot be undone.
             </p>
             <div className="flex gap-3">
               <button

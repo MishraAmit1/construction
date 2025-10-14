@@ -24,6 +24,7 @@ import {
   Globe,
   TrendingUp,
   LucideIcon,
+  Clock,
 } from "lucide-react";
 import { uploadImage } from "@/lib/api/admin";
 
@@ -43,6 +44,7 @@ interface FormData {
   meta_description: string;
   meta_keywords: string;
   is_published: boolean;
+  reading_time: number;
 }
 
 interface Tab {
@@ -50,6 +52,14 @@ interface Tab {
   label: string;
   icon: LucideIcon;
 }
+
+// ⭐ MOVE calculateReadingTime OUTSIDE component
+const calculateReadingTime = (content: string): number => {
+  const text = content.replace(/<[^>]*>/g, '');
+  const wordCount = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+  const readingTime = Math.ceil(wordCount / 200);
+  return readingTime || 1;
+};
 
 export default function CreateBlogPage() {
   const router = useRouter();
@@ -59,7 +69,7 @@ export default function CreateBlogPage() {
   const [activeTab, setActiveTab] = useState<string>("general");
   const [editorMode, setEditorMode] = useState<"visual" | "source">("visual");
 
-  // Form Data
+  // Form Data - ⭐ Changed reading_time default to 1
   const [formData, setFormData] = useState<FormData>({
     title: "",
     slug: "",
@@ -70,6 +80,7 @@ export default function CreateBlogPage() {
     meta_description: "",
     meta_keywords: "",
     is_published: false,
+    reading_time: 1, // ⭐ Changed from 5 to 1
   });
 
   // Generate slug from title
@@ -102,9 +113,10 @@ export default function CreateBlogPage() {
     }
   };
 
-  // Handle editor change
+  // Update handleEditorChange
   const handleEditorChange = (content: string) => {
-    setFormData({ ...formData, content });
+    const readingTime = calculateReadingTime(content);
+    setFormData({ ...formData, content, reading_time: readingTime });
   };
 
   // Image upload handler
@@ -401,6 +413,39 @@ export default function CreateBlogPage() {
                   <p className="text-sm text-indigo-600">Uploading image...</p>
                 </div>
               )}
+            </div>
+
+            {/* ⭐ Reading Time - UPDATED */}
+            <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+              <label className="block text-sm font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                Reading Time (minutes)
+              </label>
+              <div className="flex items-center gap-4">
+                <input
+                  type="number"
+                  name="reading_time"
+                  value={formData.reading_time}
+                  onChange={handleInputChange}
+                  min="1"
+                  max="60"
+                  className="
+                    w-32 px-4 py-3 bg-slate-50 border-2 border-slate-200 rounded-xl
+                    focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white
+                    transition-all text-slate-900
+                  "
+                />
+                <div className="text-sm text-slate-500">
+                  {/* ⭐ Real-time word count */}
+                  <p>Actual words: ~{formData.content.replace(/<[^>]*>/g, '').trim().split(/\s+/).filter(w => w.length > 0).length}</p>
+                  <p className="text-xs mt-1">≈ {formData.reading_time} minute{formData.reading_time !== 1 ? 's' : ''} read</p>
+                </div>
+              </div>
+              <div className="mt-3 p-3 bg-blue-50 rounded-lg">
+                <p className="text-xs text-blue-700">
+                  💡 Tip: This value auto-adjusts based on your content length (200 words/min), but you can manually override it if needed.
+                </p>
+              </div>
             </div>
 
             {/* Publish Status */}

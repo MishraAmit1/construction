@@ -3,7 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { getBlogBySlug, getBlogSlugs, getAllBlogs } from "@/lib/api/blogs"
 import { notFound } from "next/navigation"
-import { Calendar, ChevronsRight, ArrowLeft, Share2 } from "lucide-react"
+import { Calendar, ArrowLeft, Clock, Facebook, Twitter, Linkedin, Mail, Link2 } from "lucide-react"
+import ShareButtons from "@/components/ShareButtons" // ⭐ Import the client component
 
 // Generate static params for faster builds
 export async function generateStaticParams() {
@@ -46,6 +47,10 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
         .filter(b => b.slug !== blog.slug)
         .slice(0, 3);
 
+    // Get the full URL for sharing
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+    const fullUrl = `${baseUrl}/blog/${params.slug}`;
+
     return (
         <>
             {/* ---------- HERO SECTION (FEATURED IMAGE) ---------- */}
@@ -67,13 +72,22 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-headline mb-4">
                             {blog.title}
                         </h1>
-                        <div className="flex items-center text-white/80 text-sm">
-                            <Calendar className="w-4 h-4 mr-2" />
-                            <span>
-                                Published on {new Date(blog.created_at).toLocaleDateString('en-US', {
+                        <div className="flex items-center gap-4 text-white/80 text-sm">
+                            <span className="flex items-center gap-1.5">
+                                <Calendar className="w-4 h-4" />
+                                {new Date(blog.created_at).toLocaleDateString('en-US', {
                                     year: 'numeric', month: 'long', day: 'numeric'
                                 })}
                             </span>
+                            {blog.reading_time && (
+                                <>
+                                    <span className="text-white/50">•</span>
+                                    <span className="flex items-center gap-1.5">
+                                        <Clock className="w-4 h-4" />
+                                        {blog.reading_time} min read
+                                    </span>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -93,10 +107,8 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                             </span>
                         </div>
 
-                        <button className="flex items-center gap-1.5 text-gray-600 hover:text-red-600 transition-colors">
-                            <Share2 className="w-4 h-4" />
-                            <span className="hidden sm:inline">Share</span>
-                        </button>
+                        {/* ⭐ Share Button Component */}
+                        <ShareButtons url={fullUrl} title={blog.title} />
                     </nav>
                 </div>
             </div>
@@ -108,6 +120,27 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
 
                         {/* Main Blog Content */}
                         <article className="lg:col-span-8">
+                            {/* Article Meta Info Box */}
+                            <div className="bg-gray-50 rounded-lg p-4 mb-8 flex flex-wrap items-center justify-between gap-4">
+                                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                    <span className="flex items-center gap-1.5">
+                                        <Calendar className="w-4 h-4 text-gray-500" />
+                                        Published: {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                            year: 'numeric', month: 'long', day: 'numeric'
+                                        })}
+                                    </span>
+                                    {blog.reading_time && (
+                                        <>
+                                            <span className="text-gray-400">|</span>
+                                            <span className="flex items-center gap-1.5">
+                                                <Clock className="w-4 h-4 text-gray-500" />
+                                                {blog.reading_time} minute{blog.reading_time !== 1 ? 's' : ''} read
+                                            </span>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+
                             {/* Excerpt */}
                             {blog.excerpt && (
                                 <p className="text-lg text-gray-600 italic border-l-4 border-red-500 pl-6 mb-8">
@@ -115,11 +148,56 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                                 </p>
                             )}
 
-                            {/* Main content from TinyMCE */}
+                            {/* Main content from Jodit */}
                             <div
                                 className="prose prose-lg max-w-none prose-h2:font-semibold prose-h2:text-gray-800 prose-a:text-red-600 prose-img:rounded-lg prose-img:shadow-md"
                                 dangerouslySetInnerHTML={{ __html: blog.content }}
                             />
+
+                            {/* ⭐ Share Section at Bottom */}
+                            <div className="mt-12 pt-8 border-t border-gray-200">
+                                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                    <h3 className="text-lg font-semibold text-gray-800">
+                                        Enjoyed this article? Share it with your network
+                                    </h3>
+                                    <div className="flex items-center gap-3">
+                                        <a
+                                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                            aria-label="Share on Facebook"
+                                        >
+                                            <Facebook className="w-5 h-5" />
+                                        </a>
+                                        <a
+                                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(fullUrl)}&text=${encodeURIComponent(blog.title)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-2.5 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors"
+                                            aria-label="Share on Twitter"
+                                        >
+                                            <Twitter className="w-5 h-5" />
+                                        </a>
+                                        <a
+                                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(fullUrl)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-2.5 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                                            aria-label="Share on LinkedIn"
+                                        >
+                                            <Linkedin className="w-5 h-5" />
+                                        </a>
+                                        <a
+                                            href={`mailto:?subject=${encodeURIComponent(blog.title)}&body=Check out this article: ${fullUrl}`}
+                                            className="p-2.5 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                                            aria-label="Share via Email"
+                                        >
+                                            <Mail className="w-5 h-5" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
 
                         {/* Sidebar with Recent Posts */}
@@ -143,15 +221,23 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
                                                         />
                                                     </div>
                                                 )}
-                                                <div>
+                                                <div className="flex-1">
                                                     <p className="text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-red-600 transition-colors">
                                                         {recentBlog.title}
                                                     </p>
-                                                    <p className="text-xs text-gray-500 mt-1">
-                                                        {new Date(recentBlog.created_at).toLocaleDateString('en-US', {
-                                                            month: 'short', day: 'numeric', year: 'numeric'
-                                                        })}
-                                                    </p>
+                                                    <div className="flex items-center gap-2 text-xs text-gray-500 mt-1">
+                                                        <span>
+                                                            {new Date(recentBlog.created_at).toLocaleDateString('en-US', {
+                                                                month: 'short', day: 'numeric', year: 'numeric'
+                                                            })}
+                                                        </span>
+                                                        {recentBlog.reading_time && (
+                                                            <>
+                                                                <span>•</span>
+                                                                <span>{recentBlog.reading_time} min</span>
+                                                            </>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>

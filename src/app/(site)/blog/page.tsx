@@ -1,18 +1,73 @@
 // app/(site)/blog/page.tsx
+'use client'
+
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { getAllBlogs } from "@/lib/api/blogs"
-import { Calendar, ChevronsRight } from "lucide-react"
+import { Calendar, ChevronsRight, Clock, Loader2 } from "lucide-react"
 
-export const metadata = {
-    title: 'Our Blog | A&T Infracon',
-    description: 'Latest news, insights, and updates from A&T Infracon on infrastructure, construction, and engineering.',
-};
+interface Blog {
+    id: string;
+    title: string;
+    slug: string;
+    excerpt?: string;
+    featured_image?: string;
+    created_at: string;
+    reading_time?: number;
+}
 
-export default async function BlogPage() {
-    const blogs = await getAllBlogs();
-    const featuredBlog = blogs.length > 0 ? blogs[0] : null;
-    const otherBlogs = blogs.length > 1 ? blogs.slice(1) : [];
+export default function BlogPage() {
+    const [blogs, setBlogs] = useState<Blog[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
+    const [displayedCount, setDisplayedCount] = useState(9); // Initially show 9 blogs in More Articles
+
+    useEffect(() => {
+        fetchBlogs();
+    }, []);
+
+    const fetchBlogs = async () => {
+        try {
+            const data = await getAllBlogs();
+            setBlogs(data);
+        } catch (error) {
+            console.error("Error fetching blogs:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const featuredBlog = blogs.length > 0 ? blogs[0] : null; // Latest wala
+    const sideBlogs = blogs.length > 1 ? blogs.slice(1, 5) : []; // Next 4 blogs
+    const remainingBlogs = blogs.length > 5 ? blogs.slice(5) : []; // Bache hue blogs
+
+    // More Articles section mein dikhane wale blogs
+    const visibleRemainingBlogs = remainingBlogs.slice(0, displayedCount);
+    const hasMoreBlogs = remainingBlogs.length > displayedCount;
+
+    // Load more function
+    const handleLoadMore = () => {
+        setLoadingMore(true);
+        setTimeout(() => {
+            setDisplayedCount(prev => prev + 6); // 6 more blogs load karo
+            setLoadingMore(false);
+        }, 500); // Thoda delay for smooth experience
+    };
+
+    // Check if last row has odd number of items
+    const lastRowItemsCount = visibleRemainingBlogs.length % 3;
+    const fullRows = Math.floor(visibleRemainingBlogs.length / 3);
+    const fullRowsBlogs = visibleRemainingBlogs.slice(0, fullRows * 3);
+    const lastRowBlogs = visibleRemainingBlogs.slice(fullRows * 3);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <Loader2 className="w-8 h-8 animate-spin text-red-600" />
+            </div>
+        );
+    }
 
     return (
         <>
@@ -27,11 +82,11 @@ export default async function BlogPage() {
                         sizes="100vw"
                         priority
                     />
-                    <div className="absolute inset-0 bg-black/70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
                 </div>
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <div className="max-w-3xl text-white">
-                        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] leading-[1.1] font-medium font-headline mb-4">
+                        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] leading-[1.1] font-bold font-headline mb-4">
                             Insights & Updates
                         </h1>
                         <p className="text-[16px] sm:text-[18px] md:text-[20px] text-white/90">
@@ -42,134 +97,295 @@ export default async function BlogPage() {
             </section>
 
             {/* ---------- BREADCRUMB BAR ---------- */}
-            <div className="bg-[#edf3f5] border-b border-gray-200">
+            <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
                     <nav className="flex items-center text-xs sm:text-sm text-gray-600">
-                        <Link href="/" className="hover:text-red-600">HOME</Link>
-                        <span className="mx-1.5 sm:mx-2">&gt;</span>
+                        <Link href="/" className="hover:text-red-600 transition-colors">HOME</Link>
+                        <span className="mx-1.5 sm:mx-2">/</span>
                         <span className="text-red-600 font-semibold uppercase">BLOG</span>
                     </nav>
                 </div>
             </div>
 
             {/* ---------- MAIN BLOG CONTENT ---------- */}
-            <section className="bg-white py-12 sm:py-16 md:py-24">
+            <section className="bg-[#f8f9fa] py-12 sm:py-16 md:py-20">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     {blogs.length === 0 ? (
-                        <div className="text-center py-20">
+                        <div className="text-center py-20 bg-white rounded-xl">
                             <h2 className="text-2xl font-semibold text-gray-700">No blog posts found</h2>
                             <p className="text-gray-500 mt-4">
                                 Please check back later for updates and insights from our team.
                             </p>
                         </div>
                     ) : (
-                        <div className="space-y-16">
-                            {/* Featured Blog */}
-                            {featuredBlog && (
-                                <article className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                                    <div className="relative h-64 sm:h-80 md:h-96 lg:h-full w-full rounded-xl overflow-hidden shadow-lg">
-                                        <Image
-                                            src={featuredBlog.featured_image || 'https://via.placeholder.com/800x600'}
-                                            alt={featuredBlog.title}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 1024px) 100vw, 50vw"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                    </div>
-
-                                    <div className="lg:py-6">
-                                        <p className="text-sm text-gray-500 mb-2 flex items-center">
-                                            <Calendar className="w-4 h-4 mr-2" />
-                                            {new Date(featuredBlog.created_at).toLocaleDateString('en-US', {
-                                                year: 'numeric', month: 'long', day: 'numeric'
-                                            })}
-                                        </p>
-                                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4 hover:text-red-600 transition-colors">
-                                            <Link href={`/blog/${featuredBlog.slug}`}>
-                                                {featuredBlog.title}
-                                            </Link>
-                                        </h2>
-                                        {featuredBlog.excerpt && (
-                                            <p className="text-gray-700 leading-relaxed mb-6 line-clamp-3">
-                                                {featuredBlog.excerpt}
-                                            </p>
-                                        )}
-                                        <Link
-                                            href={`/blog/${featuredBlog.slug}`}
-                                            className="inline-flex items-center gap-2 text-red-600 font-semibold group"
-                                        >
-                                            Read More
-                                            <ChevronsRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                                        </Link>
-                                    </div>
-                                </article>
-                            )}
-
-                            {/* Separator */}
-                            {otherBlogs.length > 0 && (
-                                <div className="border-b border-gray-200"></div>
-                            )}
-
-                            {/* Other Blogs Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {otherBlogs.map((blog) => (
-                                    <article key={blog.id} className="group flex flex-col">
-                                        <div className="relative h-56 w-full rounded-lg overflow-hidden shadow-md mb-5">
-                                            <Image
-                                                src={blog.featured_image || 'https://via.placeholder.com/600x400'}
-                                                alt={blog.title}
-                                                fill
-                                                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                            />
-                                        </div>
-
-                                        <div className="flex-1 flex flex-col">
-                                            <p className="text-xs text-gray-500 mb-2 flex items-center">
-                                                <Calendar className="w-3 h-3 mr-1.5" />
-                                                {new Date(blog.created_at).toLocaleDateString('en-US', {
-                                                    year: 'numeric', month: 'short', day: 'numeric'
-                                                })}
-                                            </p>
-                                            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex-1 group-hover:text-red-600 transition-colors">
-                                                <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
-                                            </h3>
-                                            {blog.excerpt && (
-                                                <p className="text-gray-600 text-sm line-clamp-2 mb-4">
-                                                    {blog.excerpt}
-                                                </p>
-                                            )}
-                                            <Link
-                                                href={`/blog/${blog.slug}`}
-                                                className="text-red-600 text-sm font-semibold group-hover:underline"
-                                            >
-                                                Continue Reading &rarr;
-                                            </Link>
-                                        </div>
-                                    </article>
-                                ))}
+                        <div className="space-y-12">
+                            {/* ---------- FEATURED POSTS HEADING ---------- */}
+                            <div>
+                                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Featured Posts</h2>
+                                <div className="w-20 h-1 bg-red-600"></div>
                             </div>
+
+                            {/* ---------- FEATURED + SIDE BLOGS SECTION ---------- */}
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                                {/* LEFT SIDE - FEATURED BLOG (Latest) */}
+                                {featuredBlog && (
+                                    <div className="lg:col-span-2">
+                                        <article className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full">
+                                            <div className="relative h-72 sm:h-96 lg:h-[420px] w-full">
+                                                <Image
+                                                    src={featuredBlog.featured_image || 'https://via.placeholder.com/800x600'}
+                                                    alt={featuredBlog.title}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(max-width: 1024px) 100vw, 66vw"
+                                                />
+                                                <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                                    LATEST
+                                                </div>
+                                            </div>
+
+                                            <div className="p-6 lg:p-8">
+                                                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                                                    <span className="flex items-center gap-1">
+                                                        <Calendar className="w-4 h-4" />
+                                                        {new Date(featuredBlog.created_at).toLocaleDateString('en-US', {
+                                                            year: 'numeric', month: 'long', day: 'numeric'
+                                                        })}
+                                                    </span>
+                                                    {featuredBlog.reading_time && (
+                                                        <span className="flex items-center gap-1">
+                                                            <Clock className="w-4 h-4" />
+                                                            {featuredBlog.reading_time} min read
+                                                        </span>
+                                                    )}
+                                                </div>
+
+                                                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 hover:text-red-600 transition-colors">
+                                                    <Link href={`/blog/${featuredBlog.slug}`}>
+                                                        {featuredBlog.title}
+                                                    </Link>
+                                                </h2>
+
+                                                {featuredBlog.excerpt && (
+                                                    <p className="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                                                        {featuredBlog.excerpt}
+                                                    </p>
+                                                )}
+
+                                                <Link
+                                                    href={`/blog/${featuredBlog.slug}`}
+                                                    className="inline-flex items-center gap-2 text-red-600 font-bold hover:gap-3 transition-all"
+                                                >
+                                                    READ FULL ARTICLE
+                                                    <ChevronsRight className="w-5 h-5" />
+                                                </Link>
+                                            </div>
+                                        </article>
+                                    </div>
+                                )}
+
+                                {/* RIGHT SIDE - 4 SMALL BLOGS */}
+                                {sideBlogs.length > 0 && (
+                                    <div className="lg:col-span-1">
+                                        <div className="flex flex-col gap-4 h-full">
+                                            {sideBlogs.map((blog) => (
+                                                <article
+                                                    key={blog.id}
+                                                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex-1"
+                                                >
+                                                    <div className="flex h-full">
+                                                        {/* Image Section */}
+                                                        <div className="relative w-36 lg:w-40 flex-shrink-0">
+                                                            <Image
+                                                                src={blog.featured_image || 'https://via.placeholder.com/400x300'}
+                                                                alt={blog.title}
+                                                                fill
+                                                                className="object-cover"
+                                                                sizes="200px"
+                                                            />
+                                                        </div>
+
+                                                        {/* Content Section */}
+                                                        <div className="flex-1 p-4 lg:p-5 flex flex-col justify-between">
+                                                            <div>
+                                                                <p className="text-xs text-gray-500 mb-2 space-y-2">
+                                                                    {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                                                        month: 'short', day: 'numeric', year: 'numeric'
+                                                                    })}
+                                                                    <br />
+
+                                                                    {blog.reading_time && (
+                                                                        <span className="flex items-center gap-1">
+                                                                            <Clock className="w-4 h-4" />
+                                                                            <span>{blog.reading_time} min read</span>
+                                                                        </span>
+
+                                                                    )}
+                                                                </p>
+
+                                                                <h3 className="text-sm lg:text-base font-bold text-gray-900 line-clamp-3 hover:text-red-600 transition-colors">
+                                                                    <Link href={`/blog/${blog.slug}`}>
+                                                                        {blog.title}
+                                                                    </Link>
+                                                                </h3>
+                                                            </div>
+
+                                                            <Link
+                                                                href={`/blog/${blog.slug}`}
+                                                                className="text-red-600 text-xs font-semibold hover:underline mt-3 inline-block"
+                                                            >
+                                                                READ MORE →
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* ---------- REMAINING BLOGS SECTION ---------- */}
+                            {remainingBlogs.length > 0 && (
+                                <>
+                                    <div className="border-t border-gray-300 pt-12">
+                                        <div className="flex items-center justify-between mb-8">
+                                            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">More Articles</h2>
+                                            <p className="text-sm text-gray-500">
+                                                Showing {visibleRemainingBlogs.length} of {remainingBlogs.length} articles
+                                            </p>
+                                        </div>
+
+                                        {/* Full rows - 3 cards each */}
+                                        {fullRowsBlogs.length > 0 && (
+                                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                                                {fullRowsBlogs.map((blog) => (
+                                                    <article
+                                                        key={blog.id}
+                                                        className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                                                    >
+                                                        <div className="relative h-48 w-full overflow-hidden">
+                                                            <Image
+                                                                src={blog.featured_image || 'https://via.placeholder.com/400x300'}
+                                                                alt={blog.title}
+                                                                fill
+                                                                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                            />
+                                                        </div>
+
+                                                        <div className="p-5">
+                                                            <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                                                                <Clock className="w-3 h-3" />
+                                                                {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                                                    month: 'short', day: 'numeric', year: 'numeric'
+                                                                })}
+                                                            </p>
+
+                                                            <h3 className="text-base font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
+                                                                <Link href={`/blog/${blog.slug}`}>
+                                                                    {blog.title}
+                                                                </Link>
+                                                            </h3>
+
+                                                            {blog.excerpt && (
+                                                                <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                                                                    {blog.excerpt}
+                                                                </p>
+                                                            )}
+
+                                                            <Link
+                                                                href={`/blog/${blog.slug}`}
+                                                                className="text-red-600 text-sm font-bold hover:underline inline-flex items-center gap-1 group"
+                                                            >
+                                                                READ MORE
+                                                                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                                            </Link>
+                                                        </div>
+                                                    </article>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {/* Last row - centered if 1 or 2 cards */}
+                                        {lastRowBlogs.length > 0 && (
+                                            <div className={`flex flex-wrap gap-6 mb-12 ${lastRowItemsCount === 1 || lastRowItemsCount === 2 ? 'justify-center' : ''}`}>
+                                                {lastRowBlogs.map((blog) => (
+                                                    <article
+                                                        key={blog.id}
+                                                        className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:max-w-sm"
+                                                    >
+                                                        <div className="relative h-48 w-full overflow-hidden">
+                                                            <Image
+                                                                src={blog.featured_image || 'https://via.placeholder.com/400x300'}
+                                                                alt={blog.title}
+                                                                fill
+                                                                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                            />
+                                                        </div>
+
+                                                        <div className="p-5">
+                                                            <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                                                                <Clock className="w-3 h-3" />
+                                                                {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                                                    month: 'short', day: 'numeric', year: 'numeric'
+                                                                })}
+                                                            </p>
+
+                                                            <h3 className="text-base font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
+                                                                <Link href={`/blog/${blog.slug}`}>
+                                                                    {blog.title}
+                                                                </Link>
+                                                            </h3>
+
+                                                            {blog.excerpt && (
+                                                                <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                                                                    {blog.excerpt}
+                                                                </p>
+                                                            )}
+
+                                                            <Link
+                                                                href={`/blog/${blog.slug}`}
+                                                                className="text-red-600 text-sm font-bold hover:underline inline-flex items-center gap-1 group"
+                                                            >
+                                                                READ MORE
+                                                                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                                            </Link>
+                                                        </div>
+                                                    </article>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {/* Load More Button */}
+                                        {hasMoreBlogs && (
+                                            <div className="text-center">
+                                                <button
+                                                    onClick={handleLoadMore}
+                                                    disabled={loadingMore}
+                                                    className="inline-flex items-center gap-2 px-8 py-3 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                >
+                                                    {loadingMore ? (
+                                                        <>
+                                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                                            Loading...
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            Load More Articles
+                                                            <span className="text-sm">({remainingBlogs.length - displayedCount} remaining)</span>
+                                                        </>
+                                                    )}
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     )}
-                </div>
-            </section>
-
-            {/* ---------- CONNECT WITH A&T SECTION ---------- */}
-            <section className="bg-[#edf3f5] py-12 sm:py-16 md:py-20 text-center">
-                <div className="container mx-auto px-4 sm:px-6 md:px-12">
-                    <h2 className="text-2xl sm:text-3xl font-light text-[#2d3b40] mb-4">
-                        Have a Project in Mind?
-                    </h2>
-                    <p className="text-gray-700 max-w-2xl mx-auto mb-8">
-                        Let's build the future together. Get in touch with our experts to discuss your infrastructure needs.
-                    </p>
-                    <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
-                    >
-                        Contact Us
-                    </Link>
                 </div>
             </section>
         </>
