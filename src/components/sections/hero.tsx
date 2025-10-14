@@ -48,7 +48,6 @@ export function Hero() {
         priority
         className="object-cover"
       />
-
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/50" />
 
@@ -57,19 +56,17 @@ export function Hero() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
 
             {/* Left Text */}
-            <div className="max-w-full lg:max-w-4xl text-center lg:text-left mt-0 sm:-mt-10 lg:-mt-20">
-              <h1 className="text-[42px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px]
-                           leading-[1.1] sm:leading-[1.05] font-medium mb-4 sm:mb-6 md:mb-8 
-                           text-white tracking-tight">
-                We Live for a<br className="hidden sm:block" />
+            <div className="max-w-full lg:max-w-4xl text-center lg:text-left mt-0 sm:-mt-10 lg:-mt-1">
+              <h1 className="font-apfel2 text-[42px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[100px]
+                           leading-[1.1] md:leading-[120px] font-medium mb-4 sm:mb-6 md:mb-8 
+                           text-white tracking-[0.0208px]">
+                We Thrive on Every<br className="hidden sm:block" />
                 <span className="sm:hidden"> </span>Challenge
               </h1>
               <p className="text-[14px] sm:text-[18px] md:text-[20px] lg:text-[21px] xl:text-[22px] 
                           leading-relaxed text-white/90 max-w-full sm:max-w-2xl lg:max-w-3xl 
                           mx-auto lg:mx-0 px-2 sm:px-0">
-                At Veritas, we partner with our customers to bring their ambitions to life,
-                delivering projects that make a lasting, meaningful difference for people
-                and communities across India.
+                At A&T Infracon, we collaborate closely with our clients to turn their visions into reality — delivering infrastructure that shapes progress, empowers communities, and leaves a lasting impact on the world around us.
               </p>
             </div>
 

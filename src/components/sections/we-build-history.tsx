@@ -60,13 +60,14 @@ export function WeBuildHistory() {
                         text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] 
                         leading-[1.65] sm:leading-[1.7] md:leading-[1.75] lg:leading-[28px] xl:leading-[30px]
                         max-w-2xl md:max-w-none mx-auto md:mx-0">
-              The 21st century and beyond will be shaped by the world's ability to work at speed and at scale to meet fast-evolving needs for infrastructure, energy, advanced manufacturing, critical resources, environmental protection, and national security.
+              The 21st century and beyond will be defined by the ability to execute infrastructure projects efficiently, safely, and at scale — meeting the fast-changing demands of road networks, border security, renewable energy, and critical civil works.
+
             </p>
             <p className="text-foreground/80 
                         text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] 
                         leading-[1.65] sm:leading-[1.7] md:leading-[1.75] lg:leading-[28px] xl:leading-[30px]
                         max-w-2xl md:max-w-none mx-auto md:mx-0">
-              For decades, we have risen to the occasion. With our unique expertise and experience, A&T is purpose-built to tackle these challenges.
+              For more than 35 years, A&T Infracon has risen to the occasion. With our deep expertise in challenging terrains and complex environments, we are purpose-built to deliver projects that shape India’s infrastructure landscape.
             </p>
           </div>
         </div>

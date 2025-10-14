@@ -11,34 +11,32 @@ export function InspiringProjects() {
       {/* Responsive padding */}
       <div className="mx-auto pr-0 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-28">
         {/* Responsive grid with mobile-first approach */}
-        <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center gap-8 md:gap-12 lg:gap-20 xl:gap-32">
+        <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] items-center gap-8 md:gap-12 lg:gap-20">
 
           {/* LEFT TEXT - Mobile responsive */}
           <div className="px-4 sm:px-6 md:px-0">
             <h2 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] xl:text-[60px] 
                          leading-[1.15] sm:leading-[1.1] font-medium text-gray-900">
-              Extraordinary Teams Building
+              Extraordinary Teams
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
-              Inspiring Projects
+              Building Inspiring Projects
+
             </h2>
 
             <p className="mt-4 sm:mt-6 md:mt-8 
                         text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] 
                         text-gray-600 leading-[1.6] sm:leading-[1.65] lg:leading-relaxed 
                         max-w-full md:max-w-3xl">
-              We deliver first‑of‑a‑kind projects that improve quality of life, foster economic growth,
-              and promote sustainable development — from clean and efficient transportation systems
-              and sustainable energy solutions to advanced manufacturing facilities, critical mineral
-              supply chains, energy infrastructure, and vital national security systems.
+              We deliver first-of-a-kind infrastructure projects that strengthen connectivity, enhance security, and drive economic development across India — from high-altitude roads and border security structures to rural highway networks, institutional buildings, and renewable energy installations.
+
             </p>
 
             <p className="mt-4 sm:mt-5 md:mt-6 
                         text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] 
                         text-gray-600 leading-[1.6] sm:leading-[1.65] lg:leading-relaxed 
                         max-w-full md:max-w-3xl">
-              We are humbled to be entrusted with work we love — building projects full of purpose
-              and solving critical challenges around the world.
+              We are proud to be entrusted with work that matters, building projects with purpose, and overcoming complex challenges in some of the country’s most demanding terrains.
             </p>
 
             {/* CTA Button - Responsive sizing */}

@@ -48,7 +48,7 @@ export function About() {
                 <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-red-600 via-red-500 to-transparent rounded-full" />
 
                 <p className="text-lg md:text-xl leading-relaxed text-white/95 pl-6">
-                  Integrity, innovation, and a <span className="font-semibold text-white">"never settle"</span> mentality are at the core of everything we do. Our people are bold thinkers and skilled problem solvers who turn challenges into opportunities to achieve the extraordinary. Behind every hardhat and blueprint is a relentless drive to achieve what others cannot.
+                  Integrity, precision, and a <span className="font-semibold text-white">“get it done”</span>mentality are at the heart of everything we do. Our people are innovative thinkers and skilled problem-solvers who transform complex challenges into successful infrastructure outcomes. Behind every blueprint, earthwork, and high-altitude road is a relentless drive to deliver what others deem impossible
                 </p>
 
                 {/* Subtle glow effect */}

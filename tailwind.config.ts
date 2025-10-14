@@ -20,6 +20,9 @@ export default {
         body: ['Inter', 'sans-serif'],
         headline: ['sans-serif'],
         code: ['monospace'],
+        apfel: ['Apfel Grotezk', 'sans-serif'],
+        apfel2: ['Apfel Grotezk2', 'sans-serif'],
+        apfel3: ['Apfel Grotezk3', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',

@@ -74,10 +74,7 @@ export function QualityPeople() {
                         text-primary-foreground/90 sm:text-primary-foreground/85 md:text-primary-foreground/80
                         leading-[1.65] sm:leading-[1.7] md:leading-relaxed
                         max-w-lg md:max-w-none mx-auto md:mx-0">
-              Our people bring technical excellence, ingenuity, drive, creativity, and
-              experience to help our customers achieve their bold visions. We succeed
-              through partnership and a shared desire to make a difference. Motivated by
-              tomorrow's challenges, we push the limits of what's possible.
+              Our team brings technical expertise, ingenuity, dedication, and hands-on experience to help our government and B2G clients realize ambitious infrastructure goals. We succeed through collaboration and a shared commitment to delivering lasting impact. Driven by the challenges of remote and extreme terrains, we continuously push the boundaries of what’s achievable.
             </p>
           </div>
         </div>

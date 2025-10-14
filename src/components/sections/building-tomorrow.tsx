@@ -5,13 +5,27 @@ import { cn } from '@/lib/utils';
 export function BuildingTomorrow() {
   return (
     <section
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background"
-      style={{
-        backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
-        backgroundSize: '16px 16px', // Smaller on mobile
-      }}
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden"
     >
-      <div className="container text-center max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
+      {/* Left side grid pattern */}
+      <div
+        className="absolute inset-y-0 left-0 w-[100px] sm:w-[150px] md:w-[200px] lg:w-[300px] opacity-100"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 2px, transparent 0)',
+          backgroundSize: '16px 16px',
+        }}
+      />
+
+      {/* Right side grid pattern */}
+      <div
+        className="absolute inset-y-0 right-0 w-[100px] sm:w-[150px] md:w-[200px] lg:w-[300px] opacity-100"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 2px, transparent 0)',
+          backgroundSize: '16px 16px',
+        }}
+      />
+
+      <div className="container text-center max-w-4xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Heading - Responsive sizing */}
         <h2 className="font-headline 
                      text-[28px] sm:text-[32px] md:text-[36px] lg:text-[44px] xl:text-[48px] 
@@ -19,30 +33,20 @@ export function BuildingTomorrow() {
                      mb-4 sm:mb-5">
           Building Tomorrow, Together
         </h2>
-
-        {/* Decorative Lines - Responsive sizing */}
-        <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-          <div className="h-[3px] sm:h-1 w-8 sm:w-10 md:w-12 
-                        bg-gradient-to-r from-transparent to-red-500 rounded-full" />
-          <div className="h-[3px] sm:h-1 w-6 sm:w-8 
-                        bg-red-500 rounded-full" />
-          <div className="h-[3px] sm:h-1 w-8 sm:w-10 md:w-12 
-                        bg-gradient-to-l from-transparent to-red-500 rounded-full" />
-        </div>
-
         {/* Paragraphs - Responsive text and spacing */}
         <p className="mt-4 sm:mt-5 md:mt-6 
                     text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
                     text-foreground/80 leading-[1.65] sm:leading-[1.7] 
                     max-w-3xl mx-auto px-2 sm:px-0">
-          With projects that span the nation, our reach and expertise are shaping the future of Indian infrastructure. At Veritas, we don't just take on the world's most challenging projects — we solve them.
+          With projects across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh, our reach and expertise in India's most challenging terrains are unmatched. At A&T Infracon, we don't just take on difficult infrastructure projects — we deliver them with precision and resilience. Whether constructing high-altitude roads, border security infrastructure, or renewable energy facilities, we lead with innovation, safety, and collaboration.
+
         </p>
 
         <p className="mt-3 sm:mt-4 
                     text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
                     text-foreground/80 leading-[1.65] sm:leading-[1.7] 
                     max-w-3xl mx-auto px-2 sm:px-0">
-          From engineers and project managers to skilled craft professionals, we seek colleagues with diverse perspectives who are ready to embrace challenges and push the boundaries of what's possible.
+          From engineers and project managers to skilled craft professionals, we value colleagues with diverse perspectives who are ready to embrace challenges and push the limits of what's possible in extreme environments.
         </p>
 
         {/* CTA Button - Responsive */}

@@ -123,11 +123,6 @@ export default function MajorClients({ clients }: MajorClientsProps) {
                     )}>
                         MAJOR CLIENTS
                     </h2>
-                    <div className="flex items-start gap-1.5 sm:gap-2 justify-center sm:justify-start">
-                        <div className="h-[3px] sm:h-1 w-8 sm:w-10 md:w-12 bg-gradient-to-r from-red-500 to-transparent rounded-full" />
-                        <div className="h-[3px] sm:h-1 w-6 sm:w-8 bg-red-500 rounded-full" />
-                        <div className="h-[3px] sm:h-1 w-8 sm:w-10 md:w-12 bg-gradient-to-r from-red-500 to-transparent rounded-full" />
-                    </div>
                 </div>
 
                 {/* Slider Container */}

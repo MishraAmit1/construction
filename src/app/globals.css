@@ -84,14 +84,21 @@ header {
 @layer base {
   @font-face {
     font-family: 'Apfel Grotezk';
-    src: url('/fonts/ApfelGrotezk-Regular.woff2') format('woff2');
+    src: url('./fonts/ApfelGrotezk-Mittel.937ca0c8.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }
 
   @font-face {
-    font-family: 'Apfel Grotezk';
-    src: url('/fonts/ApfelGrotezk-Bold.woff2') format('woff2');
+    font-family: 'Apfel Grotezk2';
+    src: url('./fonts/ApfelGrotezk-Regular.98879785.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Apfel Grotezk3';
+    src: url('./fonts/NectoMono-Regular.6c89f0b8.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
   }

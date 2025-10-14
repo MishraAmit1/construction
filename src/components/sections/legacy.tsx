@@ -31,20 +31,23 @@ export function Legacy() {
             {/* Responsive paragraphs */}
             <div className="space-y-3 sm:space-y-4">
               <p className="mt-4 sm:mt-6 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
-                In 1898, Warren A. A&T left Peabody, Kansas in search of construction work and opportunity out West. It was the first chapter in a history that would go on to span 126 years, 160 countries, and 25,000 projects. What began as a small construction outfit evolved alongside the needs of a growing nation and a rapidly changing world.
+                In 1989, A&T Infracon began as a small civil engineering firm in Gujarat, driven by the vision to deliver quality infrastructure in India’s most challenging terrains. Over 35 years, we have grown to execute projects across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh, navigating deserts, high-altitude passes, and remote border regions.
+
               </p>
 
               {/* Hide some paragraphs on mobile for better UX */}
               <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
-                While much has changed at A&T, the desire to explore new frontiers has remained a driving force. Our history is a history of being first to market, providing proof of concept, and going where no one has.
+                While much has evolved at A&T Infracon, our drive to pioneer and deliver in difficult environments has remained unwavering. Our history is defined by taking on complex projects, proving innovative solutions, and building where others face challenges.
+
               </p>
 
               <p className="hidden sm:block text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
-                We built the first nuclear power plant to produce electricity. We constructed the first pipeline under the Arctic. We were one of the first American construction companies to establish a presence in Saudi Arabia. We built the facilities that produced the first U.S. LNG exports in more than 40 years.
+                We have constructed high-altitude hill roads to the Indo-China border, strengthened border infrastructure along the Indo-Pak border, delivered renewable energy facilities, and developed institutional and industrial buildings under extreme conditions.
+
               </p>
 
               <p className="hidden md:block text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
-                We're one of the only companies in the world to lay railroad track and fiber optic cable; to build shipyards and semiconductor factories; to support NASA's moonshot in the early 1960s and now, its latest mission to send humans to Mars. And we're just getting started. Our history is best understood by the incredible projects that have shaped it. Take a journey through our most iconic work by visiting WaaTeeKaa, our company's virtual museum experience.
+                We are one of the few companies capable of executing large-scale projects in harsh and remote regions while maintaining the highest standards of quality, safety, and efficiency. Our legacy is best understood through the landmark projects that showcase our expertise, commitment, and impact on India’s infrastructure.
               </p>
             </div>
 

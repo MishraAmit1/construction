@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from 'next/image';
-import logo from "../../app/public/logo-removebg-preview (3).png"
+import Image from "next/image";
+import logo from "../../app/public/logo_design_f__2_-removebg-preview.png";
+import logo1 from "../../app/public/logo-removebg-preview (3).png";
 
 const mainNavLinks = [
   { name: "HOME", href: "/" },
@@ -26,8 +27,6 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // Check if user has scrolled
       setHasScrolled(currentScrollY > 10);
 
       // Show header when scrolling up, hide when scrolling down
@@ -41,26 +40,17 @@ export function Header() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Close mobile menu when clicking outside or scrolling
+  // Lock scroll when mobile menu open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [mobileMenuOpen]);
 
-  // Determine if background should be white
   const shouldHaveBackground = isHovered || hasScrolled || mobileMenuOpen;
 
   return (
@@ -68,13 +58,13 @@ export function Header() {
       <header
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
           } ${shouldHaveBackground
-            ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background border-b border-border/40"
+            ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background"
             : "bg-transparent"
           }`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Top Red Bar */}
+        {/* Top red bar */}
         <div
           className={`h-[3px] sm:h-1 bg-red-600 transition-opacity duration-300 ${shouldHaveBackground ? "opacity-100" : "opacity-0"
             }`}
@@ -82,7 +72,6 @@ export function Header() {
 
         {/* Main Navigation Container */}
         <div className="container flex h-16 sm:h-18 md:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 md:px-8">
-
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="relative h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32">
@@ -90,20 +79,29 @@ export function Header() {
                 src={logo}
                 alt="A&T Logo"
                 fill
-                className="object-contain"
                 priority
+                className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-0" : "opacity-100"
+                  }`}
+              />
+              <Image
+                src={logo1}
+                alt="A&T Logo"
+                fill
+                priority
+                className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-100" : "opacity-0"
+                  }`}
               />
             </div>
           </Link>
 
-          {/* Desktop Navigation - Right aligned */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-8">
             <nav className="flex items-center gap-6 xl:gap-12">
               {mainNavLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-[13px] lg:text-sm xl:text-[15px] font-semibold transition-colors tracking-wider ${shouldHaveBackground
+                  className={`text-[13px] lg:text-sm xl:text-[15px] font-semibold tracking-wider transition-colors ${shouldHaveBackground
                       ? "text-foreground/80 hover:text-foreground"
                       : "text-white/90 hover:text-white"
                     }`}
@@ -117,14 +115,14 @@ export function Header() {
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
+            size="icon"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`lg:hidden relative z-50 ${mobileMenuOpen
                 ? "text-foreground"
                 : !shouldHaveBackground
                   ? "text-white hover:text-white/80 hover:bg-white/10"
                   : "hover:bg-secondary/80"
               }`}
-            size="icon"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
               <X className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -136,7 +134,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay - Smooth slide from top */}
+      {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-in-out ${mobileMenuOpen
             ? "opacity-100 pointer-events-auto"
@@ -150,15 +148,13 @@ export function Header() {
           onClick={() => setMobileMenuOpen(false)}
         />
 
-        {/* Menu content - Slides from top */}
+        {/* Menu Panel */}
         <div
           className={`absolute top-0 left-0 right-0 bg-white shadow-lg transition-transform duration-500 ease-in-out transform ${mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
             }`}
         >
           {/* Header spacer */}
           <div className="h-16 sm:h-18 md:h-20" />
-
-          {/* Red accent bar */}
           <div className="h-1 bg-red-600" />
 
           {/* Menu items */}
@@ -169,12 +165,12 @@ export function Header() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg transition-all duration-300 tracking-wider ${mobileMenuOpen
+                  className={`block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider transition-all duration-300 ${mobileMenuOpen
                       ? "opacity-100 translate-x-0"
                       : "opacity-0 -translate-x-4"
                     }`}
                   style={{
-                    transitionDelay: mobileMenuOpen ? `${index * 50}ms` : '0ms'
+                    transitionDelay: mobileMenuOpen ? `${index * 50}ms` : "0ms",
                   }}
                 >
                   {link.name}
@@ -182,7 +178,7 @@ export function Header() {
               ))}
             </div>
 
-            {/* Contact button at bottom */}
+            {/* Contact button */}
             <div className="mt-8 pt-6 border-t border-gray-200">
               <Link
                 href="/contact"

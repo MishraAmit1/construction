@@ -273,17 +273,13 @@ export default function ApproachPage() {
                     <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
                         Building a More Sustainable Future
                     </h2>
-                    <div className="flex items-center justify-center gap-1 sm:gap-2">
-                        <div className="h-0.5 sm:h-1 w-8 sm:w-10 md:w-12 bg-gradient-to-r from-transparent to-red-500 rounded-full" />
-                        <div className="h-0.5 sm:h-1 w-6 sm:w-8 bg-red-500 rounded-full" />
-                        <div className="h-0.5 sm:h-1 w-8 sm:w-10 md:w-12 bg-gradient-to-l from-transparent to-red-500 rounded-full" />
-                    </div>
                     <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4">
                         <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
-                            We approach each project as an opportunity to improve quality of life, and contribute to a safer, cleaner, more prosperous, and equitable world.
+                            Every project is an opportunity to enhance quality of life and contribute to a safer, cleaner, and more equitable world.
+
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
-                            We integrate sustainability into every phase of project execution, from design to delivery. By leveraging advanced technologies, sustainable materials, and efficient processes, we reduce environmental impact and optimize resource use. We collaborate closely with our customers, suppliers, and partners to drive shared responsibility, ensuring the well-being of our colleagues, the public, and the planet.
+                            We embed sustainability into every phase of project execution—from design to delivery. By leveraging advanced technologies, eco-friendly materials, and efficient processes, we minimize environmental impact and maximize resource efficiency. Working closely with our customers, suppliers, and partners, we share the responsibility of safeguarding our colleagues, communities, and the planet.
                         </p>
                     </div>
                     <div className="mt-6 sm:mt-8 md:mt-10">
@@ -315,7 +311,7 @@ export default function ApproachPage() {
                             Advancing Sustainable Solutions
                         </h3>
                         <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-6 sm:mb-8 leading-relaxed">
-                            Stories from our teams designing and delivering projects that enable cleaner energy and resilient infrastructure.
+                            The Low Energy Ejector Desalination System (LEEDS) is at the heart of a comprehensive solution for produced water treatment in oil, gas, and mining operations.
                         </p>
                         <Link
                             href="#"
@@ -341,13 +337,16 @@ export default function ApproachPage() {
                     </h2>
                     <div className="space-y-3 sm:space-y-4">
                         <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
-                            At Bechtel, we don't just build projects — we build lasting connections in the communities where we live and work. Our teams relocate around the world, becoming active members of the local community, and sharing their time, talents, and resources beyond the scope of their projects.
+                            At A&T Infracon, we don’t just deliver infrastructure — we build lasting connections in the communities where we operate. Our teams integrate into local life, contributing time, skills, and resources beyond the scope of our projects.
+
+
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
-                            We take care to ensure Bechtel's presence is an asset to local economies by prioritizing local hiring, partnering with small businesses, and creating educational and training opportunities for residents. Wherever we go, we establish a deep understanding of the community so we can maximize our impact and give back to the places our projects call home.
+                            We ensure our presence benefits local economies through local hiring, partnerships with small businesses, and educational and training opportunities for residents. By understanding each community deeply, we maximize our positive impact and give back to the places that host our work.
+
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
-                            Our legacy has never been confined to the structures we create; it's in the communities we strengthen — and that's something we'll always be proud of.
+                            Our legacy is measured not only by the structures we build, but by the communities we strengthen — and that is a source of lasting pride.
                         </p>
                     </div>
                     <div className="mt-6 sm:mt-7 md:mt-8">
