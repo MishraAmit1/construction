@@ -31,14 +31,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     if (!project) {
         notFound();
     }
+
     let relatedProjects: any[] = [];
     if (project.related_projects && Array.isArray(project.related_projects)) {
         relatedProjects = await getRelatedProjects(project.related_projects);
     }
+
     return (
         <>
-            {/* ---------- HERO SECTION ---------- */}
-            <section className="relative h-[50vh] sm:h-[60vh] md:h-[70vh] min-h-[400px] sm:min-h-[480px] flex items-center">
+            {/* ---------- HERO SECTION (RESPONSIVE FIXED) ---------- */}
+            <section className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[350px] sm:min-h-[400px] md:min-h-[500px] flex items-center">
                 <div className="absolute inset-0">
                     <Image
                         src={project.banner_image || project.thumbnail_image || 'https://via.placeholder.com/1920x1080'}
@@ -46,23 +48,25 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         fill
                         className="object-cover"
                         sizes="100vw"
+                        priority
                     />
-                    <div className="absolute inset-0 bg-black/70" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 mt-8 sm:mt-10">
-                    <div className="max-w-full lg:max-w-3xl text-white">
-                        <p className="text-yellow-400 font-thin tracking-widest mb-2 text-[14px] sm:text-[16px] uppercase">
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-8">
+                    <div className="max-w-full lg:max-w-4xl text-white">
+                        <p className="text-yellow-400 font-thin tracking-widest mb-2 sm:mb-3 
+                                     text-xs sm:text-sm md:text-base uppercase">
                             PROJECTS
                         </p>
-                        <h1 className="text-[40px] sm:text-[64px] md:text-[80px] lg:text-[96px] 
-                                     leading-[1.1] sm:leading-[1.2] md:leading-[1.1] 
-                                     font-medium font-headline mb-4 sm:mb-6">
+                        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                                     leading-tight sm:leading-tight md:leading-tight lg:leading-[1.1] 
+                                     font-medium font-headline mb-3 sm:mb-4 md:mb-6">
                             {project.project_name}
                         </h1>
-                        <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] 
-                                    leading-[1.6] sm:leading-[1.7] md:leading-[1.8] 
-                                    text-white/90">
+                        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 
+                                    leading-relaxed sm:leading-relaxed md:leading-relaxed 
+                                    text-white/90 max-w-3xl">
                             {project.tagline || project.project_name}
                         </p>
                     </div>
@@ -72,16 +76,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {/* ---------- BREADCRUMB BAR ---------- */}
             <div className="bg-[#edf3f5] border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600">
-                        <Link href="/" className="hover:text-red-600">
+                    <nav className="flex flex-wrap items-center text-xs sm:text-sm text-gray-600">
+                        <Link href="/" className="hover:text-red-600 transition-colors">
                             HOME
                         </Link>
                         <span className="mx-1.5 sm:mx-2">&gt;</span>
-                        <Link href="/projects" className="hover:text-red-600">
+                        <Link href="/projects" className="hover:text-red-600 transition-colors">
                             PROJECTS
                         </Link>
                         <span className="mx-1.5 sm:mx-2">&gt;</span>
-                        <span className="text-red-600 font-semibold uppercase">
+                        <span className="text-red-600 font-semibold uppercase truncate max-w-[200px] sm:max-w-none">
                             {project.project_name}
                         </span>
                     </nav>
@@ -91,12 +95,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {/* ---------- META INFO SECTION ---------- */}
             <div className="py-4 sm:py-6 border-b">
                 <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 
-                                grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 
-                                text-gray-700 text-xs sm:text-sm">
+                            grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 
+                            text-gray-700 text-xs sm:text-sm">
                     <div className="flex items-center justify-center md:justify-start">
                         <span className="bg-orange-100 text-orange-700 
-                                       px-2 sm:px-3 py-1 rounded-full 
-                                       flex items-center">
+                                   px-2 sm:px-3 py-1 rounded-full 
+                                   flex items-center">
                             <Zap className="h-4 w-4 mr-1.5 sm:mr-2" />
                             <span className="font-semibold">{project.category_name || 'Project'}</span>
                         </span>
@@ -114,13 +118,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </div>
             </div>
 
-            {/* ---------- DESCRIPTION SECTION ---------- */}
+            {/* ---------- SECTION 1: DESCRIPTION ---------- */}
             {project.section1_heading && (
                 <section className="relative py-12 sm:py-16 md:py-20 text-gray-800">
                     <div className="absolute inset-0 bg-[radial-gradient(circle,_#0000000a_1px,_transparent_1px)] [background-size:16px_16px]" />
                     <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-72">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-                                     font-normal leading-tight mb-4 sm:mb-6">
+                                 font-normal leading-tight mb-4 sm:mb-6">
                             {project.section1_heading}
                         </h1>
 
@@ -133,13 +137,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </section>
             )}
 
-            {/* ---------- ABOUT THE PROJECT ---------- */}
+            {/* ---------- SECTION 2: ABOUT THE PROJECT ---------- */}
             {project.section2_heading && (
-                <section className="mb-16 sm:mb-24 md:mb-32 lg:mb-40">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12 md:gap-16 lg:gap-20">
-                        {/* LEFT IMAGE FULL‑WIDTH */}
+                <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-8 xl:gap-16">
+                        {/* LEFT IMAGE */}
                         {project.section2_image && (
-                            <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+                            <div className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[600px]">
                                 <Image
                                     src={project.section2_image}
                                     alt={project.section2_image_alt || project.section2_heading}
@@ -151,14 +155,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         )}
 
                         {/* RIGHT TEXT */}
-                        <div className="px-4 sm:px-6 md:px-8 lg:pr-16 py-8 sm:py-12">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
+                        <div className="px-4 sm:px-6 md:px-8 lg:pr-12 xl:pr-16 py-6 sm:py-8 md:py-10 lg:py-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
                                           font-normal mb-4 sm:mb-6">
                                 {project.section2_heading}
                             </h2>
                             {project.section2_paragraphs && project.section2_paragraphs.map((para, idx) => (
                                 <p key={idx} className="text-gray-600 mb-3 sm:mb-4 
-                                             text-[14px] sm:text-[16px] md:text-[18px]">
+                                                       text-sm sm:text-base md:text-lg">
                                     {para}
                                 </p>
                             ))}
@@ -167,53 +171,53 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </section>
             )}
 
-            {/* ---------- WORK WITH US ---------- */}
+            {/* ---------- SECTION 3: WORK WITH US ---------- */}
             {project.section3_heading && (
-                <section className="mt-16 sm:mt-24 md:mt-32 lg:mt-40 mb-8 sm:mb-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center gap-8 sm:gap-12 md:gap-16">
-                        {/* LEFT TEXT (wider) */}
-                        <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 py-8 sm:py-12">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-                                          font-normal mb-6 sm:mb-8 
-                                          -mt-8 sm:-mt-16 md:-mt-24 lg:-mt-28">
+                <section className="mt-8 sm:mt-12 md:mt-16 lg:mt-24 xl:mt-32 mb-8 sm:mb-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center gap-6 sm:gap-8 md:gap-12">
+                        {/* LEFT TEXT */}
+                        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-32 py-6 sm:py-8 md:py-10 lg:py-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
+                                          font-normal mb-4 sm:mb-6 md:mb-8 
+                                          lg:-mt-16 xl:-mt-24">
                                 {project.section3_heading}
                             </h2>
                             {project.section3_paragraphs && project.section3_paragraphs.map((para, idx) => (
-                                <p key={idx} className="text-gray-600 mb-4 sm:mb-6 
-                                             text-[14px] sm:text-[16px] md:text-[18px] 
-                                             leading-[1.6] sm:leading-[1.7]">
+                                <p key={idx} className="text-gray-600 mb-4 sm:mb-5 md:mb-6 
+                                                       text-sm sm:text-base md:text-lg 
+                                                       leading-relaxed">
                                     {para}
                                 </p>
                             ))}
 
-                            <div className="mt-6 sm:mt-8">
+                            <div className="mt-4 sm:mt-6 md:mt-8">
                                 <Link
                                     href="/about"
                                     className={cn(
                                         'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
-                                        'px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold',
+                                        'px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold',
                                         'bg-white text-red-600 transition-all duration-500 ease-out',
-                                        'min-h-[48px] sm:min-h-[56px]',
+                                        'min-h-[44px] sm:min-h-[48px] md:min-h-[56px]',
                                         'w-full sm:w-auto'
                                     )}
                                 >
                                     <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
                                     <span className="relative z-10 flex items-center">
-                                        <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 w-8 sm:h-10 sm:w-10">
-                                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                                        <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10">
+                                            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
                                         </span>
                                         <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
                                             Learn more about Life at A&T
                                         </span>
-                                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                                        <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 opacity-0 transition-all duration-500 group-hover:w-4 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
                                     </span>
                                 </Link>
                             </div>
                         </div>
 
-                        {/* RIGHT IMAGE (narrower) */}
+                        {/* RIGHT IMAGE */}
                         {project.section3_image && (
-                            <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[390px]">
+                            <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] xl:h-[390px] px-4 sm:px-6 md:px-8 lg:px-0">
                                 <Image
                                     src={project.section3_image}
                                     alt={project.section3_image_alt || project.section3_heading}
@@ -227,7 +231,43 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </section>
             )}
 
-            {/* ---------- REGISTER TO BE A SUPPLIER ---------- */}
+            {/* ---------- SECTION 5 (MOVED UP - STYLED LIKE SECTION 2) ---------- */}
+            {(project.section5_heading || project.section5_image) && (
+                <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-8 xl:gap-16">
+                        {/* LEFT IMAGE (like Section 2) */}
+                        {project.section5_image && (
+                            <div className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[600px]">
+                                <Image
+                                    src={project.section5_image}
+                                    alt={project.section5_image_alt || project.section5_heading || 'Project Image'}
+                                    width={1200}
+                                    height={800}
+                                    className="w-full h-full object-cover object-center"
+                                />
+                            </div>
+                        )}
+
+                        {/* RIGHT TEXT (like Section 2) */}
+                        <div className="px-4 sm:px-6 md:px-8 lg:pr-12 xl:pr-16 py-6 sm:py-8 md:py-10 lg:py-12">
+                            {project.section5_heading && (
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
+                                              font-normal mb-4 sm:mb-6">
+                                    {project.section5_heading}
+                                </h2>
+                            )}
+
+                            {project.section5_paragraph && (
+                                <p className="text-gray-600 mb-3 sm:mb-4 
+                                             text-sm sm:text-base md:text-lg">
+                                    {project.section5_paragraph}
+                                </p>
+                            )}
+                        </div>
+                    </div>
+                </section>
+            )}
+
             {project.section4_heading && (
                 <section className="relative bg-white py-16 sm:py-20 md:py-24 text-gray-800 overflow-hidden">
                     {/* dotted background pattern */}
@@ -235,14 +275,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
                     <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-72">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-                                      font-normal leading-tight mb-4 sm:mb-6 md:mb-8">
+                                  font-normal leading-tight mb-4 sm:mb-6 md:mb-8">
                             {project.section4_heading}
                         </h2>
 
                         {project.section4_paragraphs && project.section4_paragraphs.map((para, idx) => (
                             <p key={idx} className="text-gray-600 mb-6 sm:mb-8 md:mb-10 
-                                         text-[14px] sm:text-[16px] md:text-[18px] 
-                                         leading-[1.6] sm:leading-[1.7]">
+                                     text-[14px] sm:text-[16px] md:text-[18px] 
+                                     leading-[1.6] sm:leading-[1.7]">
                                 {para}
                             </p>
                         ))}
@@ -272,15 +312,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </section>
             )}
 
+            {/* ---------- RELATED PROJECTS SECTION ---------- */}
             {relatedProjects.length > 0 && (
-                <section className="relative bg-gray-50 py-16 sm:py-20 md:py-24">
+                <section className="relative bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-24">
                     <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-                                      font-normal text-center mb-8 sm:mb-12 md:mb-16">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
+                                      font-normal text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16">
                             Related Projects
                         </h2>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                             {relatedProjects.map((relProject) => (
                                 <Link
                                     key={relProject.project_id}
@@ -288,18 +329,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                     className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                                 >
                                     {/* Image */}
-                                    <div className="relative h-[200px] sm:h-[240px] md:h-[280px] overflow-hidden">
+                                    <div className="relative h-[180px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden">
                                         <Image
                                             src={relProject.thumbnail_image || 'https://via.placeholder.com/600x400'}
                                             alt={relProject.project_name}
                                             fill
                                             className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         />
                                         {/* Status Badge */}
-                                        <div className="absolute top-4 left-4">
+                                        <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                                             <span className={cn(
-                                                "px-3 py-1 rounded-full text-xs font-semibold",
+                                                "px-2 sm:px-3 py-1 rounded-full text-xs font-semibold",
                                                 relProject.project_status === 'completed' ? 'bg-green-100 text-green-700' :
                                                     relProject.project_status === 'ongoing' ? 'bg-blue-100 text-blue-700' :
                                                         'bg-yellow-100 text-yellow-700'
@@ -310,7 +351,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                     </div>
 
                                     {/* Content */}
-                                    <div className="p-4 sm:p-6">
+                                    <div className="p-4 sm:p-5 md:p-6">
                                         {relProject.location && (
                                             <div className="flex items-center text-xs sm:text-sm text-gray-500 mb-2">
                                                 <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
@@ -318,22 +359,22 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                             </div>
                                         )}
 
-                                        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 
+                                        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-2 
                                                      group-hover:text-red-600 transition-colors line-clamp-2">
                                             {relProject.project_name}
                                         </h3>
 
                                         {relProject.tagline && (
-                                            <p className="text-sm sm:text-base text-gray-600 line-clamp-2 mb-4">
+                                            <p className="text-xs sm:text-sm md:text-base text-gray-600 line-clamp-2 mb-3 sm:mb-4">
                                                 {relProject.tagline}
                                             </p>
                                         )}
 
                                         {/* View Project Link */}
-                                        <div className="flex items-center text-red-600 font-semibold text-sm 
+                                        <div className="flex items-center text-red-600 font-semibold text-xs sm:text-sm 
                                                       group-hover:gap-2 transition-all">
                                             <span>View Project</span>
-                                            <ArrowRight className="h-4 w-4 opacity-0 -ml-4 group-hover:opacity-100 
+                                            <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 opacity-0 -ml-4 group-hover:opacity-100 
                                                                  group-hover:ml-0 transition-all duration-300" />
                                         </div>
                                     </div>
@@ -342,19 +383,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         </div>
 
                         {/* View All Projects Link */}
-                        <div className="text-center mt-8 sm:mt-12">
+                        <div className="text-center mt-6 sm:mt-8 md:mt-12">
                             <Link
                                 href="/projects"
                                 className={cn(
                                     'inline-flex items-center justify-center',
-                                    'px-6 sm:px-8 py-3 sm:py-4',
+                                    'px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4',
                                     'bg-red-600 text-white font-semibold rounded-full',
                                     'hover:bg-red-700 transition-colors',
                                     'text-sm sm:text-base'
                                 )}
                             >
                                 View All Projects
-                                <ArrowRight className="ml-2 h-5 w-5" />
+                                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                             </Link>
                         </div>
                     </div>
