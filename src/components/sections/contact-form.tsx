@@ -71,7 +71,7 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="relative">
+        <div className="relative font-apfel2">
             {/* Floating Status Messages */}
             {submitStatus !== 'idle' && (
                 <div className={`fixed top-20 right-4 z-50 transition-all duration-500 ${submitStatus === 'success' ? 'translate-x-0' : submitStatus === 'error' ? 'translate-x-0' : 'translate-x-[400px]'

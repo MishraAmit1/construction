@@ -111,12 +111,12 @@ export default function MajorClients({ clients }: MajorClientsProps) {
     if (!clients.length) return null;
 
     return (
-        <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <section className="font-apfel2 py-12 sm:py-16 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Heading - Responsive */}
                 <div className="mb-8 sm:mb-10">
                     <h2 className={cn(
-                        "font-headline",
+                        "font-apfel2",
                         "text-[28px] sm:text-[32px] md:text-[36px] lg:text-[44px] xl:text-[48px]",
                         "font-bold text-primary leading-tight mb-4 sm:mb-5",
                         "text-center sm:text-left"

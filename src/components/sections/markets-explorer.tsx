@@ -3,59 +3,72 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bolt, Leaf, Factory, Pickaxe, Shield, Atom, Building2, LucideArrowRightToLine } from "lucide-react";
+import {
+    ArrowRight,
+    Bolt,
+    Leaf,
+    Factory,
+    Pickaxe,
+    Shield,
+    Atom,
+    Building2,
+    LucideArrowRightToLine,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Category, Project } from '@/lib/api/categories'; // Import types
+import type { Category } from "@/lib/api/categories"; // adjust import path if needed
 
 /* ---------------- Types ---------------- */
 
-// Icon mapping for categories
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-    'border-infrastructure': Shield,
-    'road-construction': LucideArrowRightToLine,
-    'civil-contracts': Building2,
-    'renewable-energy': Leaf,
-    'energy': Bolt,
-    'environmental-cleanup': Leaf,
-    'manufacturing-technology': Factory,
-    'mining-critical-minerals': Pickaxe,
-    'national-defense-security': Shield,
-    'nuclear': Atom,
-    'infrastructure': Building2,
+    "border-infrastructure": Shield,
+    "road-construction": LucideArrowRightToLine,
+    "civil-contracts": Building2,
+    "renewable-energy": Leaf,
+    energy: Bolt,
+    "environmental-cleanup": Leaf,
+    "manufacturing-technology": Factory,
+    "mining-critical-minerals": Pickaxe,
+    "national-defense-security": Shield,
+    nuclear: Atom,
+    infrastructure: Building2,
 };
 
-// Transform functions with fallback
 function transformCategoriesToMarkets(categories: Category[]): MarketContent[] {
-    return categories.map(cat => ({
+    return categories.map((cat) => ({
         key: cat.category_slug as MarketKey,
         title: cat.category_name,
-        description: cat.tagline || 'Explore our expertise in this domain',
+        description: cat.tagline || "Explore our expertise in this domain",
         hero: {
-            // Ab ye already full URLs hongi from API
-            imageUrl: cat.banner_image || cat.thumbnail_image || 'https://via.placeholder.com/800x600/eee/666?text=No+Image',
-            alt: cat.category_name
+            imageUrl:
+                cat.banner_image ||
+                cat.thumbnail_image ||
+                "https://via.placeholder.com/800x600/eee/666?text=No+Image",
+            alt: cat.category_name,
         },
-        icon: iconMap[cat.category_slug] || Building2
+        icon: iconMap[cat.category_slug] || Building2,
     }));
 }
 
 function transformProjectsToDisplay(projects: any[]): ProjectDisplay[] {
-    return projects.map(proj => ({
+    return projects.map((proj) => ({
         id: proj.project_id,
         title: proj.project_name,
-        location: proj.location || 'India',
-        description: proj.tagline || 'Strategic infrastructure project',
+        location: proj.location || "India",
+        description: proj.tagline || "Strategic infrastructure project",
         image: {
-            // Ab ye already full URLs hongi from API
-            imageUrl: proj.thumbnail_image || 'https://via.placeholder.com/800x600/eee/666?text=No+Image',
+            imageUrl:
+                proj.thumbnail_image ||
+                "https://via.placeholder.com/800x600/eee/666?text=No+Image",
             description: proj.tagline || proj.project_name,
         },
         market: proj.category_slug as MarketKey,
-        href: `/projects/${proj.project_slug}`
+        href: `/projects/${proj.project_slug}`,
     }));
 }
 
-type MarketKey = string; // Dynamic from database
+/* ---------------- Type Declarations ---------------- */
+
+type MarketKey = string;
 
 type ProjectImage = {
     imageUrl: string;
@@ -81,9 +94,8 @@ type MarketContent = {
     icon?: React.ComponentType<{ className?: string }>;
 };
 
-/**
- * Main component: categories carousel + sticky left hero + right project list per market.
- */
+/* ---------------- Main Component ---------------- */
+
 export default function MarketsExplorer({
     categories = [],
     projects = [],
@@ -91,17 +103,15 @@ export default function MarketsExplorer({
     categories?: any[];
     projects?: any[];
 }) {
-    // Transform database data
     const markets = useMemo(() => transformCategoriesToMarkets(categories), [categories]);
     const displayProjects = useMemo(() => transformProjectsToDisplay(projects), [projects]);
 
     const [selectedMarket, setSelectedMarket] = useState<MarketKey>(
-        markets.length > 0 ? markets[0].key : ''
+        markets.length > 0 ? markets[0].key : ""
     );
     const [topOffset, setTopOffset] = useState(0);
     const filterBarRef = useRef<HTMLDivElement>(null);
 
-    // Group projects by category_slug
     const projectsByMarket = useMemo(() => {
         const map = new Map<MarketKey, ProjectDisplay[]>();
         markets.forEach((m) => map.set(m.key, []));
@@ -112,7 +122,6 @@ export default function MarketsExplorer({
         return map;
     }, [displayProjects, markets]);
 
-    // Refs to each market section for scroll-into-view
     const sectionRefs = useRef<Record<MarketKey, HTMLDivElement | null>>(
         markets.reduce(
             (acc, m) => ({ ...acc, [m.key]: null }),
@@ -120,16 +129,12 @@ export default function MarketsExplorer({
         )
     );
 
-    // Scroll effects
     useEffect(() => {
         let last = window.scrollY;
         const onScroll = () => {
             const cur = window.scrollY;
-            if (cur < last) {
-                setTopOffset(80);
-            } else if (cur > last) {
-                setTopOffset(0);
-            }
+            if (cur < last) setTopOffset(80);
+            else if (cur > last) setTopOffset(0);
             last = cur;
         };
         window.addEventListener("scroll", onScroll, { passive: true });
@@ -151,10 +156,8 @@ export default function MarketsExplorer({
                 const top = rect.top;
                 const bottom = rect.bottom;
 
-                if (top <= lineY && bottom >= lineY) {
-                    bestKey = m.key;
-                    closest = 0;
-                } else {
+                if (top <= lineY && bottom >= lineY) bestKey = m.key;
+                else {
                     const dist = Math.abs(top - lineY);
                     if (dist < closest) {
                         closest = dist;
@@ -163,27 +166,21 @@ export default function MarketsExplorer({
                 }
             });
 
-            if (bestKey && bestKey !== selectedMarket) {
-                setSelectedMarket(bestKey);
-            }
+            if (bestKey && bestKey !== selectedMarket) setSelectedMarket(bestKey);
         }
 
-        const onScroll = () => updateActive();
-        const onResize = () => updateActive();
-
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", onResize);
+        window.addEventListener("scroll", updateActive, { passive: true });
+        window.addEventListener("resize", updateActive);
 
         setTimeout(updateActive, 100);
         requestAnimationFrame(updateActive);
 
         return () => {
-            window.removeEventListener("scroll", onScroll);
-            window.removeEventListener("resize", onResize);
+            window.removeEventListener("scroll", updateActive);
+            window.removeEventListener("resize", updateActive);
         };
     }, [markets, selectedMarket]);
 
-    // Empty state
     if (markets.length === 0) {
         return (
             <section className="py-20">
@@ -195,7 +192,7 @@ export default function MarketsExplorer({
     }
 
     return (
-        <section className="relative py-8 sm:py-12 md:py-16 lg:py-20">
+        <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 font-apfel2">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
                 {/* Sticky categories bar */}
                 <div
@@ -214,7 +211,7 @@ export default function MarketsExplorer({
                     />
                 </div>
 
-                {/* Markets sections */}
+                {/* Market sections */}
                 <div className="mt-8 sm:mt-10 md:mt-12 space-y-16 sm:space-y-20 md:space-y-24">
                     {markets.map((m) => {
                         const list = projectsByMarket.get(m.key) || [];
@@ -264,6 +261,7 @@ export default function MarketsExplorer({
     );
 }
 
+/* ---------------- Components ---------------- */
 function CategoriesBar({
     markets,
     selected,
@@ -274,40 +272,85 @@ function CategoriesBar({
     onSelect: (key: MarketKey) => void;
 }) {
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [showLeftArrow, setShowLeftArrow] = useState(false);
+    const [showRightArrow, setShowRightArrow] = useState(true);
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+
+        const checkScroll = () => {
+            setShowLeftArrow(el.scrollLeft > 0);
+            setShowRightArrow(el.scrollLeft < el.scrollWidth - el.clientWidth - 5);
+        };
+
+        checkScroll();
+        el.addEventListener("scroll", checkScroll, { passive: true });
+        window.addEventListener("resize", checkScroll);
+        return () => {
+            el.removeEventListener("scroll", checkScroll);
+            window.removeEventListener("resize", checkScroll);
+        };
+    }, [markets.length]);
+
+    const scroll = (direction: "left" | "right") => {
+        const el = scrollRef.current;
+        if (!el) return;
+        el.scrollBy({
+            left: direction === "left" ? -200 : 200,
+            behavior: "smooth",
+        });
+    };
 
     return (
-        <div className="relative bg-[#edf3f5] shadow-sm">
-            <div
-                ref={scrollRef}
-                className="flex space-x-2 sm:space-x-3 py-2 sm:py-3 overflow-x-auto overflow-y-hidden scroll-smooth
-                   scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-gray-200"
-                style={{
-                    minWidth: "100%",
-                    width: "100%",
-                    borderRadius: 0,
-                }}
-            >
-                {markets.map((m) => {
-                    const Icon = m.icon || Bolt;
-                    const isActive = selected === m.key;
-                    return (
-                        <button
-                            key={m.key}
-                            onClick={() => onSelect(m.key)}
-                            className={cn(
-                                "flex items-center rounded-full px-3 sm:px-4 py-1.5 sm:py-2",
-                                "text-xs sm:text-sm font-semibold border-2 whitespace-nowrap flex-shrink-0",
-                                "transition-all duration-200",
-                                isActive
-                                    ? "bg-red-600 text-white border-red-600"
-                                    : "bg-white text-gray-800 border-slate-200 hover:bg-red-50 hover:border-red-300"
-                            )}
-                        >
-                            <Icon className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
-                            {m.title.toUpperCase()}
-                        </button>
-                    );
-                })}
+        <div className="relative bg-background overflow-x-hidden -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-20">
+            <div className="relative">
+                {/* Scrollbar element with custom height */}
+                <div
+                    ref={scrollRef}
+                    className="overflow-x-auto overflow-y-hidden scroll-smooth w-full
+                     [&::-webkit-scrollbar]:h-[10px] sm:[&::-webkit-scrollbar]:h-[12px]
+                     [&::-webkit-scrollbar-track]:bg-red-100 [&::-webkit-scrollbar-track]:rounded-full
+                     [&::-webkit-scrollbar-thumb]:bg-red-600 [&::-webkit-scrollbar-thumb]:rounded-full
+                     hover:[&::-webkit-scrollbar-thumb]:bg-red-700"
+                    style={{
+                        scrollbarWidth: "auto", // Changed from "thin" to "auto"
+                        scrollbarColor: "#dc2626 #fee2e2",
+                    }}
+                >
+                    {/* Content wrapper with padding so buttons align with page content */}
+                    <div className="px-4 sm:px-6 md:pl-8 lg:pl-12 xl:pl-20">
+                        <div className="flex items-center space-x-3 sm:space-x-5 py-5 sm:py-7">
+                            {markets.map((m) => {
+                                const Icon = m.icon || Bolt;
+                                const isActive = selected === m.key;
+
+                                return (
+                                    <button
+                                        key={m.key}
+                                        onClick={() => onSelect(m.key)}
+                                        className={cn(
+                                            "group flex items-center rounded-full px-4 sm:px-4 py-1",
+                                            "text-[14px] font-neuhas leading-[14px] font-medium tracking-[0.0208px] whitespace-nowrap flex-shrink-0 transition-all duration-200",
+                                            isActive
+                                                ? "bg-red-600 text-white"
+                                                : "bg-gray-200 text-gray-800 hover:bg-red-100 hover:text-red-600"
+                                        )}
+                                    >
+                                        <Icon
+                                            className={cn(
+                                                "mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 transition-colors duration-200",
+                                                isActive ? "text-white" : "text-gray-700 group-hover:text-red-600"
+                                            )}
+                                        />
+                                        {m.title.toUpperCase()}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+                {/* End scrollRef */}
             </div>
         </div>
     );
@@ -316,7 +359,7 @@ function CategoriesBar({
 function MarketHeroCard({ market }: { market: MarketContent }) {
     return (
         <div className="relative overflow-hidden rounded-2xl bg-card shadow-md">
-            <div className="relative h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full">
+            <div className="relative h-[350px] sm:h-[400px] md:h-[500px] w-full">
                 <Image
                     src={market.hero.imageUrl}
                     alt={market.hero.alt}
@@ -327,10 +370,10 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
 
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 z-10">
-                    <h3 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow">
+                    <h2 className="text-white text-2xl md:text-4xl leading-[30px] drop-shadow font-apfel2">
                         {market.title}
-                    </h3>
-                    <p className="mt-2 sm:mt-3 text-sm sm:text-base text-white/85 max-w-xl">
+                    </h2>
+                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] leading-[30px] text-white/85 max-w-md font-neuhas">
                         {market.description}
                     </p>
                 </div>
@@ -338,11 +381,7 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
                 <Link
                     href={`/markets/${market.key}`}
                     aria-label={`${market.title} details`}
-                    className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-10 
-                               inline-flex h-9 w-9 sm:h-12 sm:w-12 
-                               items-center justify-center 
-                               rounded-full bg-red-600 text-white 
-                               shadow-lg transition-transform hover:scale-110"
+                    className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-10 inline-flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition-transform hover:scale-110"
                 >
                     <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
@@ -351,56 +390,71 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
     );
 }
 
+/* ---------------- ProjectCard (Fixed spacing) ---------------- */
+
 function ProjectCard({ project }: { project: ProjectDisplay }) {
     return (
         <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md">
-            <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[480px] w-full">
+            <div className="relative aspect-[4/3] w-full">
                 <Image
                     src={project.image.imageUrl}
                     alt={project.image.description || project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
 
-                {project.location && (
-                    <div className="absolute left-3 sm:left-4 top-2 sm:top-3 z-10 
-                                   text-[10px] sm:text-[12px] font-semibold 
-                                   tracking-widest text-yellow-400 uppercase">
-                        {project.location}
-                    </div>
-                )}
+                {/* Base gradient - always visible */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-500" />
 
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-10 flex flex-col justify-end">
-                    <div
-                        className="transform transition-transform duration-500 ease-in-out 
-                                   translate-y-12 group-hover:translate-y-0"
-                    >
-                        <h4 className="text-white text-xl sm:text-2xl font-semibold drop-shadow">
+                {/* Hover overlay - darkens image on hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 ease-out" />
+
+                {/* Text container with consistent spacing */}
+                <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5 md:p-6">
+                    <div className="flex flex-col gap-2 sm:gap-2.5">
+                        {/* Location - always visible */}
+                        {project.location && (
+                            <div className="font-neuhas text-yellow-400 uppercase text-[10px] md:text-[14px] leading-[30px] font-medium tracking-widest
+                                transform transition-all duration-500 ease-out
+                                group-hover:translate-y-0 translate-y-0">
+                                {project.location}
+                            </div>
+                        )}
+
+                        {/* Title - always visible */}
+                        <h4 className="text-white text-lg text-[10px] md:text-[26px] leading-[30px] drop-shadow-lg
+                            transform transition-all duration-500 ease-out">
                             {project.title}
                         </h4>
-                        <p
-                            className="text-xs sm:text-sm text-white/90 
-                                       opacity-0 translate-y-3 
-                                       group-hover:opacity-100 group-hover:translate-y-0
-                                       transition-all duration-500 ease-in-out mt-1 sm:mt-2"
-                        >
-                            {project.description}
-                        </p>
+
+                        {/* Description - smooth slide up on hover */}
+                        {project.description && (
+                            <div className="overflow-hidden transition-all duration-500 ease-out max-h-0 group-hover:max-h-28 group-hover:mt-1">
+                                <p className="text-white/90 text-xs sm:text-sm leading-relaxed 
+                                    transform transition-all duration-500 ease-out
+                                    translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                    {project.description}
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
-
+                {/* Arrow button - smooth rotation and movement */}
                 <Link
                     href={project.href || `/projects/${project.id}`}
                     aria-label={`${project.title} details`}
-                    className="absolute bottom-2 sm:bottom-3 -rotate-[19deg] right-2 sm:right-3 z-10 
-                               inline-flex h-8 w-8 sm:h-11 sm:w-11 
-                               items-center justify-center 
-                               rounded-full bg-red-600 text-white 
-                               shadow-lg transition-transform hover:scale-110"
+                    className="absolute bottom-3 sm:bottom-4 md:bottom-5 right-3 sm:right-4 md:right-5 z-20 
+                        inline-flex h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 
+                        items-center justify-center
+                        rounded-full bg-red-600 text-white shadow-lg 
+                        -rotate-[19deg]
+                        transform transition-all duration-500 ease-out
+                        group-hover:scale-110 group-hover:shadow-2xl
+                        group-hover:rotate-0
+                        group-hover:-translate-y-1 group-hover:translate-x-1"
                 >
-                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-500 ease-out group-hover:translate-x-0.5" />
                 </Link>
             </div>
         </div>

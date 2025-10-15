@@ -61,25 +61,25 @@ export function WhereWeWork() {
     }, []);
 
     return (
-        <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30 overflow-x-hidden">
+        <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30 overflow-x-hidden">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
                 {/* Header Section - Responsive Grid */}
                 <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-20">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
                         {/* Left Heading - Responsive Typography */}
-                        <h2 className="font-headline 
+                        <h2 className="font-apfel2 
                                      text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] 
-                                     font-semibold text-primary 
+                                     text-primary 
                                      leading-[1.1] sm:leading-[1.2] lg:leading-tight 
                                      text-center lg:text-left">
                             Where We Work
                         </h2>
 
                         {/* Right Paragraph - Responsive Text */}
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
-                                    text-foreground/80 
-                                    leading-[1.6] sm:leading-[1.7] 
-                                    max-w-full lg:max-w-2xl 
+                        <p className="text-[15px] md:text-[20px] font-neuhas
+                                    text-[#30454c] 
+                                    leading-[1.6] md:leading-[30px] 
+                                    max-w-full lg:max-w-3xl 
                                     text-center lg:text-left 
                                     mx-auto lg:ml-auto">
                             With operations in over 33 countries, our global reach and regional expertise
@@ -128,7 +128,7 @@ export function WhereWeWork() {
                                                     bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
                                     {/* Content Overlay */}
-                                    <div className="absolute inset-x-0 bottom-0 
+                                    <div className="absolute inset-x-0 -bottom-20 
                                                     p-4 sm:p-5 md:p-6 
                                                     text-white flex flex-col 
                                                     justify-end overflow-hidden">
@@ -137,29 +137,30 @@ export function WhereWeWork() {
                                                        duration-500 ease-in-out 
                                                        translate-y-8 group-hover:translate-y-0">
                                             {/* Location */}
-                                            <div className="flex items-center gap-2 
+                                            <div className="flex items-center gap-2  font-neuhas
                                                             mb-2 text-[12px] sm:text-sm 
-                                                            font-medium text-white/80 
+                                                            font-medium text-yellow-400 
                                                             uppercase tracking-wider">
-                                                <MapPin className="h-4 w-4" />
                                                 {project.location}
+                                                <MapPin className="h-4 w-4" />
                                             </div>
 
                                             {/* Title */}
-                                            <h3 className="font-headline 
+                                            <h3 className="font-apfel2 
                                                            text-xl sm:text-2xl 
-                                                           font-bold">
+                                                           font-medium">
                                                 {project.title}
                                             </h3>
 
                                             {/* Description */}
                                             <p className="text-[13px] sm:text-sm 
+                                            font-neuhas
                                                           text-white/90 
                                                           opacity-0 translate-y-full
                                                           group-hover:opacity-100 
                                                           group-hover:translate-y-0
                                                           transition-all duration-500 
-                                                          ease-in-out mt-2 
+                                                          ease-in-out mt-0 mb-5 
                                                           line-clamp-2">
                                                 {project.description}
                                             </p>

@@ -86,7 +86,7 @@ export default function BlogPage() {
                 </div>
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <div className="max-w-3xl text-white">
-                        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] leading-[1.1] font-bold font-headline mb-4">
+                        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] leading-[1.1] font-bold font-apfel2 mb-4">
                             Insights & Updates
                         </h1>
                         <p className="text-[16px] sm:text-[18px] md:text-[20px] text-white/90">

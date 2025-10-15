@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         </p>
                         <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
                                      leading-tight sm:leading-tight md:leading-tight lg:leading-[1.1] 
-                                     font-medium font-headline mb-3 sm:mb-4 md:mb-6">
+                                     font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
                             {project.project_name}
                         </h1>
                         <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 

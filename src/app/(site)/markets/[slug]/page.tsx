@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRightCircle, Earth } from "lucide-react";
 import { getCategoryBySlug, getCategorySlugs } from "@/lib/api/categories";
 import { getProjectsByCategory } from "@/lib/api/projects";
 import { notFound } from "next/navigation";
@@ -82,33 +82,46 @@ export default async function CategoryPage({
     return (
         <>
             {/* ---------- HERO SECTION ---------- */}
-            <section className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[320px] sm:min-h-[400px] md:min-h-[480px] flex items-center">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] py-12 flex items-center">
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={category.banner_image || category.thumbnail_image || 'https://via.placeholder.com/1920x1080'}
+                        src={
+                            category.banner_image ||
+                            category.thumbnail_image ||
+                            "https://via.placeholder.com/1920x1080"
+                        }
                         alt={category.category_name}
                         fill
+                        priority
                         className="object-cover"
                         sizes="100vw"
-                        priority
                     />
-                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70"></div>
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-4 sm:mt-6 md:mt-10">
-                    <div className="max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl text-white">
-                        <p className="text-yellow-400 font-thin tracking-widest mb-1 sm:mb-2 
-                                     text-[12px] sm:text-[14px] md:text-[16px] uppercase">
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs md:max-w-6xl text-white">
+                        {/* Section label */}
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
                             Markets
                         </p>
-                        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] 
-                                      leading-[1.05] sm:leading-[1.1] md:leading-[1.15] lg:leading-[100px] 
-                                      font-medium font-headline mb-3 sm:mb-4 md:mb-6 lg:mb-8">
+
+                        {/* Adaptive main heading */}
+                        <h1
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6 
+                   text-[clamp(2rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
+                        >
                             {category.category_name}
                         </h1>
-                        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] 
-                                     leading-[1.6] sm:leading-[1.7] md:leading-[1.8] lg:leading-[36px] 
-                                     text-white/85 sm:text-white/90">
+
+                        {/* Supporting tagline / description */}
+                        <p
+                            className="font-neuhas text-[14px] sm:text-[16px] md:text-[24px]
+                   leading-[1.6] md:leading-[36px] font-medium 
+                   text-white/85 sm:text-white/90 md:max-w-4xl"
+                        >
                             {category.tagline}
                         </p>
                     </div>
@@ -116,7 +129,7 @@ export default async function CategoryPage({
             </section>
 
             {/* ---------- BREADCRUMB BAR ---------- */}
-            <div className="bg-[#edf3f5] border-b border-gray-200">
+            <div className="bg-[#f2f5f7] border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
                     <nav className="flex flex-wrap items-center text-xs sm:text-sm text-gray-600">
                         <Link href="/" className="hover:text-red-600">HOME</Link>
@@ -180,9 +193,9 @@ export default async function CategoryPage({
                         </div>
 
                         {/* Right Side - Text Content */}
-                        <div className="lg:pl-8 xl:pl-12 py-4 sm:py-6 md:py-8 lg:py-0">
+                        <div className="lg:pl-8 xl:pl-12 md:px-10 py-4 sm:py-6 md:py-8 lg:py-0">
                             {category.hero_heading && (
-                                <h2 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] 
+                                <h2 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] font-apfel2
                                              leading-[1.2] sm:leading-[1.15] md:leading-[64px] 
                                              font-light text-gray-900 mb-4 sm:mb-6 md:mb-8">
                                     {category.hero_heading}
@@ -190,8 +203,8 @@ export default async function CategoryPage({
                             )}
 
                             <div className="space-y-4 sm:space-y-5 md:space-y-6 
-                                          text-gray-700 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
-                                          leading-[1.6] sm:leading-[1.7] md:leading-[1.8] lg:leading-[32px]">
+                                          text-gray-700 text-[15px] md:text-[20px] font-neuhas font-medium
+                                          leading-[1.6] md:leading-[30px]">
                                 {category.hero_paragraphs && category.hero_paragraphs.map((para, idx) => (
                                     <p key={idx}>{para}</p>
                                 ))}
@@ -203,11 +216,11 @@ export default async function CategoryPage({
             </section>
 
             {/* ---------- PROJECTS SECTION WITH WORKING FILTERS ---------- */}
-            <section id="projects-section" className="bg-[#edf3f5] py-8 sm:py-12 md:py-16">
+            <section id="projects-section" className="bg-white py-8 sm:py-12 md:py-16">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
 
                     {/* CENTERED Heading */}
-                    <h2 className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] 
+                    <h2 className="text-[28px] md:text-[64px] 
                                  font-light text-[#2d3b40] text-center
                                  mb-6 sm:mb-8 md:mb-10">
                         {category.category_name} Projects
@@ -225,7 +238,7 @@ export default async function CategoryPage({
                                         <Link
                                             href={`/markets/${slug}?status=${statusFilter}&sort=${sortFilter}#filters`}
                                             scroll={false}
-                                            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2
+                                            className={`px-3 py-2 font-neuhas rounded-full text-sm md:text-[14px] font-medium leading-[24px]  transition-colors flex items-center gap-2
                                                 ${regionFilter === 'all'
                                                     ? 'bg-red-600 text-white'
                                                     : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
@@ -237,12 +250,12 @@ export default async function CategoryPage({
                                                 key={idx}
                                                 href={`/markets/${slug}?status=${statusFilter}&region=${region.toLowerCase()}&sort=${sortFilter}#filters`}
                                                 scroll={false}
-                                                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2
+                                                className={`px-2 py-2 font-neuhas leading-[14px] rounded-full text-sm md:text-[14px] font-medium transition-colors flex items-center gap-2
                                                     ${regionFilter === region.toLowerCase()
                                                         ? 'bg-red-600 text-white'
                                                         : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
                                             >
-                                                📍 {region.toUpperCase()}
+                                                <Earth />  {region.toUpperCase()}
                                             </Link>
                                         ))}
                                     </div>

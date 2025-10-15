@@ -74,11 +74,11 @@ export function Projects() {
   return (
     <section>
       {/* Header */}
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">
+      <div className="font-apfel2 max-w-3xl mx-auto text-center">
+        <h2 className="font-apfel2 text-3xl md:text-4xl font-bold text-primary">
           Explore Our Projects
         </h2>
-        <p className="mt-4 text-lg text-foreground/80">
+        <p className="mt-4 text-lg text-[#30454c]">
           From complex LNG facilities to cutting-edge manufacturing and
           environmental cleanup programs, our work drives progress and connects
           communities.
@@ -136,7 +136,7 @@ export function Projects() {
 
               {/* Title */}
               <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 z-10">
-                <h3 className="font-headline text-white text-xl sm:text-2xl font-bold drop-shadow">
+                <h3 className="font-apfel2 text-white text-xl sm:text-2xl font-bold drop-shadow">
                   {m.title}
                 </h3>
               </div>
@@ -183,7 +183,7 @@ export function Projects() {
 
               {/* Title + description */}
               <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 z-10">
-                <h4 className="text-white font-headline text-lg sm:text-xl font-bold drop-shadow">
+                <h4 className="text-white font-apfel2 text-lg sm:text-xl font-bold drop-shadow">
                   {p.title}
                 </h4>
                 {p.description ? (

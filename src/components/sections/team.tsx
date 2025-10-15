@@ -4,12 +4,12 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export function Team() {
   return (
-    <section>
-      <div className="text-center">
-        <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">
+    <section className="font-apfel2">
+      <div className=" text-center">
+        <h2 className="font-apfel2 text-3xl font-bold text-primary md:text-4xl">
           Our Leadership Team
         </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-[#30454c]">
           Meet the experienced professionals guiding our company and ensuring the success of every project.
         </p>
         <div className="mt-4 mb-12 w-24 h-1 bg-accent mx-auto"></div>
@@ -30,7 +30,7 @@ export function Team() {
               </div>
             </CardHeader>
             <CardContent className="p-6">
-              <h3 className="font-headline text-2xl font-bold text-primary">{member.name}</h3>
+              <h3 className="font-apfel2 text-2xl font-bold text-primary">{member.name}</h3>
               <p className="text-accent font-semibold text-lg">{member.title}</p>
             </CardContent>
           </Card>

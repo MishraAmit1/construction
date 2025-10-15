@@ -114,7 +114,7 @@ export const HearFromPeople = () => {
     const slide = slides[index];
 
     return (
-        <section className="py-24 bg-white overflow-hidden">
+        <section className="font-apfel2 py-24 bg-white overflow-hidden">
             <div className="container mx-auto px-6 sm:px-24">
                 <h2 className="text-4xl lg:text-6xl font-semibold text-center text-primary mb-20">
                     Hear From Our People

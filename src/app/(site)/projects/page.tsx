@@ -13,14 +13,16 @@ export default async function ProjectsPage() {
 
   return (
     <>
-      <ProjectsHeader />
-      <ProjectsSearchBar />
-      <ExploreProjects />
-      <MarketsExplorer
-        categories={categories}
-        projects={projects}
-      />
-      <WhereWeWork />
+      <div className='bg-white'>
+        <ProjectsHeader />
+        <ProjectsSearchBar />
+        <ExploreProjects />
+        <MarketsExplorer
+          categories={categories}
+          projects={projects}
+        />
+        <WhereWeWork />
+      </div>
     </>
   );
 }

@@ -49,12 +49,12 @@ export function TenderEnquiry() {
   }
 
   return (
-    <section>
-       <div className="text-center">
-        <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">
+    <section className="font-apfel2">
+      <div className="text-center">
+        <h2 className="font-apfel2 text-3xl font-bold text-primary md:text-4xl">
           Tender Enquiry
         </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-[#30454c]">
           For formal tender submissions or to discuss a project, please use the form below. Our business development team will get in touch with you.
         </p>
         <div className="mt-4 mb-12 w-24 h-1 bg-accent mx-auto"></div>

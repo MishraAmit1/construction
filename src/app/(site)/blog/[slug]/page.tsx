@@ -69,7 +69,7 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
 
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 h-full flex flex-col justify-end pb-12 sm:pb-16 md:pb-20">
                     <div className="max-w-4xl text-white">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-headline mb-4">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-apfel2 mb-4">
                             {blog.title}
                         </h1>
                         <div className="flex items-center gap-4 text-white/80 text-sm">

@@ -6,10 +6,10 @@ export function Certifications() {
   return (
     <section>
       <div className="text-center">
-        <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">
+        <h2 className="font-apfel2 text-3xl font-bold text-primary md:text-4xl">
           Our Credentials
         </h2>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-[#30454c]">
           Our commitment to quality, safety, and regulatory adherence is validated by industry-leading certifications, ensuring trust and excellence in every project we undertake.
         </p>
         <div className="mt-4 mb-12 w-24 h-1 bg-accent mx-auto"></div>

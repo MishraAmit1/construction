@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 export function QualityPeople() {
   return (
-    <section className="relative bg-primary text-primary-foreground py-12 sm:py-16 md:py-20 lg:py-24">
+    <section className="relative bg-primary text-primary-foreground py-12 sm:py-16 md:py-20 lg:py-24 font-apfel2">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
@@ -25,7 +25,7 @@ export function QualityPeople() {
 
           {/* LEFT: Heading + Button */}
           <div className="text-center md:text-left">
-            <h2 className="font-headline 
+            <h2 className="font-apfel 
                          text-[28px] sm:text-[32px] md:text-[36px] lg:text-[44px] xl:text-[48px] 2xl:text-[52px]
                          font-bold leading-[1.15] sm:leading-[1.1] md:leading-tight
                          max-w-md md:max-w-none mx-auto md:mx-0">

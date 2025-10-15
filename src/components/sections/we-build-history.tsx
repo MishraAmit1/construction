@@ -4,14 +4,14 @@ import { cn } from '@/lib/utils';
 
 export function WeBuildHistory() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+    <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
       <div className="container px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
 
           {/* Left side - Title & Button */}
           <div className="text-center md:text-left">
             {/* Heading - Responsive sizing */}
-            <h2 className="font-headline 
+            <h2 className="font-apfel2 
                          text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] 
                          font-medium text-primary 
                          leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-[70.4px]">
@@ -56,16 +56,16 @@ export function WeBuildHistory() {
           <div className="space-y-4 sm:space-y-5 md:space-y-6 
                         text-center md:text-left 
                         px-2 sm:px-4 md:px-0">
-            <p className="text-foreground/80 
-                        text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] 
-                        leading-[1.65] sm:leading-[1.7] md:leading-[1.75] lg:leading-[28px] xl:leading-[30px]
+            <p className="text-[#30454c] 
+                        text-[15px] sm:text-[16px] md:text-[18px]
+                        leading-[1.65] tracking-tighter
                         max-w-2xl md:max-w-none mx-auto md:mx-0">
               The 21st century and beyond will be defined by the ability to execute infrastructure projects efficiently, safely, and at scale — meeting the fast-changing demands of road networks, border security, renewable energy, and critical civil works.
 
             </p>
-            <p className="text-foreground/80 
-                        text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px] 2xl:text-[20px] 
-                        leading-[1.65] sm:leading-[1.7] md:leading-[1.75] lg:leading-[28px] xl:leading-[30px]
+            <p className="text-[#30454c] tracking-tighter
+                        text-[15px] sm:text-[16px] md:text-[18px]
+                        leading-[1.65] sm:leading-[1.7] md:leading-[1.75]
                         max-w-2xl md:max-w-none mx-auto md:mx-0">
               For more than 35 years, A&T Infracon has risen to the occasion. With our deep expertise in challenging terrains and complex environments, we are purpose-built to deliver projects that shape India’s infrastructure landscape.
             </p>

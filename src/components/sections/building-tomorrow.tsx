@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 export function BuildingTomorrow() {
   return (
     <section
-      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden font-apfel2"
     >
       {/* Left side grid pattern */}
       <div
@@ -27,30 +27,30 @@ export function BuildingTomorrow() {
 
       <div className="container text-center max-w-4xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Heading - Responsive sizing */}
-        <h2 className="font-headline 
+        <h2 className="font-apfel2 
                      text-[28px] sm:text-[32px] md:text-[36px] lg:text-[44px] xl:text-[48px] 
                      font-bold text-primary leading-[1.2] sm:leading-tight 
                      mb-4 sm:mb-5">
           Building Tomorrow, Together
         </h2>
         {/* Paragraphs - Responsive text and spacing */}
-        <p className="mt-4 sm:mt-5 md:mt-6 
+        <p className="mt-4 sm:mt-5 md:mt-8 mb-8 
                     text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
-                    text-foreground/80 leading-[1.65] sm:leading-[1.7] 
-                    max-w-3xl mx-auto px-2 sm:px-0">
+                    text-[#30454c] leading-[1.65] sm:leading-[1.7] 
+                    max-w-3xl mx-auto px-2 sm:px-0 text-start">
           With projects across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh, our reach and expertise in India's most challenging terrains are unmatched. At A&T Infracon, we don't just take on difficult infrastructure projects — we deliver them with precision and resilience. Whether constructing high-altitude roads, border security infrastructure, or renewable energy facilities, we lead with innovation, safety, and collaboration.
 
         </p>
 
         <p className="mt-3 sm:mt-4 
                     text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
-                    text-foreground/80 leading-[1.65] sm:leading-[1.7] 
-                    max-w-3xl mx-auto px-2 sm:px-0">
+                    text-[#30454c] leading-[1.65] sm:leading-[1.7] 
+                    max-w-3xl mx-auto px-2 sm:px-0 text-start">
           From engineers and project managers to skilled craft professionals, we value colleagues with diverse perspectives who are ready to embrace challenges and push the limits of what's possible in extreme environments.
         </p>
 
         {/* CTA Button - Responsive */}
-        <div className="mt-8 sm:mt-10 md:mt-12">
+        <div className="mt-8 sm:mt-10 md:mt-12 text-start">
           <Link
             href="/about"
             className={cn(

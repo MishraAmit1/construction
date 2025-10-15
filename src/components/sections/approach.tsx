@@ -39,7 +39,7 @@ export default function ApproachPage() {
     return (
         <>
             {/* HERO - Responsive */}
-            <section className="relative min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center pt-[20px] sm:pt-[100px] md:pt-[120px]">
+            <section className="font-apfel2 relative min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center pt-[20px] sm:pt-[100px] md:pt-[120px]">
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2000"
@@ -54,7 +54,7 @@ export default function ApproachPage() {
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-white">
                         <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">APPROACH</p>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-headline mb-3 sm:mb-4 md:mb-6">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
                             Dream, Design, <br className="hidden sm:block" />
                             <span className="sm:hidden"> </span>Deliver
                         </h1>
@@ -62,7 +62,7 @@ export default function ApproachPage() {
                             How we partner with customers to plan, engineer, and execute with safety, quality,
                             and ethics — delivering lasting impact worldwide.
                         </p>
-                        <CtaButton href="#how">Learn More</CtaButton>
+                        {/* <CtaButton href="#how">Learn More</CtaButton> */}
                     </div>
                 </div>
             </section>
@@ -270,15 +270,15 @@ export default function ApproachPage() {
                 backgroundSize: '16px 16px sm:20px 20px'
             }}>
                 <div className="container text-center max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-4 sm:px-6">
-                    <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
+                    <h2 className="font-apfel2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
                         Building a More Sustainable Future
                     </h2>
                     <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4">
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
+                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
                             Every project is an opportunity to enhance quality of life and contribute to a safer, cleaner, and more equitable world.
 
                         </p>
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
+                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
                             We embed sustainability into every phase of project execution—from design to delivery. By leveraging advanced technologies, eco-friendly materials, and efficient processes, we minimize environmental impact and maximize resource efficiency. Working closely with our customers, suppliers, and partners, we share the responsibility of safeguarding our colleagues, communities, and the planet.
                         </p>
                     </div>
@@ -332,20 +332,20 @@ export default function ApproachPage() {
                 backgroundSize: '16px 16px sm:20px 20px'
             }}>
                 <div className="container text-start max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-4 sm:px-6">
-                    <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
+                    <h2 className="font-apfel2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
                         Strengthening Communities
                     </h2>
                     <div className="space-y-3 sm:space-y-4">
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
+                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
                             At A&T Infracon, we don’t just deliver infrastructure — we build lasting connections in the communities where we operate. Our teams integrate into local life, contributing time, skills, and resources beyond the scope of our projects.
 
 
                         </p>
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
+                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
                             We ensure our presence benefits local economies through local hiring, partnerships with small businesses, and educational and training opportunities for residents. By understanding each community deeply, we maximize our positive impact and give back to the places that host our work.
 
                         </p>
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-foreground/80 leading-relaxed">
+                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
                             Our legacy is measured not only by the structures we build, but by the communities we strengthen — and that is a source of lasting pride.
                         </p>
                     </div>

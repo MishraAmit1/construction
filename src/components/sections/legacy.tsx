@@ -12,7 +12,7 @@ export function Legacy() {
   const activeProject = legacyData[activeIndex];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-background overflow-hidden">
+    <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 bg-background overflow-hidden font-apfel2">
       {/* Responsive padding */}
       <div className="mx-auto pr-0 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-28 mt-8 sm:mt-12 md:mt-16 lg:mt-20">
 
@@ -22,7 +22,7 @@ export function Legacy() {
           {/* LEFT SIDE – text column */}
           <div className="lg:-mt-20 xl:-mt-32">
             {/* Responsive heading */}
-            <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[52px] xl:text-[60px] leading-[1.1] sm:leading-tight font-medium text-gray-900">
+            <h2 className="font-apfel2 text-[32px] sm:text-[40px] md:text-[48px] lg:text-[52px] xl:text-[60px] leading-[1.1] sm:leading-tight font-medium text-gray-900">
               Creating a <br className="hidden sm:block" />
               <span className="sm:hidden">Lasting Legacy</span>
               <span className="hidden sm:inline">Lasting Legacy</span>
@@ -30,23 +30,23 @@ export function Legacy() {
 
             {/* Responsive paragraphs */}
             <div className="space-y-3 sm:space-y-4">
-              <p className="mt-4 sm:mt-6 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
+              <p className="mt-4 sm:mt-6 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-[#30454c]">
                 In 1989, A&T Infracon began as a small civil engineering firm in Gujarat, driven by the vision to deliver quality infrastructure in India’s most challenging terrains. Over 35 years, we have grown to execute projects across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh, navigating deserts, high-altitude passes, and remote border regions.
 
               </p>
 
               {/* Hide some paragraphs on mobile for better UX */}
-              <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
+              <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-[#30454c]">
                 While much has evolved at A&T Infracon, our drive to pioneer and deliver in difficult environments has remained unwavering. Our history is defined by taking on complex projects, proving innovative solutions, and building where others face challenges.
 
               </p>
 
-              <p className="hidden sm:block text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
+              <p className="hidden sm:block text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-[#30454c]">
                 We have constructed high-altitude hill roads to the Indo-China border, strengthened border infrastructure along the Indo-Pak border, delivered renewable energy facilities, and developed institutional and industrial buildings under extreme conditions.
 
               </p>
 
-              <p className="hidden md:block text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-foreground/80">
+              <p className="hidden md:block text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-relaxed text-[#30454c]">
                 We are one of the few companies capable of executing large-scale projects in harsh and remote regions while maintaining the highest standards of quality, safety, and efficiency. Our legacy is best understood through the landmark projects that showcase our expertise, commitment, and impact on India’s infrastructure.
               </p>
             </div>
@@ -142,7 +142,7 @@ export function Legacy() {
                         <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-yellow-300/90">
                           {project.projectLocation}
                         </p>
-                        <h3 className="font-headline text-xl sm:text-2xl md:text-3xl font-bold mt-1 sm:mt-2">
+                        <h3 className="font-apfel2 text-xl sm:text-2xl md:text-3xl font-bold mt-1 sm:mt-2">
                           {project.projectTitle}
                         </h3>
                         <p className="mt-1.5 sm:mt-2 text-[13px] sm:text-[14px] md:text-[15px] lg:text-base text-white/90 line-clamp-3 sm:line-clamp-none pr-4 sm:pr-6 md:pr-8">

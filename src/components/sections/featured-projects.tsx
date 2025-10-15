@@ -67,11 +67,11 @@ export function FeaturedProjects() {
   }, [projects]);
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30">
+    <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30">
       <div className="w-full">
         {/* Header */}
         <div className="mb-8 sm:mb-10 md:mb-12 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 2xl:px-28">
-          <h2 className="font-headline 
+          <h2 className="font-apfel2 
                        text-[28px] sm:text-[32px] md:text-[36px] lg:text-[44px] xl:text-[48px] 
                        font-bold text-primary leading-tight mb-4 sm:mb-5 text-center sm:text-left">
             Featured Projects
@@ -110,7 +110,7 @@ export function FeaturedProjects() {
                           <p className="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider">
                             {project.location || "India"}
                           </p>
-                          <h3 className="font-headline text-[20px] sm:text-[22px] md:text-[24px] font-bold mt-1 mb-2">
+                          <h3 className="font-apfel2 text-[20px] sm:text-[22px] md:text-[24px] font-bold mt-1 mb-2">
                             {project.project_name}
                           </h3>
                           <p

@@ -26,7 +26,7 @@ export function MapProjectMarker({ project }: MapProjectMarkerProps) {
   const handleMarkerClick = () => {
     setInfoWindowShown((prev) => !prev);
   };
-  
+
   const handleGenerateSummary = async () => {
     setIsLoading(true);
     setSummary(null);
@@ -66,14 +66,14 @@ export function MapProjectMarker({ project }: MapProjectMarkerProps) {
           anchor={marker}
           onCloseClick={() => setInfoWindowShown(false)}
         >
-          <div className="p-2 max-w-sm">
-            <h3 className="font-headline text-lg font-bold text-primary">{project.title}</h3>
+          <div className=" font-apfel2p-2 max-w-sm">
+            <h3 className="font-apfel2 text-lg font-bold text-primary">{project.title}</h3>
             <p className="text-sm text-muted-foreground mb-4">{project.location}</p>
             {isLoading ? (
-                <div className="flex items-center justify-center my-4">
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    <span>Generating Summary...</span>
-                </div>
+              <div className="flex items-center justify-center my-4">
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <span>Generating Summary...</span>
+              </div>
             ) : summary ? (
               <div className="text-sm my-4 p-3 bg-secondary rounded-md border">{summary}</div>
             ) : null}

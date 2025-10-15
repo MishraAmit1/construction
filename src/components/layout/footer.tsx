@@ -57,7 +57,7 @@ const legalLinks = {
 export function Footer() {
     return (
         // Image jaisa background color use kiya hai (#212C36)
-        <footer className="bg-[#212C36] text-gray-300">
+        <footer className="font-apfel2 bg-[#212C36] text-gray-300">
             <div className="container mx-auto max-w-7xl px-4 py-16">
                 {/* === TOP LINKS SECTION === */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">

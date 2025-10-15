@@ -85,23 +85,89 @@ header {
   @font-face {
     font-family: 'Apfel Grotezk';
     src: url('./fonts/ApfelGrotezk-Mittel.937ca0c8.woff2') format('woff2');
-    font-weight: normal;
     font-style: normal;
+    font-weight: 400;
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Apfel Grotezk2';
     src: url('./fonts/ApfelGrotezk-Regular.98879785.woff2') format('woff2');
-    font-weight: bold;
+    font-weight: normal;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'Apfel Grotezk3';
     src: url('./fonts/NectoMono-Regular.6c89f0b8.woff2') format('woff2');
-    font-weight: bold;
+    font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'NeuHaas Thin';
+    src: url('./fonts/NeueHaasDisplayLight.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'NeuHaas Extra Thin';
+    src: url('./fonts/NeueHaasDisplayThin.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Necto Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./fonts/NectoMono-Regular.6c89f0b8.woff2) format('woff2');
+  }
+
+  .bechtel-mono-lg {
+    font-family: "Necto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+
+  .bechtel-mono-md {
+    font-family: "Necto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.5;
+    font-size: 0.875rem;
+  }
+
+  @font-face {
+    font-family: 'Apfel Grotezk';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./fonts/ApfelGrotezk-Mittel.937ca0c8.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Apfel Grotezk';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(./fonts/ApfelGrotezk-Regular.98879785.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Apfel Grotezk';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url(./fonts/NeueHaasDisplayThin.ttf) format('woff2');
+  }
+
 
   :root {
     --background: 220 13% 96%;

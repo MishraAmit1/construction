@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 export function InspiringProjects() {
   return (
-    <section className="bg-white overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
+    <section className="bg-white overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 font-apfel2">
       {/* Responsive padding */}
       <div className="mx-auto pr-0 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-28">
         {/* Responsive grid with mobile-first approach */}

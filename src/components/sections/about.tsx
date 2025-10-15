@@ -6,7 +6,7 @@ import logo from "../../app/public/cons3.png"
 
 export function About() {
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full text-white overflow-hidden">
+    <section className="relative h-[80vh] min-h-[600px] w-full text-white overflow-hidden font-apfel2">
       {/* Image with subtle zoom animation */}
       <div className="absolute inset-0 scale-105 animate-[zoom_20s_ease-in-out_infinite]">
         <Image
@@ -32,7 +32,7 @@ export function About() {
             <div className="max-w-xl space-y-6">
               <div className="space-y-2">
                 <div className="h-1 w-16 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
-                <h2 className="font-headline text-5xl font-bold md:text-6xl lg:text-7xl leading-tight tracking-tight">
+                <h2 className="font-apfel2 text-5xl font-bold md:text-6xl lg:text-7xl leading-tight tracking-tight">
                   <span className="block">We Are</span>
                   <span className="block bg-gradient-to-r from-white via-red-50 to-red-100 bg-clip-text text-transparent">
                     A&T Infracon

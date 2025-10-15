@@ -186,7 +186,7 @@ export function Careers() {
   return (
     <>
       {/* ---------- HERO SECTION - RESPONSIVE ---------- */}
-      <section className="relative z-0 min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[140px]">
+      <section className="font-apfel2 relative z-0 min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[140px]">
         <div className="absolute inset-0">
           <Image
             src="https://www.bechtel.com/wp-content/uploads/2024/10/careers-hero-scaled.webp"
@@ -205,7 +205,7 @@ export function Careers() {
               CAREERS
             </p>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[96px] leading-[1.1] sm:leading-[1.05] font-medium font-headline mb-4 sm:mb-6 md:mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[96px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-4 sm:mb-6 md:mb-8">
               Building Tomorrow, <br className="hidden sm:block" />
               <span className="sm:hidden">Together</span>
               <span className="hidden sm:inline">Together</span>
@@ -240,7 +240,7 @@ export function Careers() {
       </section>
 
       {/* ---------- BREADCRUMB - RESPONSIVE ---------- */}
-      <div className="bg-[#edf3f5] border-b border-gray-200">
+      <div className="bg-[#edf3f5] font-apfel2 border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
           <nav className="flex items-center text-xs sm:text-sm text-gray-600">
             <Link href="/" className="hover:text-red-600">
@@ -253,7 +253,7 @@ export function Careers() {
       </div>
 
       {/* ---------- WHY BECHTEL SECTION - RESPONSIVE ---------- */}
-      <section className="bg-white py-10 sm:py-14 md:py-20">
+      <section className="bg-white font-apfel2 py-10 sm:py-14 md:py-20">
         <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-0 items-center">
             <div className="space-y-4 sm:space-y-6 md:space-y-8 px-0 order-2 lg:order-1">
@@ -308,19 +308,19 @@ export function Careers() {
       </section>
 
       {/* ---------- BECHTEL CAREERS INTRO - RESPONSIVE ---------- */}
-      <div className="mb-14 sm:mb-20 md:mb-24 lg:mb-28 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
+      <div className="font-apfel2 mb-14 sm:mb-20 md:mb-24 lg:mb-28 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
-          <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight">
+          <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight">
             Bechtel Careers
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed max-w-full lg:max-w-2xl lg:ml-auto">
+          <p className="text-sm sm:text-base md:text-lg text-[#30454c] leading-relaxed max-w-full lg:max-w-2xl lg:ml-auto">
             We're proud to offer robust training and development opportunities to encourage constant learning and growth, empowering colleagues to reach their full potential.
           </p>
         </div>
       </div>
 
-      <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 relative border-t border-gray-100">
+      <section className="font-apfel2 bg-white py-12 sm:py-16 md:py-20 lg:py-24 relative border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 md:gap-12 lg:gap-16">
           {/* ---------- LEFT STICKY NAV - DESKTOP ONLY ---------- */}
           <aside className="hidden lg:block">
@@ -500,11 +500,11 @@ export function Careers() {
       </section>
 
       {/* ---------- FEATURED PROJECTS SECTION - RESPONSIVE ---------- */}
-      <section className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-secondary/30">
+      <section className="font-apfel2 py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-secondary/30">
         <div className="w-full">
           {/* Header with responsive padding */}
           <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
-            <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5 text-left">
+            <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5 text-left">
               Featured Projects
             </h2>
             <div className="flex items-start gap-1 sm:gap-2">
@@ -541,7 +541,7 @@ export function Careers() {
                         <p className="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider">
                           {project.location}
                         </p>
-                        <h3 className="font-headline text-lg sm:text-xl md:text-2xl font-bold mt-1 mb-1 sm:mb-2">
+                        <h3 className="font-apfel2 text-lg sm:text-xl md:text-2xl font-bold mt-1 mb-1 sm:mb-2">
                           {project.title}
                         </h3>
                         {/* Description: hidden below, slides up smoothly from bottom on hover */}
@@ -595,19 +595,19 @@ export function Careers() {
       </section>
 
       {/* ---------- LIFE AT BECHTEL SECTION - RESPONSIVE ---------- */}
-      <div className="mb-8 sm:mb-12 md:mb-16 mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
+      <div className="font-apfel2 mb-8 sm:mb-12 md:mb-16 mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
-          <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight">
+          <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight">
             Life at Bechtel
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-foreground/80 leading-relaxed max-w-full lg:max-w-2xl lg:ml-auto">
+          <p className="text-sm sm:text-base md:text-lg text-[#30454c] leading-relaxed max-w-full lg:max-w-2xl lg:ml-auto">
             We work every day to foster a culture that values and seeks out many perspectives, and encourages colleagues to explore, think innovatively, and grow professionally. We're proud to offer numerous benefits and opportunities to our colleagues to invest in their success and empower them to reach their full potential.
           </p>
         </div>
       </div>
 
-      <div className="min-h-screen bg-gray-50 py-10 sm:py-14 md:py-20 px-4 sm:px-6">
+      <div className=" font-apfel2 min-h-screen bg-gray-50 py-10 sm:py-14 md:py-20 px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
           {/* Grid - Responsive */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -667,7 +667,7 @@ export function Careers() {
       {/* Expanded Modal - Responsive */}
       {expandedCard && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 sm:p-5 md:p-6 backdrop-blur-sm"
+          className="font-apfel2 fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 sm:p-5 md:p-6 backdrop-blur-sm"
           onClick={() => setExpandedCard(null)}
         >
           <div
@@ -715,7 +715,7 @@ export function Careers() {
       <HearFromPeople />
 
       {/* ---------- EQUAL OPPORTUNITY + JOB FRAUD ALERT - RESPONSIVE ---------- */}
-      <section className="bg-white py-10 sm:py-14 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 text-gray-700 border-t border-gray-100 overflow-hidden">
+      <section className="font-apfel2 bg-white py-10 sm:py-14 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 text-gray-700 border-t border-gray-100 overflow-hidden">
         <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto space-y-6 sm:space-y-8 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed">
           {/* --- Equal Opportunity Paragraphs --- */}
           <p className="italic break-words">
