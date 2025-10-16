@@ -10,7 +10,7 @@ export default function SiteLayout({
     return (
         <>
             <Header />
-            <main className="min-h-[calc(100vh_-_var(--header-height)_-_var(--footer-height))]">
+            <main className="bg-white min-h-[calc(100vh_-_var(--header-height)_-_var(--footer-height))]">
                 {children}
             </main>
             <Footer />

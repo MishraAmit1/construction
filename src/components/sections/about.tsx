@@ -6,7 +6,7 @@ import logo from "../../app/public/cons3.png"
 
 export function About() {
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full text-white overflow-hidden font-apfel2">
+    <section className="relative h-[80vh] min-h-[600px] w-full text-white overflow-hidden">
       {/* Image with subtle zoom animation */}
       <div className="absolute inset-0 scale-105 animate-[zoom_20s_ease-in-out_infinite]">
         <Image
@@ -32,7 +32,7 @@ export function About() {
             <div className="max-w-xl space-y-6">
               <div className="space-y-2">
                 <div className="h-1 w-16 bg-gradient-to-r from-red-600 to-red-400 rounded-full" />
-                <h2 className="font-apfel2 text-5xl font-bold md:text-6xl lg:text-7xl leading-tight tracking-tight">
+                <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight">
                   <span className="block">We Are</span>
                   <span className="block bg-gradient-to-r from-white via-red-50 to-red-100 bg-clip-text text-transparent">
                     A&T Infracon
@@ -47,8 +47,8 @@ export function About() {
                 {/* Decorative element */}
                 <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-red-600 via-red-500 to-transparent rounded-full" />
 
-                <p className="text-lg md:text-xl leading-relaxed text-white/95 pl-6">
-                  Integrity, precision, and a <span className="font-semibold text-white">“get it done”</span>mentality are at the heart of everything we do. Our people are innovative thinkers and skilled problem-solvers who transform complex challenges into successful infrastructure outcomes. Behind every blueprint, earthwork, and high-altitude road is a relentless drive to deliver what others deem impossible
+                <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] text-white/95 pl-6 font-neuhas">
+                  Integrity, precision, and a <span className="font-semibold text-white">"get it done"</span> mentality are at the heart of everything we do. Our people are innovative thinkers and skilled problem-solvers who transform complex challenges into successful infrastructure outcomes. Behind every blueprint, earthwork, and high-altitude road is a relentless drive to deliver what others deem impossible
                 </p>
 
                 {/* Subtle glow effect */}
@@ -64,14 +64,14 @@ export function About() {
 
       <style jsx>{`
         @keyframes zoom {
-          0%, 100% {
-            transform: scale(1.05);
-          }
-          50% {
-            transform: scale(1.1);
-          }
+            0%, 100% {
+                transform: scale(1.05);
+            }
+            50% {
+                transform: scale(1.1);
+            }
         }
-      `}</style>
+    `}</style>
     </section>
   );
 }

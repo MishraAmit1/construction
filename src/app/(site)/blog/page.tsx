@@ -72,25 +72,45 @@ export default function BlogPage() {
     return (
         <>
             {/* ---------- HERO SECTION ---------- */}
-            <section className="relative h-[40vh] sm:h-[50vh] min-h-[320px] flex items-center">
+            <section
+                className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] py-12 flex items-center"
+            >
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80"
-                        alt="A&T Infracon Blog"
+                        alt="A&T Infracon Blog"
                         fill
+                        priority
                         className="object-cover"
                         sizes="100vw"
-                        priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+                    {/* Dark overlay  — same tone as Projects header */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <div className="max-w-3xl text-white">
-                        <h1 className="text-[32px] sm:text-[48px] md:text-[64px] leading-[1.1] font-bold font-apfel2 mb-4">
-                            Insights & Updates
+
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px]">
+                            BLOG
+                        </p>
+
+                        <h1
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6
+                   text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05]
+                   [text-wrap:balance]"
+                        >
+                            Insights &amp; Updates
                         </h1>
-                        <p className="text-[16px] sm:text-[18px] md:text-[20px] text-white/90">
-                            Your source for the latest in construction technology, infrastructure trends, and A&T Infracon news.
+
+                        <p
+                            className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px]
+                   leading-[1.6] md:leading-[36px] font-medium
+                   text-white/85 sm:text-white/90 md:max-w-4xl"
+                        >
+                            Your source for the latest in construction technology,
+                            infrastructure trends, and A&T Infracon news.
                         </p>
                     </div>
                 </div>
@@ -99,7 +119,7 @@ export default function BlogPage() {
             {/* ---------- BREADCRUMB BAR ---------- */}
             <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600">
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas">
                         <Link href="/" className="hover:text-red-600 transition-colors">HOME</Link>
                         <span className="mx-1.5 sm:mx-2">/</span>
                         <span className="text-red-600 font-semibold uppercase">BLOG</span>
@@ -112,8 +132,8 @@ export default function BlogPage() {
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     {blogs.length === 0 ? (
                         <div className="text-center py-20 bg-white rounded-xl">
-                            <h2 className="text-2xl font-semibold text-gray-700">No blog posts found</h2>
-                            <p className="text-gray-500 mt-4">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-700">No blog posts found</h2>
+                            <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-gray-500 mt-4">
                                 Please check back later for updates and insights from our team.
                             </p>
                         </div>
@@ -121,8 +141,7 @@ export default function BlogPage() {
                         <div className="space-y-12">
                             {/* ---------- FEATURED POSTS HEADING ---------- */}
                             <div>
-                                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Featured Posts</h2>
-                                <div className="w-20 h-1 bg-red-600"></div>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-900 mb-2">Featured Posts</h2>
                             </div>
 
                             {/* ---------- FEATURED + SIDE BLOGS SECTION ---------- */}
@@ -140,13 +159,13 @@ export default function BlogPage() {
                                                     className="object-cover"
                                                     sizes="(max-width: 1024px) 100vw, 66vw"
                                                 />
-                                                <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                                <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold font-neuhas">
                                                     LATEST
                                                 </div>
                                             </div>
 
                                             <div className="p-6 lg:p-8">
-                                                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                                                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4 font-neuhas">
                                                     <span className="flex items-center gap-1">
                                                         <Calendar className="w-4 h-4" />
                                                         {new Date(featuredBlog.created_at).toLocaleDateString('en-US', {
@@ -161,21 +180,21 @@ export default function BlogPage() {
                                                     )}
                                                 </div>
 
-                                                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 hover:text-red-600 transition-colors">
+                                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-apfel2 font-normal leading-tight text-gray-900 mb-4 hover:text-red-600 transition-colors">
                                                     <Link href={`/blog/${featuredBlog.slug}`}>
                                                         {featuredBlog.title}
                                                     </Link>
                                                 </h2>
 
                                                 {featuredBlog.excerpt && (
-                                                    <p className="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                                                    <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-gray-600 mb-6 line-clamp-3">
                                                         {featuredBlog.excerpt}
                                                     </p>
                                                 )}
 
                                                 <Link
                                                     href={`/blog/${featuredBlog.slug}`}
-                                                    className="inline-flex items-center gap-2 text-red-600 font-bold hover:gap-3 transition-all"
+                                                    className="inline-flex items-center gap-2 text-red-600 font-bold hover:gap-3 transition-all font-neuhas"
                                                 >
                                                     READ FULL ARTICLE
                                                     <ChevronsRight className="w-5 h-5" />
@@ -209,22 +228,20 @@ export default function BlogPage() {
                                                         {/* Content Section */}
                                                         <div className="flex-1 p-4 lg:p-5 flex flex-col justify-between">
                                                             <div>
-                                                                <p className="text-xs text-gray-500 mb-2 space-y-2">
+                                                                <p className="text-xs text-gray-500 mb-2 space-y-2 font-neuhas">
                                                                     {new Date(blog.created_at).toLocaleDateString('en-US', {
                                                                         month: 'short', day: 'numeric', year: 'numeric'
                                                                     })}
                                                                     <br />
-
                                                                     {blog.reading_time && (
                                                                         <span className="flex items-center gap-1">
                                                                             <Clock className="w-4 h-4" />
                                                                             <span>{blog.reading_time} min read</span>
                                                                         </span>
-
                                                                     )}
                                                                 </p>
 
-                                                                <h3 className="text-sm lg:text-base font-bold text-gray-900 line-clamp-3 hover:text-red-600 transition-colors">
+                                                                <h3 className="text-sm lg:text-base font-apfel2 font-normal text-gray-900 line-clamp-3 hover:text-red-600 transition-colors">
                                                                     <Link href={`/blog/${blog.slug}`}>
                                                                         {blog.title}
                                                                     </Link>
@@ -233,7 +250,7 @@ export default function BlogPage() {
 
                                                             <Link
                                                                 href={`/blog/${blog.slug}`}
-                                                                className="text-red-600 text-xs font-semibold hover:underline mt-3 inline-block"
+                                                                className="text-red-600 text-xs font-semibold hover:underline mt-3 inline-block font-neuhas"
                                                             >
                                                                 READ MORE →
                                                             </Link>
@@ -251,8 +268,8 @@ export default function BlogPage() {
                                 <>
                                     <div className="border-t border-gray-300 pt-12">
                                         <div className="flex items-center justify-between mb-8">
-                                            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">More Articles</h2>
-                                            <p className="text-sm text-gray-500">
+                                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-apfel2 font-normal leading-tight text-gray-900">More Articles</h2>
+                                            <p className="text-sm text-gray-500 font-neuhas">
                                                 Showing {visibleRemainingBlogs.length} of {remainingBlogs.length} articles
                                             </p>
                                         </div>
@@ -276,28 +293,28 @@ export default function BlogPage() {
                                                         </div>
 
                                                         <div className="p-5">
-                                                            <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                                                            <p className="text-xs text-gray-500 mb-2 flex items-center gap-1 font-neuhas">
                                                                 <Clock className="w-3 h-3" />
                                                                 {new Date(blog.created_at).toLocaleDateString('en-US', {
                                                                     month: 'short', day: 'numeric', year: 'numeric'
                                                                 })}
                                                             </p>
 
-                                                            <h3 className="text-base font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
+                                                            <h3 className="text-base sm:text-lg md:text-xl font-apfel2 font-normal leading-tight text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
                                                                 <Link href={`/blog/${blog.slug}`}>
                                                                     {blog.title}
                                                                 </Link>
                                                             </h3>
 
                                                             {blog.excerpt && (
-                                                                <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                                                                <p className="text-[14px] sm:text-[16px] leading-[24px] font-neuhas text-gray-600 line-clamp-2 mb-4">
                                                                     {blog.excerpt}
                                                                 </p>
                                                             )}
 
                                                             <Link
                                                                 href={`/blog/${blog.slug}`}
-                                                                className="text-red-600 text-sm font-bold hover:underline inline-flex items-center gap-1 group"
+                                                                className="text-red-600 text-sm font-bold hover:underline inline-flex items-center gap-1 group font-neuhas"
                                                             >
                                                                 READ MORE
                                                                 <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -327,28 +344,28 @@ export default function BlogPage() {
                                                         </div>
 
                                                         <div className="p-5">
-                                                            <p className="text-xs text-gray-500 mb-2 flex items-center gap-1">
+                                                            <p className="text-xs text-gray-500 mb-2 flex items-center gap-1 font-neuhas">
                                                                 <Clock className="w-3 h-3" />
                                                                 {new Date(blog.created_at).toLocaleDateString('en-US', {
                                                                     month: 'short', day: 'numeric', year: 'numeric'
                                                                 })}
                                                             </p>
 
-                                                            <h3 className="text-base font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
+                                                            <h3 className="text-base sm:text-lg md:text-xl font-apfel2 font-normal leading-tight text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
                                                                 <Link href={`/blog/${blog.slug}`}>
                                                                     {blog.title}
                                                                 </Link>
                                                             </h3>
 
                                                             {blog.excerpt && (
-                                                                <p className="text-sm text-gray-600 line-clamp-2 mb-4">
+                                                                <p className="text-[14px] sm:text-[16px] leading-[24px] font-neuhas text-gray-600 line-clamp-2 mb-4">
                                                                     {blog.excerpt}
                                                                 </p>
                                                             )}
 
                                                             <Link
                                                                 href={`/blog/${blog.slug}`}
-                                                                className="text-red-600 text-sm font-bold hover:underline inline-flex items-center gap-1 group"
+                                                                className="text-red-600 text-sm font-bold hover:underline inline-flex items-center gap-1 group font-neuhas"
                                                             >
                                                                 READ MORE
                                                                 <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -365,7 +382,7 @@ export default function BlogPage() {
                                                 <button
                                                     onClick={handleLoadMore}
                                                     disabled={loadingMore}
-                                                    className="inline-flex items-center gap-2 px-8 py-3 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    className="inline-flex items-center gap-2 px-8 py-3 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-neuhas"
                                                 >
                                                     {loadingMore ? (
                                                         <>

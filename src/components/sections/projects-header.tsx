@@ -24,13 +24,13 @@ export default function ProjectsHeader() {
                     </p>
 
                     <h1
-                        className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
+                        className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
                     >
                         Building History
 
                     </h1>
 
-                    <p className="font-neuhas text-[14px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
+                    <p className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
                         Nation-building infrastructure, engineering wonders, and iconic landmarks: From revolutionizing urban mobility to powering communities and enabling modern industry — our projects are the ultimate testament to the breadth and depth of our expertise.
                     </p>
                 </div>

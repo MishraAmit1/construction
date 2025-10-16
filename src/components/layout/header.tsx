@@ -221,6 +221,11 @@ export function Header() {
 
   const shouldHaveBackground = isHovered || hasScrolled || mobileMenuOpen || megaOpen;
 
+  // Close mega menu when clicking on a link
+  const handleLinkClick = () => {
+    setActiveMega(null);
+  };
+
   return (
     <>
       {/* Add custom scrollbar styles */}
@@ -306,6 +311,9 @@ export function Header() {
                     onFocus={() => {
                       if (isMega) setActiveMega(link.name as typeof activeMega);
                     }}
+                    onClick={() => {
+                      if (!isMega) setActiveMega(null);
+                    }}
                     className={`text-[13px] lg:text-sm xl:text-[15px] font-semibold tracking-wider transition-colors ${shouldHaveBackground ? "text-[#30454c] hover:text-foreground" : "text-white/90 hover:text-white"
                       }`}
                   >
@@ -341,6 +349,7 @@ export function Header() {
         onIntentClose={armClose}
         onCancelClose={cancelClose}
         marketCategories={marketCategories}
+        onLinkClick={handleLinkClick}
       />
 
       {/* Mobile Menu */}
@@ -504,7 +513,8 @@ function MegaPanel({
   which,
   onIntentClose,
   onCancelClose,
-  marketCategories
+  marketCategories,
+  onLinkClick
 }: {
   open: boolean;
   top: number;
@@ -512,6 +522,7 @@ function MegaPanel({
   onIntentClose: () => void;
   onCancelClose: () => void;
   marketCategories: any[];
+  onLinkClick: () => void;
 }) {
   const style: React.CSSProperties = { top, height: `calc(100vh - ${top}px)` };
 
@@ -531,9 +542,9 @@ function MegaPanel({
         {/* Full width container with scrolling and red scrollbar */}
         <div className="h-full px-8 lg:px-12 xl:px-16 py-10 overflow-y-auto mega-menu-scroll">
           <div className="max-w-[1600px] mx-auto">
-            {which === "PROJECTS" && <ProjectsContent marketCategories={marketCategories} />}
-            {which === "APPROACH" && <ApproachContent />}
-            {which === "CAREERS" && <CareersContent />}
+            {which === "PROJECTS" && <ProjectsContent marketCategories={marketCategories} onLinkClick={onLinkClick} />}
+            {which === "APPROACH" && <ApproachContent onLinkClick={onLinkClick} />}
+            {which === "CAREERS" && <CareersContent onLinkClick={onLinkClick} />}
           </div>
         </div>
       </div>
@@ -542,35 +553,35 @@ function MegaPanel({
 }
 
 /* ---------------- Projects Content ---------------- */
-function ProjectsContent({ marketCategories }: { marketCategories: any[] }) {
+function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: any[]; onLinkClick: () => void }) {
   const [tab, setTab] = useState<"market" | "region">("market");
 
   return (
-    <div className="grid grid-cols-12 gap-10 font-apfel">
+    <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900">Building History</h2>
-        <p className="mt-4 text-gray-600 leading-[21px] font-light">
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Building History</h2>
+        <p className="mt-4 text-gray-600 leading-[21px] font-light font-neuhas">
           Scale. Complexity. Impact. Purpose. We deliver challenging projects that elevate standards of living, drive prosperity, and support sustainable growth across the globe — from clean, efficient transportation and sustainable energy to advanced manufacturing, critical minerals, national security infrastructure, and more.
         </p>
-        <Link href="/projects" className="mt-6 inline-flex items-center gap-4 group">
+        <Link href="/projects" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
             <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
           </span>
-          <span className="text-red-600 text-xl font-semibold group-hover:underline">Dig Deeper</span>
+          <span className="text-red-600 text-xl font-semibold group-hover:underline font-apfel2">Dig Deeper</span>
         </Link>
 
         <div className="mt-10 pt-6 border-t">
-          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase">Additional Information</div>
+          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">Additional Information</div>
           <div className="mt-4 space-y-5">
             {INFO_CARDS.map((it) => (
-              <Link key={it.title} href={it.href} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
+              <Link key={it.title} href={it.href} onClick={onLinkClick} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
                 <div className="relative h-20 w-28 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
                   <Image src={it.img} alt={it.title} fill className="object-cover" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">{it.title}</div>
-                  <div className="text-sm text-gray-600 mt-1">{it.desc}</div>
+                  <div className="font-semibold text-gray-900 font-apfel2">{it.title}</div>
+                  <div className="text-sm text-gray-600 mt-1 font-neuhas">{it.desc}</div>
                 </div>
               </Link>
             ))}
@@ -583,7 +594,7 @@ function ProjectsContent({ marketCategories }: { marketCategories: any[] }) {
         <div className="border-b border-gray-200">
           <div className="flex items-center gap-10">
             <button
-              className={`uppercase tracking-wide text-[13px] font-semibold pb-3 border-b-2 transition-colors ${tab === "market" ? "text-red-600 border-red-600" : "text-gray-600 hover:text-gray-900 border-transparent"
+              className={`uppercase tracking-wide text-[13px] font-semibold pb-3 border-b-2 transition-colors font-apfel2 ${tab === "market" ? "text-red-600 border-red-600" : "text-gray-600 hover:text-gray-900 border-transparent"
                 }`}
               onMouseEnter={() => setTab("market")}
               onClick={() => setTab("market")}
@@ -591,7 +602,7 @@ function ProjectsContent({ marketCategories }: { marketCategories: any[] }) {
               Explore Projects by Market
             </button>
             <button
-              className={`uppercase tracking-wide text-[13px] font-semibold pb-3 border-b-2 transition-colors ${tab === "region" ? "text-red-600 border-red-600" : "text-gray-600 hover:text-gray-900 border-transparent"
+              className={`uppercase tracking-wide text-[13px] font-semibold pb-3 border-b-2 transition-colors font-apfel2 ${tab === "region" ? "text-red-600 border-red-600" : "text-gray-600 hover:text-gray-900 border-transparent"
                 }`}
               onMouseEnter={() => setTab("region")}
               onClick={() => setTab("region")}
@@ -606,7 +617,7 @@ function ProjectsContent({ marketCategories }: { marketCategories: any[] }) {
             // Dynamic Market Categories from Backend
             marketCategories.length > 0 ? (
               marketCategories.map((category) => (
-                <Link key={category.category_id} href={`/markets/${category.category_slug}`} className="group block">
+                <Link key={category.category_id} href={`/markets/${category.category_slug}`} onClick={onLinkClick} className="group block">
                   <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                     <Image
                       src={category.thumbnail_image || 'https://via.placeholder.com/600x400'}
@@ -615,24 +626,24 @@ function ProjectsContent({ marketCategories }: { marketCategories: any[] }) {
                       className="object-cover"
                     />
                   </div>
-                  <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600">
+                  <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">
                     {category.category_name}
                   </div>
                 </Link>
               ))
             ) : (
               <div className="col-span-3 text-center py-8">
-                <p className="text-gray-500">Loading markets...</p>
+                <p className="text-gray-500 font-neuhas">Loading markets...</p>
               </div>
             )
           ) : (
             // Static Region Cards
             REGION_CARDS.map((c) => (
-              <Link key={c.title} href={c.href} className="group block">
+              <Link key={c.title} href={c.href} onClick={onLinkClick} className="group block">
                 <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                   <Image src={c.img} alt={c.title} fill className="object-cover" />
                 </div>
-                <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600">{c.title}</div>
+                <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
               </Link>
             ))
           )}
@@ -643,24 +654,24 @@ function ProjectsContent({ marketCategories }: { marketCategories: any[] }) {
 }
 
 /* ---------------- Approach Content ---------------- */
-function ApproachContent() {
+function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
   return (
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900">Dream, Design, Deliver</h2>
-        <p className="mt-4 text-gray-600 leading-7">
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Dream, Design, Deliver</h2>
+        <p className="mt-4 text-gray-600 leading-7 font-neuhas">
           We know that how we deliver is just as important as what we deliver. We're committed to operating safely, ethically, and sustainably across everything we do.
         </p>
-        <Link href="/approach" className="mt-6 inline-flex items-center gap-4 group">
+        <Link href="/approach" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
             <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
           </span>
-          <span className="text-red-600 text-xl font-semibold group-hover:underline">How We Deliver</span>
+          <span className="text-red-600 text-xl font-semibold group-hover:underline font-apfel2">How We Deliver</span>
         </Link>
 
         <div className="mt-10 pt-6 border-t">
-          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase">What We Do</div>
+          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">What We Do</div>
           <div className="mt-4 space-y-5">
             {APPROACH_LEFT_LIST.map((it) => (
               <div key={it.title} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
@@ -668,8 +679,8 @@ function ApproachContent() {
                   <Image src={it.img} alt={it.title} fill className="object-cover" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">{it.title}</div>
-                  <div className="text-sm text-gray-600 mt-1">{it.desc}</div>
+                  <div className="font-semibold text-gray-900 font-apfel2">{it.title}</div>
+                  <div className="text-sm text-gray-600 mt-1 font-neuhas">{it.desc}</div>
                 </div>
               </div>
             ))}
@@ -685,8 +696,8 @@ function ApproachContent() {
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                 <Image src={c.img} alt={c.title} fill className="object-cover" />
               </div>
-              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600">{c.title}</div>
-              <div className="text-sm text-gray-600 mt-1">{c.desc}</div>
+              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
+              <div className="text-sm text-gray-600 mt-1 font-neuhas">{c.desc}</div>
             </div>
           ))}
         </div>
@@ -696,20 +707,20 @@ function ApproachContent() {
 }
 
 /* ---------------- Careers Content ---------------- */
-function CareersContent() {
+function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
   return (
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900">Building Tomorrow Together</h2>
-        <p className="mt-4 text-gray-600 leading-7">
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Building Tomorrow Together</h2>
+        <p className="mt-4 text-gray-600 leading-7 font-neuhas">
           As a global company known for generation-defining projects, we offer unparalleled learning and growth. From engineers to skilled craft professionals — make your mark on the world.
         </p>
-        <Link href="/careers" className="mt-6 inline-flex items-center gap-4 group">
+        <Link href="/careers" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
             <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
           </span>
-          <span className="text-red-600 text-xl font-semibold group-hover:underline">Join Our Team</span>
+          <span className="text-red-600 text-xl font-semibold group-hover:underline font-apfel2">Join Our Team</span>
         </Link>
       </div>
 
@@ -717,20 +728,20 @@ function CareersContent() {
       <div className="col-span-12 lg:col-span-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
           {CAREER_FEATURES.map((c) => (
-            <Link key={c.title} href={c.href} className="group block">
+            <Link key={c.title} href={c.href} onClick={onLinkClick} className="group block">
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                 <Image src={c.img} alt={c.title} fill className="object-cover" />
               </div>
-              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600">{c.title}</div>
-              <div className="text-sm text-gray-600 mt-1">{c.desc}</div>
+              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
+              <div className="text-sm text-gray-600 mt-1 font-neuhas">{c.desc}</div>
             </Link>
           ))}
         </div>
 
         {/* Bottom strip like "See all available positions" */}
         <div className="mt-8 pt-6 border-t flex items-center justify-between text-xs uppercase tracking-wider text-gray-600">
-          <div>A&T Careers</div>
-          <Link href="/careers/jobs" className="text-red-600 font-semibold hover:underline">
+          <div className="font-apfel2">A&T Careers</div>
+          <Link href="/careers/jobs" onClick={onLinkClick} className="text-red-600 font-semibold hover:underline font-apfel2">
             See all available positions →
           </Link>
         </div>

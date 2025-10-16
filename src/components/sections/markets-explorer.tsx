@@ -110,6 +110,8 @@ export default function MarketsExplorer({
         markets.length > 0 ? markets[0].key : ""
     );
     const [topOffset, setTopOffset] = useState(0);
+    const [visibleMobileHeaders, setVisibleMobileHeaders] = useState<Set<MarketKey>>(new Set());
+    const [headerVisible, setHeaderVisible] = useState(true);
     const filterBarRef = useRef<HTMLDivElement>(null);
 
     const projectsByMarket = useMemo(() => {
@@ -129,17 +131,58 @@ export default function MarketsExplorer({
         )
     );
 
+    // Track scroll direction and header visibility
     useEffect(() => {
         let last = window.scrollY;
         const onScroll = () => {
             const cur = window.scrollY;
-            if (cur < last) setTopOffset(80);
-            else if (cur > last) setTopOffset(0);
+
+            // For desktop sticky bar
+            if (cur < last) {
+                setTopOffset(80);
+                setHeaderVisible(true);
+            } else if (cur > last) {
+                setTopOffset(0);
+                setHeaderVisible(false);
+            }
             last = cur;
         };
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
+
+    // Track mobile sticky headers
+    useEffect(() => {
+        const checkMobileHeaders = () => {
+            const newVisible = new Set<MarketKey>();
+
+            markets.forEach((m) => {
+                const heroEl = document.getElementById(`hero-${m.key}`);
+                const sectionEl = sectionRefs.current[m.key];
+
+                if (heroEl && sectionEl) {
+                    const heroRect = heroEl.getBoundingClientRect();
+                    const sectionRect = sectionEl.getBoundingClientRect();
+
+                    // Show sticky header when hero is scrolled past but section is still visible
+                    if (heroRect.bottom < 80 && sectionRect.bottom > 100) {
+                        newVisible.add(m.key);
+                    }
+                }
+            });
+
+            setVisibleMobileHeaders(newVisible);
+        };
+
+        window.addEventListener("scroll", checkMobileHeaders, { passive: true });
+        window.addEventListener("resize", checkMobileHeaders);
+        checkMobileHeaders();
+
+        return () => {
+            window.removeEventListener("scroll", checkMobileHeaders);
+            window.removeEventListener("resize", checkMobileHeaders);
+        };
+    }, [markets]);
 
     useEffect(() => {
         function updateActive() {
@@ -194,10 +237,10 @@ export default function MarketsExplorer({
     return (
         <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 font-apfel2">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
-                {/* Sticky categories bar */}
+                {/* Sticky categories bar - DESKTOP ONLY */}
                 <div
                     ref={filterBarRef}
-                    className="sticky left-0 right-0 z-50 transition-all duration-300"
+                    className="hidden lg:block sticky left-0 right-0 z-50 transition-all duration-300"
                     style={{ top: `${topOffset}px` }}
                 >
                     <CategoriesBar
@@ -212,28 +255,51 @@ export default function MarketsExplorer({
                 </div>
 
                 {/* Market sections */}
-                <div className="mt-8 sm:mt-10 md:mt-12 space-y-16 sm:space-y-20 md:space-y-24">
+                <div className="mt-0 lg:mt-8 space-y-16 sm:space-y-20 md:space-y-24">
                     {markets.map((m) => {
                         const list = projectsByMarket.get(m.key) || [];
+
                         return (
                             <div
                                 key={m.key}
                                 id={`market-${m.key}`}
                                 data-market-key={m.key}
                                 ref={(el) => (sectionRefs.current[m.key] = el)}
-                                className="scroll-mt-24 sm:scroll-mt-28"
+                                className="scroll-mt-24 sm:scroll-mt-28 relative"
                             >
+                                {/* Mobile-only sticky header for each market */}
+                                <div
+                                    className={cn(
+                                        "lg:hidden fixed left-0 right-0 z-40 bg-white border-b border-gray-200 transition-all duration-300",
+                                        visibleMobileHeaders.has(m.key)
+                                            ? "translate-y-0 opacity-100"
+                                            : "-translate-y-full opacity-0"
+                                    )}
+                                    style={{
+                                        top: headerVisible ? '65px' : '0px', // Dynamic top position
+                                    }}
+                                >
+                                    <div className="container mx-auto px-4 sm:px-6">
+                                        <div className="py-3">
+                                            <span className="font-neuhas font-semibold text-gray-900 uppercase tracking-wider">
+                                                SELECT {m.title.toUpperCase()} PROJECTS
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
                                     {/* Left sticky hero */}
-                                    <div className="lg:col-span-6">
-                                        <div className="lg:sticky top-24">
+                                    <div className="lg:col-span-6" id={`hero-${m.key}`}>
+                                        <div className="lg:sticky lg:top-36">
                                             <MarketHeroCard market={m} />
                                         </div>
                                     </div>
 
                                     {/* Right project list */}
                                     <div className="lg:col-span-6">
-                                        <div className="mb-4 sm:mb-6 flex items-end justify-between">
+                                        {/* Title - hide on mobile, always show on desktop */}
+                                        <div className="hidden lg:flex mb-4 sm:mb-6 items-end justify-between">
                                             <h3 className="text-[10px] sm:text-xs font-semibold tracking-widest text-foreground/70 uppercase">
                                                 {m.title} Projects
                                             </h3>
@@ -260,7 +326,6 @@ export default function MarketsExplorer({
         </section>
     );
 }
-
 /* ---------------- Components ---------------- */
 function CategoriesBar({
     markets,
@@ -274,6 +339,32 @@ function CategoriesBar({
     const scrollRef = useRef<HTMLDivElement>(null);
     const [showLeftArrow, setShowLeftArrow] = useState(false);
     const [showRightArrow, setShowRightArrow] = useState(true);
+    const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+    // Auto-scroll to active button when selected changes
+    useEffect(() => {
+        if (!selected || !scrollRef.current) return;
+
+        const activeButton = buttonRefs.current[selected];
+        if (!activeButton) return;
+
+        const container = scrollRef.current;
+        const containerRect = container.getBoundingClientRect();
+        const buttonRect = activeButton.getBoundingClientRect();
+
+        // Calculate if button is out of view
+        const buttonLeft = buttonRect.left - containerRect.left + container.scrollLeft;
+        const buttonRight = buttonLeft + buttonRect.width;
+        const containerWidth = container.clientWidth;
+
+        // Scroll to center the active button
+        const scrollTarget = buttonLeft - (containerWidth / 2) + (buttonRect.width / 2);
+
+        container.scrollTo({
+            left: scrollTarget,
+            behavior: 'smooth'
+        });
+    }, [selected]);
 
     useEffect(() => {
         const el = scrollRef.current;
@@ -314,7 +405,7 @@ function CategoriesBar({
                      [&::-webkit-scrollbar-thumb]:bg-red-600 [&::-webkit-scrollbar-thumb]:rounded-full
                      hover:[&::-webkit-scrollbar-thumb]:bg-red-700"
                     style={{
-                        scrollbarWidth: "auto", // Changed from "thin" to "auto"
+                        scrollbarWidth: "auto",
                         scrollbarColor: "#dc2626 #fee2e2",
                     }}
                 >
@@ -328,19 +419,20 @@ function CategoriesBar({
                                 return (
                                     <button
                                         key={m.key}
+                                        ref={(el) => (buttonRefs.current[m.key] = el)}
                                         onClick={() => onSelect(m.key)}
                                         className={cn(
                                             "group flex items-center rounded-full px-4 sm:px-4 py-1",
-                                            "text-[14px] font-neuhas leading-[14px] font-medium tracking-[0.0208px] whitespace-nowrap flex-shrink-0 transition-all duration-200",
+                                            "text-[14px] font-medium font-neuhas leading-[14px] tracking-[0.0208px] whitespace-nowrap flex-shrink-0 transition-all duration-200",
                                             isActive
-                                                ? "bg-red-600 text-white"
-                                                : "bg-gray-200 text-gray-800 hover:bg-red-100 hover:text-red-600"
+                                                ? "bg-red-600 text-white scale-105 shadow-lg"
+                                                : "bg-gray-200 text-black hover:bg-red-100 hover:text-red-600"
                                         )}
                                     >
                                         <Icon
                                             className={cn(
                                                 "mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 transition-colors duration-200",
-                                                isActive ? "text-white" : "text-gray-700 group-hover:text-red-600"
+                                                isActive ? "text-white" : "text-gray-800 group-hover:text-red-600 font-semibold"
                                             )}
                                         />
                                         {m.title.toUpperCase()}
@@ -350,7 +442,6 @@ function CategoriesBar({
                         </div>
                     </div>
                 </div>
-                {/* End scrollRef */}
             </div>
         </div>
     );

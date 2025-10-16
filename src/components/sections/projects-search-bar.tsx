@@ -11,7 +11,7 @@ export default function ProjectsSearchBar() {
         <section className="bg-[#f2f5f7] border-b">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6">
                 {/* Responsive Breadcrumb */}
-                <div className="font-neuhas2 tracking-[0.0208px] leading-[14px] flex items-center text-xs sm:text-sm text-gray-600 mb-2.5 sm:mb-3 md:mb-4">
+                <div className="font-necto font-thin tracking-[0.0208px] leading-[14px] flex items-center text-xs sm:text-sm text-gray-600 mb-2.5 sm:mb-3 md:mb-4">
                     <Link
                         href="/"
                         className="text-gray-500 hover:text-primary transition-colors whitespace-nowrap"

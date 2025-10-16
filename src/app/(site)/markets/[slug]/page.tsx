@@ -104,14 +104,14 @@ export default async function CategoryPage({
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
                     <div className="max-w-xs md:max-w-6xl text-white">
                         {/* Section label */}
-                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm md:text-[16px] uppercase">
                             Markets
                         </p>
 
                         {/* Adaptive main heading */}
                         <h1
                             className="text-white font-normal font-apfel2 mb-4 md:mb-6 
-                   text-[clamp(2rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
+                  text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
                         >
                             {category.category_name}
                         </h1>
@@ -158,7 +158,7 @@ export default async function CategoryPage({
                                         src={category.hero_image_1}
                                         alt={category.hero_image_1_alt || category.category_name}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover rounded-lg "
                                         sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                 </div>
@@ -221,28 +221,27 @@ export default async function CategoryPage({
 
                     {/* CENTERED Heading */}
                     <h2 className="text-[28px] md:text-[64px] 
-                                 font-light text-[#2d3b40] text-center
-                                 mb-6 sm:mb-8 md:mb-10">
+                     font-light text-[#2d3b40] text-center
+                     mb-6 sm:mb-8 md:mb-10">
                         {category.category_name} Projects
                     </h2>
 
                     {/* WORKING Filters Section */}
                     <div id="filters" className="bg-white rounded-lg p-6 sm:p-8 mb-8 sm:mb-10 shadow-sm scroll-mt-24">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
 
                             {/* REGIONS Filter (if regions exist) */}
                             {category.regions && category.regions.length > 0 && (
                                 <div>
-                                    <h3 className="text-sm font-bold text-gray-700 mb-4 tracking-wide">REGIONS</h3>
-                                    <div className="flex flex-wrap gap-2 sm:gap-3">
+                                    <h3 className="font-neuhas text-xs md:text-[16px] leading-[24px] font-semibold text-gray-700 mb-4 tracking-wider uppercase">REGIONS</h3>
+                                    <div className="flex flex-wrap gap-4">
                                         <Link
                                             href={`/markets/${slug}?status=${statusFilter}&sort=${sortFilter}#filters`}
                                             scroll={false}
-                                            className={`px-3 py-2 font-neuhas rounded-full text-sm md:text-[14px] font-medium leading-[24px]  transition-colors flex items-center gap-2
-                                                ${regionFilter === 'all'
+                                            className={`px-3 py-1.5 rounded-full text-[12px] font-normal tracking-wide transition-colors flex items-center gap-1.5
+                                    ${regionFilter === 'all'
                                                     ? 'bg-red-600 text-white'
-                                                    : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
-                                        >
+                                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}>
                                             ALL REGIONS
                                         </Link>
                                         {category.regions.map((region, idx) => (
@@ -250,71 +249,70 @@ export default async function CategoryPage({
                                                 key={idx}
                                                 href={`/markets/${slug}?status=${statusFilter}&region=${region.toLowerCase()}&sort=${sortFilter}#filters`}
                                                 scroll={false}
-                                                className={`px-2 py-2 font-neuhas leading-[14px] rounded-full text-sm md:text-[14px] font-medium transition-colors flex items-center gap-2
-                                                    ${regionFilter === region.toLowerCase()
+                                                className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
+                                        ${regionFilter === region.toLowerCase()
                                                         ? 'bg-red-600 text-white'
-                                                        : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
+                                                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                                             >
-                                                <Earth />  {region.toUpperCase()}
+                                                <Earth className="h-4 w-4" /> {region.toUpperCase()}
                                             </Link>
                                         ))}
                                     </div>
                                 </div>
                             )}
 
-                            {/* STATUS Filter - WORKING */}
+                            {/* STATUS Filter - MATCHING REGION STYLING */}
                             <div>
-                                <h3 className="text-sm font-bold text-gray-700 mb-4 tracking-wide">STATUS</h3>
-                                <div className="flex flex-wrap gap-2 sm:gap-3">
+                                <h3 className="font-neuhas text-xs md:text-[16px] leading-[24px] font-semibold text-gray-700 mb-4 tracking-wider uppercase">STATUS</h3>
+                                <div className="flex flex-wrap gap-4">
                                     <Link
                                         href={`/markets/${slug}?region=${regionFilter}&sort=${sortFilter}#filters`}
                                         scroll={false}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2
-                                            ${statusFilter === 'all'
+                                        className={`px-3 py-1.5 rounded-full text-[12px] font-normal tracking-wide transition-colors flex items-center gap-1.5
+                                ${statusFilter === 'all'
                                                 ? 'bg-red-600 text-white'
-                                                : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
+                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                                     >
                                         ALL STATUS
                                     </Link>
                                     <Link
                                         href={`/markets/${slug}?status=ongoing&region=${regionFilter}&sort=${sortFilter}#filters`}
                                         scroll={false}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2
-                                            ${statusFilter === 'ongoing'
+                                        className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
+                                ${statusFilter === 'ongoing'
                                                 ? 'bg-blue-600 text-white'
-                                                : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
+                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                                     >
-                                        🔵 ONGOING
+                                        ONGOING
                                     </Link>
                                     <Link
                                         href={`/markets/${slug}?status=completed&region=${regionFilter}&sort=${sortFilter}#filters`}
                                         scroll={false}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2
-                                            ${statusFilter === 'completed'
+                                        className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
+                                ${statusFilter === 'completed'
                                                 ? 'bg-green-600 text-white'
-                                                : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
+                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                                     >
-                                        ✅ COMPLETED
+                                        COMPLETED
                                     </Link>
                                     <Link
                                         href={`/markets/${slug}?status=upcoming&region=${regionFilter}&sort=${sortFilter}#filters`}
                                         scroll={false}
-                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2
-                                            ${statusFilter === 'upcoming'
+                                        className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
+                                ${statusFilter === 'upcoming'
                                                 ? 'bg-yellow-600 text-white'
-                                                : 'bg-gray-300 text-gray-700 hover:bg-gray-400'}`}
+                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
                                     >
-                                        ⏳ UPCOMING
+                                        UPCOMING
                                     </Link>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Results Count and WORKING Sort */}
                     {/* Results Count and SORT SELECT */}
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
-                        <div className="text-gray-600 text-sm sm:text-base font-medium">
+                    <div className="font-necto flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
+                        <div className="text-gray-600 text-sm md:text-[14px] leading-[21px] font-medium">
                             {projects.length} RESULTS
                         </div>
                         <div className="flex items-center gap-2">
@@ -325,6 +323,7 @@ export default async function CategoryPage({
                                 statusFilter={statusFilter}
                                 regionFilter={regionFilter}
                             />
+                            <hr className="border-gray-300" />
                         </div>
                     </div>
 
@@ -346,23 +345,23 @@ export default async function CategoryPage({
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                         />
                                     </div>
-                                    <div className="p-4 sm:p-5 md:p-6 bg-white">
+                                    <div className="p-4 sm:p-5 md:p-6 bg-white font-neuhas">
                                         {project.location && (
-                                            <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wide mb-1 sm:mb-2">
-                                                📍 {project.location}
+                                            <p className="text-xs md:text-[15px] leading-[30px] text-gray-500 uppercase tracking-wide mb-1 sm:mb-2">
+                                                {project.location}
                                             </p>
                                         )}
-                                        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">
+                                        <h3 className="text-base sm:text-lg md:text-[24px] font-medium text-gray-800 mb-1 sm:mb-2 font-apfel2 uppercase">
                                             {project.project_name}
                                         </h3>
                                         {project.tagline && (
-                                            <p className="text-gray-600 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">
+                                            <p className="font-neuhas text-gray-600 text-xs sm:text-lg md:text-[18px] line-clamp-2 sm:line-clamp-3">
                                                 {project.tagline}
                                             </p>
                                         )}
                                         <span className={`inline-block mt-2 sm:mt-3 md:mt-4 px-2 sm:px-3 py-1 
-                                                        text-xs font-semibold rounded-full
-                                                        ${project.project_status === 'completed' ? 'bg-green-100 text-green-600' :
+                                            text-xs font-semibold rounded-full
+                                            ${project.project_status === 'completed' ? 'bg-green-100 text-green-600' :
                                                 project.project_status === 'ongoing' ? 'bg-blue-100 text-blue-600' :
                                                     'bg-yellow-100 text-yellow-600'}`}>
                                             {project.project_status.toUpperCase()}
@@ -387,16 +386,16 @@ export default async function CategoryPage({
             </section>
 
             {/* ---------- CONNECT WITH A&T SECTION ---------- */}
-            <section className="bg-[#edf3f5] py-12 sm:py-16 md:py-20 lg:py-24 text-center">
+            <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 text-center">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] 
+                    <h2 className="text-[28px] sm:text-[64px] leading-[70.4px] font-apfel2 
                                  font-light text-[#2d3b40] mb-3 sm:mb-4 md:mb-6">
-                        Connect with A&T Team
+                        Connect with the <br />A&T Team
                     </h2>
-                    <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] 
-                                 text-[#2d3b40]/80 leading-relaxed 
+                    <p className="text-[15px] md:text-[20px] 
+                                 text-[#2d3b40]/80 leading-[30px] 
                                  max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl 
-                                 mx-auto mb-6 sm:mb-8 md:mb-10 px-4 sm:px-0">
+                                 mx-auto mb-6 sm:mb-8 md:mb-10 px-4 sm:px-0 font-neuhas">
                         Whether you're seeking a partner for your project, have a media inquiry or are interested in a job
                         opportunity, reach out to our A&T colleagues around the world for direct support. Our team
                         is ready to assist and provide the expertise you need.

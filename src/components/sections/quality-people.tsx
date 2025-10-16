@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 export function QualityPeople() {
   return (
-    <section className="relative bg-primary text-primary-foreground py-12 sm:py-16 md:py-20 lg:py-24 font-apfel2">
+    <section className="relative bg-primary text-primary-foreground py-12 sm:py-16 md:py-20 lg:py-24">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
@@ -25,10 +25,10 @@ export function QualityPeople() {
 
           {/* LEFT: Heading + Button */}
           <div className="text-center md:text-left">
-            <h2 className="font-apfel 
-                         text-[28px] sm:text-[32px] md:text-[36px] lg:text-[44px] xl:text-[48px] 2xl:text-[52px]
-                         font-bold leading-[1.15] sm:leading-[1.1] md:leading-tight
-                         max-w-md md:max-w-none mx-auto md:mx-0">
+            <h2 className="font-apfel2
+                             text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                             font-normal leading-tight
+                             max-w-md md:max-w-none mx-auto md:mx-0">
               Defined by the Quality of Our People
             </h2>
 
@@ -47,22 +47,22 @@ export function QualityPeople() {
                 )}
               >
                 <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 
-                               group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                                       group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
                 <span className="relative z-10 flex items-center justify-center md:justify-start">
                   <span className="flex items-center justify-center rounded-full bg-red-600 text-white 
-                                 transition-all duration-500 group-hover:w-0 group-hover:opacity-0 
-                                 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 
-                                 h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10">
+                                         transition-all duration-500 group-hover:w-0 group-hover:opacity-0 
+                                         group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 
+                                         h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10">
                     <ArrowRight className="h-4 w-4 sm:h-[18px] sm:w-[18px] md:h-5 md:w-5" />
                   </span>
-                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
+                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
                     The People Behind the Projects
                   </span>
                   <ArrowRight className="h-4 w-4 sm:h-[18px] sm:w-[18px] md:h-5 md:w-5 
-                                       opacity-0 transition-all duration-500 
-                                       group-hover:w-4 sm:group-hover:w-[18px] md:group-hover:w-5 
-                                       group-hover:opacity-100 group-hover:text-white 
-                                       group-hover:ml-2 sm:group-hover:ml-3" />
+                                               opacity-0 transition-all duration-500 
+                                               group-hover:w-4 sm:group-hover:w-[18px] md:group-hover:w-5 
+                                               group-hover:opacity-100 group-hover:text-white 
+                                               group-hover:ml-2 sm:group-hover:ml-3" />
                 </span>
               </Link>
             </div>
@@ -70,11 +70,11 @@ export function QualityPeople() {
 
           {/* RIGHT: Description Text */}
           <div className="text-center md:text-left px-2 sm:px-4 md:px-0">
-            <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]
-                        text-primary-foreground/90 sm:text-primary-foreground/85 md:text-primary-foreground/80
-                        leading-[1.65] sm:leading-[1.7] md:leading-relaxed
-                        max-w-lg md:max-w-none mx-auto md:mx-0">
-              Our team brings technical expertise, ingenuity, dedication, and hands-on experience to help our government and B2G clients realize ambitious infrastructure goals. We succeed through collaboration and a shared commitment to delivering lasting impact. Driven by the challenges of remote and extreme terrains, we continuously push the boundaries of what’s achievable.
+            <p className="text-[14px] sm:text-[16px] md:text-[22px]
+                            text-primary-foreground/90 sm:text-primary-foreground/85 md:text-primary-foreground/80
+                            leading-[30px] font-neuhas
+                            max-w-lg md:max-w-none mx-auto md:mx-0">
+              Our team brings technical expertise, ingenuity, dedication, and hands-on experience to help our government and B2G clients realize ambitious infrastructure goals. We succeed through collaboration and a shared commitment to delivering lasting impact. Driven by the challenges of remote and extreme terrains, we continuously push the boundaries of what's achievable.
             </p>
           </div>
         </div>

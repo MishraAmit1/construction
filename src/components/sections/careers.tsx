@@ -95,7 +95,7 @@ export function Careers() {
       <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-red-600 text-white p-1.5 sm:p-2 rounded-full opacity-0 group-hover:opacity-100 transition">
         <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 rotate-45" />
       </div>
-      <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-700 font-medium">{title}</p>
+      <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-700 font-medium font-neuhas">{title}</p>
     </div>
   );
 
@@ -186,63 +186,47 @@ export function Careers() {
   return (
     <>
       {/* ---------- HERO SECTION - RESPONSIVE ---------- */}
-      <section className="font-apfel2 relative z-0 min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] flex items-center pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[140px]">
+      <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[75vh] py-12 flex items-center">
         <div className="absolute inset-0">
           <Image
             src="https://www.bechtel.com/wp-content/uploads/2024/10/careers-hero-scaled.webp"
-            alt="Bechtel careers hero"
+
+            alt="Wind Turbine over landscape"
             fill
+            priority
             className="object-cover"
             sizes="100vw"
-            priority
           />
-          <div className="absolute inset-0 bg-black/75 sm:bg-black/70" />
+          {/* Dark overlay with slightly more opacity on mobile for readability */}
+          <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 -mt-[2rem] sm:-mt-[4rem] md:-mt-[6rem] lg:-mt-[8rem]">
-          <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl text-white">
-            <p className="text-yellow-400 font-thin tracking-widest mb-1 sm:mb-2 text-xs sm:text-sm md:text-base uppercase">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+          <div className="max-w-xs md:max-w-6xl text-white ">
+            <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px]">
               CAREERS
             </p>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] 2xl:text-[96px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-4 sm:mb-6 md:mb-8">
-              Building Tomorrow, <br className="hidden sm:block" />
-              <span className="sm:hidden">Together</span>
-              <span className="hidden sm:inline">Together</span>
+            <h1
+              className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
+            >
+              Building Tomorrow, <br />Together
+
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed text-white/85 sm:text-white/90 mb-4 sm:mb-6 md:mb-8">
+            <p className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
               Do you live for a challenge, have a passion for making a lasting impact, and are fueled by curiosity? At Bechtel, we're not just building projects — we're building history that will support generations to come. If you're ready to make a difference, this is the place for you.
-            </p>
 
-            <div>
-              <Link
-                href="/about"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full
-                            px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out
-                            min-h-[44px] sm:min-h-[48px] md:min-h-[56px]"
-              >
-                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-                <span className="relative z-10 flex items-center">
-                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
-                                  group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10">
-                    <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
-                  </span>
-                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
-                    Learn more about Life at Bechtel
-                  </span>
-                  <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 opacity-0 rotate-45 transition-all duration-500 group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
-                </span>
-              </Link>
-            </div>
+            </p>
           </div>
         </div>
       </section>
 
+
       {/* ---------- BREADCRUMB - RESPONSIVE ---------- */}
-      <div className="bg-[#edf3f5] font-apfel2 border-b border-gray-200">
+      <div className="bg-[#edf3f5] border-b border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
-          <nav className="flex items-center text-xs sm:text-sm text-gray-600">
+          <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas">
             <Link href="/" className="hover:text-red-600">
               HOME
             </Link>
@@ -253,7 +237,7 @@ export function Careers() {
       </div>
 
       {/* ---------- WHY BECHTEL SECTION - RESPONSIVE ---------- */}
-      <section className="bg-white font-apfel2 py-10 sm:py-14 md:py-20">
+      <section className="bg-white py-10 sm:py-14 md:py-20">
         <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-0 items-center">
             <div className="space-y-4 sm:space-y-6 md:space-y-8 px-0 order-2 lg:order-1">
@@ -286,12 +270,13 @@ export function Careers() {
               </div>
             </div>
 
-            <div className="lg:pl-8 xl:pl-12 py-4 sm:py-6 md:py-8 lg:py-0 order-1 lg:order-2">
-              <h2 className="text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] leading-[1.2] sm:leading-[1.15] md:leading-[64px] font-light text-gray-900 mb-6 sm:mb-8 md:mb-12">
+            <div className="lg:pl-8 xl:pl-12 py-4 sm:py-6 md:py-8 lg:py-0 order-1 lg:order-2 px-10">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-900 mb-6 sm:mb-8 md:mb-12">
                 Why Bechtel?
               </h2>
 
-              <div className="space-y-4 sm:space-y-5 md:space-y-6 text-gray-700 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-[1.6] sm:leading-[1.7] md:leading-[1.8] lg:leading-[32px]">
+              <div className="space-y-4 sm:space-y-5 md:space-y-6 text-gray-700 text-[14px] sm:text-[16px]
+               md:text-[22px] leading-[30px] font-neuhas">
                 <p>
                   At Bechtel, we are committed to fostering an inclusive culture where every
                   individual feels a profound sense of belonging and value. Rigorous safety
@@ -308,19 +293,19 @@ export function Careers() {
       </section>
 
       {/* ---------- BECHTEL CAREERS INTRO - RESPONSIVE ---------- */}
-      <div className="font-apfel2 mb-14 sm:mb-20 md:mb-24 lg:mb-28 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
+      <div className="mb-14 sm:mb-20 md:mb-24 lg:mb-28 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
-          <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight">
             Bechtel Careers
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-[#30454c] leading-relaxed max-w-full lg:max-w-2xl lg:ml-auto">
+          <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-[#30454c] max-w-full lg:max-w-2xl lg:ml-auto">
             We're proud to offer robust training and development opportunities to encourage constant learning and growth, empowering colleagues to reach their full potential.
           </p>
         </div>
       </div>
 
-      <section className="font-apfel2 bg-white py-12 sm:py-16 md:py-20 lg:py-24 relative border-t border-gray-100">
+      <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 relative border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 md:gap-12 lg:gap-16">
           {/* ---------- LEFT STICKY NAV - DESKTOP ONLY ---------- */}
           <aside className="hidden lg:block">
@@ -335,7 +320,7 @@ export function Careers() {
                   <a
                     key={id}
                     href={`#${id}`}
-                    className={`block font-semibold tracking-wide uppercase text-sm transition-all ${active === id
+                    className={`block font-semibold tracking-wide uppercase text-sm transition-all font-neuhas ${active === id
                       ? 'text-white bg-red-600 rounded-full px-4 py-2'
                       : 'text-gray-600 hover:text-red-600'
                       }`}
@@ -359,7 +344,7 @@ export function Careers() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`whitespace-nowrap font-semibold tracking-wide uppercase text-xs sm:text-sm transition-all ${active === id
+                  className={`whitespace-nowrap font-semibold tracking-wide uppercase text-xs sm:text-sm transition-all font-neuhas ${active === id
                     ? 'text-white bg-red-600 rounded-full px-3 sm:px-4 py-1.5 sm:py-2'
                     : 'text-gray-600 hover:text-red-600'
                     }`}
@@ -374,16 +359,16 @@ export function Careers() {
           <div className="space-y-20 sm:space-y-28 md:space-y-32 lg:space-y-40">
             {/* -------- PROFESSIONALS -------- */}
             <div id="professionals" className="scroll-mt-20 sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight mb-4 sm:mb-6">
                 Professionals
               </h2>
               <div className="flex items-center mb-4 sm:mb-6">
                 <span className="bg-red-600 text-white rounded-full h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10 flex items-center justify-center mr-2 sm:mr-3">
                   <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
                 </span>
-                <p className="text-red-600 font-semibold text-base sm:text-lg">Join Our Team</p>
+                <p className="text-red-600 font-semibold text-base sm:text-lg font-neuhas">Join Our Team</p>
               </div>
-              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-10 md:mb-12">
+              <p className="text-gray-700 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas mb-8 sm:mb-10 md:mb-12">
                 Our professional staff powers projects worldwide. Regardless of experience
                 level or discipline, professionals at Bechtel play an integral role in
                 advancing leadership and delivering success one project at a time.
@@ -393,7 +378,7 @@ export function Careers() {
               <div className="flex space-x-4 sm:space-x-6 md:space-x-8 border-b border-gray-300 mb-6 sm:mb-8 overflow-x-auto">
                 <button
                   onClick={() => setProfTab('department')}
-                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap ${profTab === 'department'
+                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap font-neuhas ${profTab === 'department'
                     ? 'text-red-600 after:content-[""] after:absolute after:left-0 after:-bottom-[1px] after:h-[2px] after:w-full after:bg-red-600'
                     : 'text-gray-600 hover:text-red-600'
                     }`}
@@ -402,7 +387,7 @@ export function Careers() {
                 </button>
                 <button
                   onClick={() => setProfTab('region')}
-                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap ${profTab === 'region'
+                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap font-neuhas ${profTab === 'region'
                     ? 'text-red-600 after:content-[""] after:absolute after:left-0 after:-bottom-[1px] after:h-[2px] after:w-full after:bg-red-600'
                     : 'text-gray-600 hover:text-red-600'
                     }`}
@@ -421,20 +406,20 @@ export function Careers() {
 
             {/* -------- CRAFT PROFESSIONALS - RESPONSIVE -------- */}
             <div id="craft" className="scroll-mt-20 sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight mb-4 sm:mb-6">
                 Craft Professionals
               </h2>
               <div className="flex items-center mb-4 sm:mb-6">
                 <span className="bg-red-600 text-white rounded-full h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10 flex items-center justify-center mr-2 sm:mr-3">
                   <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
                 </span>
-                <p className="text-red-600 font-semibold text-base sm:text-lg">Build Your Future</p>
+                <p className="text-red-600 font-semibold text-base sm:text-lg font-neuhas">Build Your Future</p>
               </div>
-              <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
+              <p className="text-gray-700 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas mb-6 sm:mb-8">
                 Craft opportunities demand technical skills to build the future. Bechtel's
                 projects maintain the highest standards of safety and advancement.
               </p>
-              <p className="text-gray-700 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12">
+              <p className="text-gray-700 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas mb-8 sm:mb-10 md:mb-12">
                 Join the 80,000+ craft professionals shaping rewarding careers around the world.
               </p>
 
@@ -442,7 +427,7 @@ export function Careers() {
               <div className="flex space-x-4 sm:space-x-6 md:space-x-8 border-b border-gray-300 mb-6 sm:mb-8 overflow-x-auto">
                 <button
                   onClick={() => setCraftTab('department')}
-                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap ${craftTab === 'department'
+                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap font-neuhas ${craftTab === 'department'
                     ? 'text-red-600 after:content-[""] after:absolute after:left-0 after:-bottom-[1px] after:h-[2px] after:w-full after:bg-red-600'
                     : 'text-gray-600 hover:text-red-600'
                     }`}
@@ -451,7 +436,7 @@ export function Careers() {
                 </button>
                 <button
                   onClick={() => setCraftTab('region')}
-                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap ${craftTab === 'region'
+                  className={`relative pb-2 text-xs sm:text-sm uppercase tracking-wide font-semibold transition-colors whitespace-nowrap font-neuhas ${craftTab === 'region'
                     ? 'text-red-600 after:content-[""] after:absolute after:left-0 after:-bottom-[1px] after:h-[2px] after:w-full after:bg-red-600'
                     : 'text-gray-600 hover:text-red-600'
                     }`}
@@ -470,16 +455,16 @@ export function Careers() {
 
             {/* -------- ADDITIONAL PROGRAMS - RESPONSIVE -------- */}
             <div id="programs" className="scroll-mt-20 sm:scroll-mt-28 md:scroll-mt-32 lg:scroll-mt-40">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight mb-4 sm:mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight mb-4 sm:mb-6">
                 Additional Career Programs
               </h2>
               <div className="flex items-center mb-4 sm:mb-6">
                 <span className="bg-red-600 text-white rounded-full h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10 flex items-center justify-center mr-2 sm:mr-3">
                   <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
                 </span>
-                <p className="text-red-600 font-semibold text-base sm:text-lg">Explore Opportunities</p>
+                <p className="text-red-600 font-semibold text-base sm:text-lg font-neuhas">Explore Opportunities</p>
               </div>
-              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-10 md:mb-12">
+              <p className="text-gray-700 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas mb-8 sm:mb-10 md:mb-12">
                 We offer dynamic career pathways—Veterans, Internship & Apprenticeship,
                 New Graduates and Returners Programs—helping every individual grow at each
                 stage of their career.
@@ -500,18 +485,13 @@ export function Careers() {
       </section>
 
       {/* ---------- FEATURED PROJECTS SECTION - RESPONSIVE ---------- */}
-      <section className="font-apfel2 py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-secondary/30">
+      <section className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-secondary/30">
         <div className="w-full">
           {/* Header with responsive padding */}
           <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
-            <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5 text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight mb-3 sm:mb-4 md:mb-5 text-left">
               Featured Projects
             </h2>
-            <div className="flex items-start gap-1 sm:gap-2">
-              <div className="h-0.5 sm:h-1 w-8 sm:w-10 md:w-12 bg-gradient-to-r from-red-500 to-transparent rounded-full" />
-              <div className="h-0.5 sm:h-1 w-6 sm:w-8 bg-red-500 rounded-full" />
-              <div className="h-0.5 sm:h-1 w-8 sm:w-10 md:w-12 bg-gradient-to-r from-red-500 to-transparent rounded-full" />
-            </div>
           </div>
 
           {/* Scrollable Container - Responsive */}
@@ -538,17 +518,17 @@ export function Careers() {
                     <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white flex flex-col justify-end flex-grow overflow-hidden">
                       {/* Text container that shifts up on hover */}
                       <div className="transition-transform duration-500 ease-in-out translate-y-6 sm:translate-y-8 group-hover:translate-y-0">
-                        <p className="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider">
+                        <p className="text-xs sm:text-sm font-semibold text-white/80 uppercase tracking-wider font-neuhas">
                           {project.location}
                         </p>
-                        <h3 className="font-apfel2 text-lg sm:text-xl md:text-2xl font-bold mt-1 mb-1 sm:mb-2">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-apfel2 font-normal mt-1 mb-1 sm:mb-2">
                           {project.title}
                         </h3>
                         {/* Description: hidden below, slides up smoothly from bottom on hover */}
                         <p
                           className="text-xs sm:text-sm text-white/90 opacity-0 translate-y-full
                                     group-hover:opacity-100 group-hover:translate-y-0
-                                    transition-all duration-500 ease-in-out mt-1 sm:mt-2 line-clamp-2"
+                                    transition-all duration-500 ease-in-out mt-1 sm:mt-2 line-clamp-2 font-neuhas"
                         >
                           {project.description}
                         </p>
@@ -577,7 +557,7 @@ export function Careers() {
               </svg>
             </button>
 
-            <span className="text-red-600 font-semibold text-sm sm:text-base">
+            <span className="text-red-600 font-semibold text-sm sm:text-base font-neuhas">
               {currentIndex} – {Math.min(currentIndex + itemsPerView - 1, totalItems)} of {totalItems}
             </span>
 
@@ -595,19 +575,19 @@ export function Careers() {
       </section>
 
       {/* ---------- LIFE AT BECHTEL SECTION - RESPONSIVE ---------- */}
-      <div className="font-apfel2 mb-8 sm:mb-12 md:mb-16 mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
+      <div className="mb-8 sm:mb-12 md:mb-16 mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
-          <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-primary leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight">
             Life at Bechtel
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-[#30454c] leading-relaxed max-w-full lg:max-w-2xl lg:ml-auto">
+          <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-[#30454c] max-w-full lg:max-w-2xl lg:ml-auto">
             We work every day to foster a culture that values and seeks out many perspectives, and encourages colleagues to explore, think innovatively, and grow professionally. We're proud to offer numerous benefits and opportunities to our colleagues to invest in their success and empower them to reach their full potential.
           </p>
         </div>
       </div>
 
-      <div className=" font-apfel2 min-h-screen bg-gray-50 py-10 sm:py-14 md:py-20 px-4 sm:px-6">
+      <div className="min-h-screen bg-gray-50 py-10 sm:py-14 md:py-20 px-4 sm:px-6">
         <div className="max-w-xs sm:max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
           {/* Grid - Responsive */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -632,13 +612,13 @@ export function Careers() {
                     {/* Content Container */}
                     <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 md:p-7 lg:p-8">
                       {/* Title - Responsive text */}
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-apfel2 font-normal text-white mb-2 sm:mb-3">
                         {card.title}
                       </h3>
 
                       {/* Description Container */}
                       <div className="overflow-hidden h-0 group-hover:h-auto transition-all duration-500">
-                        <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out font-neuhas">
                           {card.shortDesc}
                         </p>
                       </div>
@@ -667,7 +647,7 @@ export function Careers() {
       {/* Expanded Modal - Responsive */}
       {expandedCard && (
         <div
-          className="font-apfel2 fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 sm:p-5 md:p-6 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 sm:p-5 md:p-6 backdrop-blur-sm"
           onClick={() => setExpandedCard(null)}
         >
           <div
@@ -698,10 +678,10 @@ export function Careers() {
 
                   {/* Content - Responsive padding and text */}
                   <div className="p-5 sm:p-6 md:p-7 lg:p-8 overflow-y-auto max-h-[calc(85vh-12rem)] sm:max-h-[calc(90vh-15rem)] md:max-h-[calc(90vh-18rem)]">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-5 md:mb-6">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-apfel2 font-normal text-gray-900 mb-4 sm:mb-5 md:mb-6">
                       {card.title}
                     </h2>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+                    <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-gray-700">
                       {card.description}
                     </p>
                   </div>
@@ -715,14 +695,14 @@ export function Careers() {
       <HearFromPeople />
 
       {/* ---------- EQUAL OPPORTUNITY + JOB FRAUD ALERT - RESPONSIVE ---------- */}
-      <section className="font-apfel2 bg-white py-10 sm:py-14 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 text-gray-700 border-t border-gray-100 overflow-hidden">
+      <section className="bg-white py-10 sm:py-14 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 text-gray-700 border-t border-gray-100 overflow-hidden">
         <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto space-y-6 sm:space-y-8 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed">
           {/* --- Equal Opportunity Paragraphs --- */}
-          <p className="italic break-words">
+          <p className="italic break-words font-neuhas">
             <strong>Bechtel</strong> is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity and expression, age, national origin, disability, citizenship status (except as authorized by law), protected veteran status, genetic information, and any other characteristic protected by federal, state or local law.
           </p>
 
-          <p className="italic break-words">
+          <p className="italic break-words font-neuhas">
             Applicants with a disability who require a reasonable accommodation for any part of the application or hiring process may email their request to{' '}
             <Link
               href="mailto:accesstmt@bechtel.com"
@@ -741,14 +721,14 @@ export function Careers() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div className="min-w-0">
                 <h3
-                  className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 mb-2 sm:mb-3 transition-all duration-500
+                  className="text-lg sm:text-xl md:text-2xl font-apfel2 font-normal text-gray-800 mb-2 sm:mb-3 transition-all duration-500
                         group-hover:text-white"
                 >
                   Job Fraud Alert
                 </h3>
                 <p
                   className="text-gray-700 max-w-full sm:max-w-lg md:max-w-2xl transition-all duration-500 
-                        group-hover:text-white/90 break-words text-sm sm:text-base"
+                        group-hover:text-white/90 break-words text-sm sm:text-base font-neuhas"
                 >
                   If you're interested in joining our team, please only correspond with legitimate Bechtel communications to ensure your information is safe and secure.
                 </p>

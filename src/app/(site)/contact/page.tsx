@@ -12,26 +12,44 @@ export default function ContactPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative h-[30vh] sm:h-[40vh] min-h-[250px] flex items-center">
+            <section
+                className="font-apfel2 relative min-h-[35vh] sm:min-h-[45vh] md:min-h-[55vh] py-12 flex items-center"
+            >
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
                         src="https://hdurfgtlqgpgjjnlbctu.supabase.co/storage/v1/object/public/project-images/categories/roadconstruct%20(2).webp"
-                        alt="Contact A&T Infracon"
+                        alt="Contact A&T Infracon"
                         fill
-                        className="object-cover"
-                        sizes="100vw"
                         priority
+                        sizes="100vw"
+                        className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
+                    {/* Overlay tone — matches other headers */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
-                    <div className="max-w-3xl text-white">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                            Let's Build Together
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
+                            Contact
+                        </p>
+
+                        <h1
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6
+                   text-[clamp(2.2rem,6vw,6rem)] leading-[1.05]
+                   [text-wrap:balance]"
+                        >
+                            Let's Build Together
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/90">
-                            Transform your infrastructure vision into reality with India's trusted contractor
+
+                        <p
+                            className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px]
+                   leading-[1.6] md:leading-[36px] font-medium
+                   text-white/85 sm:text-white/90 md:max-w-3xl"
+                        >
+                            Transform your infrastructure vision into reality with India’s trusted contractor.
                         </p>
                     </div>
                 </div>
@@ -44,8 +62,8 @@ export default function ContactPage() {
                         {/* Contact Form - Left Side (3 columns) */}
                         <div className="lg:col-span-3">
                             <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-10 md:p-12">
-                                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Send Us Your Project Inquiry</h2>
-                                <p className="text-gray-600 mb-8">Fill out the form below and our team will get back to you within 24 hours.</p>
+                                <h2 className="text-2xl sm:text-3xl md:text-4xl font-apfel2 font-normal text-gray-900 mb-2">Send Us Your Project Inquiry</h2>
+                                <p className="text-[14px] sm:text-[16px] md:text-[18px] leading-[28px] font-neuhas text-gray-600 mb-8">Fill out the form below and our team will get back to you within 24 hours.</p>
                                 <ContactForm />
                             </div>
                         </div>
@@ -54,7 +72,7 @@ export default function ContactPage() {
                         <div className="lg:col-span-2 space-y-8">
                             {/* Main Contact Card */}
                             <div className="bg-white rounded-2xl shadow-xl p-8 sticky top-24">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                                <h3 className="text-xl sm:text-2xl md:text-3xl font-apfel2 font-normal text-gray-900 mb-6 flex items-center">
                                     <Building2 className="h-6 w-6 text-red-600 mr-3" />
                                     Head Office
                                 </h3>
@@ -64,8 +82,8 @@ export default function ContactPage() {
                                     <div className="flex items-start group">
                                         <MapPin className="h-5 w-5 text-red-600 mt-1 group-hover:scale-110 transition-transform" />
                                         <div className="ml-4">
-                                            <p className="font-medium text-gray-900">A&T Infracon Pvt. Ltd.</p>
-                                            <p className="text-gray-600 mt-1">
+                                            <p className="font-semibold text-gray-900 font-neuhas">A&T Infracon Pvt. Ltd.</p>
+                                            <p className="text-sm sm:text-base font-neuhas text-gray-600 mt-1">
                                                 506, 5th Floor, Aagam Avenue<br />
                                                 Acher, Sabarmati<br />
                                                 Ahmedabad - 380005, Gujarat
@@ -77,8 +95,8 @@ export default function ContactPage() {
                                     <div className="flex items-start group">
                                         <Phone className="h-5 w-5 text-red-600 mt-1 group-hover:scale-110 transition-transform" />
                                         <div className="ml-4">
-                                            <p className="font-medium text-gray-900 mb-1">Call Us</p>
-                                            <a href="tel:+917935703085" className="text-gray-600 hover:text-red-600 transition-colors">
+                                            <p className="font-semibold text-gray-900 mb-1 font-neuhas">Call Us</p>
+                                            <a href="tel:+917935703085" className="text-sm sm:text-base font-neuhas text-gray-600 hover:text-red-600 transition-colors">
                                                 +91 79357 03085
                                             </a>
                                         </div>
@@ -88,8 +106,8 @@ export default function ContactPage() {
                                     <div className="flex items-start group">
                                         <Mail className="h-5 w-5 text-red-600 mt-1 group-hover:scale-110 transition-transform" />
                                         <div className="ml-4">
-                                            <p className="font-medium text-gray-900 mb-1">Email Us</p>
-                                            <a href="mailto:atinfracon@gmail.com" className="text-gray-600 hover:text-red-600 transition-colors">
+                                            <p className="font-semibold text-gray-900 mb-1 font-neuhas">Email Us</p>
+                                            <a href="mailto:atinfracon@gmail.com" className="text-sm sm:text-base font-neuhas text-gray-600 hover:text-red-600 transition-colors">
                                                 atinfracon@gmail.com
                                             </a>
                                         </div>
@@ -99,8 +117,8 @@ export default function ContactPage() {
                                     <div className="flex items-start group">
                                         <Clock className="h-5 w-5 text-red-600 mt-1 group-hover:scale-110 transition-transform" />
                                         <div className="ml-4">
-                                            <p className="font-medium text-gray-900 mb-1">Working Hours</p>
-                                            <p className="text-gray-600">
+                                            <p className="font-semibold text-gray-900 mb-1 font-neuhas">Working Hours</p>
+                                            <p className="text-sm sm:text-base font-neuhas text-gray-600">
                                                 Mon - Fri: 9:00 AM - 6:00 PM<br />
                                                 Saturday: 9:00 AM - 2:00 PM
                                             </p>
@@ -112,27 +130,27 @@ export default function ContactPage() {
                                 <div className="mt-8 pt-8 border-t border-gray-200">
                                     <div className="grid grid-cols-3 gap-4 text-center">
                                         <div>
-                                            <div className="text-2xl font-bold text-red-600">35+</div>
-                                            <div className="text-xs text-gray-600">Years Experience</div>
+                                            <div className="text-2xl font-bold text-red-600 font-apfel2">35+</div>
+                                            <div className="text-xs text-gray-600 font-neuhas">Years Experience</div>
                                         </div>
                                         <div>
-                                            <div className="text-2xl font-bold text-red-600">500+</div>
-                                            <div className="text-xs text-gray-600">Projects</div>
+                                            <div className="text-2xl font-bold text-red-600 font-apfel2">500+</div>
+                                            <div className="text-xs text-gray-600 font-neuhas">Projects</div>
                                         </div>
                                         <div>
-                                            <div className="text-2xl font-bold text-red-600">4</div>
-                                            <div className="text-xs text-gray-600">States</div>
+                                            <div className="text-2xl font-bold text-red-600 font-apfel2">4</div>
+                                            <div className="text-xs text-gray-600 font-neuhas">States</div>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Branch Office */}
                                 <div className="mt-8 pt-8 border-t border-gray-200">
-                                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                                    <h4 className="font-semibold text-gray-900 mb-3 flex items-center font-neuhas">
                                         <Globe className="h-4 w-4 text-red-600 mr-2" />
                                         Branch Office
                                     </h4>
-                                    <p className="text-gray-600 text-sm">
+                                    <p className="text-gray-600 text-sm font-neuhas">
                                         Barmer, Rajasthan
                                     </p>
                                 </div>
@@ -160,26 +178,26 @@ export default function ContactPage() {
             </section>
 
             {/* CTA Section with Better Design */}
-            <section className="relative py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
+            <section className="relative py-20 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
                 <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 text-center relative z-10">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight mb-6">
                         Ready to Start Your Project?
                     </h2>
-                    <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                    <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-gray-700 mb-10 max-w-3xl mx-auto">
                         Join hundreds of satisfied clients who trust A&T Infracon for their critical infrastructure projects
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a
                             href="tel:+917935703085"
-                            className="group px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                            className="group px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl transform hover:-translate-y-1 font-neuhas"
                         >
                             <Phone className="mr-3 h-5 w-5 group-hover:animate-pulse" />
                             Call Now: +91 79357 03085
                         </a>
                         <a
                             href="mailto:atinfracon@gmail.com"
-                            className="group px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                            className="group px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl transform hover:-translate-y-1 font-neuhas"
                         >
                             <Mail className="mr-3 h-5 w-5 text-red-600 group-hover:animate-pulse" />
                             Email Your Requirements

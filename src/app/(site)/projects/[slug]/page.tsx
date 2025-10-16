@@ -40,35 +40,40 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     return (
         <>
             {/* ---------- HERO SECTION (RESPONSIVE FIXED) ---------- */}
-            <section className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] min-h-[350px] sm:min-h-[400px] md:min-h-[500px] flex items-center">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] py-12 flex items-center">
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={project.banner_image || project.thumbnail_image || 'https://via.placeholder.com/1920x1080'}
+                        src={
+                            project.banner_image ||
+                            project.thumbnail_image ||
+                            "https://via.placeholder.com/1920x1080"
+                        }
                         alt={project.project_name}
                         fill
+                        priority
                         className="object-cover"
                         sizes="100vw"
-                        priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-8">
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 mt-10">
                     <div className="max-w-full lg:max-w-4xl text-white">
-                        <p className="text-yellow-400 font-thin tracking-widest mb-2 sm:mb-3 
-                                     text-xs sm:text-sm md:text-base uppercase">
-                            PROJECTS
+                        {/* Subtitle */}
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 sm:mb-3 
+                   text-sm sm:text-base md:text-[16px] uppercase">
+                            Projects
                         </p>
-                        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
-                                     leading-tight sm:leading-tight md:leading-tight lg:leading-[1.1] 
-                                     font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
+
+                        {/* Main project name */}
+                        <h1
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6 
+                   text-[clamp(2rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
+                        >
                             {project.project_name}
                         </h1>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 
-                                    leading-relaxed sm:leading-relaxed md:leading-relaxed 
-                                    text-white/90 max-w-3xl">
-                            {project.tagline || project.project_name}
-                        </p>
                     </div>
                 </div>
             </section>
@@ -76,7 +81,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {/* ---------- BREADCRUMB BAR ---------- */}
             <div className="bg-[#edf3f5] border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex flex-wrap items-center text-xs sm:text-sm text-gray-600">
+
+                    <nav className="font-necto  flex flex-wrap items-center text-xs sm:text-sm text-gray-700 ">
                         <Link href="/" className="hover:text-red-600 transition-colors">
                             HOME
                         </Link>
@@ -93,7 +99,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* ---------- META INFO SECTION ---------- */}
-            <div className="py-4 sm:py-6 border-b">
+            <div className="py-4 sm:py-6 border-b bg-white">
                 <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 
                             grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 
                             text-gray-700 text-xs sm:text-sm">
@@ -102,16 +108,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                    px-2 sm:px-3 py-1 rounded-full 
                                    flex items-center">
                             <Zap className="h-4 w-4 mr-1.5 sm:mr-2" />
-                            <span className="font-semibold">{project.category_name || 'Project'}</span>
+                            <span className="font-semibold font-neuhas2 uppercase tracking-wider">{project.category_name || 'Project'}</span>
                         </span>
                     </div>
 
-                    <div className="flex items-center justify-center md:justify-start">
+                    <div className="flex items-center justify-center md:justify-start font-apfe2 text-[20px] leading-[30px]">
                         <MapPin className="h-4 w-4 mr-1.5 sm:mr-2 text-red-600" />
                         <span>{project.location || 'India'}</span>
                     </div>
 
-                    <div className="flex items-center justify-center md:justify-start">
+                    <div className="flex items-center justify-center md:justify-start font-apfe2 text-[20px] leading-[30px]">
                         <Clock className="h-4 w-4 mr-1.5 sm:mr-2 text-red-600" />
                         <span>{project.project_status === 'ongoing' ? 'Active' : project.project_status === 'completed' ? 'Completed' : 'Upcoming'}</span>
                     </div>
@@ -120,16 +126,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             {/* ---------- SECTION 1: DESCRIPTION ---------- */}
             {project.section1_heading && (
-                <section className="relative py-12 sm:py-16 md:py-20 text-gray-800">
+                <section className="relative py-12 sm:py-16 md:py-20 text-gray-800 bg-white">
                     <div className="absolute inset-0 bg-[radial-gradient(circle,_#0000000a_1px,_transparent_1px)] [background-size:16px_16px]" />
                     <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-72">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
                                  font-normal leading-tight mb-4 sm:mb-6">
                             {project.section1_heading}
                         </h1>
-
                         {project.section1_paragraphs && project.section1_paragraphs.map((para, idx) => (
-                            <p key={idx} className="text-gray-600 mb-3 sm:mb-4 text-[14px] sm:text-[16px] md:text-[18px]">
+                            <p key={idx} className="text-gray-600 mb-3 sm:mb-4 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas">
                                 {para}
                             </p>
                         ))}
@@ -138,8 +143,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             )}
 
             {/* ---------- SECTION 2: ABOUT THE PROJECT ---------- */}
+            {/* ---------- SECTION 2: ABOUT THE PROJECT ---------- */}
             {project.section2_heading && (
-                <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32">
+                <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32 bg-white">
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-8 xl:gap-16">
                         {/* LEFT IMAGE */}
                         {project.section2_image && (
@@ -156,13 +162,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
                         {/* RIGHT TEXT */}
                         <div className="px-4 sm:px-6 md:px-8 lg:pr-12 xl:pr-16 py-6 sm:py-8 md:py-10 lg:py-12">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
-                                          font-normal mb-4 sm:mb-6">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                              font-normal leading-tight mb-4 sm:mb-6">
                                 {project.section2_heading}
                             </h2>
                             {project.section2_paragraphs && project.section2_paragraphs.map((para, idx) => (
                                 <p key={idx} className="text-gray-600 mb-3 sm:mb-4 
-                                                       text-sm sm:text-base md:text-lg">
+                                           text-[14px] sm:text-[16px] md:text-[22px] 
+                                           leading-[30px] font-neuhas">
                                     {para}
                                 </p>
                             ))}
@@ -173,19 +180,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             {/* ---------- SECTION 3: WORK WITH US ---------- */}
             {project.section3_heading && (
-                <section className="mt-8 sm:mt-12 md:mt-16 lg:mt-24 xl:mt-32 mb-8 sm:mb-12">
+                <section className="mt-8 sm:mt-12 md:mt-16 lg:mt-24 xl:mt-32 mb-8 sm:mb-12 bg-white">
                     <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center gap-6 sm:gap-8 md:gap-12">
                         {/* LEFT TEXT */}
                         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-32 py-6 sm:py-8 md:py-10 lg:py-12">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
-                                          font-normal mb-4 sm:mb-6 md:mb-8 
-                                          lg:-mt-16 xl:-mt-24">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                              font-normal leading-tight mb-4 sm:mb-6 md:mb-8 
+                              lg:-mt-16 xl:-mt-24">
                                 {project.section3_heading}
                             </h2>
                             {project.section3_paragraphs && project.section3_paragraphs.map((para, idx) => (
                                 <p key={idx} className="text-gray-600 mb-4 sm:mb-5 md:mb-6 
-                                                       text-sm sm:text-base md:text-lg 
-                                                       leading-relaxed">
+                                           text-[14px] sm:text-[16px] md:text-[22px] 
+                                           leading-[30px] font-neuhas">
                                     {para}
                                 </p>
                             ))}
@@ -233,7 +240,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             {/* ---------- SECTION 5 (MOVED UP - STYLED LIKE SECTION 2) ---------- */}
             {(project.section5_heading || project.section5_image) && (
-                <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32">
+                <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32 bg-white">
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-8 xl:gap-16">
                         {/* LEFT IMAGE (like Section 2) */}
                         {project.section5_image && (
@@ -249,17 +256,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         )}
 
                         {/* RIGHT TEXT (like Section 2) */}
-                        <div className="px-4 sm:px-6 md:px-8 lg:pr-12 xl:pr-16 py-6 sm:py-8 md:py-10 lg:py-12">
+                        <div className="px-4 sm:px-6 md:px-8 lg:pr-12 xl:pr-16 py-6 sm:py-8 md:py-10 lg:py-12 bg-white">
                             {project.section5_heading && (
-                                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
-                                              font-normal mb-4 sm:mb-6">
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                                  font-normal leading-tight mb-4 sm:mb-6">
                                     {project.section5_heading}
                                 </h2>
                             )}
 
                             {project.section5_paragraph && (
                                 <p className="text-gray-600 mb-3 sm:mb-4 
-                                             text-sm sm:text-base md:text-lg">
+                                 text-[14px] sm:text-[16px] md:text-[22px] 
+                                 leading-[30px] font-neuhas">
                                     {project.section5_paragraph}
                                 </p>
                             )}
@@ -274,15 +282,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     <div className="absolute inset-0 bg-[radial-gradient(circle,_#0000000a_1px,_transparent_1px)] [background-size:16px_16px]" />
 
                     <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-24 xl:px-72">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-                                  font-normal leading-tight mb-4 sm:mb-6 md:mb-8">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                          font-normal leading-tight mb-4 sm:mb-6 md:mb-8">
                             {project.section4_heading}
                         </h2>
 
                         {project.section4_paragraphs && project.section4_paragraphs.map((para, idx) => (
                             <p key={idx} className="text-gray-600 mb-6 sm:mb-8 md:mb-10 
-                                     text-[14px] sm:text-[16px] md:text-[18px] 
-                                     leading-[1.6] sm:leading-[1.7]">
+                                       text-[14px] sm:text-[16px] md:text-[22px] 
+                                       leading-[30px] font-neuhas">
                                 {para}
                             </p>
                         ))}
@@ -314,19 +322,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
             {/* ---------- RELATED PROJECTS SECTION ---------- */}
             {relatedProjects.length > 0 && (
-                <section className="relative bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-24">
+                <section className="relative py-12 sm:py-16 md:py-20 lg:py-24">
                     <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24">
                         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
                                       font-normal text-center mb-6 sm:mb-8 md:mb-12 lg:mb-16">
                             Related Projects
                         </h2>
-
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                             {relatedProjects.map((relProject) => (
                                 <Link
                                     key={relProject.project_id}
                                     href={`/projects/${relProject.project_slug}`}
-                                    className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                                    className="group bg-white rounded-lg overflow-hidden transition-all duration-300"
                                 >
                                     {/* Image */}
                                     <div className="relative h-[180px] sm:h-[200px] md:h-[240px] lg:h-[280px] overflow-hidden">

@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Play } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { useEffect, useState } from "react";
 
-function CtaButton({ href, children }: { href: string; children: React.ReactNode }) {
+function CtaButton({
+    href,
+    children,
+}: {
+    href: string;
+    children: React.ReactNode;
+}) {
     return (
         <Link
             href={href}
@@ -15,8 +21,10 @@ function CtaButton({ href, children }: { href: string; children: React.ReactNode
         >
             <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
             <span className="relative z-10 flex items-center">
-                <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
-                         group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10">
+                <span
+                    className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
+                         group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10"
+                >
                     <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
                 </span>
                 <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
@@ -53,14 +61,16 @@ export default function ApproachPage() {
 
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-white">
-                        <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">APPROACH</p>
+                        <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">
+                            APPROACH
+                        </p>
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
                             Dream, Design, <br className="hidden sm:block" />
                             <span className="sm:hidden"> </span>Deliver
                         </h1>
                         <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl">
-                            How we partner with customers to plan, engineer, and execute with safety, quality,
-                            and ethics — delivering lasting impact worldwide.
+                            How we partner with customers to plan, engineer, and execute with
+                            safety, quality, and ethics — delivering lasting impact worldwide.
                         </p>
                         {/* <CtaButton href="#how">Learn More</CtaButton> */}
                     </div>
@@ -71,31 +81,59 @@ export default function ApproachPage() {
             <div className="bg-[#edf3f5] border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
                     <nav className="flex items-center text-xs sm:text-sm text-gray-600">
-                        <Link href="/" className="hover:text-red-600">HOME</Link>
+                        <Link href="/" className="hover:text-red-600">
+                            HOME
+                        </Link>
                         <span className="mx-1.5 sm:mx-2">&gt;</span>
-                        <span className="text-red-600 font-semibold uppercase">APPROACH</span>
+                        <span className="text-red-600 font-semibold uppercase">
+                            APPROACH
+                        </span>
                     </nav>
                 </div>
             </div>
 
             {/* HOW WE DELIVER - Responsive */}
-            <section id="how" className="bg-white py-10 sm:py-14 md:py-20 mb-16 sm:mb-24 md:mb-36">
+            <section
+                id="how"
+                className="bg-white py-10 sm:py-14 md:py-20 mb-16 sm:mb-24 md:mb-36"
+            >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-12 items-start px-4 sm:px-6 md:px-8">
                     <div className="lg:pl-8 xl:pl-16 2xl:pl-32 py-4 sm:py-6 md:py-8 lg:py-0">
-                        <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.15] sm:leading-[1.2] md:leading-[64px] font-light text-gray-900 mb-6 sm:mb-8 md:mb-12">
+                        <h2
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal leading-tight 
+                        sm:leading-[1.2] md:leading-[64px] text-gray-900 mb-6 sm:mb-8 md:mb-12"
+                        >
                             How We Deliver
                         </h2>
-                        <div className="space-y-4 sm:space-y-5 md:space-y-6 text-gray-700 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-[1.6] sm:leading-[1.7] md:leading-[1.8] lg:leading-[32px]">
+
+                        <div
+                            className="font-neuhas space-y-4 sm:space-y-5 md:space-y-6 text-gray-700 text-[15px] sm:text-[16px] md:text-[20px] 
+                        leading-[1.6] sm:leading-[1.7] md:leading-[32px]"
+                        >
                             <p>
-                                Few companies have the scale and expertise to handle a project's full range of needs — from design to dismantlement. But as an engineering, procurement, construction, and project management leader, Bechtel is not only qualified to deliver the entire lifecycle of a project, but to deliver excellence at every stage.
+                                Few companies have the scale and expertise to handle a project's
+                                full range of needs — from design to dismantlement. But as an
+                                engineering, procurement, construction, and project management
+                                leader, Bechtel is not only qualified to deliver the entire
+                                lifecycle of a project, but to deliver excellence at every
+                                stage.
                             </p>
                             <p>
-                                We deploy this horizontal integration strategy to our customers' advantage. They benefit from our deep knowledge of the project's needs and our integrated EPC solutions that can be customized to reduce cost and complexity.
+                                We deploy this horizontal integration strategy to our customers'
+                                advantage. They benefit from our deep knowledge of the project's
+                                needs and our integrated EPC solutions that can be customized to
+                                reduce cost and complexity.
                             </p>
                             <p>
-                                We also leverage vertical integration to improve the EPC value chain. By investing in companies that produce critical construction materials or specialize in highly sought after competencies — like pipe and steel fabrication — we can reduce the project delays and logistical setbacks faced by many of our competitors.
+                                We also leverage vertical integration to improve the EPC value
+                                chain. By investing in companies that produce critical
+                                construction materials or specialize in highly sought after
+                                competencies — like pipe and steel fabrication — we can reduce
+                                the project delays and logistical setbacks faced by many of our
+                                competitors.
                             </p>
-                            <div className="pt-4 sm:pt-6">
+                            <div className="pt-4 sm:pt-6 -ml-7">
                                 <CtaButton href="#how">Our Services</CtaButton>
                             </div>
                         </div>
@@ -145,19 +183,33 @@ export default function ApproachPage() {
                     </div>
 
                     {/* RIGHT TEXT - Responsive spacing */}
-                    <div className="pr-4 sm:pr-8 md:pr-16 lg:pr-24 xl:pr-40 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12 md:-mt-16 lg:-mt-24">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mb-4 sm:mb-6 md:mb-9">
+                    <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12 md:-mt-16 lg:-mt-24">
+                        <h2
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
+                        >
                             Safety and Well-Being Above All
                         </h2>
-                        <div className="space-y-3 sm:space-y-4">
+                        <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Nothing is more important than the safety of our colleagues. We are steadfast in our commitment to ensuring that everyone, everywhere, returns home safely at the end of each day.
+                                Nothing is more important than the safety of our colleagues. We
+                                are steadfast in our commitment to ensuring that everyone,
+                                everywhere, returns home safely at the end of each day.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                To uphold this commitment, we've implemented best-in-class Environmental, Safety, and Health (ESH) standards for all employees worldwide. Developed by our safety experts, our ESH program integrates industry-leading, research-backed practices to protect colleagues on the job. Our goal is clear: zero lost time incidents and zero recordable incidents — and we are within reach.
+                                To uphold this commitment, we've implemented best-in-class
+                                Environmental, Safety, and Health (ESH) standards for all
+                                employees worldwide. Developed by our safety experts, our ESH
+                                program integrates industry-leading, research-backed practices
+                                to protect colleagues on the job. Our goal is clear: zero lost
+                                time incidents and zero recordable incidents — and we are within
+                                reach.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our commitment to safety extends beyond the physical, addressing mental health with the same rigor we apply to physical safety. We're taking everything we've learned about protecting colleagues on the job and applying it to their mental health.
+                                Our commitment to safety extends beyond the physical, addressing
+                                mental health with the same rigor we apply to physical safety.
+                                We're taking everything we've learned about protecting
+                                colleagues on the job and applying it to their mental health.
                             </p>
                         </div>
                     </div>
@@ -167,30 +219,48 @@ export default function ApproachPage() {
             {/* PROVEN SAFETY PERFORMANCE - Responsive */}
             <section className="bg-white py-10 sm:py-12 md:py-16">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <h4 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[60px] leading-[1.2] sm:leading-[1.15] md:leading-[70.4px] font-medium text-gray-800 text-center mb-6 sm:mb-8 md:mb-10">Proven Safety Performance</h4>
+                    <h4 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal leading-tight sm:leading-[1.15] md:leading-[70.4px] text-gray-800 text-center mb-6 sm:mb-8 md:mb-10">
+                        Proven Safety Performance
+                    </h4>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 font-neuhas">
                         {/* Left Stat - Responsive */}
                         <div>
                             <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 mb-3 sm:mb-4">
-                                <span className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.2] sm:leading-[1.3] md:leading-[60px] font-bold text-red-600">0.014</span>
-                                <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[38px] leading-[1.2] sm:leading-[1.3] md:leading-[50px] font-normal text-gray-700">Lost-Time Incident Rate*</span>
+                                <span className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.2] sm:leading-[1.3] md:leading-[60px] font-bold text-red-600">
+                                    0.014
+                                </span>
+                                <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[38px] leading-[1.2] sm:leading-[1.3] md:leading-[50px] font-normal text-gray-700">
+                                    Lost-Time Incident Rate*
+                                </span>
                             </div>
                             <hr className="border-t border-gray-200 my-3 sm:my-4" />
-                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                We believe every on-the-job injury and environmental incident is preventable. Our longstanding commitment to zero incidents has enabled us to steadily reduce recordable and lost time incident rates. Our rates are among the lowest in the industry and significantly outperform the comparable industry benchmarks.
+                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                                We believe every on-the-job injury and environmental incident is
+                                preventable. Our longstanding commitment to zero incidents has
+                                enabled us to steadily reduce recordable and lost time incident
+                                rates. Our rates are among the lowest in the industry and
+                                significantly outperform the comparable industry benchmarks.
                             </p>
                         </div>
 
                         {/* Right Stat - Responsive */}
                         <div>
                             <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 mb-3 sm:mb-4">
-                                <span className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.2] sm:leading-[1.3] md:leading-[60px] font-bold text-red-600">0.163</span>
-                                <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[38px] leading-[1.2] sm:leading-[1.3] md:leading-[50px] font-normal text-gray-700">Recordable Incident Rate*</span>
+                                <span className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] leading-[1.2] sm:leading-[1.3] md:leading-[60px] font-bold text-red-600">
+                                    0.163
+                                </span>
+                                <span className="text-[24px] sm:text-[28px] md:text-[32px] lg:text-[38px] leading-[1.2] sm:leading-[1.3] md:leading-[50px] font-normal text-gray-700">
+                                    Recordable Incident Rate*
+                                </span>
                             </div>
                             <hr className="border-t border-gray-200 my-3 sm:my-4" />
-                            <p className="text-gray-700 text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our safety culture is built on decades of experience developing and implementing the training, equipment, processes, and procedures needed to perform our work responsibly — many of which have helped to define new industry standards.
+                            <p className="text-gray-700 text-[15px] sm:text-[16px] md:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                                Our safety culture is built on decades of experience developing
+                                and implementing the training, equipment, processes, and
+                                procedures needed to perform our work responsibly — many of
+                                which have helped to define new industry standards.
                             </p>
                         </div>
                     </div>
@@ -206,23 +276,37 @@ export default function ApproachPage() {
             <section className="mt-16 sm:mt-24 md:mt-32 lg:mt-40 mb-10 px-4 sm:px-6 md:px-8">
                 {/* Responsive grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center gap-8 md:gap-12">
-
                     {/* LEFT TEXT - Responsive */}
-                    <div className="px-0 sm:px-4 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8 lg:py-12 sm:pl-8 md:pl-16 lg:pl-24 xl:pl-32">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mb-4 sm:mb-6 md:mb-8 lg:mb-10 -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-28">
+                    <div className="px-0 sm:px-4 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 md:py-8 lg:py-12 sm:pl-8 md:pl-16">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal leading-tight mb-4 sm:mb-6 md:mb-8 lg:mb-10 -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-28">
                             <span className="block">Delivering Quality</span>
                             <span className="block mt-1 sm:mt-2">You Can Trust</span>
                         </h2>
                         <div className="space-y-3 sm:space-y-4">
-                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Quality is at the core of our culture. We believe in doing work right the first time, every time, and we instill this value across the company. Our colleagues are accountable for delivering excellence — and we equip them with the programs and training to ensure success.
+                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[20px] font-neuhas leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                                Quality is at the core of our culture. We believe in doing work
+                                right the first time, every time, and we instill this value
+                                across the company. Our colleagues are accountable for
+                                delivering excellence — and we equip them with the programs and
+                                training to ensure success.
                             </p>
-                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our robust quality programs ensure focus on customer requirements and foster continuous improvement by incorporating lessons learned, reducing risk, enhancing performance, and maintaining the highest standards. Through our "systems thinking" approach, we leverage the full potential of our people, processes, and technology, ensuring seamless operational handoffs, strong cross-functional integration, and successful collaboration with customers, partners, suppliers, and subcontractors.
+                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[20px] font-neuhas leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                                Our robust quality programs ensure focus on customer
+                                requirements and foster continuous improvement by incorporating
+                                lessons learned, reducing risk, enhancing performance, and
+                                maintaining the highest standards. Through our "systems
+                                thinking" approach, we leverage the full potential of our
+                                people, processes, and technology, ensuring seamless operational
+                                handoffs, strong cross-functional integration, and successful
+                                collaboration with customers, partners, suppliers, and
+                                subcontractors.
                             </p>
                         </div>
-                        <div className="mt-4 sm:mt-5 md:mt-6">
-                            <CtaButton href="#work">Learn more about Life at Bechtel</CtaButton>
+                        <div className="mt-4 sm:mt-5 md:mt-6 font-neuhas">
+                            <CtaButton href="#work">
+                                Learn more about Life at Bechtel
+                            </CtaButton>
                         </div>
                     </div>
 
@@ -251,13 +335,20 @@ export default function ApproachPage() {
 
                     {/* RIGHT TEXT - Responsive */}
                     <div className="pr-0 sm:pr-8 md:pr-16 lg:pr-24 xl:pr-32 py-4 sm:py-6 md:py-8 lg:py-12">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mb-4 sm:mb-6 md:mb-9">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal leading-tight mb-4 sm:mb-6 md:mb-9">
                             Operating with the Highest Ethical Standards
                         </h2>
-                        <p className="text-gray-600 mb-4 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                            Integrity, honesty, and fairness are at the heart of our operations as a company and as a partner. We are committed to the highest standards of ethical business conduct and seek to work with customers and partners who share our values. Accordingly, we conduct all business transactions properly, fairly, impartially, and ethically, and we work with leading organizations to promote global standards of ethical business conduct.
+                        <p className="text-gray-600 mb-4 font-neuhas text-[15px] sm:text-[16px] md:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                            Integrity, honesty, and fairness are at the heart of our
+                            operations as a company and as a partner. We are committed to the
+                            highest standards of ethical business conduct and seek to work
+                            with customers and partners who share our values. Accordingly, we
+                            conduct all business transactions properly, fairly, impartially,
+                            and ethically, and we work with leading organizations to promote
+                            global standards of ethical business conduct.
                         </p>
-                        <div className="mt-4 sm:mt-6">
+                        <div className="mt-4 sm:mt-6 font-apfel">
                             <CtaButton href="#ethics">Learn More</CtaButton>
                         </div>
                     </div>
@@ -265,31 +356,42 @@ export default function ApproachPage() {
             </section>
 
             {/* SUSTAINABILITY - Responsive */}
-            <section className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-background" style={{
-                backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
-                backgroundSize: '16px 16px sm:20px 20px'
-            }}>
-                <div className="container text-center max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-4 sm:px-6">
-                    <h2 className="font-apfel2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
-                        Building a More Sustainable Future
+            <section
+                className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-white"
+                style={{
+                    backgroundImage:
+                        "radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)",
+                    backgroundSize: "16px 16px sm:20px 20px",
+                }}
+            >
+                <div className="container text-center max-w-xs sm:max-w-sm md:max-w-3xl mx-auto px-4 sm:px-6">
+                    <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+                             font-normal leading-tight text-primary mb-3 sm:mb-4 md:mb-5">
+                        Building a More <br />Sustainable Future
                     </h2>
-                    <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4">
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
-                            Every project is an opportunity to enhance quality of life and contribute to a safer, cleaner, and more equitable world.
-
+                    <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4 text-start">
+                        <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-[#30454c] leading-relaxed">
+                            Every project is an opportunity to enhance quality of life and
+                            contribute to a safer, cleaner, and more equitable world.
                         </p>
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
-                            We embed sustainability into every phase of project execution—from design to delivery. By leveraging advanced technologies, eco-friendly materials, and efficient processes, we minimize environmental impact and maximize resource efficiency. Working closely with our customers, suppliers, and partners, we share the responsibility of safeguarding our colleagues, communities, and the planet.
+                        <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-[#30454c] leading-relaxed">
+                            We embed sustainability into every phase of project execution—from
+                            design to delivery. By leveraging advanced technologies,
+                            eco-friendly materials, and efficient processes, we minimize
+                            environmental impact and maximize resource efficiency. Working
+                            closely with our customers, suppliers, and partners, we share the
+                            responsibility of safeguarding our colleagues,
+                            communities, and the planet.
                         </p>
                     </div>
-                    <div className="mt-6 sm:mt-8 md:mt-10">
+                    <div className="mt-6 sm:mt-8 md:mt-10 font-apfel">
                         <CtaButton href="#sustainability">Go Deeper</CtaButton>
                     </div>
                 </div>
             </section>
 
             {/* ADVANCING SUSTAINABLE SOLUTIONS - Responsive */}
-            <section id="advancing" className="relative">
+            <section id="advancing" className="relative bg-white">
                 <div className="absolute inset-0">
                     {/* Video Background */}
                     <video
@@ -299,7 +401,10 @@ export default function ApproachPage() {
                         playsInline
                         className="absolute inset-0 w-full h-full object-cover"
                     >
-                        <source src="https://www.bechtel.com/wp-content/uploads/2025/01/Bechtel-LEEDS-Technology.mp4" type="video/mp4" />
+                        <source
+                            src="https://www.bechtel.com/wp-content/uploads/2025/01/Bechtel-LEEDS-Technology.mp4"
+                            type="video/mp4"
+                        />
                     </video>
                     <div className="absolute inset-0 bg-black/70 sm:bg-black/65 md:bg-black/60" />
                 </div>
@@ -307,11 +412,14 @@ export default function ApproachPage() {
                 {/* Content - Responsive padding */}
                 <div className="relative container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pt-[200px] sm:pt-[240px] md:pt-[280px] lg:pt-[320px] xl:pt-[380px] pb-6 sm:pb-8 md:pb-10 lg:pb-16">
                     <div className="max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-4xl text-white">
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 leading-tight">
+                        <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal mb-3 sm:mb-4 leading-tight">
                             Advancing Sustainable Solutions
                         </h3>
-                        <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-6 sm:mb-8 leading-relaxed">
-                            The Low Energy Ejector Desalination System (LEEDS) is at the heart of a comprehensive solution for produced water treatment in oil, gas, and mining operations.
+                        <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-white/85 sm:text-white/90 mb-6 sm:mb-8 leading-relaxed">
+                            The Low Energy Ejector Desalination System (LEEDS) is at the heart
+                            of a comprehensive solution for produced water treatment in oil,
+                            gas, and mining operations.
                         </p>
                         <Link
                             href="#"
@@ -320,36 +428,49 @@ export default function ApproachPage() {
                             <span className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-red-600 flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
                                 <Play className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 ml-0.5" />
                             </span>
-                            <span className="text-sm sm:text-base md:text-lg">Explore videos and case studies</span>
+                            <span className="text-sm sm:text-base md:text-lg font-apfel">
+                                Explore videos and case studies
+                            </span>
                         </Link>
                     </div>
                 </div>
             </section>
 
             {/* STRENGTHENING COMMUNITIES - Responsive */}
-            <section className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-background" style={{
-                backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
-                backgroundSize: '16px 16px sm:20px 20px'
-            }}>
+            <section
+                className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-white"
+                style={{
+                    backgroundImage:
+                        "radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)",
+                    backgroundSize: "16px 16px sm:20px 20px",
+                }}
+            >
                 <div className="container text-start max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-4 sm:px-6">
-                    <h2 className="font-apfel2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight mb-3 sm:mb-4 md:mb-5">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal text-primary leading-tight mb-3 sm:mb-4 md:mb-7">
                         Strengthening Communities
                     </h2>
                     <div className="space-y-3 sm:space-y-4">
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
-                            At A&T Infracon, we don’t just deliver infrastructure — we build lasting connections in the communities where we operate. Our teams integrate into local life, contributing time, skills, and resources beyond the scope of our projects.
-
-
+                        <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-[#30454c] leading-relaxed">
+                            At A&T Infracon, we don’t just deliver infrastructure — we build
+                            lasting connections in the communities where we operate. Our teams
+                            integrate into local life, contributing time, skills, and
+                            resources beyond the scope of our projects.
                         </p>
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
-                            We ensure our presence benefits local economies through local hiring, partnerships with small businesses, and educational and training opportunities for residents. By understanding each community deeply, we maximize our positive impact and give back to the places that host our work.
-
+                        <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-[#30454c] leading-relaxed">
+                            We ensure our presence benefits local economies through local
+                            hiring, partnerships with small businesses, and educational and
+                            training opportunities for residents. By understanding each
+                            community deeply, we maximize our positive impact and give back to
+                            the places that host our work.
                         </p>
-                        <p className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] text-[#30454c] leading-relaxed">
-                            Our legacy is measured not only by the structures we build, but by the communities we strengthen — and that is a source of lasting pride.
+                        <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-[#30454c] leading-relaxed">
+                            Our legacy is measured not only by the structures we build, but by
+                            the communities we strengthen — and that is a source
+                            of lasting pride.
                         </p>
                     </div>
-                    <div className="mt-6 sm:mt-7 md:mt-8">
+                    <div className="mt-6 sm:mt-7 md:mt-8 font-apfel">
                         <CtaButton href="#sustainability">Supporting Communities</CtaButton>
                     </div>
                 </div>

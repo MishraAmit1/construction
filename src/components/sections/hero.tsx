@@ -66,8 +66,7 @@ export function Hero() {
               <p className="font-apfel2 text-[14px] sm:text-[18px] md:text-[24px] 
                           leading-[36px] tracking-normal text-white/90 max-w-full sm:max-w-2xl lg:max-w-3xl 
                           mx-auto lg:mx-0 px-2 sm:px-0">
-                At Bechtel, we partner with our customers to bring their ambitions to life, delivering projects that make a lasting, meaningful difference for people and communities around the world.
-                {/* At A&T Infracon, we collaborate closely with our clients to turn their visions into reality — delivering infrastructure that shapes progress, empowers communities, and leaves a lasting impact on the world around us. */}
+                At A&T Infracon, we collaborate closely with our clients to turn their visions into reality — delivering infrastructure that shapes progress, empowers communities, and leaves a lasting impact on the world around us.
               </p>
             </div>
 
@@ -126,7 +125,7 @@ export function Hero() {
 
                           {/* Title */}
                           <h3 className="mt-4 text-[13px] sm:text-[15px] md:text-[16px] 
-                             font-medium text-black leading-snug mb-4
+                             font-medium text-black leading-snug mb-4 font-apfel2
                              min-h-[2rem] sm:min-h-[3rem]">
                             {item.title}
                           </h3>
