@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { weAreVeritasImage } from '@/lib/data';
-import logo from "../../app/public/cons3.png"
+import logo from "../../app/assets/cons3.png"
 
 export function About() {
   return (

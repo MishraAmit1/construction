@@ -5,7 +5,7 @@ import Image from "next/image";
 // IMPORTANT: Apne logo ko `public` folder me rakhein aur yahaan path ko `/` se shuru karein.
 // For example: public/logo.png -> "/logo.png"
 // Maine aapke original path ko aese hi assume kiya hai.
-import logo from "../../app/public/logo-removebg-preview (3).png";
+import logo from "../../app/assets/logo-removebg-preview (3).png";
 
 // Image ke hisaab se links update kiye gaye hain
 const footerLinkColumns = {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import projectbanner from "../../app/public/cons2.png"
+import projectbanner from "../../app/assets/cons2.png"
 
 export default function ProjectsHeader() {
     return (

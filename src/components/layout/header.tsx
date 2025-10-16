@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import logo from "../../app/public/logo_design_f__2_-removebg-preview.png";
-import logo1 from "../../app/public/logo-removebg-preview (3).png";
+import logo from "../../app/assets/logo_design_f__2_-removebg-preview.png";
+import logo1 from "../../app/assets/logo-removebg-preview (3).png";
 
 const mainNavLinks = [
   { name: "HOME", href: "/" },

@@ -2,9 +2,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import logo from '../../app/public/cons2.png';
+import logo from '../../app/assets/cons2.png';
 import { cn } from '@/lib/utils';
-
 export function InspiringProjects() {
   return (
     <section className="bg-white overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
@@ -22,9 +21,8 @@ export function InspiringProjects() {
               <span className="sm:hidden"> </span>
               Building Inspiring Projects
             </h2>
-
             <p className="mt-4 sm:mt-6 md:mt-8 
-                            text-[14px] sm:text-[16px] md:text-[22px] 
+                            text-[16px] sm:text-[16px] md:text-[22px] 
                             text-gray-600 leading-[30px] font-neuhas
                             max-w-full md:max-w-3xl">
               We deliver first-of-a-kind infrastructure projects that strengthen connectivity, enhance security, and drive economic development across India — from high-altitude roads and border security structures to rural highway networks, institutional buildings, and renewable energy installations.

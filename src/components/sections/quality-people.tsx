@@ -69,8 +69,8 @@ export function QualityPeople() {
           </div>
 
           {/* RIGHT: Description Text */}
-          <div className="text-center md:text-left px-2 sm:px-4 md:px-0">
-            <p className="text-[14px] sm:text-[16px] md:text-[22px]
+          <div className="md:text-left px-2 sm:px-4 md:px-0">
+            <p className="text-[16px] sm:text-[16px] md:text-[22px]
                             text-primary-foreground/90 sm:text-primary-foreground/85 md:text-primary-foreground/80
                             leading-[30px] font-neuhas
                             max-w-lg md:max-w-none mx-auto md:mx-0">

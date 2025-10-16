@@ -269,8 +269,7 @@ export function Careers() {
                 />
               </div>
             </div>
-
-            <div className="lg:pl-8 xl:pl-12 py-4 sm:py-6 md:py-8 lg:py-0 order-1 lg:order-2 px-10">
+            <div className="lg:pl-8 xl:pl-12 pl-5 py-4 sm:py-6 md:py-8 order-1 md:pr-8">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-900 mb-6 sm:mb-8 md:mb-12">
                 Why Bechtel?
               </h2>

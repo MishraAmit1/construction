@@ -5,6 +5,7 @@ import { getCategoryBySlug, getCategorySlugs } from "@/lib/api/categories";
 import { getProjectsByCategory } from "@/lib/api/projects";
 import { notFound } from "next/navigation";
 import { SortDropdown } from '@/components/ui/sort-dropdown';
+import { CategoryFilters } from "@/components/category-filters";
 // Force dynamic rendering for query params
 export const dynamic = 'force-dynamic';
 
@@ -216,102 +217,30 @@ export default async function CategoryPage({
             </section>
 
             {/* ---------- PROJECTS SECTION WITH WORKING FILTERS ---------- */}
+            {/* ---------- PROJECTS SECTION WITH WORKING FILTERS ---------- */}
             <section id="projects-section" className="bg-white py-8 sm:py-12 md:py-16">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
 
                     {/* CENTERED Heading */}
                     <h2 className="text-[28px] md:text-[64px] 
-                     font-light text-[#2d3b40] text-center
-                     mb-6 sm:mb-8 md:mb-10">
+         font-light text-[#2d3b40] text-center
+         mb-6 sm:mb-8 md:mb-10">
                         {category.category_name} Projects
                     </h2>
 
                     {/* WORKING Filters Section */}
-                    <div id="filters" className="bg-white rounded-lg p-6 sm:p-8 mb-8 sm:mb-10 shadow-sm scroll-mt-24">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-
-                            {/* REGIONS Filter (if regions exist) */}
-                            {category.regions && category.regions.length > 0 && (
-                                <div>
-                                    <h3 className="font-neuhas text-xs md:text-[16px] leading-[24px] font-semibold text-gray-700 mb-4 tracking-wider uppercase">REGIONS</h3>
-                                    <div className="flex flex-wrap gap-4">
-                                        <Link
-                                            href={`/markets/${slug}?status=${statusFilter}&sort=${sortFilter}#filters`}
-                                            scroll={false}
-                                            className={`px-3 py-1.5 rounded-full text-[12px] font-normal tracking-wide transition-colors flex items-center gap-1.5
-                                    ${regionFilter === 'all'
-                                                    ? 'bg-red-600 text-white'
-                                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}>
-                                            ALL REGIONS
-                                        </Link>
-                                        {category.regions.map((region, idx) => (
-                                            <Link
-                                                key={idx}
-                                                href={`/markets/${slug}?status=${statusFilter}&region=${region.toLowerCase()}&sort=${sortFilter}#filters`}
-                                                scroll={false}
-                                                className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
-                                        ${regionFilter === region.toLowerCase()
-                                                        ? 'bg-red-600 text-white'
-                                                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                            >
-                                                <Earth className="h-4 w-4" /> {region.toUpperCase()}
-                                            </Link>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* STATUS Filter - MATCHING REGION STYLING */}
-                            <div>
-                                <h3 className="font-neuhas text-xs md:text-[16px] leading-[24px] font-semibold text-gray-700 mb-4 tracking-wider uppercase">STATUS</h3>
-                                <div className="flex flex-wrap gap-4">
-                                    <Link
-                                        href={`/markets/${slug}?region=${regionFilter}&sort=${sortFilter}#filters`}
-                                        scroll={false}
-                                        className={`px-3 py-1.5 rounded-full text-[12px] font-normal tracking-wide transition-colors flex items-center gap-1.5
-                                ${statusFilter === 'all'
-                                                ? 'bg-red-600 text-white'
-                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                    >
-                                        ALL STATUS
-                                    </Link>
-                                    <Link
-                                        href={`/markets/${slug}?status=ongoing&region=${regionFilter}&sort=${sortFilter}#filters`}
-                                        scroll={false}
-                                        className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
-                                ${statusFilter === 'ongoing'
-                                                ? 'bg-blue-600 text-white'
-                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                    >
-                                        ONGOING
-                                    </Link>
-                                    <Link
-                                        href={`/markets/${slug}?status=completed&region=${regionFilter}&sort=${sortFilter}#filters`}
-                                        scroll={false}
-                                        className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
-                                ${statusFilter === 'completed'
-                                                ? 'bg-green-600 text-white'
-                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                    >
-                                        COMPLETED
-                                    </Link>
-                                    <Link
-                                        href={`/markets/${slug}?status=upcoming&region=${regionFilter}&sort=${sortFilter}#filters`}
-                                        scroll={false}
-                                        className={`px-3 py-1.5 rounded-full text-[14px] leading-[14px] font-normal tracking-wide transition-colors flex items-center gap-1.5
-                                ${statusFilter === 'upcoming'
-                                                ? 'bg-yellow-600 text-white'
-                                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                                    >
-                                        UPCOMING
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="filters" className="bg-white rounded-lg p-4 sm:p-6 lg:p-8 mb-8 sm:mb-10 shadow-sm scroll-mt-24">
+                        <CategoryFilters
+                            slug={slug}
+                            regions={category.regions}
+                            statusFilter={statusFilter}
+                            regionFilter={regionFilter}
+                            sortFilter={sortFilter}
+                        />
                     </div>
 
                     {/* Results Count and SORT SELECT */}
-                    <div className="font-necto flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4">
+                    <div className="font-necto flex flex-row sm:flex-row justify-center items-center md:justify-between sm:items-center mb-6 sm:mb-8 gap-8">
                         <div className="text-gray-600 text-sm md:text-[14px] leading-[21px] font-medium">
                             {projects.length} RESULTS
                         </div>
@@ -360,8 +289,8 @@ export default async function CategoryPage({
                                             </p>
                                         )}
                                         <span className={`inline-block mt-2 sm:mt-3 md:mt-4 px-2 sm:px-3 py-1 
-                                            text-xs font-semibold rounded-full
-                                            ${project.project_status === 'completed' ? 'bg-green-100 text-green-600' :
+                                text-xs font-semibold rounded-full
+                                ${project.project_status === 'completed' ? 'bg-green-100 text-green-600' :
                                                 project.project_status === 'ongoing' ? 'bg-blue-100 text-blue-600' :
                                                     'bg-yellow-100 text-yellow-600'}`}>
                                             {project.project_status.toUpperCase()}
@@ -388,11 +317,11 @@ export default async function CategoryPage({
             {/* ---------- CONNECT WITH A&T SECTION ---------- */}
             <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 text-center">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <h2 className="text-[28px] sm:text-[64px] leading-[70.4px] font-apfel2 
+                    <h2 className="text-[28px] sm:text-[64px] md:leading-[70.4px] font-apfel2 
                                  font-light text-[#2d3b40] mb-3 sm:mb-4 md:mb-6">
                         Connect with the <br />A&T Team
                     </h2>
-                    <p className="text-[15px] md:text-[20px] 
+                    <p className="text-[16px] md:text-[20px] 
                                  text-[#2d3b40]/80 leading-[30px] 
                                  max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl 
                                  mx-auto mb-6 sm:mb-8 md:mb-10 px-4 sm:px-0 font-neuhas">

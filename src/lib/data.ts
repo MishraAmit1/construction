@@ -1,6 +1,6 @@
 import type { ImagePlaceholder } from '@/lib/placeholder-images';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import heroimg from "../app/public/hero.png"
+import heroimg from "../app/assets/hero.png"
 import { Bolt, Leaf, Factory, Pickaxe, Shield, Atom } from "lucide-react";
 const getImage = (id: string): ImagePlaceholder => {
   const image = PlaceHolderImages.find((img) => img.id === id);
