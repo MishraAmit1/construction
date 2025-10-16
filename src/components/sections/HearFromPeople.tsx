@@ -116,7 +116,7 @@ export const HearFromPeople = () => {
     return (
         <section className="font-apfel2 py-24 bg-white overflow-hidden">
             <div className="container mx-auto px-6 sm:px-24">
-                <h2 className="text-4xl lg:text-6xl font-semibold text-center text-primary mb-20">
+                <h2 className="text-4xl lg:text-6xl text-center text-primary mb-20">
                     Hear From Our People
                 </h2>
 
@@ -125,10 +125,10 @@ export const HearFromPeople = () => {
                     <div className="space-y-6 text-gray-700">
                         <div className={`transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
                             <span className="block text-6xl text-red-600 mb-4 font-serif">"</span>
-                            <h3 className="text-3xl lg:text-4xl font-semibold leading-snug mb-6 text-gray-900">
+                            <h3 className="text-3xl lg:text-4xl font-semibold leading-snug mb-6 text-gray-900 font-apfel">
                                 {slide.quote}
                             </h3>
-                            <p className="text-lg leading-relaxed text-gray-600">
+                            <p className="text-lg leading-relaxed text-gray-600 font-neuhas">
                                 {slide.desc}
                             </p>
                         </div>
@@ -145,10 +145,10 @@ export const HearFromPeople = () => {
                                 />
                             </div>
                             <div>
-                                <p className="font-semibold text-gray-900 text-lg">
+                                <p className="font-semibold text-gray-900 text-lg font-apfel">
                                     {slide.name}
                                 </p>
-                                <p className="text-sm text-gray-500 uppercase tracking-wide">
+                                <p className="text-sm text-gray-500 uppercase tracking-wide font-neuhas">
                                     {slide.title}
                                 </p>
                             </div>

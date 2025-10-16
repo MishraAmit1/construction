@@ -16,6 +16,7 @@ const navItems = [
   { name: "Clients", href: "/admin/clients" },
   { name: "Contacts", href: "/admin/contacts" },
   { name: "Blogs", href: "/admin/blogs" },
+  { name: "Careers", href: "/admin/careers" },
   { name: "Settings", href: "/admin/settings" },
 ];
 
@@ -147,6 +148,7 @@ export default function AdminLayout({
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         onLogout={handleLogout}
+        user={user}
       />
 
       <div className="flex-1 flex flex-col overflow-hidden">

@@ -63,12 +63,12 @@ const navItems = [
     icon: FileText,
     description: "Blog Posts"
   },
-  // {
-  //   name: "Media",
-  //   href: "/admin/media",
-  //   icon: ImageIcon,
-  //   description: "Image Gallery"
-  // },
+  {
+    name: "Careers",
+    href: "/admin/careers",
+    icon: MessageSquare,
+    description: "Job Openings"
+  },
   // {
   //   name: "Analytics",
   //   href: "/admin/analytics",

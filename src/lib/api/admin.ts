@@ -508,3 +508,275 @@ export async function uploadBlogImage(file: File) {
 
     return { data: publicUrl, error: null }
 }
+
+// ============= CAREERS - DEPARTMENTS CRUD =============
+
+export async function getAllDepartments() {
+    const { data, error } = await supabase
+        .from('departments')
+        .select('*')
+        .order('created_at', { ascending: false })
+
+    if (error) {
+        console.error('Error fetching departments:', error)
+        return []
+    }
+
+    return data || []
+}
+
+export async function getDepartmentById(id: string) {
+    const { data, error } = await supabase
+        .from('departments')
+        .select('*')
+        .eq('id', id)
+        .single()
+
+    if (error) {
+        console.error('Error fetching department:', error)
+        return null
+    }
+
+    return data
+}
+
+export async function createDepartment(data: any) {
+    const { data: department, error } = await supabase
+        .from('departments')
+        .insert([data])
+        .select()
+        .single()
+
+    return { data: department, error }
+}
+
+export async function updateDepartment(id: string, data: any) {
+    const { data: department, error } = await supabase
+        .from('departments')
+        .update(data)
+        .eq('id', id)
+        .select()
+        .single()
+
+    return { data: department, error }
+}
+
+export async function deleteDepartment(id: string) {
+    // Check if department has jobs
+    const { data: jobs } = await supabase
+        .from('jobs')
+        .select('id')
+        .eq('department_id', id)
+        .limit(1)
+
+    if (jobs && jobs.length > 0) {
+        return { error: { message: 'Cannot delete department with existing jobs' } }
+    }
+
+    const { error } = await supabase
+        .from('departments')
+        .delete()
+        .eq('id', id)
+
+    return { error }
+}
+
+// ============= CAREERS - JOBS CRUD =============
+
+export async function getAllJobs() {
+    const { data, error } = await supabase
+        .from('jobs')
+        .select(`
+      *,
+      departments (
+        name,
+        description
+      )
+    `)
+        .order('posted_on', { ascending: false })
+
+    if (error) {
+        console.error('Error fetching jobs:', error)
+        return []
+    }
+
+    return data?.map(job => ({
+        ...job,
+        department_name: job.departments?.name,
+    })) || []
+}
+
+export async function getJobById(id: string) {
+    const { data, error } = await supabase
+        .from('jobs')
+        .select(`
+      *,
+      departments (
+        name,
+        description
+      )
+    `)
+        .eq('id', id)
+        .single()
+
+    if (error) {
+        console.error('Error fetching job:', error)
+        return null
+    }
+
+    return data
+}
+
+export async function createJob(data: any) {
+    const { data: job, error } = await supabase
+        .from('jobs')
+        .insert([data])
+        .select()
+        .single()
+
+    return { data: job, error }
+}
+
+export async function updateJob(id: string, data: any) {
+    const { data: job, error } = await supabase
+        .from('jobs')
+        .update(data)
+        .eq('id', id)
+        .select()
+        .single()
+
+    return { data: job, error }
+}
+
+// Add this new function for toggling job status
+export async function toggleJobStatus(id: string, isActive: boolean) {
+    const { data, error } = await supabase
+        .from('jobs')
+        .update({ is_active: !isActive })
+        .eq('id', id)
+        .select()
+        .single()
+
+    return { data, error }
+}
+
+// Update deleteJob function to NOT auto-delete applications
+export async function deleteJob(id: string) {
+    const { error } = await supabase
+        .from('jobs')
+        .delete()
+        .eq('id', id)
+
+    return { error }
+}
+
+// Add function to delete applications for a job
+export async function deleteJobApplications(jobId: string) {
+    const { error } = await supabase
+        .from('applications')
+        .delete()
+        .eq('job_id', jobId)
+
+    return { error }
+}
+
+// Add function to count applications for a job
+export async function getJobApplicationsCount(jobId: string) {
+    const { count, error } = await supabase
+        .from('applications')
+        .select('*', { count: 'exact', head: true })
+        .eq('job_id', jobId)
+
+    return { count: count || 0, error }
+}
+
+// ============= CAREERS - APPLICATIONS =============
+
+export async function getAllApplications() {
+    const { data, error } = await supabase
+        .from('applications')
+        .select(`
+      *,
+      jobs (
+        title,
+        location,
+        department_id,
+        departments (
+          name
+        )
+      )
+    `)
+        .order('applied_at', { ascending: false })
+
+    if (error) {
+        console.error('Error fetching applications:', error)
+        return []
+    }
+
+    return data?.map(app => ({
+        ...app,
+        job_title: app.jobs?.title,
+        job_location: app.jobs?.location,
+        department_name: app.jobs?.departments?.name,
+    })) || []
+}
+
+export async function getApplicationById(id: string) {
+    const { data, error } = await supabase
+        .from('applications')
+        .select(`
+      *,
+      jobs (
+        title,
+        location,
+        employment_type,
+        departments (
+          name
+        )
+      )
+    `)
+        .eq('id', id)
+        .single()
+
+    if (error) {
+        console.error('Error fetching application:', error)
+        return null
+    }
+
+    return data
+}
+
+export async function deleteApplication(id: string) {
+    const { error } = await supabase
+        .from('applications')
+        .delete()
+        .eq('id', id)
+
+    return { error }
+}
+
+// ⭐ Upload resume to storage
+export async function uploadResume(file: File) {
+    const fileExt = file.name.split('.').pop()
+    const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`
+    const filePath = `resumes/${fileName}`
+
+    const { data, error } = await supabase.storage
+        .from('project-images') // Use existing bucket
+        .upload(filePath, file, {
+            cacheControl: '3600',
+            upsert: false
+        })
+
+    if (error) {
+        console.error('Error uploading resume:', error)
+        return { error }
+    }
+
+    // Get public URL
+    const { data: { publicUrl } } = supabase.storage
+        .from('project-images')
+        .getPublicUrl(filePath)
+
+    return { data: publicUrl, error: null }
+}
