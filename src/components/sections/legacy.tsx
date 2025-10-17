@@ -63,7 +63,7 @@ export function Legacy() {
             {/* Button */}
             <div className="mt-10 sm:mt-12 md:-ml-8">
               <Link
-                href="/about"
+                href="/approach"
                 className="group relative inline-flex items-center justify-center overflow-hidden rounded-full
                            px-5 sm:px-6 md:px-8 py-2 text-sm sm:text-base font-semibold text-red-600
                            transition-all duration-500 ease-out min-h-[44px] sm:min-h-[48px] font-neuhas"

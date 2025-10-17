@@ -171,7 +171,7 @@ export default function ApproachPage() {
             </section>
 
             {/* SAFETY SECTION - Responsive */}
-            <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
+            <section id="safety" className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[500px]">
@@ -273,7 +273,7 @@ export default function ApproachPage() {
             </section>
 
             {/* QUALITY - Responsive */}
-            <section className="mt-16 sm:mt-24 md:mt-32 lg:mt-40 mb-10 px-4 sm:px-6 md:px-8">
+            <section id="quality" className="mt-16 sm:mt-24 md:mt-32 lg:mt-40 mb-10 px-4 sm:px-6 md:px-8">
                 {/* Responsive grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center gap-8 md:gap-12">
                     {/* LEFT TEXT - Responsive */}
@@ -322,7 +322,7 @@ export default function ApproachPage() {
             </section>
 
             {/* ETHICS - Responsive */}
-            <section className="mb-10 sm:mb-14 md:mb-20 px-4 sm:px-6 md:px-8">
+            <section id="ethics" className="mb-10 sm:mb-14 md:mb-20 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px]">

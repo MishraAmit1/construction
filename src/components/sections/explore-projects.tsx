@@ -37,7 +37,7 @@ export default function ExploreProjects() {
                 {/* Responsive button */}
                 <div className="mt-8 sm:mt-10 md:mt-12 flex justify-center sm:justify-start -ml-5">
                     <Link
-                        href="/about"
+                        href="/approach"
                         className={cn(
                             'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
                             'px-4 sm:px-5 md:px-6 py-2 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out',

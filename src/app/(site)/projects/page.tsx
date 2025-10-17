@@ -7,7 +7,6 @@ import { getCategories } from '@/lib/api/categories';
 import { getProjectsWithCategory } from '@/lib/api/projects';
 
 export default async function ProjectsPage() {
-  // Database se data fetch karo
   const categories = await getCategories();
   const projects = await getProjectsWithCategory();
 
@@ -17,11 +16,19 @@ export default async function ProjectsPage() {
         <ProjectsHeader />
         <ProjectsSearchBar />
         <ExploreProjects />
-        <MarketsExplorer
-          categories={categories}
-          projects={projects}
-        />
-        <WhereWeWork />
+
+        {/* Add ID for Markets section */}
+        <div id="markets-section">
+          <MarketsExplorer
+            categories={categories}
+            projects={projects}
+          />
+        </div>
+
+        {/* Add ID for Regions section */}
+        <div id="regions-section">
+          <WhereWeWork />
+        </div>
       </div>
     </>
   );
