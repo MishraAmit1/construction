@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logo from "../../app/assets/logo_design_f__2_-removebg-preview.png";
 import logo1 from "../../app/assets/logo-removebg-preview (3).png";
+import { CtaButton } from "@/app/(site)/slavery-statement/page";
 
 const mainNavLinks = [
-  { name: "HOME", href: "/" },
   { name: "PROJECTS", href: "/projects" },
+  { name: "SERVICES", href: "/services" },
   { name: "APPROACH", href: "/approach" },
   { name: "BLOG", href: "/blog" },
   { name: "CAREERS", href: "/careers" },
@@ -293,7 +294,7 @@ export function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-8">
-            <nav className="flex items-center gap-6 xl:gap-12">
+            <nav className="flex items-center gap-6 xl:gap-12 font-neuhas">
               {mainNavLinks.map((link) => {
                 const isMega = megaEnabled.has(link.name);
                 return (
@@ -314,7 +315,7 @@ export function Header() {
                     onClick={() => {
                       if (!isMega) setActiveMega(null);
                     }}
-                    className={`text-[13px] lg:text-sm xl:text-[15px] font-semibold tracking-wider transition-colors ${shouldHaveBackground ? "text-[#30454c] hover:text-foreground" : "text-white/90 hover:text-white"
+                    className={`text-[13px] lg:text-sm xl:text-[15px] tracking-wider transition-colors ${shouldHaveBackground ? "text-[#30454c] hover:text-foreground" : "text-white/90 hover:text-white"
                       }`}
                   >
                     {link.name}
@@ -359,7 +360,7 @@ export function Header() {
           <div className="h-16 sm:h-18 md:h-20" />
           <div className="h-1 bg-red-600" />
           <nav className="px-4 py-6 sm:px-6 sm:py-8 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <div className="space-y-1">
+            <div className="space-y-1 font-neuhas">
               {/* Regular Links */}
               <Link
                 href="/"
@@ -564,12 +565,11 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
         <p className="mt-4 text-gray-600 leading-[21px] font-light font-neuhas">
           Scale. Complexity. Impact. Purpose. We deliver challenging projects that elevate standards of living, drive prosperity, and support sustainable growth across the globe — from clean, efficient transportation and sustainable energy to advanced manufacturing, critical minerals, national security infrastructure, and more.
         </p>
-        <Link href="/projects" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
-            <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
-          </span>
-          <span className="text-red-600 text-xl font-semibold group-hover:underline font-apfel2">Dig Deeper</span>
-        </Link>
+
+        <CtaButton href="/projects" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
+          View Document
+        </CtaButton>
+
 
         <div className="mt-10 pt-6 border-t">
           <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">Additional Information</div>
@@ -663,13 +663,10 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
         <p className="mt-4 text-gray-600 leading-7 font-neuhas">
           We know that how we deliver is just as important as what we deliver. We're committed to operating safely, ethically, and sustainably across everything we do.
         </p>
-        <Link href="/approach" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
-            <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
-          </span>
-          <span className="text-red-600 text-xl font-semibold group-hover:underline font-apfel2">How We Deliver</span>
-        </Link>
 
+        <CtaButton href="/approach" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
+          How we deliver
+        </CtaButton>
         <div className="mt-10 pt-6 border-t">
           <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">What We Do</div>
           <div className="mt-4 space-y-5">
@@ -716,12 +713,10 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
         <p className="mt-4 text-gray-600 leading-7 font-neuhas">
           As a global company known for generation-defining projects, we offer unparalleled learning and growth. From engineers to skilled craft professionals — make your mark on the world.
         </p>
-        <Link href="/careers" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white">
-            <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
-          </span>
-          <span className="text-red-600 text-xl font-semibold group-hover:underline font-apfel2">Join Our Team</span>
-        </Link>
+
+        <CtaButton href="/careers" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
+          Join our Team
+        </CtaButton>
       </div>
 
       {/* Right */}

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 
-function CtaButton({
+export function CtaButton({
     href,
     children,
     variant = "default"
@@ -22,9 +22,9 @@ function CtaButton({
     return (
         <Link
             href={href}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full
-                 px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out
-                 min-h-[44px] sm:min-h-[48px] md:min-h-[56px]"
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full mt-3
+                 px-4 sm:px-5 md:px-4 py-2 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out
+                 min-h-[40px] sm:min-h-[48px]"
         >
             <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
             <span className="relative z-10 flex items-center">

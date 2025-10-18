@@ -317,6 +317,7 @@ export const projects = [
 export const services = [
   {
     id: 1,
+    slug: 'commissioning-startup', // ADD THIS
     title: 'Commissioning and Startup',
     description:
       'Our experts are skilled in systems engineering, process controls and instrumentation, high-voltage electrical generation and transmission, water chemistry and wastewater treatment process operations, and systems integration. We perform plant operability reviews, test-program development, facility startup and commissioning, procedure development, operations and maintenance training, turnkey commissioning, facility operations, facility outage support, facility inspections, and process safety management.',
@@ -324,27 +325,31 @@ export const services = [
   },
   {
     id: 2,
+    slug: 'site-operations', // ADD THIS
     title: 'Site Operations',
     description:
-      'The keys to our successful site operations and management approach are partnership, integration, and communication. Successful partnering ensures all parties understand each other’s interests, objectives, and expectations. We incorporate the interests of all stakeholders to deliver work efficiently and cost-effectively while maintaining clear communication and alignment across teams.',
+      'The keys to our successful site operations and management approach are partnership, integration, and communication. Successful partnering ensures all parties understand each other\'s interests, objectives, and expectations. We incorporate the interests of all stakeholders to deliver work efficiently and cost-effectively while maintaining clear communication and alignment across teams.',
     image: 'https://www.bechtel.com/wp-content/uploads/2025/01/site-operations.webp',
   },
   {
     id: 3,
+    slug: 'water-services', // ADD THIS
     title: 'Water Services',
     description:
-      'Our teams manage the complexities and interface risks in large desalination projects and related infrastructure. We evaluate all available technologies, considering impact on operations, energy use, uptime, maintenance, and replacement cycles to deliver cost-efficient, reliable solutions tailored to the owner’s needs.',
-    image: 'https://www.bechtel.com/wp-content/uploads/2025/01/water-services.webp',
+      "Our teams manage the complexities and interface risks in large desalination projects and related infrastructure. We evaluate all available technologies, considering impact on operations, energy use, uptime, maintenance, and replacement cycles to deliver cost-efficient, reliable solutions tailored to the owner's needs.",
+    image: 'https://www.bechtel.com/wp-content/uploads/2025/01/water-services.webp'
   },
   {
     id: 4,
+    slug: 'civil-site-works', // ADD THIS
     title: 'Civil Site Works',
     description:
-      'Our teams bring extensive experience executing site works on the world’s largest and most complex public infrastructure and industrial projects. This includes clearing, surveying, soil testing, piling, excavation, grading, drainage, concrete works, roadway design and construction, and underground utilities. We integrate site works and construction seamlessly to optimize cost and schedule.',
+      "Our teams bring extensive experience executing site works on the world's largest and most complex public infrastructure and industrial projects. This includes clearing, surveying, soil testing, piling, excavation, grading, drainage, concrete works, roadway design and construction, and underground utilities. We integrate site works and construction seamlessly to optimize cost and schedule.",
     image: 'https://www.bechtel.com/wp-content/uploads/2025/01/civil-site-works.webp',
   },
   {
     id: 5,
+    slug: 'energy-transition', // ADD THIS
     title: 'Energy Transition',
     description:
       'The energy transition is one of the most significant global shifts in modern history. We collaborate with customers worldwide to develop and deploy resources, fuels, technologies, and infrastructure enabling a cleaner, less carbon-intensive energy future.',
@@ -352,6 +357,7 @@ export const services = [
   },
   {
     id: 6,
+    slug: 'digital-tools', // ADD THIS
     title: 'Digital Tools',
     description:
       'Our teams use proprietary digital technologies — including data-driven automation, survey robots, drones, and machine-controlled equipment — to boost operational efficiency and team collaboration. Our digital execution hub enables 100% digital delivery, collecting real-time field data and transforming it into interactive, map-based visualizations.',

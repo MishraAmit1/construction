@@ -4,38 +4,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowRightCircle, ArrowUpRight, MapPin } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { services } from "@/lib/data";
-import { cn } from "@/lib/utils";
-
-function CtaButton({
-    href,
-    children,
-}: {
-    href: string;
-    children: React.ReactNode;
-}) {
-    return (
-        <Link
-            href={href}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full
-                 px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out
-                 min-h-[44px] sm:min-h-[48px] md:min-h-[56px]"
-        >
-            <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-            <span className="relative z-10 flex items-center">
-                <span
-                    className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
-                         group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10"
-                >
-                    <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
-                </span>
-                <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
-                    {children}
-                </span>
-                <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 opacity-0 rotate-45 transition-all duration-500 group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
-            </span>
-        </Link>
-    );
-}
+import { CtaButton } from "@/app/(site)/slavery-statement/page";
 
 export default function ServicesPage() {
     const [visibleCount, setVisibleCount] = useState(3);
@@ -191,6 +160,11 @@ export default function ServicesPage() {
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
                                 Innovation and technology are at the core of what we do. From advanced 3D, 4D, and 5D modeling to data-centric execution and cloud-based systems, our engineers leverage cutting-edge tools to streamline schedules, reduce costs, and maximize productivity. By working collaboratively in virtual environments across the globe, Bechtel ensures our customers receive solutions that often set new industry standards.
                             </p>
+                        </div>
+                        <div className="mt-6">
+                            <CtaButton href="/services/engineering">
+                                Learn More About Engineering
+                            </CtaButton>
                         </div>
                     </div>
                 </div>
@@ -513,12 +487,14 @@ export default function ServicesPage() {
                     >
                         <div className="flex gap-6 sm:gap-8 md:gap-10 pb-4 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]">
                             {services.map((service) => (
-                                <div
+                                <Link
+
+                                    href={`/services/${service.slug}`}
                                     key={service.id}
                                     className="group relative flex-shrink-0 w-[90vw] sm:w-[48%] lg:w-[32%]
                        h-[420px] sm:h-[480px] lg:h-[520px]
                        rounded-lg overflow-hidden shadow-md hover:shadow-xl
-                       transform transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
+                       transform transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] cursor-pointer block"
                                 >
                                     {/* Background Image */}
                                     <img
@@ -592,7 +568,7 @@ export default function ServicesPage() {
                                             </svg>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -654,15 +630,7 @@ export default function ServicesPage() {
                                  mx-auto mb-6 sm:mb-8 md:mb-10 px-4 sm:px-0 font-neuhas">
                         Whether you’re seeking a partner for a project, have a media inquiry, or are interested in a job opportunity, you can reach out to our Bechtel colleagues around the world for direct support. Our team is ready to assist and provide the expertise you need.
                     </p>
-                    <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 px-4 sm:px-5 md:px-6 py-2 sm:py-3 
-                                 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors
-                                 text-sm sm:text-base min-h-[40px] sm:min-h-[44px] md:min-h-[48px]"
-                    >
-                        <ArrowRightCircle className="h-4 w-4 sm:h-5 sm:w-5" />
-                        Contact Us
-                    </Link>
+                    <CtaButton href="/contact">Contact Us</CtaButton>
                 </div>
             </section>
         </>

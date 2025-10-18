@@ -183,47 +183,93 @@ export default function MarketsExplorer({
             window.removeEventListener("resize", checkMobileHeaders);
         };
     }, [markets]);
-
     useEffect(() => {
         function updateActive() {
-            const barBottom = filterBarRef.current?.getBoundingClientRect().bottom || 0;
-            const lineY = barBottom + 16;
+            // Get viewport height and account for sticky header
+            const viewportHeight = window.innerHeight;
+            const stickyHeaderOffset = 100; // Adjust based on your sticky header height
 
-            let bestKey: MarketKey | null = null;
-            let closest = Infinity;
+            // First check if current selected market is still visible
+            if (selectedMarket) {
+                const currentEl = sectionRefs.current[selectedMarket];
+                if (currentEl) {
+                    const rect = currentEl.getBoundingClientRect();
+
+                    // Check if ANY part of current section is still visible
+                    // Section is visible if bottom is below sticky header AND top is below viewport bottom
+                    const isStillVisible = rect.bottom > stickyHeaderOffset && rect.top < viewportHeight;
+
+                    if (isStillVisible) {
+                        // Current section is still visible, don't change
+                        return;
+                    }
+                }
+            }
+
+            // Current section is not visible anymore, find the next visible one
+            const visibleSections: { key: MarketKey; visiblePercentage: number; rect: DOMRect }[] = [];
 
             markets.forEach((m) => {
                 const el = sectionRefs.current[m.key];
                 if (!el) return;
-                const rect = el.getBoundingClientRect();
-                const top = rect.top;
-                const bottom = rect.bottom;
 
-                if (top <= lineY && bottom >= lineY) bestKey = m.key;
-                else {
-                    const dist = Math.abs(top - lineY);
-                    if (dist < closest) {
-                        closest = dist;
-                        bestKey = m.key;
-                    }
+                const rect = el.getBoundingClientRect();
+
+                // Section is visible if it overlaps with viewport
+                const isVisible = rect.bottom > stickyHeaderOffset && rect.top < viewportHeight;
+
+                if (isVisible) {
+                    const top = Math.max(stickyHeaderOffset, rect.top);
+                    const bottom = Math.min(viewportHeight, rect.bottom);
+                    const visibleHeight = Math.max(0, bottom - top);
+                    const sectionHeight = rect.height;
+                    const visiblePercentage = (visibleHeight / Math.min(sectionHeight, viewportHeight - stickyHeaderOffset)) * 100;
+
+                    visibleSections.push({ key: m.key, visiblePercentage, rect });
                 }
             });
 
-            if (bestKey && bestKey !== selectedMarket) setSelectedMarket(bestKey);
+            if (visibleSections.length > 0) {
+                // Pick the section that's most prominent in the viewport
+                // Prioritize sections that start near the top of viewport
+                const bestSection = visibleSections.reduce((best, current) => {
+                    // If a section starts at or above the sticky header area, prefer it
+                    if (current.rect.top <= stickyHeaderOffset + 50 && best.rect.top > stickyHeaderOffset + 50) {
+                        return current;
+                    }
+                    if (best.rect.top <= stickyHeaderOffset + 50 && current.rect.top > stickyHeaderOffset + 50) {
+                        return best;
+                    }
+
+                    // Otherwise pick the one with more visible percentage
+                    return current.visiblePercentage > best.visiblePercentage ? current : best;
+                }, visibleSections[0]);
+
+                if (bestSection.key !== selectedMarket) {
+                    setSelectedMarket(bestSection.key);
+                }
+            }
         }
 
-        window.addEventListener("scroll", updateActive, { passive: true });
+        // Debounce the scroll event for better performance
+        let scrollTimeout: NodeJS.Timeout;
+        const debouncedUpdateActive = () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateActive, 50);
+        };
+
+        window.addEventListener("scroll", debouncedUpdateActive, { passive: true });
         window.addEventListener("resize", updateActive);
 
         setTimeout(updateActive, 100);
         requestAnimationFrame(updateActive);
 
         return () => {
-            window.removeEventListener("scroll", updateActive);
+            window.removeEventListener("scroll", debouncedUpdateActive);
             window.removeEventListener("resize", updateActive);
+            clearTimeout(scrollTimeout);
         };
     }, [markets, selectedMarket]);
-
     if (markets.length === 0) {
         return (
             <section className="py-20">
