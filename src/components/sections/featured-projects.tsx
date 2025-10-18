@@ -13,11 +13,11 @@ export function FeaturedProjects() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [itemsPerView, setItemsPerView] = useState(3);
 
-  // 🧠 Fetch dynamic projects from backend
+  // 🧠 Fetch dynamic projects from backend - LIMIT SET TO 9
   useEffect(() => {
     const fetchProjects = async () => {
       setLoading(true);
-      const data = await getFeaturedProjects(6); // <-- adjust limit if you want
+      const data = await getFeaturedProjects(9); // 🔥 MAXIMUM 9 LATEST PROJECTS
       setProjects(data || []);
       setLoading(false);
     };
@@ -76,17 +76,17 @@ export function FeaturedProjects() {
                    leading-[1.05] [text-wrap:balance]
                    text-[clamp(1.75rem,4vw,3rem)] mb-4 sm:mb-5"
           >
-            Featured Projects
+            Featured Projects
           </h2>
         </div>
 
         {loading ? (
-          <div className="text-center text-gray-500 py-12">Loading projects…</div>
+          <div className="text-center text-gray-500 py-12">Loading projects…</div>
         ) : projects.length === 0 ? (
-          <div className="text-center text-gray-500 py-12">No featured projects found.</div>
+          <div className="text-center text-gray-500 py-12">No featured projects found.</div>
         ) : (
           <>
-            {/* Scrollable Container */}
+            {/* Scrollable Container */}
             <div
               ref={scrollRef}
               className="w-full overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-gray-200
@@ -143,7 +143,7 @@ export function FeaturedProjects() {
                           </p>
                         </div>
 
-                        {/* Circle icon ‑ floated bit lower */}
+                        {/* Circle icon ‑ floated bit lower */}
                         <div className="mt-5 sm:mt-6 flex justify-end">
                           <div
                             className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 
@@ -191,7 +191,7 @@ export function FeaturedProjects() {
               </button>
 
               <span className="text-red-600 font-semibold text-sm sm:text-base">
-                {currentIndex} – {Math.min(currentIndex + itemsPerView - 1, totalItems)} of {totalItems}
+                {currentIndex} – {Math.min(currentIndex + itemsPerView - 1, totalItems)} of {totalItems}
               </span>
 
               <button
