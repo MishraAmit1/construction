@@ -386,7 +386,6 @@ export default function DepartmentJobsPage({ params }: { params: Promise<{ id: s
                                             )}
                                         </div>
                                     </div>
-
                                     {/* Actions */}
                                     <div className="flex gap-3">
                                         <Link
@@ -394,12 +393,6 @@ export default function DepartmentJobsPage({ params }: { params: Promise<{ id: s
                                             className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-neuhas font-semibold"
                                         >
                                             View Details
-                                        </Link>
-                                        <Link
-                                            href={`/careers/job/${job.id}#apply`}
-                                            className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-neuhas font-semibold"
-                                        >
-                                            Apply Now
                                         </Link>
                                     </div>
                                 </div>
