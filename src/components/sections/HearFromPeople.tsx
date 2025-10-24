@@ -9,14 +9,14 @@ export const HearFromPeople = () => {
         {
             id: 1,
             quote: 'What sets us apart is amazingly diverse teams.',
-            desc: 'Apart from the incredible projects we do, what really sets us apart are the amazingly diverse teams we have at Bechtel. In India, we call it unity in diversity—and that fits Bechtel perfectly. Diverse colleagues worldwide come together through our shared Bechtel culture.',
+            desc: 'Apart from the incredible projects we do, what really sets us apart are the amazingly diverse teams we have at A&T. In India, we call it unity in diversity—and that fits A&T perfectly. Diverse colleagues worldwide come together through our shared A&T culture.',
             name: 'Tara Pillai',
             title: 'PROJECT MANAGER',
             image: 'https://www.bechtel.com/wp-content/uploads/2025/01/video-capture-80.43seg-7442.webp'
         },
         {
             id: 2,
-            quote: 'Learning never stops at Bechtel.',
+            quote: 'Learning never stops at A&T.',
             desc: 'Continuous learning is embedded in everything we do. With mentorship, training, and opportunities across disciplines, every day is a step forward in personal and professional growth.',
             name: 'Luis Fernandez',
             title: 'ENGINEERING LEAD',

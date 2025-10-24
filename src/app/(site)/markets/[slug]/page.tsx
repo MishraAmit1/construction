@@ -154,12 +154,12 @@ export default async function CategoryPage({
                         <div className="space-y-4 sm:space-y-6 md:space-y-8 mx-0 lg:-ml-[calc(2vw)] xl:-ml-[calc(4vw)] p-0">
                             {/* Top Large Image */}
                             {category.hero_image_1 && (
-                                <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] rounded-md sm:rounded-none overflow-hidden">
+                                <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden">
                                     <Image
                                         src={category.hero_image_1}
                                         alt={category.hero_image_1_alt || category.category_name}
                                         fill
-                                        className="object-cover rounded-lg "
+                                        className="object-cover"
                                         sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                 </div>

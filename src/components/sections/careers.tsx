@@ -25,6 +25,9 @@ import {
   type Department,
   type Job
 } from '@/lib/api/careers';
+import careers1 from "../../app/assets/Careers1.png"
+import careers2 from "../../app/assets/Careers2.jpg"
+import careers3 from "../../app/assets/Careers3.jpg"
 
 export function Careers() {
   const [departments, setDepartments] = useState<Department[]>([]);
@@ -38,7 +41,7 @@ export function Careers() {
   const [itemsPerView, setItemsPerView] = useState(3);
   const totalItems = projects.length;
 
-  // For Life at Bechtel cards
+  // For Life at A&T cards
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   useEffect(() => {
@@ -110,42 +113,42 @@ export function Careers() {
     }
   }, []);
 
-  // Life at Bechtel cards data
+  // Life at A&T cards data
   const cardsData = [
     {
       id: 1,
       title: 'Benefits & Perks',
       image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80',
       shortDesc: 'Comprehensive health, retirement, and wellness programs for you and your family.',
-      description: 'The health and well-being of our colleagues and their families is our top priority. The benefits we offer vary from country to country, based on local practices, customs, and statutory conditions, but may include competitive compensation, medical benefits, retirement plans, life insurance, and paid time off. As a Bechtel colleague, you also have access to a number of professional development opportunities, including virtual courses through Bechtel University.'
+      description: 'The health and well-being of our colleagues and their families is our top priority. The benefits we offer vary from country to country, based on local practices, customs, and statutory conditions, but may include competitive compensation, medical benefits, retirement plans, life insurance, and paid time off. As a A&T colleague, you also have access to a number of professional development opportunities, including virtual courses through A&T University.'
     },
     {
       id: 2,
       title: 'Business Resource Groups',
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
       shortDesc: 'Employee-led communities fostering diversity and inclusive workplace culture.',
-      description: 'Our Business Resource Groups (BRGs) are voluntary, employee-led communities that foster a diverse and inclusive workplace. These groups provide networking, mentoring, and professional development opportunities while supporting Bechtel\'s business objectives. Join colleagues who share common interests and backgrounds to make a meaningful impact.'
+      description: 'Our Business Resource Groups (BRGs) are voluntary, employee-led communities that foster a diverse and inclusive workplace. These groups provide networking, mentoring, and professional development opportunities while supporting A&T\'s business objectives. Join colleagues who share common interests and backgrounds to make a meaningful impact.'
     },
     {
       id: 3,
       title: 'Veterans Programs',
       image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80',
       shortDesc: 'Dedicated support and career paths for military veterans and families.',
-      description: 'We are committed to supporting veterans and their families through dedicated programs and career opportunities. Our Veterans Program helps transitioning service members find meaningful careers at Bechtel, leveraging their unique skills and leadership experience gained in military service.'
+      description: 'We are committed to supporting veterans and their families through dedicated programs and career opportunities. Our Veterans Program helps transitioning service members find meaningful careers at A&T, leveraging their unique skills and leadership experience gained in military service.'
     },
     {
       id: 4,
       title: 'Early Career Programs',
       image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',
       shortDesc: 'Internships, apprenticeships, and graduate programs to launch your career.',
-      description: 'Launch your career with Bechtel through our internships, apprenticeships, and graduate programs. We provide hands-on experience, mentorship, and training to help you develop the skills needed for a successful career in engineering and construction.'
+      description: 'Launch your career with A&T through our internships, apprenticeships, and graduate programs. We provide hands-on experience, mentorship, and training to help you develop the skills needed for a successful career in engineering and construction.'
     },
     {
       id: 5,
       title: 'Learning & Development',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-      shortDesc: 'Continuous learning through Bechtel University and training programs.',
-      description: 'Continuous learning is at the heart of our culture. Through Bechtel University and various training programs, we invest in your growth with technical courses, leadership development, and certification opportunities to help you advance your career.'
+      shortDesc: 'Continuous learning through A&T University and training programs.',
+      description: 'Continuous learning is at the heart of our culture. Through A&T University and various training programs, we invest in your growth with technical courses, leadership development, and certification opportunities to help you advance your career.'
     },
     {
       id: 6,
@@ -213,7 +216,7 @@ export function Careers() {
         </div>
       </div>
 
-      {/* WHY BECHTEL SECTION */}
+      {/* WHY A&T SECTION */}
       <section id="why-ant" className="bg-white py-10 sm:py-14 md:py-20">
         <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-0 items-center">
@@ -221,7 +224,8 @@ export function Careers() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
-                    src="https://www.bechtel.com/wp-content/uploads/2025/01/PA2354399-portrait-180-1-400x400.webp"
+                    src={careers1}
+
                     alt="Industrial equipment"
                     fill
                     className="object-cover"
@@ -229,7 +233,8 @@ export function Careers() {
                 </div>
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
-                    src="https://www.bechtel.com/wp-content/uploads/2025/01/PA2049639_299-400x400.webp"
+                    src={careers2}
+
                     alt="LNG storage facility"
                     fill
                     className="object-cover"
@@ -238,7 +243,7 @@ export function Careers() {
               </div>
               <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-md">
                 <Image
-                  src="https://www.bechtel.com/wp-content/uploads/2025/01/RL1_2079-900x600.webp"
+                  src={careers3}
                   alt="LNG facility construction"
                   fill
                   className="object-cover"
@@ -247,12 +252,12 @@ export function Careers() {
             </div>
             <div className="lg:pl-8 xl:pl-12 pl-5 py-4 sm:py-6 md:py-8 order-1 md:pr-8">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-900 mb-6 sm:mb-8 md:mb-12">
-                Why Bechtel?
+                Why A&T?
               </h2>
 
               <div className="space-y-4 sm:space-y-5 md:space-y-6 text-gray-700 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas">
                 <p>
-                  At Bechtel, we are committed to fostering an inclusive culture where every
+                  At A&T, we are committed to fostering an inclusive culture where every
                   individual feels a profound sense of belonging and value. Rigorous safety
                   measures and comprehensive benefits support our people in achieving exceptional results with confidence.
                 </p>
@@ -407,11 +412,11 @@ export function Careers() {
         </div>
       </section>
 
-      {/* LIFE AT BECHTEL SECTION */}
+      {/* LIFE AT A&T SECTION */}
       <div id="life-at-ant" className="mb-8 sm:mb-12 md:mb-16 mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight">
-            Life at Bechtel
+            Life at A&T
           </h2>
 
           <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-[#30454c] max-w-full lg:max-w-2xl lg:ml-auto">
@@ -518,16 +523,16 @@ export function Careers() {
       <section className="bg-white py-10 sm:py-14 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 text-gray-700 border-t border-gray-100 overflow-hidden">
         <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto space-y-6 sm:space-y-8 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed">
           <p className="italic break-words font-neuhas">
-            <strong>Bechtel</strong> is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity and expression, age, national origin, disability, citizenship status (except as authorized by law), protected veteran status, genetic information, and any other characteristic protected by federal, state or local law.
+            <strong>A&T</strong> is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity and expression, age, national origin, disability, citizenship status (except as authorized by law), protected veteran status, genetic information, and any other characteristic protected by federal, state or local law.
           </p>
 
           <p className="italic break-words font-neuhas">
             Applicants with a disability who require a reasonable accommodation for any part of the application or hiring process may email their request to{' '}
             <Link
-              href="mailto:accesstmt@bechtel.com"
+              href="mailto:ant@gmail.com"
               className="text-red-600 underline hover:no-underline break-all"
             >
-              accesstmt@bechtel.com
+              ant@gmail.com
             </Link>
             {' '}for assistance. Determinations on requests for reasonable accommodation will be made on a case‑by‑case basis.
           </p>
@@ -541,7 +546,7 @@ export function Careers() {
                   Job Fraud Alert
                 </h3>
                 <p className="text-gray-700 max-w-full sm:max-w-lg md:max-w-2xl transition-all duration-500 group-hover:text-white/90 break-words text-sm sm:text-base font-neuhas">
-                  If you're interested in joining our team, please only correspond with legitimate Bechtel communications to ensure your information is safe and secure.
+                  If you're interested in joining our team, please only correspond with legitimate A&T communications to ensure your information is safe and secure.
                 </p>
               </div>
 
