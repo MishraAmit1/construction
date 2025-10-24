@@ -117,7 +117,7 @@ export default function ServicesPage() {
                     </h2>
                     <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4 text-start">
                         <p className="text-[15px] sm:text-[16px] md:text-[21px] font-neuhas text-[#30454c] leading-relaxed">
-                            Throughout our history, Bechtel has continuously evolved — innovating, adapting, and setting standards of excellence as we apply our unique capabilities to deliver our customers’ most critical and complex projects.
+                            Throughout our history, A&T has continuously evolved — innovating, adapting, and setting standards of excellence as we apply our unique capabilities to deliver our customers’ most critical and complex projects.
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[21px] font-neuhas text-[#30454c] leading-relaxed">
                             More than ever before, we are integrating services across our diverse business lines to deliver comprehensive and innovative solutions tailored specifically to our customers’ needs. By collaborating early in project development, we explore all technical, commercial, and financial options to identify the best solutions, reduce complexities, and streamline delivery.
@@ -155,10 +155,10 @@ export default function ServicesPage() {
                         </h2>
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Bechtel’s engineering services are the foundation of our project success, delivering innovative, technology-driven solutions to tackle our customers’ toughest challenges. With industry-leading expertise and a commitment to continuous learning, our engineers design with supply chain, construction, and operations in mind — ensuring projects are delivered efficiently and with unmatched quality. Programs like Bechtel Fellows and Distinguished Technical Specialists enable our teams to collaborate across markets and push the boundaries of technical excellence.
+                                A&T’s engineering services are the foundation of our project success, delivering innovative, technology-driven solutions to tackle our customers’ toughest challenges. With industry-leading expertise and a commitment to continuous learning, our engineers design with supply chain, construction, and operations in mind — ensuring projects are delivered efficiently and with unmatched quality. Programs like A&T Fellows and Distinguished Technical Specialists enable our teams to collaborate across markets and push the boundaries of technical excellence.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Innovation and technology are at the core of what we do. From advanced 3D, 4D, and 5D modeling to data-centric execution and cloud-based systems, our engineers leverage cutting-edge tools to streamline schedules, reduce costs, and maximize productivity. By working collaboratively in virtual environments across the globe, Bechtel ensures our customers receive solutions that often set new industry standards.
+                                Innovation and technology are at the core of what we do. From advanced 3D, 4D, and 5D modeling to data-centric execution and cloud-based systems, our engineers leverage cutting-edge tools to streamline schedules, reduce costs, and maximize productivity. By working collaboratively in virtual environments across the globe, A&T ensures our customers receive solutions that often set new industry standards.
                             </p>
                         </div>
                         <div className="mt-6">
@@ -175,7 +175,7 @@ export default function ServicesPage() {
                     <div className="flex items-center ">
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                The Riyadh Metro project — the largest metro project in the world to be built in a single phase — is pushing the limits of what's possible, setting new standards in scale, innovation, and precision. At peak construction, over 28,000 professionals worked onsite, moving massive quantities of materials, including enough earthworks to build the Great Pyramid of Giza more than seven times over. Our engineers in Bechtel design centers worldwide — including Taiwan, Dubai, and New Delhi — helped produce over 98,000 design drawings and 100 mock-ups. The system's doors alone required more than 10,000 unique designs, complete with customized signage and specifications. Operators received more than 120,000 as-built drawings and documentation from tens of thousands of lab tests, verifying compliance with nearly 700 material criteria.
+                                The Riyadh Metro project — the largest metro project in the world to be built in a single phase — is pushing the limits of what's possible, setting new standards in scale, innovation, and precision. At peak construction, over 28,000 professionals worked onsite, moving massive quantities of materials, including enough earthworks to build the Great Pyramid of Giza more than seven times over. Our engineers in A&T design centers worldwide — including Taiwan, Dubai, and New Delhi — helped produce over 98,000 design drawings and 100 mock-ups. The system's doors alone required more than 10,000 unique designs, complete with customized signage and specifications. Operators received more than 120,000 as-built drawings and documentation from tens of thousands of lab tests, verifying compliance with nearly 700 material criteria.
                             </p>
                             <div className="mt-6">
                                 <CtaButton href="/projects/riyadh-metro">
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                                 Our supply chain is complex and geographically vast, represented by thousands of supplier and contractor partnerships. We work with over 7,000 suppliers in 70 countries, handling more than 50,000 transactions annually. We also work with many local and small businesses, strengthening local communities.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                We support Bechtel’s business priorities and its projects through this network of global suppliers, supported by local and regionally positioned Supply Chain professionals of diverse experience and capability. Our supply chain is anchored on a platform of best-in-class processes and tools. We deliver on our vision of being industry’s choice in providing supply chain services.
+                                We support A&T’s business priorities and its projects through this network of global suppliers, supported by local and regionally positioned Supply Chain professionals of diverse experience and capability. Our supply chain is anchored on a platform of best-in-class processes and tools. We deliver on our vision of being industry’s choice in providing supply chain services.
                             </p>
                         </div>
                     </div>
@@ -260,9 +260,9 @@ export default function ServicesPage() {
                         </h2>
                         <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px] font-neuhas">
                             Access to high‑quality materials like fabricated steel is essential for completing projects
-                            on time and within budget. To secure this critical material, Bechtel and Unger Steel have
-                            formed Unger Steel Fabrication FZE, a joint venture of which Bechtel is a part owner. This
-                            venture supplies premium steel to Bechtel projects worldwide.
+                            on time and within budget. To secure this critical material, A&T and Unger Steel have
+                            formed Unger Steel Fabrication FZE, a joint venture of which A&T is a part owner. This
+                            venture supplies premium steel to A&T projects worldwide.
                         </p>
 
                         {/* CTA Button */}
@@ -628,7 +628,7 @@ export default function ServicesPage() {
                                  text-[#2d3b40]/80 leading-[30px] 
                                  max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl 
                                  mx-auto mb-6 sm:mb-8 md:mb-10 px-4 sm:px-0 font-neuhas">
-                        Whether you’re seeking a partner for a project, have a media inquiry, or are interested in a job opportunity, you can reach out to our Bechtel colleagues around the world for direct support. Our team is ready to assist and provide the expertise you need.
+                        Whether you’re seeking a partner for a project, have a media inquiry, or are interested in a job opportunity, you can reach out to our A&T colleagues around the world for direct support. Our team is ready to assist and provide the expertise you need.
                     </p>
                     <CtaButton href="/contact">Contact Us</CtaButton>
                 </div>

@@ -115,7 +115,7 @@ export default function ModernSlaveryStatementPage() {
                                 Reporting Companies
                             </h2>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-8">
-                                The Bechtel group of companies, or Bechtel, refers to Bechtel Group, Inc. and its direct and indirect subsidiaries collectively. Bechtel's principles, policies, management instructions, and functional procedures apply across the Bechtel group of companies and its organizations, including the following reporting commercial organizations and reporting entities.
+                                The A&T group of companies, or A&T, refers to A&T Group, Inc. and its direct and indirect subsidiaries collectively. A&T's principles, policies, management instructions, and functional procedures apply across the A&T group of companies and its organizations, including the following reporting commercial organizations and reporting entities.
                             </p>
 
                             {/* UK Section */}
@@ -124,7 +124,7 @@ export default function ModernSlaveryStatementPage() {
                                     UK Modern Slavery Act 2015 reporting "Commercial Organization"
                                 </h3>
                                 <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                    This statement is made on behalf of Bechtel Limited (BLTD), a member of the Bechtel group of companies pursuant to the reporting requirements of Clause 54, Part 6 of the U.K. Modern Slavery Act 2015, and constitutes its Modern Slavery Act Statement for the financial year 1 January 2023 – 31 December 2023. BLTD is a private company limited by shares, registered in England & Wales (company number 506133) with its registered office at 2 Lakeside Drive, Park Royal, London NW10 7FQ, England. BLTD's board of directors approved this statement on 16 April 2024.
+                                    This statement is made on behalf of A&T Limited (BLTD), a member of the A&T group of companies pursuant to the reporting requirements of Clause 54, Part 6 of the U.K. Modern Slavery Act 2015, and constitutes its Modern Slavery Act Statement for the financial year 1 January 2023 – 31 December 2023. BLTD is a private company limited by shares, registered in England & Wales (company number 506133) with its registered office at 2 Lakeside Drive, Park Royal, London NW10 7FQ, England. BLTD's board of directors approved this statement on 16 April 2024.
                                 </p>
                             </div>
 
@@ -134,7 +134,7 @@ export default function ModernSlaveryStatementPage() {
                                     Australian Modern Slavery Act 2018 "Reporting Entities"
                                 </h3>
                                 <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                    This statement is also made on behalf of Bechtel Australia Proprietary Limited (BAPL) and Bechtel (Western Australia) Pty Ltd (BWAPL), both members of the Bechtel group of companies, pursuant to the reporting requirements of Part 2 of the Australia Modern Slavery Act 2018 and constitutes their Modern Slavery Act Statement for the financial year 1 January 2023 – 31 December 2023. BAPL is a proprietary company registered in Australia (company number ACN 006 334 505) with its registered office at Level 3, 540 Wickham Street, Brisbane, QLD, 4006, Australia. BAPL's board of directors approved this statement on 24 April 2024. BWAPL is a proprietary company registered in Australia (company number ACN 147 531 226) with its registered office at Level 12, 140 St. Georges Terrace, Perth, WA 6000, Australia. BWAPL's board of directors approved this statement on 24 April 2024.
+                                    This statement is also made on behalf of A&T Australia Proprietary Limited (BAPL) and A&T (Western Australia) Pty Ltd (BWAPL), both members of the A&T group of companies, pursuant to the reporting requirements of Part 2 of the Australia Modern Slavery Act 2018 and constitutes their Modern Slavery Act Statement for the financial year 1 January 2023 – 31 December 2023. BAPL is a proprietary company registered in Australia (company number ACN 006 334 505) with its registered office at Level 3, 540 Wickham Street, Brisbane, QLD, 4006, Australia. BAPL's board of directors approved this statement on 24 April 2024. BWAPL is a proprietary company registered in Australia (company number ACN 147 531 226) with its registered office at Level 12, 140 St. Georges Terrace, Perth, WA 6000, Australia. BWAPL's board of directors approved this statement on 24 April 2024.
                                 </p>
                             </div>
 
@@ -144,7 +144,7 @@ export default function ModernSlaveryStatementPage() {
                                     Canada's Fighting Against Forced Labour and Child Labour in Supply Chains Act
                                 </h3>
                                 <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                    This statement is also made on behalf of Bechtel Canada Co. (BCANDCO) and Northbech Co. (NOBC), both members of the Bechtel group of companies, pursuant to the reporting requirements of Part 2 of the Canadian Modern Slavery Act and constitutes their annual report for the financial year 1 January 2023 – 31 December 2023. BCANDCO is a proprietary company registered in Nova Scotia, Canada (company number 3053855), with its registered office at 600-1741 Lower Water Street, Halifax, NS, B3J 0J2, Canada. BCANDCO's board of directors approved this statement on 9 April 2024. BCANDCO is a wholly owned subsidiary of NOBC, which is a non-operating holding company. NOBC is a proprietary company registered in Nova Scotia, Canada (company number 3056281) with its registered office at Queen's Marque, 600-1741 Lower State Street, P.O. Box 997, Halifax, NS, B3J 2X2, Canada. NOBC's board of directors approved this statement on 16 April 2024.
+                                    This statement is also made on behalf of A&T Canada Co. (BCANDCO) and Northbech Co. (NOBC), both members of the A&T group of companies, pursuant to the reporting requirements of Part 2 of the Canadian Modern Slavery Act and constitutes their annual report for the financial year 1 January 2023 – 31 December 2023. BCANDCO is a proprietary company registered in Nova Scotia, Canada (company number 3053855), with its registered office at 600-1741 Lower Water Street, Halifax, NS, B3J 0J2, Canada. BCANDCO's board of directors approved this statement on 9 April 2024. BCANDCO is a wholly owned subsidiary of NOBC, which is a non-operating holding company. NOBC is a proprietary company registered in Nova Scotia, Canada (company number 3056281) with its registered office at Queen's Marque, 600-1741 Lower State Street, P.O. Box 997, Halifax, NS, B3J 2X2, Canada. NOBC's board of directors approved this statement on 16 April 2024.
                                 </p>
                             </div>
                         </div>
@@ -155,7 +155,7 @@ export default function ModernSlaveryStatementPage() {
                                 Our Commitment
                             </h3>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                Bechtel is committed to maintaining the highest standards of ethical business conduct and compliance with all applicable laws. We have zero tolerance for modern slavery and human trafficking in our operations and supply chains.
+                                A&T is committed to maintaining the highest standards of ethical business conduct and compliance with all applicable laws. We have zero tolerance for modern slavery and human trafficking in our operations and supply chains.
                             </p>
                         </div>
                     </div>

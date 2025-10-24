@@ -27,7 +27,7 @@ const serviceDetailsData: Record<string, ServiceDetail> = {
         title: "Engineering",
         tagline: "Designing for Success",
         heroImage: "https://www.bechtel.com/wp-content/uploads/2024/12/Line-1-Train-south-of-KAFD--1024x574.webp",
-        description: "Bechtel's engineering services are the foundation of our project success, delivering innovative, technology-driven solutions to tackle our customers' toughest challenges.",
+        description: "A&T's engineering services are the foundation of our project success, delivering innovative, technology-driven solutions to tackle our customers' toughest challenges.",
         longDescription: `Our engineering excellence spans over a century of innovation and technical leadership. We combine cutting-edge technology with proven methodologies to deliver solutions that set new industry standards. Our engineers work collaboratively across global design centers, leveraging advanced 3D, 4D, and 5D modeling, data-centric execution, and cloud-based systems to streamline schedules, reduce costs, and maximize productivity.`,
 
         keyFeatures: [
@@ -44,7 +44,7 @@ const serviceDetailsData: Record<string, ServiceDetail> = {
             {
                 icon: Users,
                 title: "Expert Teams",
-                description: "Bechtel Fellows and Distinguished Technical Specialists leading innovation"
+                description: "A&T Fellows and Distinguished Technical Specialists leading innovation"
             },
             {
                 icon: Globe,
@@ -94,7 +94,7 @@ const serviceDetailsData: Record<string, ServiceDetail> = {
         relatedServices: ["procurement", "construction", "project-management"],
 
         testimonial: {
-            quote: "Bechtel's engineering capabilities have been instrumental in delivering our most complex projects on time and within budget.",
+            quote: "A&T's engineering capabilities have been instrumental in delivering our most complex projects on time and within budget.",
             author: "Project Director",
             company: "Major Infrastructure Client"
         }

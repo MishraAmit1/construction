@@ -256,7 +256,7 @@ export default function VisionValuesCommitments() {
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto text-center">
                         <p className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[32px]">
-                            How do we build the extraordinary? It takes more than steel and concrete. It takes creative thinkers, boundary breakers, and experts at the pinnacle of their field. At Bechtel, our people are all of those things. They take our VV&Cs to heart — and to their work every day.
+                            How do we build the extraordinary? It takes more than steel and concrete. It takes creative thinkers, boundary breakers, and experts at the pinnacle of their field. At A&T, our people are all of those things. They take our VV&Cs to heart — and to their work every day.
                         </p>
                     </div>
                 </div>

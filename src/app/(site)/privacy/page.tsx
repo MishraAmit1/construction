@@ -56,13 +56,13 @@ export default function PrivacyPolicyPage() {
                         {/* Introduction */}
                         <div className="mb-8 sm:mb-12">
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-4">
-                                This website is operated by and on behalf of Bechtel Corporation – including its affiliates, divisions, business units and subsidiaries – ("Bechtel").
+                                This website is operated by and on behalf of A&T Corporation – including its affiliates, divisions, business units and subsidiaries – ("A&T").
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-4">
-                                This privacy policy applies to personal information Bechtel may collect about you through its websites, apps, or other online media under its operation and control (collectively, the "Site") and to other information we may collect about you in the course of our business. It does not apply to personal information we collect about Bechtel's employees, and we have a separate Applicant Privacy Statement in relation to personal information regarding candidates for employment with Bechtel.
+                                This privacy policy applies to personal information A&T may collect about you through its websites, apps, or other online media under its operation and control (collectively, the "Site") and to other information we may collect about you in the course of our business. It does not apply to personal information we collect about A&T's employees, and we have a separate Applicant Privacy Statement in relation to personal information regarding candidates for employment with A&T.
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                Bechtel recognizes and respects the privacy of the individuals whose personal information it collects, uses and otherwise processes in the course of its business.
+                                A&T recognizes and respects the privacy of the individuals whose personal information it collects, uses and otherwise processes in the course of its business.
                             </p>
                         </div>
 
@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
                                     <strong>Internet/Network information.</strong> Examples include browsing history, search history, and information regarding your interaction with the Site.
                                 </li>
                                 <li className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] pl-2">
-                                    <strong>Audio, electronic, visual, thermal, or similar information.</strong> Examples include security surveillance and thermal imaging cameras at Bechtel offices or jobsites.
+                                    <strong>Audio, electronic, visual, thermal, or similar information.</strong> Examples include security surveillance and thermal imaging cameras at A&T offices or jobsites.
                                 </li>
                                 <li className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] pl-2">
                                     Professional or employment-related information.
@@ -100,7 +100,7 @@ export default function PrivacyPolicyPage() {
                                 Personal information you provide
                             </h3>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-6">
-                                Bechtel collects personal information about individuals when specifically and knowingly provided by such individuals for purposes disclosed or otherwise known to them when they provide their information or for the wider purposes set out below. This includes, for example, voluntary submission of an email address for our news email update list, providing a business card in a meeting, sending us an email which includes personal information about you, providing basic details for building security purposes when you enter Bechtel premises, or allowing us to photograph, film or otherwise record you when you attend an event that we host or sponsor.
+                                A&T collects personal information about individuals when specifically and knowingly provided by such individuals for purposes disclosed or otherwise known to them when they provide their information or for the wider purposes set out below. This includes, for example, voluntary submission of an email address for our news email update list, providing a business card in a meeting, sending us an email which includes personal information about you, providing basic details for building security purposes when you enter A&T premises, or allowing us to photograph, film or otherwise record you when you attend an event that we host or sponsor.
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-6">
                                 Unless we explain otherwise at the time, providing personal information that we request is optional and disclosures are made voluntarily.
@@ -117,7 +117,7 @@ export default function PrivacyPolicyPage() {
                                     Our websites log IP addresses, the type of operating system that the visitor's computer uses, the type of browser software used by the visitor, and the pages accessed by the visitor.
                                 </li>
                                 <li className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] pl-2">
-                                    Bechtel uses this data, in aggregated form, to perform statistical analyses of the collective characteristics and behaviour of our visitors and to measure overall user demographics and interests regarding specific areas of the site.
+                                    A&T uses this data, in aggregated form, to perform statistical analyses of the collective characteristics and behaviour of our visitors and to measure overall user demographics and interests regarding specific areas of the site.
                                 </li>
                                 <li className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] pl-2">
                                     Our websites also use Google Analytics, a web analytics service provided by Google, Inc. ("Google"). Google Analytics uses cookies to help the website analyze how users use the site. The information generated by the cookie about your use of the website (including your IP address) will be transmitted to and stored by Google on servers in the United States. Google will use this information for evaluating your use of the website, compiling reports on website activity, and providing other services relating to website activity and internet usage for us and our affiliates. Google may also transfer this information to third parties where required to do so by law, or where such third parties process the information on Google's behalf. Google will not associate your IP address with any other data held by Google. See Google's Privacy Policy for more information.
@@ -184,10 +184,10 @@ export default function PrivacyPolicyPage() {
                             </ul>
 
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-4">
-                                Bechtel does not trade, sell, share, or rent personal information but may collect or provide aggregate statistics about its websites and their users to other parties who do not provide services directly to Bechtel.
+                                A&T does not trade, sell, share, or rent personal information but may collect or provide aggregate statistics about its websites and their users to other parties who do not provide services directly to A&T.
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                Except in rare circumstances where Bechtel is required by law to disclose or otherwise process your personal information, Bechtel will only process your personal information as necessary for the purposes explained to you when the information is collected or otherwise set out in this policy. Bechtel will not collect your personal information unless it has concluded that it has a legitimate interest in pursuing the relevant purpose. We may occasionally ask for your consent to allow us to process your personal information – for example, if we wish to use images of you in published materials relating to an event that you attended.
+                                Except in rare circumstances where A&T is required by law to disclose or otherwise process your personal information, A&T will only process your personal information as necessary for the purposes explained to you when the information is collected or otherwise set out in this policy. A&T will not collect your personal information unless it has concluded that it has a legitimate interest in pursuing the relevant purpose. We may occasionally ask for your consent to allow us to process your personal information – for example, if we wish to use images of you in published materials relating to an event that you attended.
                             </p>
                         </div>
 
@@ -197,17 +197,17 @@ export default function PrivacyPolicyPage() {
                                 Contact Us
                             </h2>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-4">
-                                If you have any questions or comments regarding this Privacy Policy or our information collection practices, please contact us by sending an email to Bechtel's Chief Privacy Officer at:
+                                If you have any questions or comments regarding this Privacy Policy or our information collection practices, please contact us by sending an email to A&T's Chief Privacy Officer at:
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 mb-6">
-                                <a href="mailto:Privacy@bechtel.com" className="text-red-600 hover:underline">
-                                    Privacy@bechtel.com
+                                <a href="mailto:at@gmail.com" className="text-red-600 hover:underline">
+                                    at@gmail.com
                                 </a>
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
                                 or by writing to:<br />
                                 <br />
-                                Bechtel Global Corporation<br />
+                                A&T Global Corporation<br />
                                 12011 Sunset Hills Road<br />
                                 Suite 110<br />
                                 Reston, VA 20190

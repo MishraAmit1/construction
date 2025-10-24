@@ -115,7 +115,7 @@ export default function ApproachPage() {
                                 Few companies have the scale and expertise to handle a project's
                                 full range of needs — from design to dismantlement. But as an
                                 engineering, procurement, construction, and project management
-                                leader, Bechtel is not only qualified to deliver the entire
+                                leader, A&T is not only qualified to deliver the entire
                                 lifecycle of a project, but to deliver excellence at every
                                 stage.
                             </p>
@@ -305,7 +305,7 @@ export default function ApproachPage() {
                         </div>
                         <div className="mt-4 sm:mt-5 md:mt-6 font-neuhas">
                             <CtaButton href="#work">
-                                Learn more about Life at Bechtel
+                                Learn more about Life at A&T
                             </CtaButton>
                         </div>
                     </div>

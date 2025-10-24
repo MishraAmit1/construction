@@ -98,10 +98,10 @@ export default function TermsOfUsePage() {
                                 License and Site Access
                             </h2>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px] mb-4">
-                                Bechtel or third parties granting rights to Bechtel hold title to the materials on this site, which are the copyrighted work of Bechtel or such third parties. Bechtel grants you a limited license to access and make personal, noncommercial use of this site, including the right to download and make a single electronic or hard copy of limited portions (including text, photos, videos, and graphics), provided that the Bechtel copyright is acknowledged on each page copied. However, you may not modify it or any portion of it. This license does not include any commercial use of this site or its contents other than our e-commerce services. It does not include any collection and use of any product listings, descriptions, or prices; any derivative use of this site or its contents; or any use of data mining, robots, or similar data gathering and extraction tools.
+                                A&T or third parties granting rights to A&T hold title to the materials on this site, which are the copyrighted work of A&T or such third parties. A&T grants you a limited license to access and make personal, noncommercial use of this site, including the right to download and make a single electronic or hard copy of limited portions (including text, photos, videos, and graphics), provided that the A&T copyright is acknowledged on each page copied. However, you may not modify it or any portion of it. This license does not include any commercial use of this site or its contents other than our e-commerce services. It does not include any collection and use of any product listings, descriptions, or prices; any derivative use of this site or its contents; or any use of data mining, robots, or similar data gathering and extraction tools.
                             </p>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                Neither this Web site nor any portion thereof may be reproduced, duplicated, copied, sold, or otherwise exploited for any commercial purpose. You may not frame or use framing techniques to enclose any portion of this site. You may not use meta tags or any other hidden text using Bechtel's name or trademarks. Any unauthorized use terminates the license to use granted herein.
+                                Neither this Web site nor any portion thereof may be reproduced, duplicated, copied, sold, or otherwise exploited for any commercial purpose. You may not frame or use framing techniques to enclose any portion of this site. You may not use meta tags or any other hidden text using A&T's name or trademarks. Any unauthorized use terminates the license to use granted herein.
                             </p>
                         </div>
 
@@ -121,7 +121,7 @@ export default function TermsOfUsePage() {
                                 Confidential Information
                             </h2>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                Bechtel discourages you from sending or posting to the site materials or information that you consider to be confidential or proprietary. Please note that if you do send such information, Bechtel will assume that it is not confidential. By sending or posting such information or material, you grant Bechtel an unrestricted license to use, reproduce, and distribute those materials or information, and you agree that Bechtel may use any ideas, concepts, know-how or techniques that you send or post for any purpose.
+                                A&T discourages you from sending or posting to the site materials or information that you consider to be confidential or proprietary. Please note that if you do send such information, A&T will assume that it is not confidential. By sending or posting such information or material, you grant A&T an unrestricted license to use, reproduce, and distribute those materials or information, and you agree that A&T may use any ideas, concepts, know-how or techniques that you send or post for any purpose.
                             </p>
                         </div>
 
@@ -131,7 +131,7 @@ export default function TermsOfUsePage() {
                                 No Warranties
                             </h2>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                The information on this site is provided for general information purposes only. While Bechtel strives to provide only accurate information on this Web site, you may discover some inadvertent inaccuracies in the information provided. Please bring them to our attention by using the Contact Us link at the top right of the screen. Since such mistakes may occur, BECHTEL MAKES NO GUARANTEES, WARRANTIES, OR REPRESENTATIONS CONCERNING THE ACCURACY, RELIABILITY, FITNESS FOR ANY PARTICULAR PURPOSE, OR COMPLETENESS OF ANY INFORMATION ON THIS SITE. WE ARE PROVIDING THE INFORMATION ON AN "AS IS, WHERE IS" BASIS, AND ALL WARRANTIES (EXPRESS OR IMPLIED) ARE DISCLAIMED.
+                                The information on this site is provided for general information purposes only. While A&T strives to provide only accurate information on this Web site, you may discover some inadvertent inaccuracies in the information provided. Please bring them to our attention by using the Contact Us link at the top right of the screen. Since such mistakes may occur, A&T MAKES NO GUARANTEES, WARRANTIES, OR REPRESENTATIONS CONCERNING THE ACCURACY, RELIABILITY, FITNESS FOR ANY PARTICULAR PURPOSE, OR COMPLETENESS OF ANY INFORMATION ON THIS SITE. WE ARE PROVIDING THE INFORMATION ON AN "AS IS, WHERE IS" BASIS, AND ALL WARRANTIES (EXPRESS OR IMPLIED) ARE DISCLAIMED.
                             </p>
                         </div>
 
@@ -141,7 +141,7 @@ export default function TermsOfUsePage() {
                                 Links to Other Sites
                             </h2>
                             <p className="text-[15px] sm:text-[16px] md:text-[18px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[28px]">
-                                As convenience, this Web site may contain links to other sites that are not controlled by, or affiliated or associated with, Bechtel. Accordingly, Bechtel does not make any representations concerning the privacy practices or terms of use of such sites, nor does Bechtel control or guarantee the accuracy, integrity, or quality of the information and materials available on such sites.
+                                As convenience, this Web site may contain links to other sites that are not controlled by, or affiliated or associated with, A&T. Accordingly, A&T does not make any representations concerning the privacy practices or terms of use of such sites, nor does A&T control or guarantee the accuracy, integrity, or quality of the information and materials available on such sites.
                             </p>
                         </div>
 
