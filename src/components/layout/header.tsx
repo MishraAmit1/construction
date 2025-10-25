@@ -21,34 +21,12 @@ const mainNavLinks = [
 // Which items open mega
 const megaEnabled = new Set(["PROJECTS", "APPROACH", "CAREERS"]);
 
-/* ---------- Static Data: Regions ---------- */
-const REGION_CARDS = [
-  { title: "United States", href: "/projects/region/united-states", img: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1400&auto=format&fit=crop" },
-  { title: "United Kingdom", href: "/projects/region/united-kingdom", img: "https://images.unsplash.com/photo-1505764706515-aa95265c5abc?q=80&w=1400&auto=format&fit=crop" },
-  { title: "Canada", href: "/projects/region/canada", img: "https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=1400&auto=format&fit=crop" },
-  { title: "Middle East", href: "/projects/region/middle-east", img: "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?q=80&w=1400&auto=format&fit=crop" },
-  { title: "Australia", href: "/projects/region/australia", img: "https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?q=80&w=1400&auto=format&fit=crop" },
-  { title: "Asia", href: "/projects/region/asia", img: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=1400&auto=format&fit=crop" },
-];
-
 const INFO_CARDS = [
-  {
-    title: "View More Projects",
-    desc: "From project planning to execution, we offer a wide range of services to help realize our customers' boldest ambitions.",
-    href: "/projects",
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop",
-  },
   {
     title: "Markets",
     desc: "With our integrated capabilities across a wide range of industries, we offer complete solutions tailored to our customers' goals.",
     href: "/markets",
     img: "https://images.unsplash.com/photo-1541976076758-347942db1970?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    title: "Regions",
-    desc: "Operating in more than 33 countries, explore our global presence and regional expertise.",
-    href: "/regions",
-    img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
@@ -386,21 +364,14 @@ export function Header() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
-                      View More Projects
+                      View Projects
                     </Link>
                     <Link
-                      href="/markets"
+                      href="/projects#market"
                       onClick={() => setMobileMenuOpen(false)}
                       className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
                       Markets
-                    </Link>
-                    <Link
-                      href="/regions"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
-                    >
-                      Regions
                     </Link>
                   </div>
                 )}
@@ -526,7 +497,7 @@ function MegaPanel({
   onLinkClick: () => void;
 }) {
   const style: React.CSSProperties = { top, height: `calc(100vh - ${top}px)` };
-  // hii
+
   return (
     <div
       className={`font-apfel2 fixed inset-x-0 z-[9998] hidden lg:block ${open ? "pointer-events-auto" : "pointer-events-none"
@@ -555,8 +526,6 @@ function MegaPanel({
 
 /* ---------------- Projects Content ---------------- */
 function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: any[]; onLinkClick: () => void }) {
-  const [tab, setTab] = useState<"market" | "region">("market");
-
   return (
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
@@ -570,12 +539,11 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
           View Document
         </CtaButton>
 
-
         <div className="mt-10 pt-6 border-t">
           <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">Additional Information</div>
           <div className="mt-4 space-y-5">
             {INFO_CARDS.map((it) => (
-              <Link key={it.title} href={it.href} onClick={onLinkClick} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
+              <Link key={it.title} href="/projects#market" onClick={onLinkClick} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
                 <div className="relative h-20 w-28 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
                   <Image src={it.img} alt={it.title} fill className="object-cover" />
                 </div>
@@ -593,59 +561,34 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
       <div className="col-span-12 lg:col-span-8">
         <div className="border-b border-gray-200">
           <div className="flex items-center gap-10">
-            <button
-              className={`uppercase tracking-wide text-[13px] font-semibold pb-3 border-b-2 transition-colors font-apfel2 ${tab === "market" ? "text-red-600 border-red-600" : "text-gray-600 hover:text-gray-900 border-transparent"
-                }`}
-              onMouseEnter={() => setTab("market")}
-              onClick={() => setTab("market")}
-            >
+            <h3 className="uppercase tracking-wide text-[13px] font-semibold pb-3 text-red-600 border-b-2 border-red-600 font-apfel2">
               Explore Projects by Market
-            </button>
-            <button
-              className={`uppercase tracking-wide text-[13px] font-semibold pb-3 border-b-2 transition-colors font-apfel2 ${tab === "region" ? "text-red-600 border-red-600" : "text-gray-600 hover:text-gray-900 border-transparent"
-                }`}
-              onMouseEnter={() => setTab("region")}
-              onClick={() => setTab("region")}
-            >
-              Explore Projects by Region
-            </button>
+            </h3>
           </div>
         </div>
 
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-          {tab === "market" ? (
-            // Dynamic Market Categories from Backend
-            marketCategories.length > 0 ? (
-              marketCategories.map((category) => (
-                <Link key={category.category_id} href={`/markets/${category.category_slug}`} onClick={onLinkClick} className="group block">
-                  <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
-                    <Image
-                      src={category.thumbnail_image || 'https://via.placeholder.com/600x400'}
-                      alt={category.category_name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">
-                    {category.category_name}
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <div className="col-span-3 text-center py-8">
-                <p className="text-gray-500 font-neuhas">Loading markets...</p>
-              </div>
-            )
-          ) : (
-            // Static Region Cards
-            REGION_CARDS.map((c) => (
-              <Link key={c.title} href={c.href} onClick={onLinkClick} className="group block">
+          {/* Dynamic Market Categories from Backend */}
+          {marketCategories.length > 0 ? (
+            marketCategories.map((category) => (
+              <Link key={category.category_id} href={`/markets/${category.category_slug}`} onClick={onLinkClick} className="group block">
                 <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
-                  <Image src={c.img} alt={c.title} fill className="object-cover" />
+                  <Image
+                    src={category.thumbnail_image || 'https://via.placeholder.com/600x400'}
+                    alt={category.category_name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
+                <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">
+                  {category.category_name}
+                </div>
               </Link>
             ))
+          ) : (
+            <div className="col-span-3 text-center py-8">
+              <p className="text-gray-500 font-neuhas">Loading markets...</p>
+            </div>
           )}
         </div>
       </div>

@@ -82,9 +82,9 @@ export default function Header({ title, user, sidebarOpen, setSidebarOpen }) {
           <div className="relative">
             <button className="relative p-2.5 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">
               <Icons.Bell size={20} />
-              <span className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium">
+              {/* <span className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium">
                 3
-              </span>
+              </span> */}
             </button>
           </div>
 

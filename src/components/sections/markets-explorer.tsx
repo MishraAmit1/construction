@@ -281,7 +281,7 @@ export default function MarketsExplorer({
     }
 
     return (
-        <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 font-apfel2">
+        <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 font-apfel2" id="market">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
                 {/* Sticky categories bar - DESKTOP ONLY */}
                 <div

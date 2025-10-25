@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightCircle, Earth } from "lucide-react";
@@ -7,7 +9,7 @@ import { notFound } from "next/navigation";
 import { SortDropdown } from '@/components/ui/sort-dropdown';
 import { CategoryFilters } from "@/components/category-filters";
 // Force dynamic rendering for query params
-export const dynamic = 'force-dynamic';
+
 
 // Generate static params
 export async function generateStaticParams() {

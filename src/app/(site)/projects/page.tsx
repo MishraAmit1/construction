@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 import ExploreProjects from '@/components/sections/explore-projects';
 import MarketsExplorer from '@/components/sections/markets-explorer';
 import ProjectsHeader from '@/components/sections/projects-header';

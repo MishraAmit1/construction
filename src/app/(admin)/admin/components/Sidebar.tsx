@@ -36,7 +36,7 @@ const navItems = [
     href: "/admin/projects",
     icon: FolderOpen,
     description: "Manage Projects",
-    badge: "12" // Dynamic count add kar sakte ho
+    badge: "" // Dynamic count add kar sakte ho
   },
   {
     name: "Categories",
@@ -55,7 +55,7 @@ const navItems = [
     href: "/admin/contacts",
     icon: Mail,
     description: "Inquiries & Leads",
-    badge: "3" // New contacts count
+    badge: "" // New contacts count
   },
   {
     name: "Blogs",
@@ -255,11 +255,11 @@ export default function Sidebar({
                         {item.name}
                       </span>
                       {/* Badge for notifications */}
-                      {item.badge && (
+                      {/* {item.badge && (
                         <span className="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">
                           {item.badge}
                         </span>
-                      )}
+                      )} */}
                     </div>
                   )}
 
