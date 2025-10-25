@@ -254,7 +254,7 @@ export function Header() {
 
       <header
         ref={headerRef}
-        className={`font-apfel2 fixed top-0 z-50 w-full transition-all duration-300 ${megaOpen ? "translate-y-0" : isVisible ? "translate-y-0" : "-translate-y-full"
+        className={`font-apfel2 fixed top-0 z-[9999] w-full transition-all duration-300 ${megaOpen ? "translate-y-0" : isVisible ? "translate-y-0" : "-translate-y-full"
           } ${shouldHaveBackground
             ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background"
             : "bg-transparent"
@@ -526,10 +526,10 @@ function MegaPanel({
   onLinkClick: () => void;
 }) {
   const style: React.CSSProperties = { top, height: `calc(100vh - ${top}px)` };
-
+  // hii
   return (
     <div
-      className={`font-apfel2 fixed inset-x-0 z-40 hidden lg:block ${open ? "pointer-events-auto" : "pointer-events-none"
+      className={`font-apfel2 fixed inset-x-0 z-[9998] hidden lg:block ${open ? "pointer-events-auto" : "pointer-events-none"
         }`}
       style={style}
       onMouseLeave={onIntentClose}
