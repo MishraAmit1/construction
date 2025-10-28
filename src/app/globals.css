@@ -104,6 +104,7 @@ header {
     font-style: normal;
   }
 
+  /* update mein kya problem ho  */
   @font-face {
     font-family: 'NeuHaas Thin';
     src: url('./fonts/NeueHaasDisplayLight.ttf') format('truetype');
