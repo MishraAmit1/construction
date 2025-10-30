@@ -147,7 +147,7 @@ export default function BlogPage() {
                                 {/* LEFT SIDE - FEATURED BLOG (Latest) */}
                                 {featuredBlog && (
                                     <div className="lg:col-span-2">
-                                        <article className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full">
+                                        <article className="bg-white rounded-xl overflow-hidden-300 h-full">
                                             <div className="relative h-72 sm:h-96 lg:h-[420px] w-full">
                                                 <Image
                                                     src={featuredBlog.featured_image || 'https://via.placeholder.com/800x600'}
@@ -208,7 +208,7 @@ export default function BlogPage() {
                                             {sideBlogs.map((blog) => (
                                                 <article
                                                     key={blog.id}
-                                                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex-1"
+                                                    className="bg-white rounded-lg overflow-hidden duration-300 flex-1"
                                                 >
                                                     <div className="flex h-full">
                                                         {/* Image Section */}
@@ -277,7 +277,7 @@ export default function BlogPage() {
                                                 {fullRowsBlogs.map((blog) => (
                                                     <article
                                                         key={blog.id}
-                                                        className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                                                        className="bg-white rounded-lg overflow-hidden transition-all duration-300 group"
                                                     >
                                                         <div className="relative h-48 w-full overflow-hidden">
                                                             <Image
@@ -328,7 +328,7 @@ export default function BlogPage() {
                                                 {lastRowBlogs.map((blog) => (
                                                     <article
                                                         key={blog.id}
-                                                        className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:max-w-sm"
+                                                        className="bg-white rounded-lg overflow-hidden transition-all duration-300 group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:max-w-sm"
                                                     >
                                                         <div className="relative h-48 w-full overflow-hidden">
                                                             <Image

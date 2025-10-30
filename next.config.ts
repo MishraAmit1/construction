@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'picsum.photos',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.pinimg.com'
+      },
       // ⭐ ADD THIS FOR SUPABASE PUBLIC URL
       {
         protocol: 'https',

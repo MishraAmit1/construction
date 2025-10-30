@@ -8,6 +8,7 @@ import Image from "next/image";
 import logo from "../../app/assets/logo_design_f__2_-removebg-preview.png";
 import logo1 from "../../app/assets/logo-removebg-preview (3).png";
 import { CtaButton } from "@/app/(site)/slavery-statement/page";
+import { useRouter, usePathname } from 'next/navigation';
 
 const mainNavLinks = [
   { name: "PROJECTS", href: "/projects" },
@@ -24,7 +25,7 @@ const megaEnabled = new Set(["PROJECTS", "APPROACH", "CAREERS"]);
 const INFO_CARDS = [
   {
     title: "Markets",
-    desc: "With our integrated capabilities across a wide range of industries, we offer complete solutions tailored to our customers' goals.",
+    desc: "From border infrastructure to renewable energy, road construction to building works - we deliver specialized civil engineering solutions across challenging terrains.",
     href: "/markets",
     img: "https://images.unsplash.com/photo-1541976076758-347942db1970?q=80&w=800&auto=format&fit=crop",
   },
@@ -34,50 +35,56 @@ const INFO_CARDS = [
 const APPROACH_RIGHT = [
   {
     title: "Our Services",
-    desc: "Leveraging full-scale project capabilities to optimize delivery — whether a full lifecycle or a single phase.",
+    desc: "Road construction, border infrastructure, building works, bridges, and renewable energy projects executed with precision.",
     img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop",
+    href: "/approach#services",
   },
   {
     title: "Safety",
-    desc: "Nothing is more important than the safety of our colleagues. Everyone returns home safely.",
-    img: "https://images.unsplash.com/photo-1600306897327-0a55f58b2cbf?q=80&w=1400&auto=format&fit=crop",
+    desc: "Rigorous safety protocols across all project sites. Our workforce returns home safely, every day.",
+    img: "https://www.bechtel.com/wp-content/uploads/2024/10/image-7-506x338.webp",
+    href: "/approach#safety",
   },
   {
     title: "Quality",
-    desc: "Highest quality standards reinforced through accountability, training, and collaboration.",
-    img: "https://images.unsplash.com/photo-1542626991-cbc4e32524cc?q=80&w=1400&auto=format&fit=crop",
+    desc: "35+ years of maintaining highest quality standards in India's most challenging construction environments.",
+    img: "https://i.pinimg.com/736x/cf/f5/e1/cff5e1cba8964bcaeaee87cf0eaecb59.jpg",
+    href: "/approach#quality",
   },
   {
     title: "Ethics",
-    desc: "Integrity and fairness at our core — the highest standards of ethical conduct.",
-    img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1400&auto=format&fit=crop",
+    desc: "Building trust through integrity, transparency, and ethical practices in every project we undertake.",
+    img: "https://www.bechtel.com/wp-content/uploads/2024/10/Reston-104937191-1-506x337.webp",
+    href: "/approach#ethics",
   },
   {
     title: "Sustainability",
-    desc: "Clean energy solutions and decarbonized infrastructure to protect the environment.",
-    img: "https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1400&auto=format&fit=crop",
+    desc: "Renewable energy infrastructure and sustainable construction practices for a better tomorrow.",
+    img: "https://www.bechtel.com/wp-content/uploads/2024/10/154508-1-506x380.webp",
+    href: "/approach#sustainability",
   },
   {
     title: "Communities",
-    desc: "We support the communities where we live and work.",
-    img: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1400&auto=format&fit=crop",
+    desc: "Contributing to local communities across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.",
+    img: "https://i.pinimg.com/1200x/a4/27/cf/a427cf2bd4915d03ae201f4f85285282.jpg",
+    href: "/approach#communities",
   },
 ];
 
 const APPROACH_LEFT_LIST = [
   {
     title: "Engineering",
-    desc: "We combine collaborative design, ingenuity, and data-centered execution for iconic results.",
+    desc: "Advanced engineering solutions designed for extreme conditions - from high-altitude roads to desert infrastructure.",
     img: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=400&auto=format&fit=crop",
   },
   {
     title: "Procurement",
-    desc: "Responsible purchase and safe delivery of materials — on time, at best value, from reliable suppliers.",
+    desc: "Strategic sourcing of materials and equipment through established supplier networks across Western India.",
     img: "https://images.unsplash.com/photo-1503435824048-a799a3a84bf7?q=80&w=400&auto=format&fit=crop",
   },
   {
     title: "Construction",
-    desc: "Delivering extraordinary projects in the world's most complex environments.",
+    desc: "Expert execution of infrastructure projects in hostile terrains with modern equipment and skilled workforce.",
     img: "https://images.unsplash.com/photo-1463259379373-1b8b76c09ba4?q=80&w=400&auto=format&fit=crop",
   },
 ];
@@ -86,26 +93,28 @@ const APPROACH_LEFT_LIST = [
 const CAREER_FEATURES = [
   {
     title: "Career Opportunities",
-    desc: "Driven by purpose and thrive on challenge? Explore our job openings and join the team.",
+    desc: "Join our team of 200+ professionals working on nation-building projects across challenging terrains.",
     img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1400&auto=format&fit=crop",
-    href: "/careers/opportunities",
+    href: "/careers#openings",
   },
   {
-    title: "Life at A&T",
-    desc: "An environment where every colleague feels empowered, connected, and respected.",
+    title: "Life at A&T Infracon",
+    desc: "Work on prestigious projects for CPWD, BSF, ITBP, and leading PSUs with modern equipment and training.",
     img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1400&auto=format&fit=crop",
-    href: "/careers/life",
+    href: "/careers#life-at-ant",
   },
   {
     title: "Testimonials",
-    desc: "Colleagues share why they chose to build their careers with us.",
+    desc: "Hear from our team members building critical infrastructure from Ladakh to the Rann of Kutch.",
     img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1400&auto=format&fit=crop",
-    href: "/careers/testimonials",
+    href: "/careers#testimonials",
   },
 ];
 
 /* ---------------- Header ---------------- */
 export function Header() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -134,11 +143,43 @@ export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
   const [headerH, setHeaderH] = useState(80);
 
+  const handleHashNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const [path, hash] = href.split('#');
+
+    // If hash exists
+    if (hash) {
+      e.preventDefault();
+
+      // Close menus
+      setActiveMega(null);
+      setMobileMenuOpen(false);
+
+      // Check if we're already on the target page
+      if (pathname === path) {
+        // Same page - just smooth scroll
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        // Different page - navigate first, then scroll
+        router.push(path);
+
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100); // Small delay for page to render
+      }
+    }
+  };
+
   // Fetch market categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        // Using dynamic import to avoid build issues
         const { getCategories } = await import('@/lib/api/categories');
         const categories = await getCategories();
         setMarketCategories(categories);
@@ -255,14 +296,14 @@ export function Header() {
             <div className="relative h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32">
               <Image
                 src={logo}
-                alt="A&T Logo"
+                alt="A&T Infracon Logo"
                 fill
                 priority
                 className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-0" : "opacity-100"}`}
               />
               <Image
                 src={logo1}
-                alt="A&T Logo"
+                alt="A&T Infracon Logo"
                 fill
                 priority
                 className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-100" : "opacity-0"}`}
@@ -377,6 +418,15 @@ export function Header() {
                 )}
               </div>
 
+              {/* Services Link */}
+              <Link
+                href="/services"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
+              >
+                SERVICES
+              </Link>
+
               {/* Approach Dropdown */}
               <div>
                 <button
@@ -388,27 +438,215 @@ export function Header() {
                 </button>
                 {mobileDropdown === "APPROACH" && (
                   <div className="ml-6 mt-2 space-y-2">
-                    <Link
-                      href="/services"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    <a
+                      href="/approach#services"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'services';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/approach') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/approach');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Services
-                    </Link>
-                    <Link
-                      href="/safety"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    </a>
+
+                    <a
+                      href="/approach#safety"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'safety';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/approach') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/approach');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Safety
-                    </Link>
-                    <Link
-                      href="/quality"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    </a>
+
+                    <a
+                      href="/approach#quality"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'quality';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/approach') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/approach');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Quality
-                    </Link>
+                    </a>
+
+                    <a
+                      href="/approach#ethics"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'ethics';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/approach') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/approach');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                    >
+                      Ethics
+                    </a>
+
+                    <a
+                      href="/approach#sustainability"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'sustainability';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/approach') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/approach');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                    >
+                      Sustainability
+                    </a>
+
+                    <a
+                      href="/approach#communities"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'communities';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/approach') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/approach');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                    >
+                      Communities
+                    </a>
                   </div>
                 )}
               </div>
@@ -432,27 +670,110 @@ export function Header() {
                 </button>
                 {mobileDropdown === "CAREERS" && (
                   <div className="ml-6 mt-2 space-y-2">
-                    <Link
-                      href="/careers/opportunities"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    <a
+                      href="/careers#openings"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'openings';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/careers') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/careers');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Career Opportunities
-                    </Link>
-                    <Link
-                      href="/careers/life"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    </a>
+
+                    <a
+                      href="/careers#life-at-ant"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'life-at-ant';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/careers') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/careers');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
-                      Life at A&T
-                    </Link>
-                    <Link
-                      href="/careers/testimonials"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      Life at A&T Infracon
+                    </a>
+
+                    <a
+                      href="/careers#testimonials"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'testimonials';
+                        setMobileMenuOpen(false);
+
+                        if (pathname === '/careers') {
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 50);
+                        } else {
+                          router.push('/careers');
+                          setTimeout(() => {
+                            const element = document.getElementById(hash);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Testimonials
-                    </Link>
+                    </a>
                   </div>
                 )}
               </div>
@@ -530,17 +851,17 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Building History</h2>
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Engineering Infrastructure. Building the Future.</h2>
         <p className="mt-4 text-gray-600 leading-[21px] font-light font-neuhas">
-          Scale. Complexity. Impact. Purpose. We deliver challenging projects that elevate standards of living, drive prosperity, and support sustainable growth across the globe — from clean, efficient transportation and sustainable energy to advanced manufacturing, critical minerals, national security infrastructure, and more.
+          With 35+ years of expertise in civil engineering, A&T Infracon Pvt. Ltd. delivers critical infrastructure across India's most challenging terrains. From high-altitude roads at 15,000+ feet in Ladakh to strategic border infrastructure, road networks in desert regions, and renewable energy projects - we build projects that serve the nation and stand the test of time.
         </p>
 
         <CtaButton href="/projects" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          View Document
+          View All Projects
         </CtaButton>
 
         <div className="mt-10 pt-6 border-t">
-          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">Additional Information</div>
+          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">Our Expertise</div>
           <div className="mt-4 space-y-5">
             {INFO_CARDS.map((it) => (
               <Link key={it.title} href="/projects#market" onClick={onLinkClick} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
@@ -598,17 +919,64 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
 
 /* ---------------- Approach Content ---------------- */
 function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleApproachClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const [path, hash] = href.split('#');
+
+    onLinkClick(); // Close mega menu
+
+    if (hash) {
+      if (pathname === path) {
+        // Same page - smooth scroll with header offset
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 50);
+      } else {
+        // Different page - navigate then scroll with offset
+        router.push(path);
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 500);
+      }
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Dream, Design, Deliver</h2>
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Excellence in Execution</h2>
         <p className="mt-4 text-gray-600 leading-7 font-neuhas">
-          We know that how we deliver is just as important as what we deliver. We're committed to operating safely, ethically, and sustainably across everything we do.
+          At A&T Infracon, we're committed to operating safely, ethically, and sustainably across all our projects. With 35 years of experience in challenging environments, we maintain the highest standards in quality, safety, and delivery - from the deserts of Rajasthan to the high-altitude regions of Ladakh.
         </p>
 
         <CtaButton href="/approach" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          How we deliver
+          Our Approach
         </CtaButton>
         <div className="mt-10 pt-6 border-t">
           <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">What We Do</div>
@@ -632,13 +1000,18 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
       <div className="col-span-12 lg:col-span-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
           {APPROACH_RIGHT.map((c) => (
-            <div key={c.title} className="group">
+            <a
+              key={c.title}
+              href={c.href}
+              onClick={(e) => handleApproachClick(e, c.href)}
+              className="group block cursor-pointer"
+            >
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                 <Image src={c.img} alt={c.title} fill className="object-cover" />
               </div>
               <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
               <div className="text-sm text-gray-600 mt-1 font-neuhas">{c.desc}</div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -648,17 +1021,66 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
 
 /* ---------------- Careers Content ---------------- */
 function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleCareerClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const [path, hash] = href.split('#');
+
+    onLinkClick(); // Close mega menu
+
+    if (hash) {
+      if (pathname === path) {
+        // Same page - smooth scroll with header offset
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 50);
+      } else {
+        // Different page - navigate then scroll with offset
+        router.push(path);
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 500);
+      }
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Building Tomorrow Together</h2>
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">
+          Build Your Career With Us
+        </h2>
         <p className="mt-4 text-gray-600 leading-7 font-neuhas">
-          As a global company known for generation-defining projects, we offer unparalleled learning and growth. From engineers to skilled craft professionals — make your mark on the world.
+          Join A&T Infracon's team of 200+ skilled professionals working on India's most critical and challenging infrastructure projects. From border security installations to high-altitude roads and renewable energy projects - make your mark on nation-building while building a rewarding career.
         </p>
 
         <CtaButton href="/careers" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          Join our Team
+          Explore Careers
         </CtaButton>
       </div>
 
@@ -666,22 +1088,32 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
       <div className="col-span-12 lg:col-span-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
           {CAREER_FEATURES.map((c) => (
-            <Link key={c.title} href={c.href} onClick={onLinkClick} className="group block">
+            <a
+              key={c.title}
+              href={c.href}
+              onClick={(e) => handleCareerClick(e, c.href)}
+              className="group block cursor-pointer"
+            >
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                 <Image src={c.img} alt={c.title} fill className="object-cover" />
               </div>
-              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
+              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">
+                {c.title}
+              </div>
               <div className="text-sm text-gray-600 mt-1 font-neuhas">{c.desc}</div>
-            </Link>
+            </a>
           ))}
         </div>
 
-        {/* Bottom strip like "See all available positions" */}
         <div className="mt-8 pt-6 border-t flex items-center justify-between text-xs uppercase tracking-wider text-gray-600">
-          <div className="font-apfel2">A&T Careers</div>
-          <Link href="/careers/jobs" onClick={onLinkClick} className="text-red-600 font-semibold hover:underline font-apfel2">
+          <div className="font-apfel2">A&T Infracon Careers</div>
+          <a
+            href="/careers#openings"
+            onClick={(e) => handleCareerClick(e, '/careers#openings')}
+            className="text-red-600 font-semibold hover:underline font-apfel2 cursor-pointer"
+          >
             See all available positions →
-          </Link>
+          </a>
         </div>
       </div>
     </div>

@@ -107,6 +107,7 @@ export function Careers() {
       return () => scrollElement.removeEventListener("scroll", handleScroll);
     }
   }, [projects]);
+
   useEffect(() => {
     loadData();
   }, []);
@@ -149,49 +150,49 @@ export function Careers() {
     }
   }, []);
 
-  // Life at A&T cards data
+  // Life at A&T Infracon cards data - UPDATED FOR A&T INFRACON
   const cardsData = [
     {
       id: 1,
       title: 'Benefits & Perks',
       image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80',
-      shortDesc: 'Comprehensive health, retirement, and wellness programs for you and your family.',
-      description: 'The health and well-being of our colleagues and their families is our top priority. The benefits we offer vary from country to country, based on local practices, customs, and statutory conditions, but may include competitive compensation, medical benefits, retirement plans, life insurance, and paid time off. As a A&T colleague, you also have access to a number of professional development opportunities, including virtual courses through A&T University.'
+      shortDesc: 'Competitive compensation, health benefits, and professional growth opportunities.',
+      description: 'At A&T Infracon, we believe in taking care of our people. We offer competitive salaries aligned with industry standards, comprehensive health insurance coverage for you and your family, retirement benefits, and performance-based incentives. Our commitment to work-life balance ensures you have time for what matters most while building critical infrastructure for the nation.'
     },
     {
       id: 2,
-      title: 'Business Resource Groups',
+      title: 'Career Development',
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
-      shortDesc: 'Employee-led communities fostering diversity and inclusive workplace culture.',
-      description: 'Our Business Resource Groups (BRGs) are voluntary, employee-led communities that foster a diverse and inclusive workplace. These groups provide networking, mentoring, and professional development opportunities while supporting A&T\'s business objectives. Join colleagues who share common interests and backgrounds to make a meaningful impact.'
+      shortDesc: 'Continuous learning through on-site training and skill development programs.',
+      description: 'With 35+ years of experience, A&T Infracon invests in developing our workforce through comprehensive training programs. From operating specialized equipment like our Hot Mix Plants and Concrete Batching Plants to advanced civil engineering techniques, we provide hands-on training that builds careers. Our experienced senior engineers mentor newcomers, ensuring knowledge transfer and professional growth.'
     },
     {
       id: 3,
-      title: 'Veterans Programs',
+      title: 'Challenging Projects',
       image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80',
-      shortDesc: 'Dedicated support and career paths for military veterans and families.',
-      description: 'We are committed to supporting veterans and their families through dedicated programs and career opportunities. Our Veterans Program helps transitioning service members find meaningful careers at A&T, leveraging their unique skills and leadership experience gained in military service.'
+      shortDesc: 'Work on prestigious projects in India\'s most challenging terrains.',
+      description: 'Join a team that builds infrastructure in extreme conditions - from 15,000+ feet altitude in Ladakh to the deserts of Rajasthan and the Rann of Kutch. Work on strategic border infrastructure projects for BSF and ITBP, construct high-altitude roads, and contribute to national security. Our portfolio of ₹586+ crores in recent projects offers unmatched experience and career growth.'
     },
     {
       id: 4,
-      title: 'Early Career Programs',
+      title: 'Work-Life Balance',
       image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',
-      shortDesc: 'Internships, apprenticeships, and graduate programs to launch your career.',
-      description: 'Launch your career with A&T through our internships, apprenticeships, and graduate programs. We provide hands-on experience, mentorship, and training to help you develop the skills needed for a successful career in engineering and construction.'
+      shortDesc: 'Structured work schedules with adequate rest periods and family time.',
+      description: 'Despite the challenging nature of our projects, we maintain structured work schedules that respect your personal time. Our site rotation policies ensure adequate rest periods between assignments. We understand the importance of family and provide appropriate leave policies, festival holidays, and support for maintaining connections with loved ones even during remote project assignments.'
     },
     {
       id: 5,
-      title: 'Learning & Development',
+      title: 'Safety First Culture',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-      shortDesc: 'Continuous learning through A&T University and training programs.',
-      description: 'Continuous learning is at the heart of our culture. Through A&T University and various training programs, we invest in your growth with technical courses, leadership development, and certification opportunities to help you advance your career.'
+      shortDesc: 'Industry-leading safety standards and comprehensive equipment training.',
+      description: 'Your safety is our top priority. A&T Infracon maintains rigorous safety protocols across all project sites, provides comprehensive PPE (Personal Protective Equipment), conducts regular safety training sessions, and ensures strict compliance with safety regulations. Our modern equipment fleet is regularly maintained to highest safety standards, and we have dedicated safety officers on every major project site.'
     },
     {
       id: 6,
-      title: 'Global Opportunities',
+      title: 'Multi-Location Opportunities',
       image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=800&q=80',
-      shortDesc: 'Work on iconic projects across six continents and diverse cultures.',
-      description: 'Work on projects around the world and experience diverse cultures while building your career. Our global presence offers unique opportunities to work on iconic projects across six continents, expanding your perspective and professional network.'
+      shortDesc: 'Work across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.',
+      description: 'With offices in Ahmedabad and Barmer, and active projects across four states, A&T Infracon offers diverse geographical opportunities. Experience working in different terrains - coastal areas of Kutch, desert regions of Barmer and Jaisalmer, high-altitude zones of Ladakh, and strategic border areas. Each location offers unique challenges and learning experiences that shape well-rounded civil engineering professionals.'
     }
   ];
 
@@ -217,20 +218,19 @@ export function Careers() {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
           <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
             <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
-              CAREERS
+              CAREERS AT A&T INFRACON
             </p>
 
             <h1
               className="text-white font-normal font-apfel2 mb-4 md:mb-6
                    text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05]"
             >
-              Build Your Future <br className="hidden sm:block" />
-              <span className="sm:hidden">&nbsp;</span>With Us
+              Build Your Future <br className="hidden sm:block" />
+              <span className="sm:hidden">&nbsp;</span>With Us
             </h1>
 
             <p className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
-              Join our team of professionals who are passionate about building infrastructure that matters.
-              We offer exciting opportunities across various departments.
+              Join our team of 200+ skilled professionals building critical infrastructure across India's most challenging terrains. From the high-altitude regions of Ladakh to the deserts of Rajasthan, be part of projects that truly matter.
             </p>
           </div>
         </div>
@@ -249,7 +249,7 @@ export function Careers() {
         </div>
       </div>
 
-      {/* WHY A&T SECTION */}
+      {/* WHY A&T INFRACON SECTION */}
       <section id="why-ant" className="bg-white py-10 sm:py-14 md:py-20">
         <div className="relative container mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-0 items-center">
@@ -258,8 +258,7 @@ export function Careers() {
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
                     src={careers1}
-
-                    alt="Industrial equipment"
+                    alt="A&T Infracon Equipment"
                     fill
                     className="object-cover"
                   />
@@ -267,8 +266,7 @@ export function Careers() {
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
                     src={careers2}
-
-                    alt="LNG storage facility"
+                    alt="Border Infrastructure Project"
                     fill
                     className="object-cover"
                   />
@@ -277,7 +275,7 @@ export function Careers() {
               <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-md">
                 <Image
                   src={careers3}
-                  alt="LNG facility construction"
+                  alt="Road Construction"
                   fill
                   className="object-cover"
                 />
@@ -285,18 +283,18 @@ export function Careers() {
             </div>
             <div className="lg:pl-8 xl:pl-12 pl-5 py-4 sm:py-6 md:py-8 order-1 md:pr-8">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-900 mb-6 sm:mb-8 md:mb-12">
-                Why A&T?
+                Why A&T Infracon?
               </h2>
 
               <div className="space-y-4 sm:space-y-5 md:space-y-6 text-gray-700 text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas">
                 <p>
-                  At A&T, we are committed to fostering an inclusive culture where every
-                  individual feels a profound sense of belonging and value. Rigorous safety
-                  measures and comprehensive benefits support our people in achieving exceptional results with confidence.
+                  With over 35 years of excellence in civil engineering, A&T Infracon Pvt. Ltd. offers unparalleled career opportunities in infrastructure development. We specialize in executing projects where few contractors dare to venture - from 15,000+ feet altitude in Ladakh to the hostile deserts of Rajasthan and strategic border areas along Indo-Pak boundaries.
                 </p>
                 <p>
-                  We invest in our people through tools, training, and global opportunities.
-                  Our commitment extends to the communities where we operate, striving for positive and sustainable impact.
+                  Our workforce of 200+ skilled professionals operates modern equipment including Hot Mix Plants, Concrete Batching Plants, 22 Excavators, and 55 Tippers across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh. We've successfully delivered projects worth ₹586+ crores in recent years, including prestigious assignments for CPWD, BSF, ITBP, and NBCC.
+                </p>
+                <p>
+                  At A&T Infracon, you'll work on nation-building projects - constructing strategic border roads, building BOPs for security forces, creating connectivity through PMGSY roads, and developing renewable energy infrastructure. Join us to build not just infrastructure, but a career that makes a real difference to India's security and development.
                 </p>
               </div>
             </div>
@@ -379,7 +377,7 @@ export function Careers() {
           <div className="text-center text-gray-500 py-12">No featured projects found.</div>
         ) : (
           <>
-            {/* Scrollable Projects Container - EXACT SAME AS WHERE WE WORK */}
+            {/* Scrollable Projects Container */}
             <div className="pl-4 sm:pl-6 md:pl-8 lg:pl-12 xl:pl-16">
               <div
                 ref={scrollRef}
@@ -420,7 +418,7 @@ export function Careers() {
                         <div className="absolute inset-0 
                                       bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-                        {/* Hover Overlay - ADDED THIS FOR BLACKISH EFFECT */}
+                        {/* Hover Overlay */}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 
                                       transition-all duration-500 ease-in-out" />
 
@@ -429,14 +427,14 @@ export function Careers() {
                                       px-4 sm:px-5 md:px-6 lg:px-8
                                       text-white">
 
-                          {/* Title - Always visible, fixed position */}
+                          {/* Title */}
                           <h3 className="font-apfel2 
                                        text-2xl sm:text-3xl md:text-4xl lg:text-[30px]
                                        font-semibold">
                             {project.project_name}
                           </h3>
 
-                          {/* Description - Smooth slide up from BELOW title */}
+                          {/* Description */}
                           <div className="overflow-hidden 
                                         max-h-0 group-hover:max-h-32 sm:group-hover:max-h-40 md:group-hover:max-h-48
                                         transition-all duration-500 ease-in-out
@@ -453,7 +451,7 @@ export function Careers() {
                             </p>
                           </div>
 
-                          {/* Action Button - Absolute positioned */}
+                          {/* Action Button */}
                           <div className="absolute bottom-0 right-4 sm:right-5 md:right-6 lg:right-8">
                             <div className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
                                           rounded-full bg-red-600 
@@ -470,7 +468,7 @@ export function Careers() {
                     </Link>
                   ))}
 
-                  {/* Invisible spacer div for last card spacing */}
+                  {/* Invisible spacer div */}
                   <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12 xl:w-16" aria-hidden="true"></div>
                 </div>
               </div>
@@ -541,15 +539,15 @@ export function Careers() {
         )}
       </section>
 
-      {/* LIFE AT A&T SECTION */}
+      {/* LIFE AT A&T INFRACON SECTION */}
       <div id="life-at-ant" className="mb-8 sm:mb-12 md:mb-16 mt-12 sm:mt-16 md:mt-20 lg:mt-24 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-start" >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal text-primary leading-tight">
-            Life at A&T
+            Life at A&T Infracon
           </h2>
 
           <p className="text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas text-[#30454c] max-w-full lg:max-w-2xl lg:ml-auto">
-            We work every day to foster a culture that values and seeks out many perspectives, and encourages colleagues to explore, think innovatively, and grow professionally. We're proud to offer numerous benefits and opportunities to our colleagues to invest in their success and empower them to reach their full potential.
+            At A&T Infracon, we foster a culture of excellence, safety, and continuous learning. Our team works on India's most challenging and prestigious infrastructure projects, building careers while building the nation. We invest in our people through comprehensive training, modern equipment, and opportunities to work on diverse projects across multiple states.
           </p>
         </div>
       </div>
@@ -645,23 +643,24 @@ export function Careers() {
           </div>
         </div>
       )}
-
-      <HearFromPeople />
+      <div id="testimonials">
+        <HearFromPeople />
+      </div>
 
       {/* EQUAL OPPORTUNITY + JOB FRAUD ALERT */}
       <section className="bg-white py-10 sm:py-14 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32 text-gray-700 border-t border-gray-100 overflow-hidden">
         <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto space-y-6 sm:space-y-8 text-[14px] sm:text-[15px] md:text-[16px] leading-relaxed">
           <p className="italic break-words font-neuhas">
-            <strong>A&T</strong> is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity and expression, age, national origin, disability, citizenship status (except as authorized by law), protected veteran status, genetic information, and any other characteristic protected by federal, state or local law.
+            <strong>A&T Infracon Pvt. Ltd.</strong> is an Equal Opportunity Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity and expression, age, national origin, disability, citizenship status (except as authorized by law), protected veteran status, genetic information, and any other characteristic protected by federal, state or local law.
           </p>
 
           <p className="italic break-words font-neuhas">
             Applicants with a disability who require a reasonable accommodation for any part of the application or hiring process may email their request to{' '}
             <Link
-              href="mailto:ant@gmail.com"
+              href="mailto:atinfracon@gmail.com"
               className="text-red-600 underline hover:no-underline break-all"
             >
-              ant@gmail.com
+              atinfracon@gmail.com
             </Link>
             {' '}for assistance. Determinations on requests for reasonable accommodation will be made on a case‑by‑case basis.
           </p>
@@ -675,7 +674,7 @@ export function Careers() {
                   Job Fraud Alert
                 </h3>
                 <p className="text-gray-700 max-w-full sm:max-w-lg md:max-w-2xl transition-all duration-500 group-hover:text-white/90 break-words text-sm sm:text-base font-neuhas">
-                  If you're interested in joining our team, please only correspond with legitimate A&T communications to ensure your information is safe and secure.
+                  If you're interested in joining our team, please only correspond with legitimate A&T Infracon communications sent from @atinfracon.com email addresses to ensure your information is safe and secure.
                 </p>
               </div>
 

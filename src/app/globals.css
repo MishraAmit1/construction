@@ -9,6 +9,16 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better scroll padding to account for fixed header */
+html {
+  scroll-padding-top: 2rem;
+  /* Adjust based on your header height */
+}
+
 /* Fix for dropdown menu scrollbar issue */
 [data-radix-popper-content-wrapper] {
   position: fixed !important;

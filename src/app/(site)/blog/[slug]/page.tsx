@@ -54,37 +54,47 @@ export default async function BlogDetailPage({ params }: { params: { slug: strin
     return (
         <>
             {/* ---------- HERO SECTION (FEATURED IMAGE) ---------- */}
-            <section className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] min-h-[350px]">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-end">
+                {/* Background image */}
                 {blog.featured_image && (
                     <Image
                         src={blog.featured_image}
                         alt={blog.title}
                         fill
+                        priority
                         className="object-cover"
                         sizes="100vw"
-                        priority
                     />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30"></div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 h-full flex flex-col justify-end pb-12 sm:pb-16 md:pb-20">
+                {/* Overlay — same tone as other heroes */}
+                <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
+
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-12 sm:pb-16 md:pb-20">
                     <div className="max-w-4xl text-white">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold font-apfel2 mb-4">
+                        {/* Title */}
+                        <h1 className="font-apfel2 font-normal mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,4.4rem)] leading-[1.05]">
                             {blog.title}
                         </h1>
-                        <div className="flex items-center gap-4 text-white/80 text-sm">
+
+                        {/* Meta data */}
+                        <div className="flex flex-wrap items-center gap-4 text-white/80 text-sm font-neuhas">
                             <span className="flex items-center gap-1.5">
                                 <Calendar className="w-4 h-4" />
                                 {new Date(blog.created_at).toLocaleDateString('en-US', {
-                                    year: 'numeric', month: 'long', day: 'numeric'
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
                                 })}
                             </span>
+
                             {blog.reading_time && (
                                 <>
                                     <span className="text-white/50">•</span>
                                     <span className="flex items-center gap-1.5">
                                         <Clock className="w-4 h-4" />
-                                        {blog.reading_time} min read
+                                        {blog.reading_time} min read
                                     </span>
                                 </>
                             )}

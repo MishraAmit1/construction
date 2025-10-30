@@ -65,7 +65,7 @@ export default function ApproachPage() {
             </div>
             {/* HOW WE DELIVER - Responsive */}
             <section
-                id="how"
+                id="services"
                 className="bg-white py-10 sm:py-14 md:py-20 mb-16 sm:mb-24 md:mb-36"
             >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-12 items-start px-4 sm:px-6 md:px-8">
@@ -351,6 +351,7 @@ export default function ApproachPage() {
             {/* SUSTAINABILITY - Responsive */}
             <section
                 className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-white"
+                id="sustainability"
                 style={{
                     backgroundImage:
                         "radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)",
@@ -446,6 +447,7 @@ export default function ApproachPage() {
 
             {/* STRENGTHENING COMMUNITIES - Responsive */}
             <section
+                id="communities"
                 className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-white"
                 style={{
                     backgroundImage:

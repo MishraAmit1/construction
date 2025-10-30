@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin, Facebook, Twitter, Youtube, Phone, Mail } from "lucide-react";
+import { Linkedin, Facebook, Twitter, Youtube, Phone, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
@@ -14,10 +14,12 @@ export function Footer() {
         if (pathname === page) {
             const element = document.getElementById(sectionId);
             if (element) {
-                element.style.scrollMarginTop = '150px';
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerOffset = 100;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         } else {
@@ -25,10 +27,12 @@ export function Footer() {
             setTimeout(() => {
                 const element = document.getElementById(sectionId);
                 if (element) {
-                    element.style.scrollMarginTop = '150px';
-                    element.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 100;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             }, 500);
@@ -39,10 +43,10 @@ export function Footer() {
         people: [
             { name: "Vision, Values & Commitments", href: "/vision-values" },
             { name: "Leadership", href: "/team" },
-            { name: "A&T.org", href: "/approach" },
+            { name: "Our Approach", href: "/approach" },
         ],
         projects: [
-            { name: "View More Projects", href: "/projects" },
+            { name: "View All Projects", href: "/projects" },
             {
                 name: "Markets",
                 href: "#markets-section",
@@ -83,7 +87,7 @@ export function Footer() {
         ],
         careers: [
             {
-                name: "Why A&T",
+                name: "Why A&T Infracon",
                 href: "#why-ant",
                 isScrollLink: true,
                 page: '/careers',
@@ -97,7 +101,7 @@ export function Footer() {
                 sectionId: 'openings'
             },
             {
-                name: "Life at A&T",
+                name: "Life at A&T Infracon",
                 href: "#life-at-ant",
                 isScrollLink: true,
                 page: '/careers',
@@ -107,20 +111,16 @@ export function Footer() {
     };
 
     const companyLinks = [
-        { name: "History", href: "/approach" },
+        { name: "About Us", href: "/approach" },
         { name: "Contact", href: "/contact" },
-        // { name: "Media", href: "/media" },
         { name: "Blog", href: "/blog" },
-        // { name: "Suppliers", href: "/suppliers" },
-        // { name: "Annual Reports", href: "/reports" },
+        { name: "Services", href: "/services" },
     ];
 
     const legalLinks = [
         { name: "Privacy Policy", href: "/privacy" },
         { name: "Terms of Use", href: "/terms-of-use" },
         { name: "Modern Slavery Act Statement", href: "/slavery-statement" },
-        // { name: "Ethics", href: "/ethics-policy" },
-        // { name: "Australia Privacy Policy", href: "/au-privacy" },
     ];
 
     const socialLinks = [
@@ -133,9 +133,9 @@ export function Footer() {
     return (
         <footer className="bg-[#212C36] text-gray-300">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                {/* TOP SECTION */}
+                {/* TOP SECTION - Links Grid */}
                 <div className="py-16 border-b border-gray-700">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-24">
                         {/* People */}
                         <div>
                             <h3 className="text-white font-bold text-xl leading-[30px] tracking-[0.5px] mb-6 font-apfel2">
@@ -269,53 +269,80 @@ export function Footer() {
                     </div>
                 </div>
 
-                {/* BOTTOM SECTION */}
+                {/* BOTTOM SECTION - 4 Columns on Desktop, 2x2 on Mobile */}
                 <div className="py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                        <div className="md:col-span-3 space-y-4">
-                            <Link href="/">
-                                <Image src={logo} alt="Company Logo" width={120} height={50} className="mb-4" />
-                            </Link>
-                            <a href="tel:+15713926300" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                                <Phone size={18} className="flex-shrink-0" />
-                                <span className="text-base font-neuhas">+1 571-392-6300</span>
-                            </a>
-                            <a href="mailto:webmas@AT.com" className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                                <Mail size={18} className="flex-shrink-0" />
-                                <span className="text-base font-neuhas">webmas@AT.com</span>
-                            </a>
-                        </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
-                        <div className="md:col-span-5">
-                            <div className="grid grid-cols-2 gap-8">
-                                <ul className="space-y-3">
-                                    {legalLinks.slice(0, 3).map((link) => (
-                                        <li key={link.name}>
-                                            <Link
-                                                href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
-                                            >
-                                                {link.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <ul className="space-y-3">
-                                    {legalLinks.slice(3).map((link) => (
-                                        <li key={link.name}>
-                                            <Link
-                                                href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
-                                            >
-                                                {link.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
+                        {/* 1. Logo & Contact */}
+                        <div className="space-y-4">
+                            <Link href="/">
+                                <Image
+                                    src={logo}
+                                    alt="A&T Infracon Logo"
+                                    width={120}
+                                    height={50}
+                                    className="mb-4"
+                                />
+                            </Link>
+                            <div className="space-y-3">
+                                <a
+                                    href="tel:+917935703085"
+                                    className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors"
+                                >
+                                    <Phone size={18} className="flex-shrink-0 mt-0.5" />
+                                    <span className="text-sm font-neuhas">+91 79357 03085</span>
+                                </a>
+
+                                <a
+                                    href="mailto:atinfracon@gmail.com"
+                                    className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors"
+                                >
+                                    <Mail size={18} className="flex-shrink-0 mt-0.5" />
+                                    <span className="text-sm font-neuhas">atinfracon@gmail.com</span>
+                                </a>
+
+                                <div className="flex items-start gap-3 text-gray-300">
+                                    <MapPin size={18} className="flex-shrink-0 mt-0.5" />
+                                    <div className="text-sm font-neuhas">
+                                        <p className="font-semibold text-white mb-1">Registered Office:</p>
+                                        <p>506, 5th Floor, Aagam Avenue</p>
+                                        <p>Acher, Sabarmati</p>
+                                        <p>Ahmedabad - 380005, Gujarat</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="md:col-span-4 flex flex-col items-start md:items-end justify-between">
+                        {/* 2. Legal Links */}
+                        <div className="space-y-4">
+                            <h4 className="text-white font-semibold text-lg font-apfel2">Legal</h4>
+                            <ul className="space-y-3">
+                                {legalLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <Link
+                                            href={link.href}
+                                            className="text-gray-400 hover:text-white transition-colors text-sm leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* 3. Company Info */}
+                        <div className="space-y-4">
+                            <h4 className="text-white font-semibold text-lg font-apfel2">Company Details</h4>
+                            <div className="space-y-2 text-sm text-gray-400 font-neuhas">
+                                <p>CIN: U45201GJ2011PTC065598</p>
+                                <p>PAN: AAJCA5903A</p>
+                                <p>GST: 24AAJCA5903A1Z9</p>
+                            </div>
+                        </div>
+
+                        {/* 4. Connect With Us */}
+                        <div className="space-y-4">
+                            <h4 className="text-white font-semibold text-lg font-apfel2">Connect With Us</h4>
                             <div className="flex gap-4">
                                 {socialLinks.map((social, idx) => {
                                     const IconComponent = social.icon;
@@ -333,17 +360,18 @@ export function Footer() {
                                 })}
                             </div>
                         </div>
+
                     </div>
                 </div>
 
                 {/* DEVELOPER CREDIT */}
                 <div className="border-t border-gray-700">
-                    <div className="py-4 flex flex-col md:flex-row items-center justify-between">
+                    <div className="py-4 flex flex-col md:flex-row items-center justify-between gap-2">
                         <p className="text-xs text-gray-500 font-neuhas order-2 md:order-1">
-                            © 2025 A&T Corporation. All Rights Reserved.
+                            © 2025 A&T Infracon Pvt. Ltd. All Rights Reserved.
                         </p>
                         <p className="text-xs text-gray-400 font-neuhas order-1 md:order-2">
-                            Website designed by {' '}
+                            Website designed by{' '}
                             <Link
                                 href="https://flauraa.com"
                                 target="_blank"
