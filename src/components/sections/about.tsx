@@ -6,7 +6,7 @@ import logo from "../../app/assets/cons3.png"
 
 export function About() {
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full text-white overflow-hidden">
+    <section className="relative h-[80vh] min-h-[680px] w-full text-white overflow-hidden">
       {/* Image with subtle zoom animation */}
       <div className="absolute inset-0 scale-105 animate-[zoom_20s_ease-in-out_infinite]">
         <Image
@@ -25,7 +25,7 @@ export function About() {
       {/* Subtle vignette effect */}
       <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.4)]" />
 
-      <div className="relative z-10 flex h-full flex-col justify-center">
+      <div className="relative z-10 flex h-full flex-col justify-end pb-20">  {/* Changed justify-center to justify-end and added pb-20 */}
         <div className="container max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left side - Title */}
@@ -40,7 +40,6 @@ export function About() {
                 </h2>
               </div>
             </div>
-
             {/* Right side - Content */}
             <div className="max-w-lg">
               <div className="relative">

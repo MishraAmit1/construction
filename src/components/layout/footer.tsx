@@ -80,10 +80,6 @@ export function Footer() {
                 page: '/approach',
                 sectionId: 'ethics'
             },
-            {
-                name: "More",
-                href: "/approach"
-            },
         ],
         careers: [
             {
@@ -111,20 +107,20 @@ export function Footer() {
     };
 
     const companyLinks = [
-        { name: "History", href: "/history" },
+        { name: "History", href: "/approach" },
         { name: "Contact", href: "/contact" },
-        { name: "Media", href: "/media" },
+        // { name: "Media", href: "/media" },
         { name: "Blog", href: "/blog" },
-        { name: "Suppliers", href: "/suppliers" },
-        { name: "Annual Reports", href: "/reports" },
+        // { name: "Suppliers", href: "/suppliers" },
+        // { name: "Annual Reports", href: "/reports" },
     ];
 
     const legalLinks = [
         { name: "Privacy Policy", href: "/privacy" },
-        { name: "Modern Slavery Act Statement", href: "/slavery-statement" },
-        { name: "Ethics", href: "/ethics-policy" },
-        { name: "Australia Privacy Policy", href: "/au-privacy" },
         { name: "Terms of Use", href: "/terms-of-use" },
+        { name: "Modern Slavery Act Statement", href: "/slavery-statement" },
+        // { name: "Ethics", href: "/ethics-policy" },
+        // { name: "Australia Privacy Policy", href: "/au-privacy" },
     ];
 
     const socialLinks = [

@@ -16,7 +16,7 @@ export default async function ProjectsPage() {
     <>
       <div className='bg-white'>
         <ProjectsHeader />
-        <ProjectsSearchBar />
+        {/* <ProjectsSearchBar /> */}
         <ExploreProjects />
 
         {/* Add ID for Markets section */}

@@ -22,7 +22,7 @@ export function InspiringProjects() {
               Building Inspiring Projects
             </h2>
             <p className="mt-4 sm:mt-6 md:mt-8 
-                            text-[16px] sm:text-[16px] md:text-[22px] 
+                            text-[16px] sm:text-[16px] md:text-[20px] 
                             text-gray-600 leading-[30px] font-neuhas
                             max-w-full md:max-w-3xl">
               We deliver first-of-a-kind infrastructure projects that strengthen connectivity, enhance security, and drive economic development across India — from high-altitude roads and border security structures to rural highway networks, institutional buildings, and renewable energy installations.
@@ -36,34 +36,29 @@ export function InspiringProjects() {
             </p>
 
             {/* CTA Button - Responsive sizing */}
+
             <div className="mt-8 sm:mt-10 md:mt-12">
               <Link
                 href="/approach"
                 className={cn(
                   'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
-                  'px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold',
-                  'bg-white text-red-600 transition-all duration-500 ease-out',
-                  'min-h-[48px] sm:min-h-[52px] md:min-h-[56px]',
-                  'w-full sm:w-auto' // Full width on mobile
+                  'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                  'text-sm sm:text-[20px] font-semibold text-red-600',
+                  'transition-all duration-500 ease-out',
+                  'min-h-[44px] sm:min-h-[48px]',
+                  'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
                 )}
               >
-                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 
-                                       origin-center transition-transform duration-500 ease-out" />
-                <span className="relative z-10 flex items-center justify-center sm:justify-start">
-                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white 
-                                         transition-all duration-500 group-hover:w-0 group-hover:opacity-0 
-                                         group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 
-                                         h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10">
+                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                <span className="relative z-10 flex items-center justify-center md:justify-start">
+                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
                     <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                   </span>
-                  <span className="text-[14px] sm:text-[15px] md:text-base font-neuhas
-                                         whitespace-normal sm:whitespace-nowrap 
-                                         transition-colors duration-500 group-hover:text-white">
-                    Our Vision, Values &amp; Commitments
+                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
+                    Our Vision, Values & Commitments
                   </span>
-                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 
-                                               group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 
-                                               group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
                 </span>
               </Link>
             </div>

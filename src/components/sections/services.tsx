@@ -62,42 +62,47 @@ export default function ServicesPage() {
     return (
         <>
             {/* HERO SECTION */}
-            <section className="font-apfel2 relative min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center pt-[20px] sm:pt-[100px] md:pt-[120px]">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-center py-12">
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2000"
-                        alt="Services hero"
+                        alt="Hero background"
                         fill
-                        sizes="100vw"
+                        priority
                         className="object-cover"
+                        sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-black/75 sm:bg-black/70 md:bg-black/65" />
+                    {/* Uniform dark overlay for all pages */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-white">
-                        <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">
+                {/* Text container */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs md:max-w-6xl text-white">
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
                             APPROACH
                         </p>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
-                            Our Services
+
+                        <h1 className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]">
+                            Our Services
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl">
-                            Leveraging over a century of experience, we implement a comprehensive integration strategy — both horizontal and vertical — to deliver optimized EPC solutions that enhance speed, schedules, and performance, while driving continuous improvement across the EPC value chain.
+
+                        <p className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
+                            With 35+ years of expertise in civil engineering, A&T Infracon delivers comprehensive infrastructure solutions across India's most challenging terrains. From high-altitude roads to border security infrastructure, we execute projects with precision and excellence in extreme conditions.
                         </p>
                     </div>
                 </div>
             </section>
             {/* BREADCRUMB */}
-            <div className="bg-[#edf3f5] border-b border-gray-200">
+            <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600">
-                        <Link href="/" className="hover:text-red-600">
-                            HOME
-                        </Link>
-                        <span className="mx-1.5 sm:mx-2">&gt;</span>
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
+                        <Link href="/" className="hover:text-red-600 transition-colors">HOME</Link>
+                        <span className="mx-1.5 sm:mx-2">/</span>
                         <span className="text-red-600 font-semibold uppercase">
                             OUR SERVICES
+
                         </span>
                     </nav>
                 </div>
@@ -113,20 +118,20 @@ export default function ServicesPage() {
                 <div className="container text-center max-w-xs sm:max-w-sm md:max-w-4xl mx-auto px-4 sm:px-6">
                     <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl
                              font-normal leading-tight text-primary mb-3 sm:mb-4 md:mb-12">
-                        Services for Speed, Performance, and Value
+                        Excellence in Execution, Quality in Delivery
                     </h2>
                     <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4 text-start">
                         <p className="text-[15px] sm:text-[16px] md:text-[21px] font-neuhas text-[#30454c] leading-relaxed">
-                            Throughout our history, A&T has continuously evolved — innovating, adapting, and setting standards of excellence as we apply our unique capabilities to deliver our customers’ most critical and complex projects.
+                            A&T Infracon Pvt. Ltd. has been a pioneering force in civil engineering for over 35 years, specializing in road and building works across Western India. Our extensive portfolio includes major projects in Gujarat, Rajasthan, Jammu & Kashmir, and Leh Ladakh, where we've executed some of the nation's most critical infrastructure.
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[21px] font-neuhas text-[#30454c] leading-relaxed">
-                            More than ever before, we are integrating services across our diverse business lines to deliver comprehensive and innovative solutions tailored specifically to our customers’ needs. By collaborating early in project development, we explore all technical, commercial, and financial options to identify the best solutions, reduce complexities, and streamline delivery.
+                            With our registered office in Ahmedabad and branch office in Barmer, we combine local expertise with modern capabilities. Our deep understanding of regional conditions allows us to mobilize resources efficiently and deliver projects in the most remote and challenging locations.
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[21px] font-neuhas text-[#30454c] leading-relaxed">
-                            We meet customers where they are, offering solutions that range from enhancing existing operations to reimagining approaches to their challenges. By leveraging vertically integrated work streams, proprietary digital tools, data, and in-house supply chains, we provide unique options to ensure certainty of outcome. Additionally, we are capturing opportunities to reduce cycle times on repeatable work, amplifying incremental improvements and boosting overall productivity.
+                            We specialize in construction across India's harshest environments - from the deserts of Barmer and Jaisalmer to the high-altitude regions of Ladakh at 15,000+ feet, and the challenging terrain of the Rann of Kutch along the Indo-Pak Border. Our robust workforce of 200+ skilled professionals, supported by modern equipment and machinery, ensures excellence in every project phase.
                         </p>
                         <p className="text-[15px] sm:text-[16px] md:text-[21px] font-neuhas text-[#30454c] leading-relaxed">
-                            Together, with our proven processes and project management strategies, we create value not only in cost and schedule but also in delivering projects that perform as promised — or better — once customers begin operations.
+                            Our integrated approach combines technical expertise, proven processes, and cutting-edge equipment to deliver projects that not only meet but exceed expectations - on time, within budget, and built to last for generations.
                         </p>
                     </div>
                 </div>
@@ -146,7 +151,7 @@ export default function ServicesPage() {
 
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
 
-                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">ENgineering</p>
+                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">ENGINEERING</p>
                         <h2
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-apfel2
                              font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
@@ -155,13 +160,13 @@ export default function ServicesPage() {
                         </h2>
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                A&T’s engineering services are the foundation of our project success, delivering innovative, technology-driven solutions to tackle our customers’ toughest challenges. With industry-leading expertise and a commitment to continuous learning, our engineers design with supply chain, construction, and operations in mind — ensuring projects are delivered efficiently and with unmatched quality. Programs like A&T Fellows and Distinguished Technical Specialists enable our teams to collaborate across markets and push the boundaries of technical excellence.
+                                A&T Infracon's engineering expertise forms the backbone of our project success. With decades of experience in designing infrastructure for extreme conditions, our engineering team specializes in creating solutions that withstand the harshest environments - from high-altitude freezing conditions to desert heat and coastal salinity.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Innovation and technology are at the core of what we do. From advanced 3D, 4D, and 5D modeling to data-centric execution and cloud-based systems, our engineers leverage cutting-edge tools to streamline schedules, reduce costs, and maximize productivity. By working collaboratively in virtual environments across the globe, A&T ensures our customers receive solutions that often set new industry standards.
+                                Our engineers design with construction feasibility and long-term durability in mind. From complex border infrastructure requiring strategic planning to high-altitude roads demanding specialized design considerations, we leverage modern surveying tools, structural analysis software, and proven methodologies to ensure every project is engineered for excellence and built to last.
                             </p>
                         </div>
-                        <div className="mt-6">
+                        <div className="mt-6 md:-ml-8">
                             <CtaButton href="/services/engineering">
                                 Learn More About Engineering
                             </CtaButton>
@@ -175,11 +180,11 @@ export default function ServicesPage() {
                     <div className="flex items-center ">
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                The Riyadh Metro project — the largest metro project in the world to be built in a single phase — is pushing the limits of what's possible, setting new standards in scale, innovation, and precision. At peak construction, over 28,000 professionals worked onsite, moving massive quantities of materials, including enough earthworks to build the Great Pyramid of Giza more than seven times over. Our engineers in A&T design centers worldwide — including Taiwan, Dubai, and New Delhi — helped produce over 98,000 design drawings and 100 mock-ups. The system's doors alone required more than 10,000 unique designs, complete with customized signage and specifications. Operators received more than 120,000 as-built drawings and documentation from tens of thousands of lab tests, verifying compliance with nearly 700 material criteria.
+                                Our flagship project - the High Altitude Hill Road to Indo-China Border from Silungla Base to ITBP Post in Ladakh - exemplifies our engineering prowess. Valued at ₹112.37 Crore, this project required innovative solutions to overcome extreme altitude, sub-zero temperatures, and limited accessibility. Our team successfully designed and executed 12.42 km of strategic roadway at altitudes exceeding 14,800 feet, ensuring year-round connectivity for border security forces while navigating challenging terrain and weather constraints.
                             </p>
-                            <div className="mt-6">
-                                <CtaButton href="/projects/riyadh-metro">
-                                    Riyadh Metro
+                            <div className="mt-6 md:-ml-8">
+                                <CtaButton href="/projects">
+                                    View Our Projects
                                 </CtaButton>
                             </div>
                         </div>
@@ -219,28 +224,28 @@ export default function ServicesPage() {
 
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
 
-                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">procurement</p>
+                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">PROCUREMENT</p>
                         <h2
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-apfel2
                              font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
                         >
-                            Building a Resilient Global Supply Chain
+                            Building a Resilient Supply Chain
                         </h2>
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our global supply chain is resilient and adaptable, allowing us to consistently deliver on safety, quality, cost, schedule, and sustainability, no matter what global challenges arise.
+                                Our procurement strategy is built on decades of relationship-building with trusted suppliers and manufacturers across Western India. We maintain strategic partnerships that ensure consistent quality, competitive pricing, and timely delivery even to the most remote project locations.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our supply chain is complex and geographically vast, represented by thousands of supplier and contractor partnerships. We work with over 7,000 suppliers in 70 countries, handling more than 50,000 transactions annually. We also work with many local and small businesses, strengthening local communities.
+                                From sourcing specialized materials for border infrastructure to procuring heavy machinery and equipment, our procurement team coordinates hundreds of transactions monthly. We work closely with local suppliers to support regional economies while maintaining rigorous quality standards. Our extensive vendor network and streamlined procurement processes enable us to handle multiple large-scale projects simultaneously without compromising on quality or timelines.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                We support A&T’s business priorities and its projects through this network of global suppliers, supported by local and regionally positioned Supply Chain professionals of diverse experience and capability. Our supply chain is anchored on a platform of best-in-class processes and tools. We deliver on our vision of being industry’s choice in providing supply chain services.
+                                With our own crushers producing 240TPH and 150TPH, concrete batching plants, and modern construction equipment fleet, we maintain significant self-reliance in critical resources while building strong supplier partnerships for specialized needs.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
-            {/* STEEL FABRICATION PARTNERSHIP SECTION */}
+            {/* EQUIPMENT PARTNERSHIP SECTION */}
             <section className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 px-4 sm:px-6 md:px-20 border-t border-gray-200 mb-32">
                 {/* FIRST ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center">
@@ -248,7 +253,7 @@ export default function ServicesPage() {
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] rounded-md overflow-hidden">
                         <img
                             src="https://www.bechtel.com/wp-content/uploads/2025/01/Bechtel-x-Unger-2-675x450.jpg"
-                            alt="Steel Fabrication Partnership"
+                            alt="Construction Equipment"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
                     </div>
@@ -256,19 +261,17 @@ export default function ServicesPage() {
                     {/* RIGHT TEXT */}
                     <div className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-apfel2 font-normal leading-tight text-[#30454c]">
-                            Steel Fabrication Partnership
+                            Modern Equipment Fleet
                         </h2>
                         <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px] font-neuhas">
-                            Access to high‑quality materials like fabricated steel is essential for completing projects
-                            on time and within budget. To secure this critical material, A&T and Unger Steel have
-                            formed Unger Steel Fabrication FZE, a joint venture of which A&T is a part owner. This
-                            venture supplies premium steel to A&T projects worldwide.
+                            A&T Infracon maintains an extensive fleet of modern construction machinery to ensure project efficiency and quality. Our equipment inventory includes 4 Hot Mix Plants, 4 Concrete Batching Plants, 22 Excavators, 8 Loaders, 6 Pavers, 55 Tippers, and 12 Transit Mixers. With our own crushing units capable of producing up to 240TPH at Panthawada and 150TPH at Chunadi, we maintain self-sufficiency in critical construction materials while ensuring consistent quality and competitive costs.
                         </p>
 
                         {/* CTA Button */}
-                        <div>
-                            <CtaButton href="/projects/unger-steel">
-                                Learn about Unger Steel
+                        <div className="mt-6 md:-ml-8">
+
+                            <CtaButton href="/about#resources">
+                                View Our Resources
                             </CtaButton>
                         </div>
                     </div>
@@ -280,7 +283,7 @@ export default function ServicesPage() {
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] rounded-md overflow-hidden">
                         <img
                             src="https://www.bechtel.com/wp-content/uploads/2025/01/148172-675x450.webp"
-                            alt="Pipe Making Joint Venture"
+                            alt="Project Execution"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
                     </div>
@@ -288,20 +291,16 @@ export default function ServicesPage() {
                     {/* RIGHT TEXT */}
                     <div className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-apfel2 font-normal leading-tight text-[#30454c]">
-                            Pipe Making Joint Venture
+                            Strategic Project Management
                         </h2>
                         <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px] font-neuhas">
-                            Through our joint venture with Çimtaş Group, we deliver a vertically integrated piping supply
-                            chain that optimizes risk management, scheduling, and cost efficiency. With over 52 years of
-                            experience and five fabrication shops across Turkey and China, Çimtaş provides comprehensive
-                            engineering, procurement, and fabrication services for the construction, power, oil, gas, and
-                            chemicals industries.
+                            Our project management approach integrates modern software tools with proven execution strategies. We maintain strong banking relationships with fund-based and non-fund-based limits, enabling us to handle multiple large-scale projects simultaneously. Our team of 200+ professionals brings expertise in managing complex logistics, coordinating with government agencies, and delivering projects in hostile environments where few contractors dare to operate.
                         </p>
 
                         {/* CTA Button */}
-                        <div>
-                            <CtaButton href="/projects/unger-steel">
-                                Learn about Unger Steel
+                        <div className="mt-6 md:-ml-8">
+                            <CtaButton href="/projects">
+                                View Completed Projects
                             </CtaButton>
                         </div>
                     </div>
@@ -323,7 +322,7 @@ export default function ServicesPage() {
 
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
 
-                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">Construction</p>
+                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">CONSTRUCTION</p>
                         <h2
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-apfel2
                              font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
@@ -332,10 +331,10 @@ export default function ServicesPage() {
                         </h2>
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                As a global leader in construction management, we have the people, processes, and tools to successfully execute the largest and most logistically complex projects, while maintaining industry-leading safety and quality standards.
+                                A&T Infracon's construction capabilities are proven across India's most demanding environments. From constructing roads in the Rann of Kutch's marshy terrain to building infrastructure at 15,000+ feet in Ladakh, we execute projects that others find impossible. Our expertise spans road construction, border infrastructure, building works, bridges, and renewable energy installations.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                We’ve developed the competence and capacity to self-perform every phase of project delivery. Our self-perform EPC model maximizes value and minimizes risk for our customers by offering a single point of accountability. This approach allows us to optimize designs and implement proprietary processes, ensuring greater certainty in outcomes. Additionally, we take great pride in our century-long partnership with the North America Building Trades Unions, as well as the outstanding projects and training advancements we’ve pioneered together.
+                                We maintain industry-leading safety standards while delivering complex projects on schedule. Our construction teams are trained to work in extreme weather conditions, from Rajasthan's 50°C summers to Ladakh's -40°C winters. With successful completion of projects worth over ₹586 crores in recent years, including border roads, BOPs, bridges, and civil works, we've established ourselves as the contractor of choice for challenging infrastructure projects across Western India.
                             </p>
                         </div>
                     </div>
@@ -347,11 +346,11 @@ export default function ServicesPage() {
                     <div className="flex items-center ">
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                We are committed to workforce development and community engagement. On the Kosovo Motorway project in Serbia, 70% of our workforce was made up of local residents, and we worked with 80 local contractors and hundreds of local suppliers. Over the course of the project, more than 10,000 residents received onsite training, equipping them with new skills to further their careers.
+                                Our border infrastructure projects showcase our specialized construction capabilities. The 26.762 KM Composite Earthen Bundh cum Ditch project along the Indo-Pak border in Jammu sector, valued at ₹101.78 Crores, involved constructing earthen embankments, bituminous roads, and RCC Nakas across 135 feet width. Our team completed multiple such strategic projects including fencing, fighting bunkers, and BOPs in sensitive border areas, demonstrating our ability to execute large-scale works under stringent security protocols and challenging terrain conditions.
                             </p>
-                            <div className="mt-6">
-                                <CtaButton href="/projects/riyadh-metro">
-                                    Kosovo Motorway
+                            <div className="mt-6 md:-ml-8">
+                                <CtaButton href="/projects#border-infrastructure">
+                                    Border Infrastructure Projects
                                 </CtaButton>
                             </div>
                         </div>
@@ -391,7 +390,7 @@ export default function ServicesPage() {
 
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
 
-                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">project management</p>
+                        <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">PROJECT MANAGEMENT</p>
                         <h2
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-apfel2
                              font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
@@ -400,10 +399,10 @@ export default function ServicesPage() {
                         </h2>
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Megaprojects often come with immense complexity, but with over a century of experience in engineering, construction, and procurement, we know how to navigate these challenges.
+                                Managing complex infrastructure projects in remote and hostile environments requires exceptional planning, coordination, and execution capabilities. A&T Infracon's project management expertise has been honed through decades of delivering challenging projects for prestigious clients including CPWD, BSF, ITBP, NBCC, and major PSUs.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our deep expertise spans every phase of project delivery, and our long-standing relationships with trusted suppliers and our ability to manage thousands of contracts simultaneously ensures that we not only meet, but exceed our customers’ goals. This, after all, is at the heart of what we do.
+                                Our project managers leverage modern software tools for planning, monitoring, and control while maintaining the flexibility needed for ground realities. We've successfully managed over 50 major projects simultaneously, with values ranging from ₹5 crores to ₹140 crores, ensuring quality delivery and client satisfaction across all engagements.
                             </p>
                         </div>
                     </div>
@@ -415,14 +414,14 @@ export default function ServicesPage() {
                     <div className="flex items-center ">
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                On Teck’s Quebrada Blanca copper mine project (QB2), we played a key role in extending the life and boosting the output of one of the world’s largest undeveloped copper resources. The expansion included a 143,000-tonne-per-day copper concentrator, a high-capacity desalination plant, and a 103-mile (165-kilometer) water supply pipeline. QB2’s construction was a massive undertaking, involving the erection of 20,000 tonnes of steel and the movement of 31.2 million cubic meters of material, underscoring the scale and complexity of the project. Notably, QB2 is the first mining operation in the Tarapacá Region to use desalinated water for large-scale mining, with 100% of its production process dependent on this sustainable water source.
+                                The Widening & Strengthening of Dehgam-Bayad Road (Km 0/0 to 43/800), a ₹28.33 Crore CRF project, exemplifies our road construction expertise. This project involved widening a 43.8 km stretch from 6.10 meters to 10.0 meters, requiring careful traffic management while maintaining continuous public access. Our team coordinated multiple work fronts, managed material supply chains, and executed quality bituminous work to deliver a highway-standard road that now serves thousands of commuters daily.
                             </p>
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Throughout the project, we remained steadfast in our commitment to excellence and safety. More than 30,000 individuals contributed to the construction effort, logging 140 million work hours, over 60 million of which were completed without lost-time incidents. In recognition of our outstanding safety and environmental performance, we were honored with the ESH Excellence Award in 2022.
+                                Similarly, our PMGSY rural road projects and border road maintenance works demonstrate our ability to manage diverse project portfolios while maintaining consistent quality and safety standards across all sites.
                             </p>
-                            <div className="mt-6">
-                                <CtaButton href="/projects/riyadh-metro">
-                                    Quebrada Blanca 2
+                            <div className="mt-6 md:-ml-8">
+                                <CtaButton href="/projects#road-works">
+                                    Road Construction Projects
                                 </CtaButton>
                             </div>
                         </div>
@@ -464,172 +463,30 @@ export default function ServicesPage() {
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-apfel2
                              font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
                         >
-                            Additional Services
+                            Additional Capabilities
                         </h2>
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Alongside our core services, we incorporate functional centers of
-                                excellence throughout every aspect of our operations, supported by a
-                                broad range of customized solutions that drive project success. This
-                                approach ensures projects are completed faster, deliver greater
-                                value, and achieve superior performance.
+                                Beyond our core competencies, A&T Infracon offers specialized services including renewable energy infrastructure (wind turbine foundations, solar power projects), advanced slope protection using Gabion technology, flood damage remediation, annual road maintenance contracts, and construction in ecologically sensitive areas. Our diverse capabilities and proven track record make us the preferred partner for government agencies and private sector clients undertaking challenging infrastructure projects across Western India.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
-            <section className="font-apfel2 py-14 sm:py-20 lg:py-24 bg-secondary/30 overflow-x-hidden">
-                <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-                    {/* Scrollable Services Container */}
-                    <div
-                        ref={scrollRef}
-                        className="w-full overflow-x-auto scroll-smooth scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-gray-200"
-                    >
-                        <div className="flex gap-6 sm:gap-8 md:gap-10 pb-4 transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]">
-                            {services.map((service) => (
-                                <Link
 
-                                    href={`/services/${service.slug}`}
-                                    key={service.id}
-                                    className="group relative flex-shrink-0 w-[90vw] sm:w-[48%] lg:w-[32%]
-                       h-[420px] sm:h-[480px] lg:h-[520px]
-                       rounded-lg overflow-hidden shadow-md hover:shadow-xl
-                       transform transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] cursor-pointer block"
-                                >
-                                    {/* Background Image */}
-                                    <img
-                                        src={service.image}
-                                        alt={service.title}
-                                        className="h-full w-full object-cover object-center transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110"
-                                    />
-
-                                    {/* Permanent Gradient Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"></div>
-
-                                    {/* Hover Overlay */}
-                                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"></div>
-                                    <div
-                                        className="absolute bottom-0 left-0 right-0 
-             p-6 sm:p-8 pb-16 
-             text-white flex flex-col justify-end 
-             transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                                    >
-                                        <p className="text-yellow-500 text-xs sm:text-sm uppercase mb-2 tracking-widest">
-                                            Services
-                                        </p>
-
-                                        <h3 className="text-2xl sm:text-3xl font-apfel2 font-semibold leading-tight mb-3 max-w-[calc(100%-4rem)]">
-                                            {service.title}
-                                        </h3>
-                                        <p
-                                            className="text-sm sm:text-base font-neuhas text-white/90 
-               max-h-0 overflow-hidden group-hover:max-h-[300px] group-hover:mt-2 
-               transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] 
-               max-w-[calc(100%-4rem)]"
-                                        >
-                                            {service.description}
-                                        </p>
-                                    </div>
-
-                                    {/* Floating Button (Plus → Cross) */}
-                                    <div className="absolute bottom-5 right-5 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                                        {/* Default + */}
-                                        <div
-                                            className="h-12 w-12 rounded-full bg-red-600 flex items-center justify-center text-white 
-                            opacity-100 group-hover:opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth={2}
-                                                stroke="currentColor"
-                                                className="w-6 h-6"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
-                                            </svg>
-                                        </div>
-
-                                        {/* Hover X */}
-                                        <div
-                                            className="absolute inset-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-600 
-                            text-white opacity-0 group-hover:opacity-100 
-                            transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth={2}
-                                                stroke="currentColor"
-                                                className="w-6 h-6"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* ✅ NAVIGATION + NUMBERING */}
-                    <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-4 mt-6 sm:mt-8 px-4 sm:px-0">
-                        {/* Prev button */}
-                        <button
-                            onClick={() => scrollToIndex('prev')}
-                            disabled={currentIndex === 0}
-                            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-red-100 text-red-600 
-                   flex items-center justify-center hover:bg-red-200 
-                   transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            <svg
-                                className="h-4 w-4 sm:h-5 sm:w-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-
-                        {/* Page Count */}
-                        <span className="text-red-600 font-semibold text-sm sm:text-base">
-                            {currentIndex + 1} – {Math.min(currentIndex + visibleCount, services.length)} of {services.length}
-                        </span>
-
-                        {/* Next button */}
-                        <button
-                            onClick={() => scrollToIndex('next')}
-                            disabled={currentIndex + visibleCount >= services.length}
-                            className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-red-100 text-red-600 
-                   flex items-center justify-center hover:bg-red-200 
-                   transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            <svg
-                                className="h-4 w-4 sm:h-5 sm:w-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </section>
             <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 text-center">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <h2 className="text-[28px] sm:text-[64px] md:leading-[70.4px] font-apfel2 
                                  font-light text-[#2d3b40] mb-3 sm:mb-4 md:mb-6">
-                        Connect with the <br />A&T Team
+                        Connect with the <br />A&T Infracon Team
                     </h2>
                     <p className="text-[16px] md:text-[20px] 
                                  text-[#2d3b40]/80 leading-[30px] 
                                  max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-3xl 
                                  mx-auto mb-6 sm:mb-8 md:mb-10 px-4 sm:px-0 font-neuhas">
-                        Whether you’re seeking a partner for a project, have a media inquiry, or are interested in a job opportunity, you can reach out to our A&T colleagues around the world for direct support. Our team is ready to assist and provide the expertise you need.
+                        Whether you're seeking a partner for challenging infrastructure projects, have inquiries about our capabilities, or are interested in career opportunities, connect with our team in Ahmedabad or Barmer. We're ready to bring our 35+ years of expertise to your next project.
                     </p>
+
                     <CtaButton href="/contact">Contact Us</CtaButton>
                 </div>
             </section>

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock, Building2, Globe, Users } from 'lucide-react';
 import ContactForm from '@/components/sections/contact-form';
-
+import contactbanner from "../../assets/contactbanner.webp"
 export const metadata = {
     title: 'Contact Us | A&T Infracon',
     description: 'Get in touch with A&T Infracon for your construction and infrastructure projects.',
@@ -12,20 +12,18 @@ export default function ContactPage() {
     return (
         <>
             {/* Hero Section */}
-            <section
-                className="font-apfel2 relative min-h-[35vh] sm:min-h-[45vh] md:min-h-[55vh] py-12 flex items-center"
-            >
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-center py-12">
+
                 {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
-                        src="https://hdurfgtlqgpgjjnlbctu.supabase.co/storage/v1/object/public/project-images/categories/roadconstruct%20(2).webp"
-                        alt="Contact A&T Infracon"
+                        src={contactbanner}
+                        alt="Contact A&T Infracon"
                         fill
                         priority
                         sizes="100vw"
                         className="object-cover"
                     />
-                    {/* Overlay tone — matches other headers */}
                     <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
@@ -41,7 +39,7 @@ export default function ContactPage() {
                    text-[clamp(2.2rem,6vw,6rem)] leading-[1.05]
                    [text-wrap:balance]"
                         >
-                            Let's Build Together
+                            Let's Build Together
                         </h1>
 
                         <p
@@ -49,7 +47,7 @@ export default function ContactPage() {
                    leading-[1.6] md:leading-[36px] font-medium
                    text-white/85 sm:text-white/90 md:max-w-3xl"
                         >
-                            Transform your infrastructure vision into reality with India’s trusted contractor.
+                            Transform your infrastructure vision into reality with India's trusted contractor.
                         </p>
                     </div>
                 </div>

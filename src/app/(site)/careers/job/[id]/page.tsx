@@ -186,7 +186,8 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
         <>
             <div className="min-h-screen bg-gray-50">
                 {/* HERO SECTION */}
-                <section className="font-apfel2 relative min-h-[50vh] lg:min-h-[55vh] py-12 flex items-center">
+                <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
+                    {/* Background image */}
                     <div className="absolute inset-0">
                         <Image
                             src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80"
@@ -196,40 +197,57 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                             className="object-cover"
                             sizes="100vw"
                         />
-                        <div className="absolute inset-0 bg-black/70"></div>
+                        {/* Overlay tone — same as global headers */}
+                        <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                     </div>
 
+                    {/* Foreground content */}
                     <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
-                        <div className="max-w-4xl text-white">
-                            <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base">
-                                {job.departments?.name?.toUpperCase()}
-                            </p>
+                        <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
+                            {/* Subtitle — department */}
+                            {job.departments?.name && (
+                                <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
+                                    {job.departments.name}
+                                </p>
+                            )}
 
-                            <h1 className="text-white font-normal font-apfel2 mb-6 text-[clamp(2rem,5vw,4rem)] leading-[1.05]">
+                            {/* Job title */}
+                            <h1
+                                className="text-white font-normal font-apfel2 mb-4 md:mb-6
+                   text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05]"
+                            >
                                 {job.title}
                             </h1>
 
-                            <div className="flex flex-wrap gap-4 text-white/90 font-neuhas mb-8">
+                            {/* Meta data row */}
+                            <div className="flex flex-wrap gap-4 text-white/90 font-neuhas text-sm sm:text-base mb-8">
                                 {job.location && (
                                     <span className="flex items-center gap-2">
                                         <MapPin className="w-5 h-5" />
                                         {job.location}
                                     </span>
                                 )}
-                                <span className="flex items-center gap-2">
-                                    <Clock className="w-5 h-5" />
-                                    {job.employment_type}
-                                </span>
+
+                                {job.employment_type && (
+                                    <span className="flex items-center gap-2">
+                                        <Clock className="w-5 h-5" />
+                                        {job.employment_type}
+                                    </span>
+                                )}
+
                                 {job.experience && (
                                     <span className="flex items-center gap-2">
                                         <Users className="w-5 h-5" />
                                         {job.experience}
                                     </span>
                                 )}
-                                <span className="flex items-center gap-2">
-                                    <Calendar className="w-5 h-5" />
-                                    Posted {new Date(job.posted_on).toLocaleDateString()}
-                                </span>
+
+                                {job.posted_on && (
+                                    <span className="flex items-center gap-2">
+                                        <Calendar className="w-5 h-5" />
+                                        Posted {new Date(job.posted_on).toLocaleDateString()}
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -238,7 +256,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                 {/* BREADCRUMB */}
                 <div className="bg-[#edf3f5] border-b border-gray-200">
                     <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-4">
-                        <nav className="flex items-center text-sm text-gray-600 font-neuhas">
+                        <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
                             <Link href="/" className="hover:text-red-600">HOME</Link>
                             <span className="mx-2">&gt;</span>
                             <Link href="/careers" className="hover:text-red-600">CAREERS</Link>
@@ -310,14 +328,14 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
                             {job.preferred_skills && (
                                 <div className="bg-white rounded-xl p-6 shadow-sm">
                                     <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-neuhas flex items-center">
-                                        <Award className="w-6 h-6 mr-2 text-red-600" />
+                                        <Award className="w-6 h-6 mr-2 text-red-800" />
                                         Preferred Skills
                                     </h2>
                                     <div className="flex flex-wrap gap-2">
                                         {formatList(job.preferred_skills).map((skill, index) => (
                                             <span
                                                 key={index}
-                                                className="px-4 py-2 bg-red-50 text-red-700 rounded-lg text-sm font-neuhas"
+                                                className="px-4 py-2 bg-red-40 text-red-700 rounded-lg text-sm font-neuhas"
                                             >
                                                 {skill}
                                             </span>
@@ -328,7 +346,7 @@ export default function JobDetailPage({ params }: { params: Promise<{ id: string
 
                             {/* Why Join Us */}
                             {job.why_join_us && (
-                                <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-6 border border-red-200">
+                                <div className="bg-gradient-to-br from-red-10 to-orange-10 rounded-xl p-6 border border-red-200">
                                     <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-neuhas flex items-center">
                                         <Heart className="w-6 h-6 mr-2 text-red-600" />
                                         Why Join Us?

@@ -301,7 +301,7 @@ export default function MarketsExplorer({
                 </div>
 
                 {/* Market sections */}
-                <div className="mt-0 lg:mt-8 space-y-16 sm:space-y-20 md:space-y-24">
+                <div className="mt-0 lg:mt-20 space-y-16 sm:space-y-20 md:space-y-24">
                     {markets.map((m) => {
                         const list = projectsByMarket.get(m.key) || [];
 
@@ -353,7 +353,7 @@ export default function MarketsExplorer({
                                         </div>
 
                                         <div className="space-y-4 sm:space-y-5 md:space-y-6">
-                                            {list.map((p) => (
+                                            {list.slice(0, 5).map((p) => (
                                                 <ProjectCard key={p.id} project={p} />
                                             ))}
                                             {list.length === 0 && (
@@ -495,30 +495,39 @@ function CategoriesBar({
 
 function MarketHeroCard({ market }: { market: MarketContent }) {
     return (
-        <div className="relative overflow-hidden rounded-2xl bg-card shadow-md">
-            <div className="relative h-[350px] sm:h-[400px] md:h-[500px] w-full">
+        <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md">
+            <div className="relative h-[350px] sm:h-[400px] md:h-[500px] w-full -mt-10">
                 <Image
                     src={market.hero.imageUrl}
                     alt={market.hero.alt}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 ease-out"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+
+                {/* Base gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
 
+                {/* Hover overlay (soft black tint) */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 ease-out" />
+
+                {/* Text content */}
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 z-10">
                     <h2 className="text-white text-2xl md:text-4xl leading-[30px] drop-shadow font-apfel2">
                         {market.title}
                     </h2>
-                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] leading-[30px] text-white/85 max-w-md font-neuhas">
+                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] md:leading-[20px] text-white/85 max-w-md font-neuhas">
                         {market.description}
                     </p>
                 </div>
 
+                {/* Arrow button */}
                 <Link
                     href={`/markets/${market.key}`}
                     aria-label={`${market.title} details`}
-                    className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-10 inline-flex h-9 w-9 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition-transform hover:scale-110"
+                    className="absolute bottom-3 sm:bottom-4 right-3 -rotate-45 sm:right-4 z-10 inline-flex h-9 w-9 sm:h-12 sm:w-12 
+                        items-center justify-center rounded-full bg-red-600 text-white shadow-lg 
+                        transition-transform duration-300 ease-out hover:scale-110 hover:rotate-0"
                 >
                     <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Link>
@@ -531,68 +540,75 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
 
 function ProjectCard({ project }: { project: ProjectDisplay }) {
     return (
-        <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md">
+        <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-500 ease-in-out">
             <div className="relative aspect-[4/3] w-full">
+                {/* Fixed image (no zoom, no transform) */}
                 <Image
                     src={project.image.imageUrl}
                     alt={project.image.description || project.title}
                     fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
 
-                {/* Base gradient - always visible */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-500" />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-                {/* Hover overlay - darkens image on hover */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 ease-out" />
+                {/* Hover Overlay (blackish fade-in) */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500 ease-in-out" />
 
-                {/* Text container with consistent spacing */}
-                <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5 md:p-6">
-                    <div className="flex flex-col gap-2 sm:gap-2.5">
-                        {/* Location - always visible */}
-                        {project.location && (
-                            <div className="font-neuhas text-yellow-400 uppercase text-[10px] md:text-[14px] leading-[30px] font-medium tracking-widest
-                                transform transition-all duration-500 ease-out
-                                group-hover:translate-y-0 translate-y-0">
-                                {project.location}
-                            </div>
-                        )}
+                {/* Text + Content section */}
+                <div
+                    className="absolute left-0 right-0 bottom-6 
+                     px-4 sm:px-5 md:px-6 
+                     text-white"
+                >
+                    {/* Location - Similar to your tagline / subtext */}
+                    {project.location && (
+                        <div className="font-neuhas text-yellow-400 uppercase text-[10px] sm:text-xs md:text-[13px] font-medium tracking-widest mb-1">
+                            {project.location}
+                        </div>
+                    )}
 
-                        {/* Title - always visible */}
-                        <h4 className="text-white text-lg text-[10px] md:text-[26px] leading-[30px] drop-shadow-lg
-                            transform transition-all duration-500 ease-out">
-                            {project.title}
-                        </h4>
+                    {/* Title - always visible */}
+                    <h4
+                        className="font-apfel2 text-2xl sm:text-3xl md:text-[28px]
+                       font-semibold max-w-[85%] md:max-w-[90%]"
+                    >
+                        {project.title}
+                    </h4>
 
-                        {/* Description - smooth slide up on hover */}
-                        {project.description && (
-                            <div className="overflow-hidden transition-all duration-500 ease-out max-h-0 group-hover:max-h-28 group-hover:mt-1">
-                                <p className="text-white/90 text-xs sm:text-sm leading-relaxed 
-                                    transform transition-all duration-500 ease-out
-                                    translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                                    {project.description}
-                                </p>
-                            </div>
-                        )}
+                    {/* Description - reveal from bottom like in FeaturedProjects */}
+                    {project.description && (
+                        <div
+                            className="overflow-hidden 
+                         max-h-0 group-hover:max-h-32 sm:group-hover:max-h-40 md:group-hover:max-h-48
+                         transition-all duration-500 ease-in-out mt-2"
+                        >
+                            <p
+                                className="text-sm sm:text-base md:text-[16px]
+                           font-neuhas text-white/90 leading-relaxed 
+                           opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out
+                           max-w-[85%] sm:max-w-[80%] md:max-w-[80%]"
+                            >
+                                {project.description}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* Red circular arrow icon — bottom right, same style */}
+                    <div className="absolute bottom-0 right-4 sm:right-5 md:right-6">
+                        <Link
+                            href={project.href || `/projects/${project.id}`}
+                            aria-label={`${project.title} details`}
+                            className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
+                         rounded-full bg-red-600 text-white flex items-center justify-center
+                         shadow-lg transition-all duration-300 group-hover:bg-red-700 -rotate-45"
+                        >
+                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                        </Link>
                     </div>
                 </div>
-                {/* Arrow button - smooth rotation and movement */}
-                <Link
-                    href={project.href || `/projects/${project.id}`}
-                    aria-label={`${project.title} details`}
-                    className="absolute bottom-3 sm:bottom-4 md:bottom-5 right-3 sm:right-4 md:right-5 z-20 
-                        inline-flex h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 
-                        items-center justify-center
-                        rounded-full bg-red-600 text-white shadow-lg 
-                        -rotate-[19deg]
-                        transform transition-all duration-500 ease-out
-                        group-hover:scale-110 group-hover:shadow-2xl
-                        group-hover:rotate-0
-                        group-hover:-translate-y-1 group-hover:translate-x-1"
-                >
-                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-500 ease-out group-hover:translate-x-0.5" />
-                </Link>
             </div>
         </div>
     );

@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     return (
         <>
             {/* ---------- HERO SECTION (RESPONSIVE FIXED) ---------- */}
-            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] py-12 flex items-center">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-center py-12">
                 {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
@@ -55,22 +55,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                         className="object-cover"
                         sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
+                    {/* Overlay tone — matches global headers */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
                 {/* Foreground content */}
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-24 mt-10">
-                    <div className="max-w-full lg:max-w-4xl text-white">
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
                         {/* Subtitle */}
-                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 sm:mb-3 
-                   text-sm sm:text-base md:text-[16px] uppercase">
-                            Projects
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
+                            PROJECTS
                         </p>
 
                         {/* Main project name */}
                         <h1
-                            className="text-white font-normal font-apfel2 mb-4 md:mb-6 
-                   text-[clamp(2rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]"
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6
+                   text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05]
+                   [text-wrap:balance]"
                         >
                             {project.project_name}
                         </h1>
@@ -143,7 +144,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             )}
 
             {/* ---------- SECTION 2: ABOUT THE PROJECT ---------- */}
-            {/* ---------- SECTION 2: ABOUT THE PROJECT ---------- */}
             {project.section2_heading && (
                 <section className="mb-8 sm:mb-12 md:mb-16 lg:mb-24 xl:mb-32 bg-white">
                     <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-0 lg:gap-8 xl:gap-16">
@@ -197,26 +197,30 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                 </p>
                             ))}
 
-                            <div className="mt-4 sm:mt-6 md:mt-8">
+
+                            <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8">
                                 <Link
                                     href="/approach"
                                     className={cn(
                                         'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
-                                        'px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold',
-                                        'bg-white text-red-600 transition-all duration-500 ease-out',
-                                        'min-h-[44px] sm:min-h-[48px] md:min-h-[56px]',
-                                        'w-full sm:w-auto'
+                                        'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                                        'text-sm sm:text-[20px] font-semibold text-red-600',
+                                        'transition-all duration-500 ease-out',
+                                        'min-h-[44px] sm:min-h-[48px]',
+                                        'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
                                     )}
                                 >
                                     <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-                                    <span className="relative z-10 flex items-center">
-                                        <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10">
-                                            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+                                    <span className="relative z-10 flex items-center justify-center md:justify-start">
+                                        <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                                         </span>
-                                        <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
+                                        <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
                                             Learn more about Life at A&T
+
                                         </span>
-                                        <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 opacity-0 transition-all duration-500 group-hover:w-4 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
                                     </span>
                                 </Link>
                             </div>
@@ -294,28 +298,32 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                                 {para}
                             </p>
                         ))}
+                        <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8">
+                            <Link
+                                href="/approach"
+                                className={cn(
+                                    'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                                    'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                                    'text-sm sm:text-[20px] font-semibold text-red-600',
+                                    'transition-all duration-500 ease-out',
+                                    'min-h-[44px] sm:min-h-[48px]',
+                                    'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                                )}
+                            >
+                                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                                <span className="relative z-10 flex items-center justify-center md:justify-start">
+                                    <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                                    </span>
+                                    <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
 
-                        <Link
-                            href="#"
-                            className={cn(
-                                'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
-                                'px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold',
-                                'bg-white text-red-600 transition-all duration-500 ease-out',
-                                'min-h-[48px] sm:min-h-[56px]',
-                                'w-full sm:w-auto'
-                            )}
-                        >
-                            <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-                            <span className="relative z-10 flex items-center">
-                                <span className="flex items-center justify-center rounded-full -rotate-45 bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 w-8 sm:h-10 sm:w-10">
-                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                                        Supplier Registration Portal
+
+                                    </span>
+                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
                                 </span>
-                                <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
-                                    Supplier Registration Portal
-                                </span>
-                                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 -rotate-45 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
-                            </span>
-                        </Link>
+                            </Link>
+                        </div>
                     </div>
                 </section>
             )}

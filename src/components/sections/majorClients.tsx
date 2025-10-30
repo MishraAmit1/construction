@@ -115,13 +115,13 @@ export default function MajorClients({ clients }: MajorClientsProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Heading */}
                 <div className="mb-10">
+
                     <h2
-                        className={`font-apfel2 text-primary text-center sm:text-left
-                leading-[1.05] [text-wrap:balance]
-                text-[clamp(1.75rem,4vw,3rem)] mb-4 sm:mb-5`}
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight"
                     >
                         Major Clients
                     </h2>
+
                 </div>
 
                 {/* Slider container */}
@@ -162,11 +162,14 @@ export default function MajorClients({ clients }: MajorClientsProps) {
                             }
                         >
                             {(isMobile ? clients : duplicatedClients).map((client, idx) => (
-                                <div
+                                <a
                                     key={`${client.client_id}-${idx}`}
+                                    href={client.website_url || '#'}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className={cn(
                                         'flex-shrink-0 bg-white border border-gray-200 rounded-xl shadow-[0_6px_20px_-4px_rgba(0,0,0,0.08)] hover:shadow-[0_10px_25px_-6px_rgba(0,0,0,0.12)]',
-                                        'transition-all duration-300 flex flex-col items-center justify-center group',
+                                        'transition-all duration-300 flex flex-col items-center justify-center group cursor-pointer',
                                         'p-4 sm:p-5 md:p-6',
                                         isMobile
                                             ? 'w-full snap-center'
@@ -188,7 +191,7 @@ export default function MajorClients({ clients }: MajorClientsProps) {
                                     <p className="font-neuhas mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-medium text-gray-700 text-center">
                                         {client.client_name}
                                     </p>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>

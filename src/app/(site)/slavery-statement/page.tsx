@@ -3,43 +3,58 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function CtaButton({
     href,
     children,
-    variant = "default"
+    variant = "default",
 }: {
     href: string;
     children: React.ReactNode;
     variant?: "default" | "download";
 }) {
-    const icon = variant === "download" ? (
-        <Download className="h-4 sm:h-5 w-4 sm:w-5" />
-    ) : (
-        <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
-    );
+    const icon =
+        variant === "download" ? (
+            <Download className="h-4 w-4 sm:h-5 sm:w-5" />
+        ) : (
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+        );
 
     return (
         <Link
             href={href}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full mt-3
-                 px-4 sm:px-5 md:px-4 py-2 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out
-                 min-h-[40px] sm:min-h-[48px]"
+            className={cn(
+                "group relative inline-flex items-center justify-center overflow-hidden rounded-full",
+                "px-4 sm:px-5 md:px-6 py-2 sm:py-2.5",
+                "text-sm sm:text-[20px] font-semibold text-red-600 font-neuhas",
+                "transition-all duration-500 ease-out mt-3",
+                "min-h-[44px] sm:min-h-[48px]",
+                "w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0"
+            )}
         >
+            {/* Background animation — fills red on hover */}
             <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-            <span className="relative z-10 flex items-center">
+
+            {/* Button content */}
+            <span className="relative z-10 flex items-center justify-center md:justify-start">
+
+                {/* Left red icon bubble (collapses on hover) */}
                 <span
-                    className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
-                         group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10"
+                    className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 
+                     group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 
+                     h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0"
                 >
                     {icon}
                 </span>
+
+                {/* Text */}
                 <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
                     {children}
                 </span>
-                <span className="opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3">
-                    {icon}
-                </span>
+
+                {/* Right arrow fades in on hover */}
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
             </span>
         </Link>
     );
@@ -49,29 +64,46 @@ export default function ModernSlaveryStatementPage() {
     return (
         <>
             {/* HERO SECTION */}
-            <section className="font-apfel2 relative min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center pt-[20px] sm:pt-[100px] md:pt-[120px]">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2000"
                         alt="Modern Slavery Statement hero"
                         fill
+                        priority
                         sizes="100vw"
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/75 sm:bg-black/70 md:bg-black/65" />
+                    {/* Overlay tone — same as the rest */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-white">
-                        <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
+                        {/* Subtitle */}
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
                             LEGAL & COMPLIANCE
                         </p>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
-                            Modern Slavery <br className="hidden sm:block" />
-                            Act Statement
+
+                        {/* Title */}
+                        <h1
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6
+                   text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05]"
+                        >
+                            Modern Slavery <br className="hidden sm:block" />
+                            Act Statement
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl">
-                            Our commitment to preventing modern slavery and human trafficking in our operations and supply chains.
+
+                        {/* Supporting text */}
+                        <p
+                            className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px]
+                   leading-[1.6] md:leading-[36px] font-medium
+                   text-white/85 sm:text-white/90 md:max-w-4xl"
+                        >
+                            Our commitment to preventing modern slavery and human trafficking in
+                            our operations and supply chains.
                         </p>
                     </div>
                 </div>
@@ -80,7 +112,8 @@ export default function ModernSlaveryStatementPage() {
             {/* BREADCRUMB */}
             <div className="bg-[#edf3f5] border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600">
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
+
                         <Link href="/" className="hover:text-red-600">
                             HOME
                         </Link>

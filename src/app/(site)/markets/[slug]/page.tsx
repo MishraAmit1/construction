@@ -2,12 +2,13 @@ export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightCircle, Earth } from "lucide-react";
+import { ArrowRight, ArrowRightCircle, Earth } from "lucide-react";
 import { getCategoryBySlug, getCategorySlugs } from "@/lib/api/categories";
 import { getProjectsByCategory } from "@/lib/api/projects";
 import { notFound } from "next/navigation";
 import { SortDropdown } from '@/components/ui/sort-dropdown';
 import { CategoryFilters } from "@/components/category-filters";
+import { cn } from "@/lib/utils";
 // Force dynamic rendering for query params
 
 
@@ -85,7 +86,7 @@ export default async function CategoryPage({
     return (
         <>
             {/* ---------- HERO SECTION ---------- */}
-            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] py-12 flex items-center">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
                 {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
@@ -331,15 +332,31 @@ export default async function CategoryPage({
                         opportunity, reach out to our A&T colleagues around the world for direct support. Our team
                         is ready to assist and provide the expertise you need.
                     </p>
-                    <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2 px-4 sm:px-5 md:px-6 py-2 sm:py-3 
-                                 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors
-                                 text-sm sm:text-base min-h-[40px] sm:min-h-[44px] md:min-h-[48px]"
-                    >
-                        <ArrowRightCircle className="h-4 w-4 sm:h-5 sm:w-5" />
-                        Contact Us
-                    </Link>
+                    <div className="mt-8 sm:mt-10 md:mt-12">
+                        <Link
+                            href="/contact"
+                            className={cn(
+                                'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                                'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                                'text-sm sm:text-[20px] font-semibold text-red-600',
+                                'transition-all duration-500 ease-out',
+                                'min-h-[44px] sm:min-h-[48px]',
+                                'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                            )}
+                        >
+                            <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                            <span className="relative z-10 flex items-center justify-center md:justify-start">
+                                <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                                </span>
+                                <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
+                                    Contacts Us
+                                </span>
+                                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                            </span>
+                        </Link>
+                    </div>
                 </div>
             </section>
         </>

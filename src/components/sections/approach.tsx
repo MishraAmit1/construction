@@ -4,37 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { CtaButton } from "@/app/(site)/slavery-statement/page";
 
-function CtaButton({
-    href,
-    children,
-}: {
-    href: string;
-    children: React.ReactNode;
-}) {
-    return (
-        <Link
-            href={href}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full
-                 px-4 sm:px-5 md:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold text-red-600 transition-all duration-500 ease-out
-                 min-h-[44px] sm:min-h-[48px] md:min-h-[56px]"
-        >
-            <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-            <span className="relative z-10 flex items-center">
-                <span
-                    className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500
-                         group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-8 sm:h-9 md:h-10 w-8 sm:w-9 md:w-10"
-                >
-                    <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 rotate-45" />
-                </span>
-                <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white">
-                    {children}
-                </span>
-                <ArrowRight className="h-4 sm:h-5 w-4 sm:w-5 opacity-0 rotate-45 transition-all duration-500 group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
-            </span>
-        </Link>
-    );
-}
 
 export default function ApproachPage() {
     // simple stat reveal animation
@@ -47,51 +19,50 @@ export default function ApproachPage() {
     return (
         <>
             {/* HERO - Responsive */}
-            <section className="font-apfel2 relative min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center pt-[20px] sm:pt-[100px] md:pt-[120px]">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-center py-12">
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2000"
                         alt="Approach hero"
                         fill
-                        sizes="100vw"
+                        priority
                         className="object-cover"
+                        sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-black/75 sm:bg-black/70 md:bg-black/65" />
+                    {/* Same overlay blend everywhere */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-white">
-                        <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">
+                {/* Text container */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs md:max-w-6xl text-white">
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
                             APPROACH
                         </p>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
-                            Dream, Design, <br className="hidden sm:block" />
-                            <span className="sm:hidden"> </span>Deliver
+
+                        <h1 className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]">
+                            Dream, Design, <br />Deliver
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl">
+
+                        <p className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
                             How we partner with customers to plan, engineer, and execute with
                             safety, quality, and ethics — delivering lasting impact worldwide.
                         </p>
-                        {/* <CtaButton href="#how">Learn More</CtaButton> */}
                     </div>
                 </div>
             </section>
 
-            {/* BREADCRUMB - Responsive */}
-            <div className="bg-[#edf3f5] border-b border-gray-200">
+
+            <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600">
-                        <Link href="/" className="hover:text-red-600">
-                            HOME
-                        </Link>
-                        <span className="mx-1.5 sm:mx-2">&gt;</span>
-                        <span className="text-red-600 font-semibold uppercase">
-                            APPROACH
-                        </span>
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
+                        <Link href="/" className="hover:text-red-600 transition-colors">HOME</Link>
+                        <span className="mx-1.5 sm:mx-2">/</span>
+                        <span className="text-red-600 font-semibold uppercase">APPROACH</span>
                     </nav>
                 </div>
             </div>
-
             {/* HOW WE DELIVER - Responsive */}
             <section
                 id="how"
@@ -133,7 +104,7 @@ export default function ApproachPage() {
                                 the project delays and logistical setbacks faced by many of our
                                 competitors.
                             </p>
-                            <div className="pt-4 sm:pt-6 -ml-7">
+                            <div className="pt-4 -ml-7">
                                 <CtaButton href="#how">Our Services</CtaButton>
                             </div>
                         </div>
@@ -303,10 +274,32 @@ export default function ApproachPage() {
                                 subcontractors.
                             </p>
                         </div>
-                        <div className="mt-4 sm:mt-5 md:mt-6 font-neuhas">
-                            <CtaButton href="#work">
-                                Learn more about Life at A&T
-                            </CtaButton>
+
+                        <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8">
+                            <Link
+                                href="/approach"
+                                className={cn(
+                                    'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                                    'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                                    'text-sm sm:text-[20px] font-semibold text-red-600',
+                                    'transition-all duration-500 ease-out',
+                                    'min-h-[44px] sm:min-h-[48px]',
+                                    'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                                )}
+                            >
+                                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                                <span className="relative z-10 flex items-center justify-center md:justify-start">
+                                    <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                                    </span>
+                                    <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
+                                        Learn more about Life at A&T
+
+                                    </span>
+                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                                </span>
+                            </Link>
                         </div>
                     </div>
 
@@ -348,7 +341,7 @@ export default function ApproachPage() {
                             and ethically, and we work with leading organizations to promote
                             global standards of ethical business conduct.
                         </p>
-                        <div className="mt-4 sm:mt-6 font-apfel">
+                        <div className="mt-4 sm:mt-6 font-apfel md:-ml-8">
                             <CtaButton href="#ethics">Learn More</CtaButton>
                         </div>
                     </div>
@@ -421,17 +414,32 @@ export default function ApproachPage() {
                             of a comprehensive solution for produced water treatment in oil,
                             gas, and mining operations.
                         </p>
-                        <Link
-                            href="#"
-                            className="group inline-flex items-center gap-2 sm:gap-3 text-white font-semibold hover:gap-3 sm:hover:gap-4 transition-all duration-300"
-                        >
-                            <span className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-red-600 flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
-                                <Play className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 ml-0.5" />
-                            </span>
-                            <span className="text-sm sm:text-base md:text-lg font-apfel">
-                                Explore videos and case studies
-                            </span>
-                        </Link>
+                        <div className="mt-8 sm:mt-10 md:mt-12">
+                            <Link
+                                href="/approach"
+                                className={cn(
+                                    'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                                    'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                                    'text-sm sm:text-[20px] font-semibold',
+                                    'transition-all duration-500 ease-out',
+                                    'min-h-[44px] sm:min-h-[48px]',
+                                    'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                                )}
+                            >
+                                <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                                <span className="relative z-10 flex items-center justify-center md:justify-start">
+                                    <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-12 sm:w-12 flex-shrink-0">
+                                        <ArrowRight className="h-4 w-4 sm:h-8 sm:w-8" />
+                                    </span>
+                                    <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
+                                        Explore videos and case studies
+
+                                    </span>
+                                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                                </span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -470,7 +478,7 @@ export default function ApproachPage() {
                             of lasting pride.
                         </p>
                     </div>
-                    <div className="mt-6 sm:mt-7 md:mt-8 font-apfel">
+                    <div className="mt-6 sm:mt-7 md:mt-8 font-apfel md:-ml-8">
                         <CtaButton href="#sustainability">Supporting Communities</CtaButton>
                     </div>
                 </div>

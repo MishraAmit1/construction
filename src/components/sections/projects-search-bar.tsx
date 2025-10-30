@@ -10,18 +10,6 @@ export default function ProjectsSearchBar() {
     return (
         <section className="bg-[#f2f5f7] border-b">
             <div className="container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6">
-                {/* Responsive Breadcrumb */}
-                <div className="font-necto font-thin tracking-[0.0208px] leading-[14px] flex items-center text-xs sm:text-sm text-gray-600 mb-2.5 sm:mb-3 md:mb-4">
-                    <Link
-                        href="/"
-                        className="text-gray-500 hover:text-primary transition-colors whitespace-nowrap"
-                    >
-                        HOME
-                    </Link>
-                    <span className="mx-1.5 sm:mx-2 text-gray-400">{">"}</span>
-                    <span className="font-semibold text-red-600 whitespace-nowrap">PROJECTS</span>
-                </div>
-
                 {/* Search Bar - Responsive heights and padding */}
                 <div className="relative bg-white shadow-sm border border-gray-200 rounded-md overflow-hidden">
                     <div className="flex items-center">

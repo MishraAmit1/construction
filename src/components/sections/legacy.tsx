@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { legacyData } from '@/lib/data';
-import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Image from "next/image";
+import { legacyData } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export function Legacy() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -30,61 +30,60 @@ export function Legacy() {
             {/* Paragraphs */}
             <div className="font-neuhas space-y-4 sm:space-y-5 mt-5 sm:mt-6 text-[16px] md:text-[20px] leading-[30px]">
               <p>
-                In 1989, A&T Infracon began as a small civil engineering firm in Gujarat,
-                driven by the vision to deliver quality infrastructure in India's most
-                challenging terrains. Over 35 years, we have grown to execute projects
-                across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh, navigating deserts,
-                high‑altitude passes, and remote border regions.
+                In 1989, A&T Infracon began as a small civil engineering firm in
+                Gujarat, driven by the vision to deliver quality infrastructure
+                in India's most challenging terrains. Over 35 years, we have
+                grown to execute projects across Gujarat, Rajasthan, Jammu &
+                Kashmir, and Ladakh, navigating deserts, high‑altitude passes,
+                and remote border regions.
               </p>
 
               <p>
-                While much has evolved at A&T Infracon, our drive to pioneer and deliver in
-                difficult environments has remained unwavering. Our history is defined by
-                taking on complex projects, proving innovative solutions, and building where
-                others face challenges.
+                While much has evolved at A&T Infracon, our drive to pioneer and
+                deliver in difficult environments has remained unwavering. Our
+                history is defined by taking on complex projects, proving
+                innovative solutions, and building where others face challenges.
               </p>
 
               <p className="hidden sm:block">
-                We have constructed high‑altitude hill roads to the Indo‑China border,
-                strengthened border infrastructure along the Indo‑Pak border, delivered
-                renewable energy facilities, and developed institutional and industrial
-                buildings under extreme conditions.
+                We have constructed high‑altitude hill roads to the Indo‑China
+                border, strengthened border infrastructure along the Indo‑Pak
+                border, delivered renewable energy facilities, and developed
+                institutional and industrial buildings under extreme conditions.
               </p>
 
               <p className="hidden md:block">
-                We are one of the few companies capable of executing large‑scale projects in
-                harsh and remote regions while maintaining the highest standards of quality,
-                safety, and efficiency. Our legacy is best understood through the
-                landmark projects that showcase our expertise and impact on India's
-                infrastructure.
+                We are one of the few companies capable of executing large‑scale
+                projects in harsh and remote regions while maintaining the
+                highest standards of quality, safety, and efficiency. Our legacy
+                is best understood through the landmark projects that showcase
+                our expertise and impact on India's infrastructure.
               </p>
             </div>
 
             {/* Button */}
-            <div className="mt-10 sm:mt-12 md:-ml-8">
+
+            <div className="mt-8 sm:mt-10 md:mt-12">
               <Link
                 href="/approach"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full
-                           px-5 sm:px-6 md:px-8 py-2 text-sm sm:text-base font-semibold text-red-600
-                           transition-all duration-500 ease-out min-h-[44px] sm:min-h-[48px] font-neuhas"
+                className={cn(
+                  'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                  'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                  'text-sm sm:text-[20px] font-semibold text-red-600',
+                  'transition-all duration-500 ease-out',
+                  'min-h-[44px] sm:min-h-[48px]',
+                  'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                )}
               >
                 <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
-                <span className="relative z-10 flex items-center">
-                  <span
-                    className="flex items-center justify-center rounded-full bg-red-600 text-white
-                               mr-2 sm:mr-3 h-6 w-6 sm:h-8 sm:w-8
-                               transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0"
-                  >
+                <span className="relative z-10 flex items-center justify-center md:justify-start">
+                  <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
                     <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                   </span>
-                  <span className="whitespace-nowrap text-base sm:text-lg md:text-xl transition-colors duration-500 group-hover:text-white">
+                  <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
                     Explore Our History
                   </span>
-                  <ArrowRight
-                    className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 -translate-x-2
-                               transition-all duration-500 group-hover:translate-x-0 
-                               group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3"
-                  />
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
                 </span>
               </Link>
             </div>
@@ -92,10 +91,10 @@ export function Legacy() {
 
           {/* RIGHT: timeline + image card */}
           <div className="relative flex w-full h-[400px] sm:h-[480px] md:h-[520px] lg:h-[560px] xl:h-[620px] mt-10 lg:mt-0">
-            <div className="flex gap-3 sm:gap-4 md:gap-6 w-full h-full pr-4 sm:pr-8 md:pr-12 lg:pr-0">
-              {/* Decade buttons */}
-              <div className="w-20 sm:w-24 md:w-28 relative flex-shrink-0 flex items-center justify-center">
-                <div className="space-y-3 sm:space-y-4 md:space-y-6">
+            <div className="flex gap-3 sm:gap-4 md:gap-6 w-full h-full pr-4 sm:pr-8 md:pr-12 lg:pr-0 items-center">
+              {/* Decade buttons - WIDTH REDUCED & CENTERED */}
+              <div className="w-16 sm:w-20 md:w-24 lg:w-20 relative flex-shrink-0">
+                <div className="space-y-3 sm:space-y-4 md:space-y-6 w-full">
                   {legacyData.map((item, i) => {
                     const active = activeIndex === i;
                     return (
@@ -103,18 +102,24 @@ export function Legacy() {
                         key={item.decade}
                         onClick={() => setActiveIndex(i)}
                         className={cn(
-                          'relative w-full pl-6 sm:pl-7 md:pl-8 pr-2 sm:pr-3 py-1.5 sm:py-2 text-left rounded-full font-semibold transition-colors',
-                          'text-gray-600 hover:text-gray-900 font-neuhas',
-                          active && 'bg-red-600 text-white'
+                          "group relative w-full flex items-center justify-center py-1.5 sm:py-1.2 rounded-full font-semibold transition-colors",
+                          "font-neuhas text-sm md:text-base",
+                          active
+                            ? "bg-red-600 text-white"
+                            : "text-gray-600 hover:bg-red-100 hover:text-red-600"
                         )}
                       >
                         <span
                           className={cn(
-                            'absolute left-1.5 sm:left-2 top-1/2 -translate-y-1/2 h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full',
-                            active ? 'bg-white' : 'bg-gray-400/40'
+                            "absolute left-2 sm:left-2.5 top-1/2 -translate-y-1/2 h-2 w-2 sm:h-2 sm:w-2 rounded-full transition-colors",
+                            active
+                              ? "bg-white"
+                              : "bg-gray-400 group-hover:bg-red-700"
                           )}
                         />
-                        {item.decade}
+                        <span className="pl-4 sm:pl-4 text-[13px] font-necto font-extralight">
+                          {item.decade}
+                        </span>
                       </button>
                     );
                   })}
@@ -122,18 +127,20 @@ export function Legacy() {
               </div>
 
               {/* Image / text card */}
-              <div className="relative flex-1 rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] group">
+              <div className="relative flex-1 rounded-xl sm:rounded-md overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)] group 
+      h-[350px] sm:h-[420px] md:h-[460px] lg:h-[550px]">
                 {legacyData.map((project, i) => {
                   const active = i === activeIndex;
-                  const dir = i > activeIndex ? 'translate-y-full' : '-translate-y-full';
+                  const dir =
+                    i > activeIndex ? "translate-y-full" : "-translate-y-full";
 
                   return (
                     <div
                       key={project.decade}
                       className={cn(
-                        'absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] transform',
+                        "absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] transform",
                         active
-                          ? 'translate-y-0 opacity-100 z-20'
+                          ? "translate-y-0 opacity-100 z-20"
                           : `${dir} opacity-0 z-10`
                       )}
                     >

@@ -200,7 +200,7 @@ export default function ServiceDetailPage({
             {/* BREADCRUMB */}
             <div className="bg-gray-50 border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas">
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
                         <Link href="/" className="hover:text-red-600 transition-colors">HOME</Link>
                         <ChevronRight className="h-4 w-4 mx-2 text-gray-400" />
                         <Link href="/services" className="hover:text-red-600 transition-colors">SERVICES</Link>

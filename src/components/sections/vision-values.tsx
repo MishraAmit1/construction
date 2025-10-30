@@ -85,38 +85,56 @@ export default function VisionValuesCommitments() {
     return (
         <>
             {/* HERO SECTION */}
-            <section className="font-apfel2 relative min-h-[55vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center pt-[20px] sm:pt-[100px] md:pt-[120px]">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
+                {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
                         src="https://www.bechtel.com/wp-content/uploads/2024/11/vvcs-hero.webp"
                         alt="Vision Values Commitments hero"
                         fill
+                        priority
                         sizes="100vw"
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/75 sm:bg-black/70 md:bg-black/65" />
+                    {/* Uniform overlay tone */}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                    <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl text-white">
-                        <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs sm:text-sm uppercase">
+                {/* Foreground content */}
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
+                        {/* Subtitle */}
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
                             VISION, VALUES & COMMITMENTS
                         </p>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] leading-[1.1] sm:leading-[1.05] font-medium font-apfel2 mb-3 sm:mb-4 md:mb-6">
+
+                        {/* Heading */}
+                        <h1
+                            className="text-white font-normal font-apfel2 mb-4 md:mb-6
+                   text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05]"
+                        >
                             Leading with <br className="hidden sm:block" />
-                            <span className="sm:hidden"> </span>Our Values
+                            <span className="sm:hidden">&nbsp;</span>Our Values
                         </h1>
-                        <p className="text-base sm:text-lg md:text-xl text-white/85 sm:text-white/90 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-md md:max-w-lg lg:max-w-2xl">
-                            Our VV&Cs guide everything we do and serve as a promise to our partners, neighbors, and colleagues to always do the right thing.
+
+                        {/* Supporting paragraph */}
+                        <p
+                            className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px]
+                   leading-[1.6] md:leading-[36px] font-medium
+                   text-white/85 sm:text-white/90 md:max-w-4xl"
+                        >
+                            Our VV&Cs guide everything we do and serve as a promise to our partners,
+                            neighbors, and colleagues to always do the right thing.
                         </p>
                     </div>
                 </div>
             </section>
 
             {/* BREADCRUMB */}
-            <div className="bg-[#edf3f5] border-b border-gray-200">
+            <div className="bg-[#edf3f5] border-b border-gray-200  fo">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600">
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
+
                         <Link href="/" className="hover:text-red-600">
                             HOME
                         </Link>
@@ -138,7 +156,8 @@ export default function VisionValuesCommitments() {
                         {/* Left side - Title & Button */}
                         <div className="text-center md:text-left">
                             {/* Heading - Responsive sizing */}
-                            <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-normal text-primary leading-tight md:-mt-16">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-900 mb-6 sm:mb-8 md:mb-12">
+
                                 Our Vision, Values & Commitments
                             </h2>
                         </div>
@@ -150,7 +169,7 @@ export default function VisionValuesCommitments() {
                             </p>
 
                             {/* CTA Button - Responsive */}
-                            <div className="mt-8 sm:mt-10 md:mt-12">
+                            <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8">
                                 <Link
                                     href="/approach"
                                     className={cn(

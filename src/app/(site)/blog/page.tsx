@@ -72,9 +72,7 @@ export default function BlogPage() {
     return (
         <>
             {/* ---------- HERO SECTION ---------- */}
-            <section
-                className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] py-12 flex items-center"
-            >
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
                 {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
@@ -85,14 +83,13 @@ export default function BlogPage() {
                         className="object-cover"
                         sizes="100vw"
                     />
-                    {/* Dark overlay  — same tone as Projects header */}
                     <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
                 </div>
 
                 {/* Foreground content */}
                 <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
                     <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
-                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px]">
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
                             BLOG
                         </p>
 
@@ -109,8 +106,8 @@ export default function BlogPage() {
                    leading-[1.6] md:leading-[36px] font-medium
                    text-white/85 sm:text-white/90 md:max-w-4xl"
                         >
-                            Your source for the latest in construction technology,
-                            infrastructure trends, and A&T Infracon news.
+                            Your source for the latest in construction technology, infrastructure
+                            trends, and A&amp;T Infracon news.
                         </p>
                     </div>
                 </div>
@@ -119,7 +116,7 @@ export default function BlogPage() {
             {/* ---------- BREADCRUMB BAR ---------- */}
             <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
-                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas">
+                    <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
                         <Link href="/" className="hover:text-red-600 transition-colors">HOME</Link>
                         <span className="mx-1.5 sm:mx-2">/</span>
                         <span className="text-red-600 font-semibold uppercase">BLOG</span>

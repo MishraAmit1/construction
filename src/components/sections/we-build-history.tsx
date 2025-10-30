@@ -11,18 +11,19 @@ export function WeBuildHistory() {
           {/* Left side - Title & Button */}
           <div className="text-center md:text-left">
             {/* Heading - Responsive sizing */}
-            <h2 className="font-apfel2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-primary leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
+                             font-normal leading-tight">
               We Build History
             </h2>
 
             {/* CTA Button - Responsive */}
             <div className="mt-8 sm:mt-10 md:mt-12">
               <Link
-                href="/approach"
+                href="/projects"
                 className={cn(
                   'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
                   'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
-                  'text-sm sm:text-base font-semibold text-red-600',
+                  'text-sm sm:text-[20px] font-semibold text-red-600',
                   'transition-all duration-500 ease-out',
                   'min-h-[44px] sm:min-h-[48px]',
                   'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
@@ -44,10 +45,10 @@ export function WeBuildHistory() {
 
           {/* Right side - Content */}
           <div className="space-y-4 sm:space-y-5 md:space-y-6 text-center md:text-left px-2 sm:px-4 md:px-0">
-            <p className="text-[#30454c] text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas max-w-2xl md:max-w-none mx-auto md:mx-0">
+            <p className="text-[#30454c] text-[14px] sm:text-[16px] md:text-[20px] leading-[30px] font-neuhas max-w-2xl md:max-w-none mx-auto md:mx-0">
               The 21st century and beyond will be defined by the ability to execute infrastructure projects efficiently, safely, and at scale — meeting the fast-changing demands of road networks, border security, renewable energy, and critical civil works.
             </p>
-            <p className="text-[#30454c] text-[14px] sm:text-[16px] md:text-[22px] leading-[30px] font-neuhas max-w-2xl md:max-w-none mx-auto md:mx-0">
+            <p className="text-[#30454c] text-[14px] sm:text-[16px] md:text-[20px] leading-[30px] font-neuhas max-w-2xl md:max-w-none mx-auto md:mx-0">
               For more than 35 years, A&T Infracon has risen to the occasion. With our deep expertise in challenging terrains and complex environments, we are purpose-built to deliver projects that shape India's infrastructure landscape.
             </p>
           </div>
