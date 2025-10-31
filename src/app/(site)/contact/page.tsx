@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock, Building2, Globe, Users, Award, Briefcase } from 'lucide-react';
 import ContactForm from '@/components/sections/contact-form';
-import contactbanner from "../../assets/contactbanner.webp"
 
 export const metadata = {
     title: 'Contact Us | A&T Infracon - Leading Civil Engineering Contractor',
@@ -18,7 +17,7 @@ export default function ContactPage() {
                 {/* Background image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={contactbanner}
+                        src="/images/contactbanner.webp"
                         alt="Contact A&T Infracon"
                         fill
                         priority

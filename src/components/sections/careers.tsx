@@ -25,9 +25,6 @@ import {
   type Department,
   type Job
 } from '@/lib/api/careers';
-import careers1 from "../../app/assets/Careers1.png"
-import careers2 from "../../app/assets/Careers2.jpg"
-import careers3 from "../../app/assets/Careers3.jpg"
 import { getFeaturedProjects } from "@/lib/api/projects";
 import { cn } from '@/lib/utils';
 
@@ -257,7 +254,7 @@ export function Careers() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
-                    src={careers1}
+                    src="/images/Careers1.png"
                     alt="A&T Infracon Equipment"
                     fill
                     className="object-cover"
@@ -265,7 +262,8 @@ export function Careers() {
                 </div>
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
-                    src={careers2}
+                    src="/images/Careers2.png"
+
                     alt="Border Infrastructure Project"
                     fill
                     className="object-cover"
@@ -274,7 +272,8 @@ export function Careers() {
               </div>
               <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-md">
                 <Image
-                  src={careers3}
+                  src="/images/Careers3.png"
+
                   alt="Road Construction"
                   fill
                   className="object-cover"
