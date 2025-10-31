@@ -140,8 +140,6 @@ export default async function CategoryPage({
                         <span className="mx-1.5 sm:mx-2">&gt;</span>
                         <Link href="/projects" className="hover:text-red-600">PROJECTS</Link>
                         <span className="mx-1.5 sm:mx-2">&gt;</span>
-                        <Link href="/markets" className="hover:text-red-600">MARKETS</Link>
-                        <span className="mx-1.5 sm:mx-2">&gt;</span>
                         <span className="text-red-600 font-semibold uppercase">
                             {category.category_name}
                         </span>

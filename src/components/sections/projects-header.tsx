@@ -1,5 +1,4 @@
 import Image from "next/image";
-import projectbanner from "../../app/assets/cons2.png";
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
 
@@ -10,7 +9,7 @@ export default function ProjectsHeader() {
             <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
                 <div className="absolute inset-0">
                     <Image
-                        src={projectbanner}
+                        src="/images/cons2.png"
                         alt="Wind Turbine over landscape"
                         fill
                         priority

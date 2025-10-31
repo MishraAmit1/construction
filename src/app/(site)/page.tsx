@@ -8,6 +8,7 @@ import { Legacy } from '@/components/sections/legacy';
 import MajorClients from '@/components/sections/majorClients';
 import { QualityPeople } from '@/components/sections/quality-people';
 import { WeBuildHistory } from '@/components/sections/we-build-history';
+import { WeAre } from '@/components/WeAre';
 
 export default async function Home() {
   const clients = await getFeaturedClients();
@@ -18,7 +19,7 @@ export default async function Home() {
       <InspiringProjects />
       <QualityPeople />
       <BuildingTomorrow />
-      <About />
+      <WeAre />
       <WeBuildHistory />
       <FeaturedProjects />
       <Legacy />

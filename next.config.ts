@@ -2,6 +2,21 @@
 import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   /* config options here */
+  async redirects() {
+    return [
+      {
+        source: '/markets',
+        destination: '/projects#market',
+        permanent: false,
+      },
+      // Add more redirects if needed
+      {
+        source: '/markets/:slug',
+        destination: '/projects#market',
+        permanent: false,
+      },
+    ]
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

@@ -1,26 +1,32 @@
+// src/lib/data.ts
 import type { ImagePlaceholder } from '@/lib/placeholder-images';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import heroimg from "../app/assets/hero.png"
-import gujrat from "../app/assets/Gujarat_Img_1[1].png"
-import rajashthan from "../app/assets/rajasthan_Img_1[1].png"
-import jammu from "../app/assets/jammu_Img_1[1].png"
-import Ladakh from "../app/assets/ladakh_Img_1[1].png"
-import Sikkim from "../app/assets/sikkim_Img_1[1].png"
 import { Bolt, Leaf, Factory, Pickaxe, Shield, Atom } from "lucide-react";
+
+// ✅ String paths for local images (move to public/images/)
+const localImages = {
+  hero: "/images/hero.png",
+  states: {
+    gujarat: "/images/gujarat-img.png",        // renamed from Gujarat_Img_1[1].png
+    rajasthan: "/images/rajasthan-img.png",    // renamed from rajasthan_Img_1[1].png
+    jammu: "/images/jammu-img.png",            // renamed from jammu_Img_1[1].png
+    ladakh: "/images/ladakh-img.png",          // renamed from ladakh_Img_1[1].png
+    sikkim: "/images/sikkim-img.png"           // renamed from sikkim_Img_1[1].png
+  }
+};
+
 const getImage = (id: string): ImagePlaceholder => {
   const image = PlaceHolderImages.find((img) => img.id === id);
   if (!image) {
-    // Fallback or error
     return {
       id: 'fallback',
       description: 'Fallback image',
-      imageUrl: heroimg.src,
+      imageUrl: localImages.hero,
       imageHint: 'placeholder',
     };
   }
   return image;
 };
-// lib/demoData.ts
 
 export type MarketKey =
   | "Energy"
@@ -31,13 +37,12 @@ export type MarketKey =
   | "Nuclear"
   | "Infrastructure"
   | "Renewables";
-
 export const marketsData = [
   {
     key: "Energy" as MarketKey,
     title: "Energy",
     description:
-      "A&T is delivering the diverse infrastructure, sustainable technologies, and fuels needed to meet the world’s rising energy demand in the coming decades.",
+      "A&T is delivering the diverse infrastructure, sustainable technologies, and fuels needed to meet the world's rising energy demand in the coming decades.",
     hero: {
       imageUrl:
         "https://www.bechtel.com/wp-content/uploads/2024/10/energy-market.webp",
@@ -121,7 +126,7 @@ export const marketsData = [
     key: "Renewables" as MarketKey,
     title: "Renewables",
     description:
-      "Expanding renewable energy — solar, wind, and hydro — for a cleaner, sustainable future.",
+      "Expanding renewable energy — solar, wind, and hydro — for a cleaner, sustainable future.",
     hero: {
       imageUrl:
         "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1600&auto=format&fit=crop",
@@ -131,7 +136,6 @@ export const marketsData = [
   },
 ];
 
-// ✳️ Demo projects separated from real `projects` in data.ts
 export const demoProjects = [
   {
     id: "p1",
@@ -173,13 +177,79 @@ export const demoProjects = [
     },
   },
 ];
+
+export const atServices = [
+  {
+    id: 1,
+    title: 'Road Construction',
+    description: 'Specialist in constructing challenging roads across diverse terrains - from high-altitude hill roads at 15,000+ feet to PMGSY rural connectivity projects. Our expertise includes CRF highways, link roads, and strategic border roads executed in extreme weather conditions from the deserts of Rajasthan to the mountains of Ladakh.',
+    image: {
+      imageUrl: "/images/services1.png",
+      description: 'Road Construction Services - Hill Roads, CRF, PMGSY, Link Roads'
+    },
+    category: 'Infrastructure',
+  },
+  {
+    id: 2,
+    title: 'Border Security Infrastructure',
+    description: 'Trusted by BSF, ITBP, and CPWD for critical border security infrastructure along Indo-Pak and Indo-China borders. We construct fencing systems, bunkers, Border Out Posts (BOPs), earthen embankments, and strategic access roads in sensitive and challenging border areas across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.',
+    image: {
+      imageUrl: "/images/services2.png",
+      description: 'Border Security Infrastructure - Fencing, Bunkers, BOPs'
+    },
+    category: 'Security',
+  },
+  {
+    id: 3,
+    title: 'Building & Institutional Structures',
+    description: 'Construction of administrative buildings, institutional complexes, platoon-level BOPs, and office structures for government departments and PSUs. Our building works portfolio includes projects for CPWD, NBCC, and various government organizations, executed with precision in remote and challenging locations.',
+    image: {
+      imageUrl: "/images/services3.png",
+      description: 'Building & Institutional Structures'
+    },
+    category: 'Construction',
+  },
+  {
+    id: 4,
+    title: 'Bridges & Culverts',
+    description: 'Expert construction of bridges, causeways, and cross-drainage structures across rivers and nallahs. Our bridge works include major crossings over Tarna River, Khari River, Devak Nallah, and Phag Nallah, along with specialized high-level vented causeways and culvert systems designed for flood-prone areas.',
+    image: {
+      imageUrl: "https://i.pinimg.com/736x/f4/38/24/f43824816b9bc690382f2055c69f67d4.jpg",
+      description: 'Bridges & Culverts Construction'
+    },
+    category: 'Infrastructure',
+  },
+  {
+    id: 5,
+    title: 'Wind & Solar Power Infrastructure',
+    description: 'Developing renewable energy infrastructure including Wind Turbine Generator (WTG) foundations and solar power installations. We\'ve executed projects for leading companies like Suzlon, Gujarat Fluorochemicals, and Kintech Synergy, contributing to India\'s clean energy transition with specialized civil and foundation works.',
+    image: {
+      imageUrl: "/images/services5.png",
+
+      description: 'Wind & Solar Power Infrastructure'
+    },
+    category: 'Energy',
+  },
+  {
+    id: 6,
+    title: 'Civil Projects for PSUs & Private Sector',
+    description: 'Comprehensive civil engineering solutions for Public Sector Undertakings and private enterprises. Our clientele includes IOCL, ONGC, GAIL, Cairn Energy, and industrial companies requiring robust infrastructure in challenging locations. From industrial estates to specialized facilities, we deliver excellence.',
+    image: {
+      imageUrl: "/images/services6.png",
+
+      description: 'Civil Projects for PSUs and Private Sector'
+    },
+    category: 'Industrial',
+  },
+];
+
 export const projects = [
   {
     id: 1,
     title: 'Gujarat',
     description: 'Our journey in Gujarat began with critical infrastructure works that strengthened both border security and industrial growth. From the Indo-Pak Border fencing and embankment projects to major renewable energy installations for Suzlon, Zamil Industrial, and Gujarat Fluorochemicals, A&T has played a central role in shaping the state\'s defense and energy landscape.',
     image: {
-      imageUrl: gujrat,
+      imageUrl: localImages.states.gujarat,
       description: 'Gujarat Infrastructure Projects'
     },
     location: 'Gujarat',
@@ -189,7 +259,7 @@ export const projects = [
     title: 'Rajasthan',
     description: 'In Rajasthan, our work stretches across the deserts and borders that define India\'s western frontier. A&T has executed key BSF and CPWD projects—including fencing, embankments, and BOP infrastructure—that enhance national security along the Indo-Pak boundary. We\'ve also contributed to wind power foundations, solar energy parks, and infrastructure for industrial zones.',
     image: {
-      imageUrl: rajashthan,
+      imageUrl: localImages.states.rajasthan,
       description: 'Rajasthan Infrastructure Projects'
     },
     location: 'Rajasthan',
@@ -199,7 +269,7 @@ export const projects = [
     title: 'Jammu & Kashmir',
     description: 'In Jammu & Kashmir, A&T has been trusted with some of the region\'s most challenging terrain projects. We have constructed administrative blocks, border roads, and earthen bunds under CPWD and NBCC, supporting both defense logistics and local connectivity. Our focus here has been on durable infrastructure that withstands extreme weather.',
     image: {
-      imageUrl: jammu,
+      imageUrl: localImages.states.jammu,
       description: 'Jammu & Kashmir Infrastructure Projects'
     },
     location: 'Jammu & Kashmir',
@@ -209,7 +279,7 @@ export const projects = [
     title: 'Ladakh',
     description: 'Working at altitudes where few can, A&T has built strategic road infrastructure for ITBP and CPWD—linking remote posts and vital border regions near the Indo-China frontier. Our projects include office complexes, access roads, and maintenance works in areas like Kargil, helping strengthen India\'s high-altitude defense readiness.',
     image: {
-      imageUrl: Ladakh,
+      imageUrl: localImages.states.ladakh,
       description: 'Ladakh High Altitude Infrastructure'
     },
     location: 'Ladakh (Union Territory)',
@@ -219,7 +289,7 @@ export const projects = [
     title: 'Sikkim',
     description: 'In Sikkim, A&T has undertaken high-elevation infrastructure projects under CPWD, including the construction of mountain roads to Indo-China border points. These works have enhanced defense mobility and regional connectivity while reflecting our ability to deliver quality engineering in environmentally sensitive, logistically complex zones.',
     image: {
-      imageUrl: Sikkim,
+      imageUrl: localImages.states.sikkim,
       description: 'Sikkim Mountain Infrastructure'
     },
     location: 'Sikkim',
@@ -229,7 +299,7 @@ export const projects = [
 export const services = [
   {
     id: 1,
-    slug: 'commissioning-startup', // ADD THIS
+    slug: 'commissioning-startup',
     title: 'Commissioning and Startup',
     description:
       'Our experts are skilled in systems engineering, process controls and instrumentation, high-voltage electrical generation and transmission, water chemistry and wastewater treatment process operations, and systems integration. We perform plant operability reviews, test-program development, facility startup and commissioning, procedure development, operations and maintenance training, turnkey commissioning, facility operations, facility outage support, facility inspections, and process safety management.',
@@ -237,7 +307,7 @@ export const services = [
   },
   {
     id: 2,
-    slug: 'site-operations', // ADD THIS
+    slug: 'site-operations',
     title: 'Site Operations',
     description:
       'The keys to our successful site operations and management approach are partnership, integration, and communication. Successful partnering ensures all parties understand each other\'s interests, objectives, and expectations. We incorporate the interests of all stakeholders to deliver work efficiently and cost-effectively while maintaining clear communication and alignment across teams.',
@@ -245,7 +315,7 @@ export const services = [
   },
   {
     id: 3,
-    slug: 'water-services', // ADD THIS
+    slug: 'water-services',
     title: 'Water Services',
     description:
       "Our teams manage the complexities and interface risks in large desalination projects and related infrastructure. We evaluate all available technologies, considering impact on operations, energy use, uptime, maintenance, and replacement cycles to deliver cost-efficient, reliable solutions tailored to the owner's needs.",
@@ -253,7 +323,7 @@ export const services = [
   },
   {
     id: 4,
-    slug: 'civil-site-works', // ADD THIS
+    slug: 'civil-site-works',
     title: 'Civil Site Works',
     description:
       "Our teams bring extensive experience executing site works on the world's largest and most complex public infrastructure and industrial projects. This includes clearing, surveying, soil testing, piling, excavation, grading, drainage, concrete works, roadway design and construction, and underground utilities. We integrate site works and construction seamlessly to optimize cost and schedule.",
@@ -261,7 +331,7 @@ export const services = [
   },
   {
     id: 5,
-    slug: 'energy-transition', // ADD THIS
+    slug: 'energy-transition',
     title: 'Energy Transition',
     description:
       'The energy transition is one of the most significant global shifts in modern history. We collaborate with customers worldwide to develop and deploy resources, fuels, technologies, and infrastructure enabling a cleaner, less carbon-intensive energy future.',
@@ -269,7 +339,7 @@ export const services = [
   },
   {
     id: 6,
-    slug: 'digital-tools', // ADD THIS
+    slug: 'digital-tools',
     title: 'Digital Tools',
     description:
       'Our teams use proprietary digital technologies — including data-driven automation, survey robots, drones, and machine-controlled equipment — to boost operational efficiency and team collaboration. Our digital execution hub enables 100% digital delivery, collecting real-time field data and transforming it into interactive, map-based visualizations.',
@@ -317,7 +387,7 @@ export const featuredContent = [
   },
   {
     id: 3,
-    title: 'A&TAwarded National Safety Award',
+    title: 'A&T Awarded National Safety Award',
     image: getImage('award-image'),
   }
 ];

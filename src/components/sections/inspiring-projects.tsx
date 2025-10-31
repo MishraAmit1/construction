@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import logo from '../../app/assets/cons2.png';
 import { cn } from '@/lib/utils';
 export function InspiringProjects() {
   return (
@@ -37,7 +36,7 @@ export function InspiringProjects() {
 
             {/* CTA Button - Responsive sizing */}
 
-            <div className="mt-8 sm:mt-10 md:mt-12">
+            <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8">
               <Link
                 href="/approach"
                 className={cn(
@@ -73,7 +72,7 @@ export function InspiringProjects() {
                         md:shadow-[0_8px_30px_rgba(0,0,0,0.1)]
                         mx-4 sm:mx-6 md:mx-0">
             <Image
-              src={logo}
+              src="/images/cons2.png"
               alt="Inspiring Projects visual"
               fill
               className="object-cover object-center"

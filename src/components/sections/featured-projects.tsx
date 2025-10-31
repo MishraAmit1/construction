@@ -134,12 +134,11 @@ export function FeaturedProjects() {
                       {/* Hover Overlay - ADDED THIS FOR BLACKISH EFFECT */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 
                                       transition-all duration-500 ease-in-out" />
-
                       {/* Content Overlay */}
                       <div className="absolute left-0 right-0 bottom-6
                                       px-4 sm:px-5 md:px-6 lg:px-8
                                       text-white">
-
+                        <p className="text-yellow-400 uppercase">{project.location}</p>
                         {/* Title - Always visible, fixed position */}
                         <h3 className="font-apfel2 
                                        text-2xl sm:text-3xl md:text-4xl lg:text-[30px]

@@ -4,7 +4,6 @@ import { Linkedin, Facebook, Twitter, Youtube, Phone, Mail, MapPin } from "lucid
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import logo from "../../app/assets/logo_design_f__2_-removebg-preview.png";
 
 export function Footer() {
     const router = useRouter();
@@ -47,13 +46,13 @@ export function Footer() {
         ],
         projects: [
             { name: "View All Projects", href: "/projects" },
-            {
-                name: "Markets",
-                href: "#markets-section",
-                isScrollLink: true,
-                page: '/projects',
-                sectionId: 'markets-section'
-            },
+            // {
+            //     name: "Markets",
+            //     href: "#markets-section",
+            //     isScrollLink: true,
+            //     page: '/projects',
+            //     sectionId: 'markets-section'
+            // },
             {
                 name: "Regions",
                 href: "#regions-section",
@@ -277,7 +276,7 @@ export function Footer() {
                         <div className="space-y-4">
                             <Link href="/">
                                 <Image
-                                    src={logo}
+                                    src="/images/logo_design_f__2_-removebg-preview.png"
                                     alt="A&T Infracon Logo"
                                     width={120}
                                     height={50}

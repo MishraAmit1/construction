@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowRightCircle, ArrowUpRight, MapPin } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
-import { services } from "@/lib/data";
+import { atServices, services } from "@/lib/data";
 import { CtaButton } from "@/app/(site)/slavery-statement/page";
+import { cn } from "@/lib/utils";
 
 export default function ServicesPage() {
     const [visibleCount, setVisibleCount] = useState(3);
@@ -141,9 +142,9 @@ export default function ServicesPage() {
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2024/12/Line-1-Train-south-of-KAFD--1024x574.webp"
+                            src="/images/image1.png"
                             alt="Project site"
-                            className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                            className="absolute inset-0 w-full h-full object-cover object-center"
                         />
                     </div>
 
@@ -180,7 +181,13 @@ export default function ServicesPage() {
                     <div className="flex items-center ">
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our flagship project - the High Altitude Hill Road to Indo-China Border from Silungla Base to ITBP Post in Ladakh - exemplifies our engineering prowess. Valued at ₹112.37 Crore, this project required innovative solutions to overcome extreme altitude, sub-zero temperatures, and limited accessibility. Our team successfully designed and executed 12.42 km of strategic roadway at altitudes exceeding 14,800 feet, ensuring year-round connectivity for border security forces while navigating challenging terrain and weather constraints.
+                                Our flagship project - the High Altitude Hill Road to Indo-China Border from Silungla Base
+                                to ITBP Post in Ladakh - exemplifies our engineering prowess. Valued at ₹112.37 Crore,
+                                this project required innovative solutions to overcome extreme altitude, sub-zero
+                                temperatures, and limited accessibility.
+                            </p>
+                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                                Our team successfully designed and executed 12.42 km of strategic roadway at altitudes exceeding 14,800 feet, ensuring year-round connectivity for border security forces while navigating challenging terrain and weather constraints.
                             </p>
                             <div className="mt-6 md:-ml-8">
                                 <CtaButton href="/projects">
@@ -194,16 +201,16 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:gap-6">
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="https://www.bechtel.com/wp-content/uploads/2024/12/KAFD-Steel-Structure-1-edited-900x506.webp"
+                                src="/images/serviceseright1.png"
                                 alt="Riyadh Metro project 1"
-                                className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                                className="absolute inset-0 w-full h-full object-cover object-center"
                             />
                         </div>
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="https://www.bechtel.com/wp-content/uploads/2025/01/1694565110427-506x365.webp"
+                                src="/images/serviceseright2.png"
                                 alt="Riyadh Metro project 2"
-                                className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                                className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                     </div>
@@ -214,12 +221,11 @@ export default function ServicesPage() {
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2025/01/Procurement.webp"
+                            src="/images/construction1.png"
                             alt="Project site"
-                            className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                            className="absolute inset-0 w-full h-full object-cover object-center "
                         />
                     </div>
-
                     {/* RIGHT TEXT - Responsive spacing */}
 
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
@@ -250,9 +256,9 @@ export default function ServicesPage() {
                 {/* FIRST ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center">
                     {/* LEFT IMAGE */}
-                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] rounded-md overflow-hidden">
+                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px]  overflow-hidden">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2025/01/Bechtel-x-Unger-2-675x450.jpg"
+                            src="/images/image2.png"
                             alt="Construction Equipment"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
@@ -280,9 +286,9 @@ export default function ServicesPage() {
                 {/* SECOND ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center py-10 sm:py-14 md:py-20">
                     {/* LEFT IMAGE */}
-                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] rounded-md overflow-hidden">
+                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px]  overflow-hidden">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2025/01/148172-675x450.webp"
+                            src="/images/image3.png"
                             alt="Project Execution"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
@@ -312,9 +318,9 @@ export default function ServicesPage() {
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2025/01/PA2354399-startup-012-1-1024x683.webp"
+                            src="/images/image4.png"
                             alt="Project site"
-                            className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                            className="absolute inset-0 w-full h-full object-cover object-center "
                         />
                     </div>
 
@@ -360,16 +366,17 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:gap-6">
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="https://www.bechtel.com/wp-content/uploads/2025/01/144481-edited-900x506.webp"
+                                src="/images/image5.png"
+
                                 alt="Riyadh Metro project 1"
-                                className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                                className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="https://www.bechtel.com/wp-content/uploads/2024/10/164837-900x675.webp"
+                                src="/images/image6.png"
                                 alt="Riyadh Metro project 2"
-                                className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                                className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                     </div>
@@ -380,9 +387,9 @@ export default function ServicesPage() {
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[550px]">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2024/12/PA2399500_016-1024x682.webp"
+                            src="/images/image7.png"
                             alt="Project site"
-                            className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                            className="absolute inset-0 w-full h-full object-cover object-center "
                         />
                     </div>
 
@@ -431,16 +438,18 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:gap-6">
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[350px]">
                             <img
-                                src="https://www.bechtel.com/wp-content/uploads/2025/01/144481-edited-900x506.webp"
+                                src="/images/image8.png"
+
                                 alt="Riyadh Metro project 1"
-                                className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                                className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[350px]">
                             <img
-                                src="https://www.bechtel.com/wp-content/uploads/2024/10/164837-900x675.webp"
+                                src="/images/image9.png"
+
                                 alt="Riyadh Metro project 2"
-                                className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                                className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                     </div>
@@ -451,9 +460,9 @@ export default function ServicesPage() {
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[450px]">
                         <img
-                            src="https://www.bechtel.com/wp-content/uploads/2025/01/addtl-2.webp"
+                            src="/images/image10.png"
                             alt="Project site"
-                            className="absolute inset-0 w-full h-full object-cover object-center rounded-md"
+                            className="absolute inset-0 w-full h-full object-cover object-center "
                         />
                     </div>
 
@@ -473,7 +482,187 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+            {/* OUR SERVICES SECTION - Updated to match WhereWeWork pattern */}
+            <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30 overflow-x-hidden">
+                {/* Header Section - Full width container */}
+                <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-10 sm:mb-12 md:mb-16 lg:mb-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+                        {/* Left Heading */}
+                        <h2 className="font-apfel2 
+                         text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] 
+                         text-primary 
+                         leading-[1.1] sm:leading-[1.2] lg:leading-tight 
+                         text-center lg:text-left">
+                            Our Core Services
+                        </h2>
 
+                        {/* Right Paragraph */}
+                        <p className="text-[15px] md:text-[20px] font-neuhas
+                        text-[#30454c] 
+                        leading-[1.6] md:leading-[30px] 
+                        max-w-full lg:max-w-3xl 
+                        text-center lg:text-left 
+                        mx-auto lg:ml-auto">
+                            From road construction in extreme terrains to strategic border infrastructure, building works, and renewable energy projects - A&T Infracon delivers specialized civil engineering solutions across India's most challenging environments. Our 35+ years of expertise ensures excellence in every project phase.
+                        </p>
+                    </div>
+                </div>
+                {/* Scrollable Services Container - No right padding */}
+                <div className="pl-4 sm:pl-6 md:pl-8 lg:pl-12 xl:pl-16">
+                    <div
+                        ref={scrollRef}
+                        className="w-full overflow-x-auto scroll-smooth 
+                     scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-gray-200"
+                    >
+                        <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-8 pb-4">
+                            {atServices.map((service) => (
+                                <Link
+                                    key={service.id}
+                                    id={`service-${service.id}`}
+                                    href={`/services#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                                    className={cn(
+                                        "group block flex-shrink-0 scroll-mt-32",
+                                        visibleCount === 1
+                                            ? "w-[85vw]"
+                                            : visibleCount === 2
+                                                ? "w-[48vw]"
+                                                : "w-[35vw]"
+                                    )}
+                                >
+                                    <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[700px] 
+                                      w-full rounded-lg overflow-hidden shadow-md">
+                                        <Image
+                                            src={service.image.imageUrl}
+                                            alt={service.image.description}
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 640px) 85vw, 
+                                     (max-width: 1024px) 48vw, 
+                                     35vw"
+                                        />
+
+                                        {/* Gradient Overlay */}
+                                        <div className="absolute inset-0 
+                                          bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+
+                                        {/* Hover Overlay - for darker effect on hover */}
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 
+                                          transition-all duration-500 ease-in-out" />
+
+                                        {/* Content Overlay */}
+                                        <div className="absolute left-0 right-0 bottom-6
+                                          px-4 sm:px-5 md:px-6 lg:px-8
+                                          text-white">
+
+                                            {/* Title - Always visible, fixed position */}
+                                            <h3 className="font-apfel2 
+                                             text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+                                             font-semibold">
+                                                {service.title}
+                                            </h3>
+
+                                            {/* Description - Smooth slide up from BELOW title */}
+                                            <div className="overflow-hidden 
+                                              max-h-0 group-hover:max-h-32 sm:group-hover:max-h-40 md:group-hover:max-h-48
+                                              transition-all duration-500 ease-in-out
+                                              mt-2">
+                                                <p className="text-sm sm:text-base md:text-lg
+                                                font-neuhas
+                                                text-white/90 
+                                                leading-relaxed
+                                                pb-14
+                                                max-w-[85%] sm:max-w-[80%] md:max-w-[80%]
+                                                opacity-0 group-hover:opacity-100
+                                                transition-opacity duration-500 ease-in-out">
+                                                    {service.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Action Button - Absolute positioned */}
+                                            <div className="absolute bottom-0 right-4 sm:right-5 md:right-6 lg:right-8">
+                                                <div className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
+                                                  rounded-full bg-red-600 
+                                                  text-white flex items-center 
+                                                  justify-center 
+                                                  transition-all duration-300 
+                                                  group-hover:bg-red-700
+                                                  shadow-lg">
+                                                    <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+
+                            {/* Invisible spacer div for last card spacing */}
+                            <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12 xl:w-16" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Navigation Controls */}
+                <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+                    <div className="flex items-center justify-center sm:justify-start 
+                      gap-3 sm:gap-4 mt-6 sm:mt-8">
+                        <button
+                            onClick={() => scrollToIndex("prev")}
+                            disabled={currentIndex === 0}
+                            className="h-10 w-10 sm:h-11 sm:w-11 
+                         rounded-full bg-red-100 
+                         text-red-600 flex items-center 
+                         justify-center hover:bg-red-200 
+                         transition-colors 
+                         disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <svg
+                                className="h-4 w-4 sm:h-5 sm:w-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M15 19l-7-7 7-7"
+                                />
+                            </svg>
+                        </button>
+
+                        <span className="text-red-600 font-semibold text-sm sm:text-base">
+                            {currentIndex + 1} –{" "}
+                            {Math.min(currentIndex + visibleCount, atServices.length)} of{" "}
+                            {atServices.length}
+                        </span>
+
+                        <button
+                            onClick={() => scrollToIndex("next")}
+                            disabled={currentIndex + visibleCount >= atServices.length}
+                            className="h-10 w-10 sm:h-11 sm:w-11 
+                         rounded-full bg-red-100 
+                         text-red-600 flex items-center 
+                         justify-center hover:bg-red-200 
+                         transition-colors 
+                         disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <svg
+                                className="h-4 w-4 sm:h-5 sm:w-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
             <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 text-center">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <h2 className="text-[28px] sm:text-[64px] md:leading-[70.4px] font-apfel2 

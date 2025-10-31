@@ -13,7 +13,6 @@ import {
   type CarouselApi
 } from '@/components/ui/carousel';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import hero from "../../app/assets/hero.png";
 import { heroImage, featuredContent } from '@/lib/data';
 
 export function Hero() {
@@ -42,7 +41,7 @@ export function Hero() {
     <section className="relative min-h-screen h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
-        src={hero}
+        src="/images/hero.png"
         alt={heroImage.description}
         fill
         priority

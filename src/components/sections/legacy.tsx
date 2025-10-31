@@ -63,7 +63,7 @@ export function Legacy() {
 
             {/* Button */}
 
-            <div className="mt-8 sm:mt-10 md:mt-12">
+            <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-6">
               <Link
                 href="/approach"
                 className={cn(

@@ -5,23 +5,21 @@ import Link from "next/link";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import logo from "../../app/assets/logo_design_f__2_-removebg-preview.png";
-import logo1 from "../../app/assets/logo-removebg-preview (3).png";
 import { CtaButton } from "@/app/(site)/slavery-statement/page";
 import { useRouter, usePathname } from 'next/navigation';
+import { atServices } from "@/lib/data";
 
 const mainNavLinks = [
   { name: "PROJECTS", href: "/projects" },
   { name: "SERVICES", href: "/services" },
-  { name: "APPROACH", href: "/approach" },
+  { name: "COMPANY", href: "/about-us" }, // ✅ Changed from APPROACH to COMPANY
   { name: "BLOG", href: "/blog" },
   { name: "CAREERS", href: "/careers" },
   { name: "CONTACT", href: "/contact" },
 ];
 
-// Which items open mega
-const megaEnabled = new Set(["PROJECTS", "APPROACH", "CAREERS"]);
-
+// Which items open mega - ✅ Changed APPROACH to COMPANY
+const megaEnabled = new Set(["PROJECTS", "SERVICES", "COMPANY", "CAREERS"]);
 const INFO_CARDS = [
   {
     title: "Markets",
@@ -31,61 +29,59 @@ const INFO_CARDS = [
   },
 ];
 
-/* ---------- Data: Approach ---------- */
-const APPROACH_RIGHT = [
-  {
-    title: "Our Services",
-    desc: "Road construction, border infrastructure, building works, bridges, and renewable energy projects executed with precision.",
-    img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1400&auto=format&fit=crop",
-    href: "/approach#services",
-  },
+/* ---------- Data: Company (Previously Approach) ---------- */
+const COMPANY_LEFT_LIST = [
   {
     title: "Safety",
-    desc: "Rigorous safety protocols across all project sites. Our workforce returns home safely, every day.",
+    desc: "Rigorous safety protocols across all project sites. Industry-leading safety standards in challenging terrains.",
     img: "https://www.bechtel.com/wp-content/uploads/2024/10/image-7-506x338.webp",
-    href: "/approach#safety",
+    href: "/approach#safety"
   },
   {
     title: "Quality",
     desc: "35+ years of maintaining highest quality standards in India's most challenging construction environments.",
     img: "https://i.pinimg.com/736x/cf/f5/e1/cff5e1cba8964bcaeaee87cf0eaecb59.jpg",
-    href: "/approach#quality",
-  },
-  {
-    title: "Ethics",
-    desc: "Building trust through integrity, transparency, and ethical practices in every project we undertake.",
-    img: "https://www.bechtel.com/wp-content/uploads/2024/10/Reston-104937191-1-506x337.webp",
-    href: "/approach#ethics",
+    href: "/approach#quality"
   },
   {
     title: "Sustainability",
     desc: "Renewable energy infrastructure and sustainable construction practices for a better tomorrow.",
     img: "https://www.bechtel.com/wp-content/uploads/2024/10/154508-1-506x380.webp",
-    href: "/approach#sustainability",
-  },
-  {
-    title: "Communities",
-    desc: "Contributing to local communities across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.",
-    img: "https://i.pinimg.com/1200x/a4/27/cf/a427cf2bd4915d03ae201f4f85285282.jpg",
-    href: "/approach#communities",
+    href: "/approach#sustainability"
   },
 ];
 
-const APPROACH_LEFT_LIST = [
+const COMPANY_RIGHT = [
   {
-    title: "Engineering",
-    desc: "Advanced engineering solutions designed for extreme conditions - from high-altitude roads to desert infrastructure.",
-    img: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=400&auto=format&fit=crop",
+    title: "About Us",
+    desc: "35+ years of excellence delivering critical infrastructure across India's most challenging terrains.",
+    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1400&auto=format&fit=crop",
+    href: "/about-us",
   },
   {
-    title: "Procurement",
-    desc: "Strategic sourcing of materials and equipment through established supplier networks across Western India.",
-    img: "https://images.unsplash.com/photo-1503435824048-a799a3a84bf7?q=80&w=400&auto=format&fit=crop",
+    title: "Leadership",
+    desc: "Our leadership team brings decades of experience in executing complex infrastructure projects.",
+    img: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=1400&auto=format&fit=crop",
+    href: "/leadership",
   },
   {
-    title: "Construction",
-    desc: "Expert execution of infrastructure projects in hostile terrains with modern equipment and skilled workforce.",
-    img: "https://images.unsplash.com/photo-1463259379373-1b8b76c09ba4?q=80&w=400&auto=format&fit=crop",
+    title: "Our Strength",
+    desc: "200+ skilled professionals, modern equipment fleet, and strategic presence across Western India.",
+    img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1400&auto=format&fit=crop",
+    href: "/strength",
+  },
+  {
+    title: "Vision, Mission & Values",
+    desc: "To lead infrastructure development across India's most challenging regions with sustainable solutions.",
+    img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1400&auto=format&fit=crop",
+    href: "/vision-values",
+  },
+
+  {
+    title: "Our Approach",
+    desc: "Integrated execution strategy combining engineering excellence and proven project management.",
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1400&auto=format&fit=crop",
+    href: "/approach",
   },
 ];
 
@@ -125,8 +121,8 @@ export function Header() {
   // Dynamic markets data
   const [marketCategories, setMarketCategories] = useState<any[]>([]);
 
-  // Mega: which one is open
-  const [activeMega, setActiveMega] = useState<null | "PROJECTS" | "APPROACH" | "CAREERS">(null);
+  // Mega: which one is open - ✅ Updated type
+  const [activeMega, setActiveMega] = useState<null | "PROJECTS" | "SERVICES" | "COMPANY" | "CAREERS">(null);
   const megaOpen = !!activeMega;
 
   // Hover-intent close
@@ -142,39 +138,6 @@ export function Header() {
   // Header height for panel top
   const headerRef = useRef<HTMLElement | null>(null);
   const [headerH, setHeaderH] = useState(80);
-
-  const handleHashNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    const [path, hash] = href.split('#');
-
-    // If hash exists
-    if (hash) {
-      e.preventDefault();
-
-      // Close menus
-      setActiveMega(null);
-      setMobileMenuOpen(false);
-
-      // Check if we're already on the target page
-      if (pathname === path) {
-        // Same page - just smooth scroll
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      } else {
-        // Different page - navigate first, then scroll
-        router.push(path);
-
-        // Wait for navigation to complete, then scroll
-        setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100); // Small delay for page to render
-      }
-    }
-  };
 
   // Fetch market categories
   useEffect(() => {
@@ -241,7 +204,7 @@ export function Header() {
 
   const shouldHaveBackground = isHovered || hasScrolled || mobileMenuOpen || megaOpen;
 
-  // Close mega menu when clicking on a link
+  // ✅ Close mega menu when clicking on a link
   const handleLinkClick = () => {
     setActiveMega(null);
   };
@@ -295,14 +258,16 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="relative h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32">
               <Image
-                src={logo}
+                src="/images/logo_design_f__2_-removebg-preview.png"
+
                 alt="A&T Infracon Logo"
                 fill
                 priority
                 className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-0" : "opacity-100"}`}
               />
               <Image
-                src={logo1}
+                src="/images/logo-removebg-preview (3).png"
+
                 alt="A&T Infracon Logo"
                 fill
                 priority
@@ -332,7 +297,8 @@ export function Header() {
                       if (isMega) setActiveMega(link.name as typeof activeMega);
                     }}
                     onClick={() => {
-                      if (!isMega) setActiveMega(null);
+                      // Always close mega menu on click
+                      setActiveMega(null);
                     }}
                     className={`text-[13px] lg:text-sm xl:text-[15px] tracking-wider transition-colors ${shouldHaveBackground ? "text-[#30454c] hover:text-foreground" : "text-white/90 hover:text-white"
                       }`}
@@ -361,7 +327,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Desktop Mega Panel (Projects / Approach / Careers) */}
+      {/* Desktop Mega Panel (Projects / Company / Careers) */}
       <MegaPanel
         open={megaOpen}
         top={headerH}
@@ -419,234 +385,105 @@ export function Header() {
               </div>
 
               {/* Services Link */}
-              <Link
-                href="/services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
-              >
-                SERVICES
-              </Link>
-
-              {/* Approach Dropdown */}
+              {/* Services Link - Change to Dropdown */}
               <div>
                 <button
-                  onClick={() => setMobileDropdown(mobileDropdown === "APPROACH" ? null : "APPROACH")}
+                  onClick={() => setMobileDropdown(mobileDropdown === "SERVICES" ? null : "SERVICES")}
                   className="w-full flex items-center justify-between px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
                 >
-                  APPROACH
-                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "APPROACH" ? "rotate-180" : ""}`} />
+                  SERVICES
+                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "SERVICES" ? "rotate-180" : ""}`} />
                 </button>
-                {mobileDropdown === "APPROACH" && (
+                {mobileDropdown === "SERVICES" && (
                   <div className="ml-6 mt-2 space-y-2">
-                    <a
-                      href="/approach#services"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const hash = 'services';
-                        setMobileMenuOpen(false);
+                    {atServices.map((service) => (
+                      <Link
+                        key={service.id}
+                        href={`/services#service-${service.id}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      >
+                        {service.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-                        if (pathname === '/approach') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/approach');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
-                      }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+              {/* Company Dropdown */}
+              <div>
+                <button
+                  onClick={() => setMobileDropdown(mobileDropdown === "COMPANY" ? null : "COMPANY")}
+                  className="w-full flex items-center justify-between px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
+                >
+                  COMPANY
+                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "COMPANY" ? "rotate-180" : ""}`} />
+                </button>
+                {mobileDropdown === "COMPANY" && (
+                  <div className="ml-6 mt-2 space-y-2">
+                    <Link
+                      href="/about-us"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
-                      Services
-                    </a>
-
-                    <a
-                      href="/approach#safety"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const hash = 'safety';
-                        setMobileMenuOpen(false);
-
-                        if (pathname === '/approach') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/approach');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
-                      }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                      About Us
+                    </Link>
+                    <Link
+                      href="/management"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
-                      Safety
-                    </a>
-
-                    <a
-                      href="/approach#quality"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const hash = 'quality';
-                        setMobileMenuOpen(false);
-
-                        if (pathname === '/approach') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/approach');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
-                      }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                      Management
+                    </Link>
+                    <Link
+                      href="/strength"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    >
+                      Our Strength
+                    </Link>
+                    <Link
+                      href="/vision-values"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    >
+                      Vision, Mission & Values
+                    </Link>
+                    <Link
+                      href="/team"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    >
+                      Leadership
+                    </Link>
+                    <Link
+                      href="/approach"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                    >
+                      Our Approach
+                    </Link>
+                    <Link
+                      href="/quality"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
                       Quality
-                    </a>
-
-                    <a
-                      href="/approach#ethics"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const hash = 'ethics';
-                        setMobileMenuOpen(false);
-
-                        if (pathname === '/approach') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/approach');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
-                      }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                    </Link>
+                    <Link
+                      href="/safety"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
-                      Ethics
-                    </a>
-
-                    <a
-                      href="/approach#sustainability"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const hash = 'sustainability';
-                        setMobileMenuOpen(false);
-
-                        if (pathname === '/approach') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/approach');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
-                      }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                      Safety
+                    </Link>
+                    <Link
+                      href="/sustainability"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
                     >
                       Sustainability
-                    </a>
-
-                    <a
-                      href="/approach#communities"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const hash = 'communities';
-                        setMobileMenuOpen(false);
-
-                        if (pathname === '/approach') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/approach');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
-                      }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
-                    >
-                      Communities
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
@@ -674,101 +511,57 @@ export function Header() {
                       href="/careers#openings"
                       onClick={(e) => {
                         e.preventDefault();
-                        const hash = 'openings';
                         setMobileMenuOpen(false);
-
-                        if (pathname === '/careers') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/careers');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
+                        router.push('/careers');
+                        setTimeout(() => {
+                          const element = document.getElementById('openings');
+                          if (element) {
+                            const headerOffset = 100;
+                            const elementPosition = element.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                          }
+                        }, 500);
                       }}
                       className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Career Opportunities
                     </a>
-
                     <a
                       href="/careers#life-at-ant"
                       onClick={(e) => {
                         e.preventDefault();
-                        const hash = 'life-at-ant';
                         setMobileMenuOpen(false);
-
-                        if (pathname === '/careers') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/careers');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
+                        router.push('/careers');
+                        setTimeout(() => {
+                          const element = document.getElementById('life-at-ant');
+                          if (element) {
+                            const headerOffset = 100;
+                            const elementPosition = element.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                          }
+                        }, 500);
                       }}
                       className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
                       Life at A&T Infracon
                     </a>
-
                     <a
                       href="/careers#testimonials"
                       onClick={(e) => {
                         e.preventDefault();
-                        const hash = 'testimonials';
                         setMobileMenuOpen(false);
-
-                        if (pathname === '/careers') {
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 50);
-                        } else {
-                          router.push('/careers');
-                          setTimeout(() => {
-                            const element = document.getElementById(hash);
-                            if (element) {
-                              const headerOffset = 100;
-                              const elementPosition = element.getBoundingClientRect().top;
-                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                          }, 500);
-                        }
+                        router.push('/careers');
+                        setTimeout(() => {
+                          const element = document.getElementById('testimonials');
+                          if (element) {
+                            const headerOffset = 100;
+                            const elementPosition = element.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                          }
+                        }, 500);
                       }}
                       className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
                     >
@@ -800,6 +593,7 @@ export function Header() {
 
 
 /* ---------------- Mega Panel Router ---------------- */
+/* ---------------- Mega Panel Router ---------------- */
 function MegaPanel({
   open,
   top,
@@ -811,7 +605,7 @@ function MegaPanel({
 }: {
   open: boolean;
   top: number;
-  which: "PROJECTS" | "APPROACH" | "CAREERS" | null;
+  which: "PROJECTS" | "SERVICES" | "COMPANY" | "CAREERS" | null; // ✅ Added SERVICES
   onIntentClose: () => void;
   onCancelClose: () => void;
   marketCategories: any[];
@@ -832,11 +626,11 @@ function MegaPanel({
         className={`h-full bg-white transition-transform duration-300 ease-out ${open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
           }`}
       >
-        {/* Full width container with scrolling and red scrollbar */}
         <div className="h-full px-8 lg:px-12 xl:px-16 py-10 overflow-y-auto mega-menu-scroll">
           <div className="max-w-[1600px] mx-auto">
             {which === "PROJECTS" && <ProjectsContent marketCategories={marketCategories} onLinkClick={onLinkClick} />}
-            {which === "APPROACH" && <ApproachContent onLinkClick={onLinkClick} />}
+            {which === "SERVICES" && <ServicesContent onLinkClick={onLinkClick} />} {/* ✅ Added */}
+            {which === "COMPANY" && <CompanyContent onLinkClick={onLinkClick} />}
             {which === "CAREERS" && <CareersContent onLinkClick={onLinkClick} />}
           </div>
         </div>
@@ -880,16 +674,12 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
 
       {/* Right */}
       <div className="col-span-12 lg:col-span-8">
-        <div className="border-b border-gray-200">
-          <div className="flex items-center gap-10">
-            <h3 className="uppercase tracking-wide text-[13px] font-semibold pb-3 text-red-600 border-b-2 border-red-600 font-apfel2">
-              Explore Projects by Market
-            </h3>
-          </div>
+        <div className="border-b border-gray-200 mb-6">
+          <h3 className="uppercase tracking-wide text-[13px] font-semibold pb-3 text-red-600 border-b-2 border-red-600 font-apfel2">
+            Explore Projects by Market
+          </h3>
         </div>
-
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
-          {/* Dynamic Market Categories from Backend */}
           {marketCategories.length > 0 ? (
             marketCategories.map((category) => (
               <Link key={category.category_id} href={`/markets/${category.category_slug}`} onClick={onLinkClick} className="group block">
@@ -917,35 +707,31 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
   );
 }
 
-/* ---------------- Approach Content ---------------- */
-function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
+/* ---------------- Company Content (Previously Approach) ---------------- */
+/* ---------------- Company Content ---------------- */
+function CompanyContent({ onLinkClick }: { onLinkClick: () => void }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleApproachClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleCompanyClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const [path, hash] = href.split('#');
 
     onLinkClick(); // Close mega menu
 
     if (hash) {
+      // Hash navigation for left side cards
       if (pathname === path) {
-        // Same page - smooth scroll with header offset
         setTimeout(() => {
           const element = document.getElementById(hash);
           if (element) {
             const headerOffset = 100;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
           }
         }, 50);
       } else {
-        // Different page - navigate then scroll with offset
         router.push(path);
         setTimeout(() => {
           const element = document.getElementById(hash);
@@ -953,15 +739,12 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
             const headerOffset = 100;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
           }
         }, 500);
       }
     } else {
+      // Direct page navigation for right side cards
       router.push(href);
     }
   };
@@ -970,19 +753,29 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
     <div className="grid grid-cols-12 gap-10">
       {/* Left */}
       <div className="col-span-12 lg:col-span-4">
-        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">Excellence in Execution</h2>
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">
+          A&T Infracon Pvt. Ltd.
+        </h2>
         <p className="mt-4 text-gray-600 leading-7 font-neuhas">
-          At A&T Infracon, we're committed to operating safely, ethically, and sustainably across all our projects. With 35 years of experience in challenging environments, we maintain the highest standards in quality, safety, and delivery - from the deserts of Rajasthan to the high-altitude regions of Ladakh.
+          Engineering Infrastructure. Building the Future. With 35+ years of expertise delivering critical infrastructure across India's most challenging terrains - from high-altitude roads in Ladakh to strategic border installations and renewable energy projects.
         </p>
 
-        <CtaButton href="/approach" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
-          Our Approach
+        <CtaButton href="/about-us" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
+          Learn More About Us
         </CtaButton>
+
         <div className="mt-10 pt-6 border-t">
-          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">What We Do</div>
+          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">
+            Our Commitment
+          </div>
           <div className="mt-4 space-y-5">
-            {APPROACH_LEFT_LIST.map((it) => (
-              <div key={it.title} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
+            {COMPANY_LEFT_LIST.map((it) => (
+              <a
+                key={it.title}
+                href={it.href}
+                onClick={(e) => handleCompanyClick(e, it.href)}
+                className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors cursor-pointer"
+              >
                 <div className="relative h-20 w-28 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
                   <Image src={it.img} alt={it.title} fill className="object-cover" />
                 </div>
@@ -990,28 +783,30 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
                   <div className="font-semibold text-gray-900 font-apfel2">{it.title}</div>
                   <div className="text-sm text-gray-600 mt-1 font-neuhas">{it.desc}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Right */}
+      {/* Right - 6 cards */}
       <div className="col-span-12 lg:col-span-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-          {APPROACH_RIGHT.map((c) => (
-            <a
+          {COMPANY_RIGHT.map((c) => (
+            <Link
               key={c.title}
               href={c.href}
-              onClick={(e) => handleApproachClick(e, c.href)}
-              className="group block cursor-pointer"
+              onClick={onLinkClick}
+              className="group block"
             >
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
                 <Image src={c.img} alt={c.title} fill className="object-cover" />
               </div>
-              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">{c.title}</div>
+              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">
+                {c.title}
+              </div>
               <div className="text-sm text-gray-600 mt-1 font-neuhas">{c.desc}</div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -1019,6 +814,212 @@ function ApproachContent({ onLinkClick }: { onLinkClick: () => void }) {
   );
 }
 
+/* ---------------- Services Content - UPDATED WITH BETTER VERTICAL SCROLL ---------------- */
+/* ---------------- Services Content - SCROLL DIRECTLY TO CARDS ---------------- */
+function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, serviceId: number, serviceSlug: string) => {
+    e.preventDefault();
+    onLinkClick(); // Close mega menu
+
+    // If already on services page, just scroll
+    if (pathname === '/services') {
+      setTimeout(() => {
+        const element = document.getElementById(`service-${serviceId}`);
+        if (element) {
+          // Get the actual card element position
+          const cardRect = element.getBoundingClientRect();
+          const cardTop = cardRect.top + window.pageYOffset;
+
+          // Scroll to bring the CARD into view, not just the section
+          const headerOffset = 100; // Header height
+          const extraOffset = 50; // Additional offset to show card nicely
+
+          // This will scroll the PAGE so the card is near the top of viewport
+          const targetScrollPosition = cardTop - headerOffset - extraOffset;
+
+          // Smooth vertical scroll to the card
+          window.scrollTo({
+            top: targetScrollPosition,
+            behavior: 'smooth'
+          });
+
+          // Then handle horizontal scrolling after a delay
+          setTimeout(() => {
+            const scrollContainer = element.closest('.overflow-x-auto');
+            if (scrollContainer) {
+              const cardOffsetInContainer = element.offsetLeft;
+              let targetScroll = 0;
+
+              if (serviceId <= 2) {
+                // For first 2 cards, minimal scroll
+                targetScroll = cardOffsetInContainer - 20;
+              } else if (serviceId <= 4) {
+                // For middle cards, center them
+                const containerWidth = scrollContainer.clientWidth;
+                const cardWidth = element.offsetWidth;
+                targetScroll = cardOffsetInContainer - (containerWidth / 2) + (cardWidth / 2);
+              } else {
+                // For last cards, scroll to show them
+                const containerWidth = scrollContainer.clientWidth;
+                const cardWidth = element.offsetWidth;
+                targetScroll = cardOffsetInContainer - containerWidth + cardWidth + 20;
+              }
+
+              // Ensure we don't scroll past boundaries
+              targetScroll = Math.max(0, targetScroll);
+              targetScroll = Math.min(targetScroll, scrollContainer.scrollWidth - scrollContainer.clientWidth);
+
+              // Smooth horizontal scroll
+              scrollContainer.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+              });
+
+              // Add a highlight effect to the selected card
+              element.style.transition = 'all 0.3s ease';
+              element.style.transform = 'scale(1.02)';
+              element.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.5)';
+
+              setTimeout(() => {
+                element.style.transform = '';
+                element.style.boxShadow = '';
+              }, 2000);
+            }
+          }, 800);
+        }
+      }, 100);
+    } else {
+      // Navigate to services page first
+      router.push('/services');
+
+      // Then scroll after page loads
+      setTimeout(() => {
+        const element = document.getElementById(`service-${serviceId}`);
+        if (element) {
+          // Get the actual card position
+          const cardRect = element.getBoundingClientRect();
+          const cardTop = cardRect.top + window.pageYOffset;
+
+          // Scroll directly to the card, bypassing the section header
+          const headerOffset = 100;
+          const extraOffset = 50;
+          const targetScrollPosition = cardTop - headerOffset - extraOffset;
+
+          window.scrollTo({
+            top: targetScrollPosition,
+            behavior: 'smooth'
+          });
+
+          // Handle horizontal scroll after vertical completes
+          setTimeout(() => {
+            const scrollContainer = element.closest('.overflow-x-auto');
+            if (scrollContainer) {
+              let targetScroll = 0;
+              const cardWidth = element.offsetWidth;
+              const containerWidth = scrollContainer.clientWidth;
+              const cardOffsetInContainer = element.offsetLeft;
+
+              // Smart positioning based on card number
+              if (serviceId <= 2) {
+                targetScroll = Math.max(0, cardOffsetInContainer - 20);
+              } else if (serviceId <= 4) {
+                targetScroll = cardOffsetInContainer - (containerWidth / 2) + (cardWidth / 2);
+              } else {
+                targetScroll = cardOffsetInContainer - containerWidth + cardWidth + 40;
+              }
+
+              targetScroll = Math.max(0, Math.min(targetScroll, scrollContainer.scrollWidth - containerWidth));
+
+              scrollContainer.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+              });
+
+              // Visual feedback
+              element.style.transition = 'all 0.3s ease';
+              element.style.transform = 'scale(1.02)';
+              element.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.5)';
+
+              setTimeout(() => {
+                element.style.transform = '';
+                element.style.boxShadow = '';
+              }, 2000);
+            }
+          }, 1200);
+        }
+      }, 600);
+    }
+  };
+
+  return (
+    <div className="grid grid-cols-12 gap-10">
+      {/* Left */}
+      <div className="col-span-12 lg:col-span-4">
+        <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">
+          Comprehensive Infrastructure Solutions
+        </h2>
+        <p className="mt-4 text-gray-600 leading-7 font-neuhas">
+          From road construction in extreme terrains to strategic border infrastructure, building works, and renewable energy projects - A&T Infracon delivers specialized civil engineering solutions across India's most challenging environments.
+        </p>
+
+        <CtaButton href="/services" onClick={onLinkClick} className="mt-6 inline-flex items-center gap-4 group">
+          View All Services
+        </CtaButton>
+
+        <div className="mt-10 pt-6 border-t">
+          <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">
+            Service Areas
+          </div>
+          <div className="mt-4 space-y-3 text-sm text-gray-600 font-neuhas">
+            <p>✓ Gujarat • Rajasthan • Jammu & Kashmir • Ladakh</p>
+            <p>✓ High-Altitude Construction up to 15,000+ feet</p>
+            <p>✓ Desert & Marshy Terrain Expertise</p>
+            <p>✓ Border Security Infrastructure</p>
+            <p>✓ Government & PSU Projects</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right - atServices data */}
+      <div className="col-span-12 lg:col-span-8">
+        <div className="border-b border-gray-200 w-full mb-6">
+          <h3 className="uppercase tracking-wide text-[13px] font-semibold pb-3 text-red-600 border-b-2 border-red-600 inline-block font-apfel2">
+            Our Core Services
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+          {atServices.map((service) => (
+            <a
+              key={service.id}
+              href={`/services#service-${service.id}`}
+              onClick={(e) => handleServiceClick(e, service.id, service.title.toLowerCase().replace(/\s+/g, '-'))}
+              className="group block cursor-pointer transition-all duration-300"
+            >
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
+                <Image
+                  src={service.image.imageUrl}
+                  alt={service.image.description}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-3 font-semibold text-gray-900 group-hover:text-red-600 font-apfel2">
+                {service.title}
+              </div>
+              <div className="text-sm text-gray-600 mt-1 font-neuhas line-clamp-2">
+                {service.description}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 /* ---------------- Careers Content ---------------- */
 function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
   const router = useRouter();
@@ -1032,22 +1033,16 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
 
     if (hash) {
       if (pathname === path) {
-        // Same page - smooth scroll with header offset
         setTimeout(() => {
           const element = document.getElementById(hash);
           if (element) {
             const headerOffset = 100;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
           }
         }, 50);
       } else {
-        // Different page - navigate then scroll with offset
         router.push(path);
         setTimeout(() => {
           const element = document.getElementById(hash);
@@ -1055,11 +1050,7 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
             const headerOffset = 100;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
           }
         }, 500);
       }
@@ -1070,7 +1061,6 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
 
   return (
     <div className="grid grid-cols-12 gap-10">
-      {/* Left */}
       <div className="col-span-12 lg:col-span-4">
         <h2 className="text-3xl md:text-[32px] font-semibold text-gray-900 font-apfel2">
           Build Your Career With Us
@@ -1084,7 +1074,6 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
         </CtaButton>
       </div>
 
-      {/* Right */}
       <div className="col-span-12 lg:col-span-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
           {CAREER_FEATURES.map((c) => (

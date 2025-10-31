@@ -17,7 +17,7 @@ export function WeBuildHistory() {
             </h2>
 
             {/* CTA Button - Responsive */}
-            <div className="mt-8 sm:mt-10 md:mt-12">
+            <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-5">
               <Link
                 href="/projects"
                 className={cn(
