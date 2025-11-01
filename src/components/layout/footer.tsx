@@ -46,13 +46,6 @@ export function Footer() {
         ],
         projects: [
             { name: "View All Projects", href: "/projects" },
-            // {
-            //     name: "Markets",
-            //     href: "#markets-section",
-            //     isScrollLink: true,
-            //     page: '/projects',
-            //     sectionId: 'markets-section'
-            // },
             {
                 name: "Regions",
                 href: "#regions-section",
@@ -130,22 +123,22 @@ export function Footer() {
     ];
 
     return (
-        <footer className="bg-[#212C36] text-gray-300">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <footer className="bg-[#212C36] text-gray-300 overflow-hidden w-full">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                 {/* TOP SECTION - Links Grid */}
-                <div className="py-16 border-b border-gray-700">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-24">
+                <div className="py-12 md:py-16 border-b border-gray-700">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
                         {/* People */}
-                        <div>
-                            <h3 className="text-white font-bold text-xl leading-[30px] tracking-[0.5px] mb-6 font-apfel2">
+                        <div className="w-full">
+                            <h3 className="text-white font-bold text-lg md:text-xl leading-[30px] tracking-[0.5px] mb-4 md:mb-6 font-apfel2">
                                 People
                             </h3>
-                            <ul className="space-y-3">
+                            <ul className="space-y-2 md:space-y-3">
                                 {footerLinks.people.map((link) => (
                                     <li key={link.name}>
                                         <Link
                                             href={link.href}
-                                            className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                            className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal block"
                                         >
                                             {link.name}
                                         </Link>
@@ -155,11 +148,11 @@ export function Footer() {
                         </div>
 
                         {/* Projects */}
-                        <div>
-                            <h3 className="text-white font-bold text-xl leading-[30px] tracking-[0.5px] mb-6 font-apfel2">
+                        <div className="w-full">
+                            <h3 className="text-white font-bold text-lg md:text-xl leading-[30px] tracking-[0.5px] mb-4 md:mb-6 font-apfel2">
                                 Projects
                             </h3>
-                            <ul className="space-y-3">
+                            <ul className="space-y-2 md:space-y-3">
                                 {footerLinks.projects.map((link) => (
                                     <li key={link.name}>
                                         {link.isScrollLink ? (
@@ -168,14 +161,14 @@ export function Footer() {
                                                     e.preventDefault();
                                                     handleSmoothScroll(link.page!, link.sectionId!);
                                                 }}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal text-left w-full"
+                                                className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal text-left w-full"
                                             >
                                                 {link.name}
                                             </button>
                                         ) : (
                                             <Link
                                                 href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                                className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal block"
                                             >
                                                 {link.name}
                                             </Link>
@@ -186,11 +179,11 @@ export function Footer() {
                         </div>
 
                         {/* Approach */}
-                        <div>
-                            <h3 className="text-white font-bold text-xl leading-[30px] tracking-[0.5px] mb-6 font-apfel2">
+                        <div className="w-full">
+                            <h3 className="text-white font-bold text-lg md:text-xl leading-[30px] tracking-[0.5px] mb-4 md:mb-6 font-apfel2">
                                 Approach
                             </h3>
-                            <ul className="space-y-3">
+                            <ul className="space-y-2 md:space-y-3">
                                 {footerLinks.approach.map((link) => (
                                     <li key={link.name}>
                                         {link.isScrollLink ? (
@@ -199,14 +192,14 @@ export function Footer() {
                                                     e.preventDefault();
                                                     handleSmoothScroll(link.page!, link.sectionId!);
                                                 }}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal text-left w-full"
+                                                className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal text-left w-full"
                                             >
                                                 {link.name}
                                             </button>
                                         ) : (
                                             <Link
                                                 href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                                className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal block"
                                             >
                                                 {link.name}
                                             </Link>
@@ -217,11 +210,11 @@ export function Footer() {
                         </div>
 
                         {/* Careers */}
-                        <div>
-                            <h3 className="text-white font-bold text-xl leading-[30px] tracking-[0.5px] mb-6 font-apfel2">
+                        <div className="w-full">
+                            <h3 className="text-white font-bold text-lg md:text-xl leading-[30px] tracking-[0.5px] mb-4 md:mb-6 font-apfel2">
                                 Careers
                             </h3>
-                            <ul className="space-y-3">
+                            <ul className="space-y-2 md:space-y-3">
                                 {footerLinks.careers.map((link) => (
                                     <li key={link.name}>
                                         {link.isScrollLink ? (
@@ -230,14 +223,14 @@ export function Footer() {
                                                     e.preventDefault();
                                                     handleSmoothScroll(link.page!, link.sectionId!);
                                                 }}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal text-left w-full"
+                                                className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal text-left w-full"
                                             >
                                                 {link.name}
                                             </button>
                                         ) : (
                                             <Link
                                                 href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                                className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal block"
                                             >
                                                 {link.name}
                                             </Link>
@@ -248,16 +241,16 @@ export function Footer() {
                         </div>
 
                         {/* Company */}
-                        <div>
-                            <h3 className="text-white font-bold text-xl leading-[30px] tracking-[0.5px] mb-6 font-apfel2">
+                        <div className="w-full">
+                            <h3 className="text-white font-bold text-lg md:text-xl leading-[30px] tracking-[0.5px] mb-4 md:mb-6 font-apfel2">
                                 Company
                             </h3>
-                            <ul className="space-y-3">
+                            <ul className="space-y-2 md:space-y-3">
                                 {companyLinks.map((link) => (
                                     <li key={link.name}>
                                         <Link
                                             href={link.href}
-                                            className="text-gray-400 hover:text-white transition-colors text-base leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                            className="text-gray-400 hover:text-white transition-colors text-sm md:text-base leading-6 tracking-[0.0208px] font-neuhas font-normal block"
                                         >
                                             {link.name}
                                         </Link>
@@ -269,11 +262,11 @@ export function Footer() {
                 </div>
 
                 {/* BOTTOM SECTION - 4 Columns on Desktop, 2x2 on Mobile */}
-                <div className="py-12">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div className="py-8 md:py-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
 
                         {/* 1. Logo & Contact */}
-                        <div className="space-y-4">
+                        <div className="space-y-4 w-full">
                             <Link href="/">
                                 <Image
                                     src="/images/logo_design_f__2_-removebg-preview.png"
@@ -289,7 +282,7 @@ export function Footer() {
                                     className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors"
                                 >
                                     <Phone size={18} className="flex-shrink-0 mt-0.5" />
-                                    <span className="text-sm font-neuhas">+91 79357 03085</span>
+                                    <span className="text-sm font-neuhas break-words">+91 79357 03085</span>
                                 </a>
 
                                 <a
@@ -297,7 +290,7 @@ export function Footer() {
                                     className="flex items-start gap-3 text-gray-300 hover:text-white transition-colors"
                                 >
                                     <Mail size={18} className="flex-shrink-0 mt-0.5" />
-                                    <span className="text-sm font-neuhas">atinfracon@gmail.com</span>
+                                    <span className="text-sm font-neuhas break-words">atinfracon@gmail.com</span>
                                 </a>
 
                                 <div className="flex items-start gap-3 text-gray-300">
@@ -313,14 +306,14 @@ export function Footer() {
                         </div>
 
                         {/* 2. Legal Links */}
-                        <div className="space-y-4">
+                        <div className="space-y-4 w-full">
                             <h4 className="text-white font-semibold text-lg font-apfel2">Legal</h4>
-                            <ul className="space-y-3">
+                            <ul className="space-y-2 md:space-y-3">
                                 {legalLinks.map((link) => (
                                     <li key={link.name}>
                                         <Link
                                             href={link.href}
-                                            className="text-gray-400 hover:text-white transition-colors text-sm leading-6 tracking-[0.0208px] font-neuhas font-normal"
+                                            className="text-gray-400 hover:text-white transition-colors text-sm leading-6 tracking-[0.0208px] font-neuhas font-normal block"
                                         >
                                             {link.name}
                                         </Link>
@@ -330,19 +323,19 @@ export function Footer() {
                         </div>
 
                         {/* 3. Company Info */}
-                        <div className="space-y-4">
+                        <div className="space-y-4 w-full">
                             <h4 className="text-white font-semibold text-lg font-apfel2">Company Details</h4>
                             <div className="space-y-2 text-sm text-gray-400 font-neuhas">
-                                <p>CIN: U45201GJ2011PTC065598</p>
-                                <p>PAN: AAJCA5903A</p>
-                                <p>GST: 24AAJCA5903A1Z9</p>
+                                <p className="break-words">CIN: U45201GJ2011PTC065598</p>
+                                <p className="break-words">PAN: AAJCA5903A</p>
+                                <p className="break-words">GST: 24AAJCA5903A1Z9</p>
                             </div>
                         </div>
 
-                        {/* 4. Connect With Us */}
-                        <div className="space-y-4">
+                        {/* 4. Connect With Us - FIXED OVERFLOW */}
+                        <div className="space-y-4 w-full">
                             <h4 className="text-white font-semibold text-lg font-apfel2">Connect With Us</h4>
-                            <div className="flex gap-4">
+                            <div className="flex flex-wrap gap-3 max-w-full">
                                 {socialLinks.map((social, idx) => {
                                     const IconComponent = social.icon;
                                     return (
@@ -351,7 +344,8 @@ export function Footer() {
                                             href={social.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="bg-white text-gray-800 rounded-full p-2 hover:bg-gray-200 transition-colors flex items-center justify-center"
+                                            className="bg-white text-gray-800 rounded-full p-2 hover:bg-gray-200 transition-colors flex items-center justify-center flex-shrink-0"
+                                            aria-label={`Connect on ${social.icon.name}`}
                                         >
                                             <IconComponent size={18} />
                                         </Link>
@@ -364,12 +358,12 @@ export function Footer() {
                 </div>
 
                 {/* DEVELOPER CREDIT */}
-                <div className="border-t border-gray-700">
+                <div className="border-t border-gray-700 w-full">
                     <div className="py-4 flex flex-col md:flex-row items-center justify-between gap-2">
-                        <p className="text-xs text-gray-500 font-neuhas order-2 md:order-1">
+                        <p className="text-xs text-gray-500 font-neuhas order-2 md:order-1 text-center md:text-left">
                             © 2025 A&T Infracon Pvt. Ltd. All Rights Reserved.
                         </p>
-                        <p className="text-xs text-gray-400 font-neuhas order-1 md:order-2">
+                        <p className="text-xs text-gray-400 font-neuhas order-1 md:order-2 text-center md:text-right">
                             Website designed by{' '}
                             <Link
                                 href="https://flauraa.com"

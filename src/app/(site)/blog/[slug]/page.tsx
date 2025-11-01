@@ -1,58 +1,184 @@
-// app/(site)/blog/[slug]/page.tsx
 import Image from "next/image"
+import { Metadata } from 'next';
+import Script from 'next/script';
 import Link from "next/link"
 import { getBlogBySlug, getBlogSlugs, getAllBlogs } from "@/lib/api/blogs"
 import { notFound } from "next/navigation"
-import { Calendar, ArrowLeft, Clock, Facebook, Twitter, Linkedin, Mail, Link2 } from "lucide-react"
-import ShareButtons from "@/components/ShareButtons" // ⭐ Import the client component
+import { Calendar, ArrowLeft, Clock, Facebook, Twitter, Linkedin, Mail } from "lucide-react"
+import ShareButtons from "@/components/ShareButtons"
 
-// Generate static params for faster builds
+// Generate static params
 export async function generateStaticParams() {
     const slugs = await getBlogSlugs();
     return slugs.map((slug) => ({ slug }));
 }
 
-// Generate metadata for SEO
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const blog = await getBlogBySlug(params.slug);
-    if (!blog) return {};
+// ✅ FIX: params is now a Promise
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params; // ← await params first
+    const blog = await getBlogBySlug(slug);
+
+    if (!blog) {
+        return {
+            title: 'Blog Not Found',
+        };
+    }
+
+    const title = blog.meta_title || `${blog.title} | A&T Infracon Blog`;
+    const description = blog.meta_description || blog.excerpt || `Read about ${blog.title} on A&T Infracon blog`;
+    const keywords = blog.meta_keywords || `${blog.title}, infrastructure blog, construction insights`;
 
     return {
-        title: blog.meta_title || blog.title,
-        description: blog.meta_description || blog.excerpt,
-        keywords: blog.meta_keywords,
+        title,
+        description,
+        keywords,
         openGraph: {
-            title: blog.meta_title || blog.title,
-            description: blog.meta_description || blog.excerpt,
+            title,
+            description,
+            url: `https://atinfracon.com/blog/${blog.slug}`,
             images: [
                 {
-                    url: blog.featured_image || '',
+                    url: blog.featured_image || '/images/og-image.png',
                     width: 1200,
                     height: 630,
-                },
+                    alt: blog.title,
+                }
             ],
+            type: 'article',
+            publishedTime: blog.created_at,
+            modifiedTime: blog.updated_at,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [blog.featured_image || '/images/og-image.png'],
+        },
+        alternates: {
+            canonical: `https://atinfracon.com/blog/${blog.slug}`,
+        },
+        robots: {
+            index: blog.is_published,
+            follow: blog.is_published,
         },
     };
 }
 
-export default async function BlogDetailPage({ params }: { params: { slug: string } }) {
-    const blog = await getBlogBySlug(params.slug);
+// ✅ FIX: params is now a Promise
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params; // ← await params first
+    const blog = await getBlogBySlug(slug);
 
     if (!blog) {
         notFound();
     }
 
-    // Get recent blogs (excluding current)
     const recentBlogs = (await getAllBlogs())
         .filter(b => b.slug !== blog.slug)
         .slice(0, 3);
 
-    // Get the full URL for sharing
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
-    const fullUrl = `${baseUrl}/blog/${params.slug}`;
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://atinfracon.com';
+    const fullUrl = `${baseUrl}/blog/${slug}`; // ← use slug variable
+
+    // Schema 1: BlogPosting
+    const blogPostingSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": blog.title,
+        "description": blog.excerpt || blog.title,
+        "image": blog.featured_image,
+        "datePublished": blog.created_at,
+        "dateModified": blog.updated_at || blog.created_at,
+        "author": {
+            "@type": "Organization",
+            "name": "A&T Infracon Pvt. Ltd.",
+            "url": "https://atinfracon.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "A&T Infracon Pvt. Ltd.",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://atinfracon.com/images/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": fullUrl
+        },
+        "wordCount": blog.content ? blog.content.split(/\s+/).length : 0,
+        "timeRequired": blog.reading_time ? `PT${blog.reading_time}M` : undefined,
+        "articleBody": blog.content ? blog.content.replace(/<[^>]*>/g, '').substring(0, 500) : undefined,
+        "keywords": blog.meta_keywords
+    };
+
+    // Schema 2: Article
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": blog.title,
+        "description": blog.excerpt,
+        "image": blog.featured_image,
+        "datePublished": blog.created_at,
+        "dateModified": blog.updated_at || blog.created_at,
+        "author": {
+            "@type": "Organization",
+            "name": "A&T Infracon Pvt. Ltd."
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "A&T Infracon Pvt. Ltd.",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://atinfracon.com/images/logo.png"
+            }
+        }
+    };
+
+    // Schema 3: Breadcrumb
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://atinfracon.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://atinfracon.com/blog"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": blog.title,
+                "item": fullUrl
+            }
+        ]
+    };
 
     return (
         <>
+            {/* Structured Data Scripts */}
+            <Script
+                id="blogposting-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }}
+            />
+            <Script
+                id="article-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <Script
+                id="breadcrumb-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             {/* ---------- HERO SECTION (FEATURED IMAGE) ---------- */}
             <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-end">
                 {/* Background image */}

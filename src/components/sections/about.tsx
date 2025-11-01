@@ -5,7 +5,13 @@ import Link from "next/link";
 import {
   ArrowRight, Phone, Mail, MapPin, CheckCircle2, Award, Users,
   Building2, Shield, Leaf, Star, Factory, Truck, Hammer,
-  Settings, Wrench, Cpu
+  Settings, Wrench, Cpu,
+  LineChartIcon,
+  ListEnd,
+  MoveRight,
+  List,
+  ListCheck,
+  Check
 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -94,7 +100,7 @@ function FadeInSection({ children, className = "", delay = 0 }: {
     <div
       ref={sectionRef}
       className={cn(
-        "transition-all duration-1000",
+        "transition-all duration-100",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
         className
       )}
@@ -113,7 +119,7 @@ function EquipmentTabs() {
       name: "Production Plants",
       icon: Factory,
       stats: { total: "18", uptime: "94%" },  // 19 se 18 ho jayega
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000",
+      image: "/images/about7.png",
       equipment: [
         { name: "Crusher", location: "240 TPH (Banaskantha) & 150 TPH (Kutch)", qty: "4" },
         { name: "Batch Type Hot Mix Plant", location: "Multiple sites", qty: "2" },
@@ -127,7 +133,8 @@ function EquipmentTabs() {
       name: "Earth Moving",
       icon: Truck,
       stats: { total: "90", uptime: "96%" },
-      image: "https://images.unsplash.com/photo-1590759668628-05b9eea2f443?q=80&w=1000",
+      image: "/images/about8.png",
+
       equipment: [
         { name: "Excavator", location: "0.8 to 2.5 cum capacity", qty: "22" },
         { name: "Wheel Loader", location: "2.5 to 3.5 cum capacity", qty: "8" },
@@ -140,7 +147,8 @@ function EquipmentTabs() {
       name: "Concrete Equipment",
       icon: Hammer,
       stats: { total: "20", uptime: "92%" },
-      image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1000",
+      image: "/images/about9.png",
+
       equipment: [
         { name: "Transit Mixer", location: "7-10 cum capacity", qty: "12" },
         { name: "Bar Cutting Machine", location: "Up to 40mm capacity", qty: "5" },
@@ -153,7 +161,8 @@ function EquipmentTabs() {
       name: "Paving & Compaction",
       icon: Settings,
       stats: { total: "17", uptime: "95%" },
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000",
+      image: "/images/about10.png",
+
       equipment: [
         { name: "Bituminous/WMM Paver", location: "Sensor based", qty: "6" },
         { name: "Concrete Paver", location: "Slip form type", qty: "1" },
@@ -167,7 +176,8 @@ function EquipmentTabs() {
       name: "Support Equipment",
       icon: Wrench,
       stats: { total: "22", uptime: "98%" },
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000",
+      image: "/images/about11.png",
+
       equipment: [
         { name: "Bituminous Pressure Sprayer", location: "Mechanical type", qty: "6" },
         { name: "Bitumen Chip Spreader", location: "Mechanical type", qty: "1" },
@@ -185,7 +195,7 @@ function EquipmentTabs() {
   return (
     <div>
       {/* Tab Buttons */}
-      <div className="flex flex-wrap gap-3 mb-10 justify-center">
+      <div className="grid grid-cols-3 sm:flex gap-3 mb-10 justify-center font-neuhas place-items-center">
         {tabs.map((tab, idx) => {
           const TabIcon = tab.icon;
           return (
@@ -193,13 +203,13 @@ function EquipmentTabs() {
               key={idx}
               onClick={() => setActiveTab(idx)}
               className={cn(
-                "px-4 py-1 rounded-full font-neuhas font-semibold transition-all duration-300 flex items-center gap-2 min-w-[140px] justify-center",
+                "md:px-4 px-0 py-1 rounded-full font-neuhas transition-all duration-300 text-[12px] md:text-[16px] flex items-center gap-2 min-w-[100px] sm:min-w-[140px] justify-center",
                 activeTab === idx
                   ? "bg-red-600 text-white shadow-lg scale-105"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  : "text-black hover:bg-red-100 hover:text-red-600"
               )}
             >
-              <TabIcon className="w-4 h-4" />
+              <TabIcon className="md:w-4 md:h-4 w-3 h-3" />
               <span className="hidden sm:inline">{tab.name}</span>
               <span className="sm:hidden">{tab.name.split(' ')[0]}</span>
             </button>
@@ -208,7 +218,7 @@ function EquipmentTabs() {
       </div>
 
       {/* Tab Content */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+      <div className="bg-white rounded-2xl overflow-hidde">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left: Image & Stats */}
           <div className="relative h-[400px] lg:h-auto">
@@ -224,14 +234,6 @@ function EquipmentTabs() {
             <div className="absolute bottom-6 left-6 right-6">
               <div className="flex items-end justify-between text-white">
                 <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-3 bg-white/20 backdrop-blur rounded-xl">
-                      <Icon className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <h3 className="font-apfel2 text-3xl">{activeData.name}</h3>
-                    </div>
-                  </div>
                 </div>
                 <div className="text-right">
                   <div className="font-apfel2 text-5xl font-bold mb-1">{activeData.stats.total}</div>
@@ -264,7 +266,7 @@ function EquipmentTabs() {
                 {activeData.equipment.map((item, idx) => (
                   <div
                     key={idx}
-                    className="grid grid-cols-[2fr_2fr_1fr] gap-4 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                    className="grid grid-cols-[2fr_2fr_1fr] gap-4 py-4 border-b border-gray-100 hover:transition-colors"
                   >
                     <div className="font-neuhas font-semibold text-gray-900">{item.name}</div>
                     <div className="font-neuhas text-sm text-gray-600">{item.location}</div>
@@ -296,7 +298,7 @@ export function About() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="font-apfel2 relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[85vh] flex items-center py-12">
+      <section className="font-apfel2 relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[85vh] flex items-center md:py-12">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000"
@@ -340,10 +342,10 @@ export function About() {
 
       {/* OUR STORY SECTION */}
       <FadeInSection>
-        <section className="bg-white py-16 sm:py-20 md:py-28">
+        <section className="bg-white py-6 sm:py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-12 items-start px-4 sm:px-6 md:px-8">
             <div className="lg:pl-8 xl:pl-16 2xl:pl-32 py-4 sm:py-6 md:py-8 lg:py-0">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight sm:leading-[1.2] md:leading-[64px] text-gray-900 mb-6 sm:mb-8 md:mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight sm:leading-[1.2] md:leading-[64px] text-gray-900 mb-3 sm:mb-8 md:mb-12">
                 Our Company
               </h2>
 
@@ -376,22 +378,23 @@ export function About() {
             <div className="space-y-4 sm:space-y-6 md:space-y-8 px-0 sm:px-4 md:px-6">
               <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-md">
                 <Image
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000"
+                  src="/images/about2.png"
                   alt="Our Journey"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-8 left-8 text-white">
-                  <p className="font-apfel2 text-3xl mb-2">Since 1989</p>
-                  <p className="font-neuhas text-lg">Building India's Future</p>
+                <div className="absolute bottom-2 md:bottom-8 right-2 md:left-8 text-white">
+                  <p className="font-apfel2 text-2xl md:text-3xl md:mb-2">Since 1989</p>
+                  <p className="font-neuhas text-xs md:text-lg">Building India's Future</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative h-[200px] overflow-hidden rounded-md">
                   <Image
-                    src="https://images.unsplash.com/photo-1590759668628-05b9eea2f443?q=80&w=600"
+                    src="/images/about1.png"
+
                     alt="Infrastructure Development"
                     fill
                     className="object-cover"
@@ -399,7 +402,7 @@ export function About() {
                 </div>
                 <div className="relative h-[200px] overflow-hidden rounded-md">
                   <Image
-                    src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600"
+                    src="/images/about3.png"
                     alt="Engineering Excellence"
                     fill
                     className="object-cover"
@@ -413,7 +416,7 @@ export function About() {
 
       {/* COMPANY OVERVIEW */}
       <FadeInSection>
-        <section className="bg-gray-50 py-16 sm:py-20 md:py-28">
+        <section className="py-16 sm:py-20 md:py-28">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               <div>
@@ -421,7 +424,7 @@ export function About() {
                   Who We Are
                 </h2>
 
-                <div className="space-y-6">
+                {/* <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                       <Building2 className="w-6 h-6 text-red-600" />
@@ -460,6 +463,37 @@ export function About() {
                       </p>
                     </div>
                   </div>
+                </div> */}
+
+
+
+                <div className="space-y-8">
+                  {[
+                    {
+                      title: "Infrastructure Specialists",
+                      description: "Expert civil engineering contractor specializing in roads, buildings, and border infrastructure across challenging terrains."
+                    },
+                    {
+                      title: "Border Security Experts",
+                      description: "Trusted by CPWD, NBCC, and defense forces for critical border infrastructure and strategic roads."
+                    },
+                    {
+                      title: "Quality Assured",
+                      description: "150+ modern equipment units, 200+ skilled professionals, and proven track record of world-class delivery."
+                    }
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-apfel2 text-lg">
+                          {(index + 1).toString().padStart(2, '0')}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-apfel2 text-xl mb-2 text-gray-900">{item.title}</h3>
+                        <p className="font-neuhas text-gray-600 leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="mt-8 p-6 bg-white rounded-lg border border-gray-200">
@@ -472,9 +506,9 @@ export function About() {
               </div>
 
               <div className="space-y-6">
-                <div className="relative h-[300px] rounded-lg overflow-hidden shadow-xl">
+                <div className="relative h-[280px] md:h-[440px] rounded-lg overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1590759668628-05b9eea2f443?q=80&w=1000"
+                    src="/images/about4.png"
                     alt="Border Infrastructure"
                     fill
                     className="object-cover"
@@ -483,7 +517,7 @@ export function About() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative h-[200px] rounded-lg overflow-hidden shadow-xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600"
+                      src="/images/about5.png"
                       alt="Road Construction"
                       fill
                       className="object-cover"
@@ -491,7 +525,7 @@ export function About() {
                   </div>
                   <div className="relative h-[200px] rounded-lg overflow-hidden shadow-xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=600"
+                      src="/images/about6.png"
                       alt="Building Projects"
                       fill
                       className="object-cover"
@@ -511,15 +545,15 @@ export function About() {
             Our Impact in Numbers
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div className="border-r border-gray-200 last:border-r-0">
+            <div className="md:border-r border-gray-200 last:border-r-0">
               <AnimatedCounter end={35} suffix="+" />
               <div className="text-gray-600 font-neuhas text-lg">Years of Excellence</div>
             </div>
-            <div className="border-r border-gray-200 last:border-r-0">
+            <div className="md:border-r border-gray-200 last:border-r-0">
               <AnimatedCounter end={200} suffix="+" />
               <div className="text-gray-600 font-neuhas text-lg">Team Members</div>
             </div>
-            <div className="border-r border-gray-200 last:border-r-0">
+            <div className="md:border-r border-gray-200 last:border-r-0">
               <AnimatedCounter end={161} prefix="₹" suffix=" Cr" />
               <div className="text-gray-600 font-neuhas text-lg">Annual Turnover (FY 2023-24)</div>
             </div>
@@ -533,9 +567,9 @@ export function About() {
 
       {/* VISION, MISSION & VALUES */}
       <FadeInSection>
-        <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
+        <section className="py-16 sm:py-20 md:py-28">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 md:mb-16 mb-4">
               Vision, Mission & Values
             </h2>
 
@@ -559,7 +593,7 @@ export function About() {
                       "Support national security through border infrastructure development"
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-start font-neuhas text-gray-700 text-[16px] md:text-[18px]">
-                        <CheckCircle2 className="w-5 h-5 text-red-600 mr-3 mt-1 flex-shrink-0" />
+                        <Check className="w-5 h-5 text-red-600 mr-3 mt-1 flex-shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -571,13 +605,13 @@ export function About() {
                 <h3 className="font-apfel2 text-2xl md:text-3xl mb-4 text-red-600">Our Core Values</h3>
                 <div className="space-y-6">
                   {[
-                    { icon: Shield, title: "Integrity", desc: "Honest and transparent in all our dealings with clients and stakeholders" },
-                    { icon: Award, title: "Excellence", desc: "Quality-first approach using modern equipment and skilled workforce" },
-                    { icon: Users, title: "Teamwork", desc: "200+ professionals working together to deliver exceptional results" },
-                    { icon: Leaf, title: "Sustainability", desc: "Environment-conscious construction practices in sensitive terrains" }
+                    { icon: Check, title: "Integrity", desc: "Honest and transparent in all our dealings with clients and stakeholders" },
+                    { icon: Check, title: "Excellence", desc: "Quality-first approach using modern equipment and skilled workforce" },
+                    { icon: Check, title: "Teamwork", desc: "200+ professionals working together to deliver exceptional results" },
+                    { icon: Check, title: "Sustainability", desc: "Environment-conscious construction practices in sensitive terrains" }
                   ].map((value, idx) => (
                     <div key={idx} className="flex items-start space-x-4">
-                      <value.icon className="w-8 h-8 text-red-600 flex-shrink-0" />
+                      <value.icon className="w-8 h-8 text-red-600 flex-shrink-0 top-3 relative" />
                       <div>
                         <h4 className="font-apfel2 text-xl mb-1">{value.title}</h4>
                         <p className="font-neuhas text-gray-600">{value.desc}</p>
@@ -595,7 +629,7 @@ export function About() {
       <FadeInSection>
         <section className="bg-white py-16 sm:py-20 md:py-28">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-800 mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight text-gray-800 mb-6 sm:mb-16 md:mb-20">
               Our Services & Capabilities
             </h2>
 
@@ -725,7 +759,7 @@ export function About() {
 
       {/* EQUIPMENT & RESOURCES */}
       <FadeInSection>
-        <section className="py-16 sm:py-20 md:py-28 bg-gray-50">
+        <section className="py-16 sm:py-20 md:py-28">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 mb-4">
@@ -785,10 +819,10 @@ export function About() {
               <div>
                 <h3 className="font-apfel2 text-xl text-red-600 mb-3">Defense & Security Forces</h3>
                 <div className="font-neuhas text-gray-600 space-y-2 text-[15px] md:text-[16px]">
-                  <p>• Border Roads Organization (BRO)</p>
-                  <p>• Indo-Tibetan Border Police (ITBP)</p>
-                  <p>• Border Security Force (BSF)</p>
-                  <p>• Military Engineering Services (MES)</p>
+                  <p>✓ Border Roads Organization (BRO)</p>
+                  <p>✓ Indo-Tibetan Border Police (ITBP)</p>
+                  <p>✓ Border Security Force (BSF)</p>
+                  <p>✓ Military Engineering Services (MES)</p>
                 </div>
               </div>
 
@@ -796,13 +830,13 @@ export function About() {
               <div>
                 <h3 className="font-apfel2 text-xl text-red-600 mb-3">Central & State Departments</h3>
                 <div className="font-neuhas text-gray-600 space-y-2 text-[15px] md:text-[16px]">
-                  <p>• Central Public Work Department (CPWD)</p>
-                  <p>• National Building Construction Corporation (NBCC)</p>
-                  <p>• Road & Building Division, Gujarat</p>
-                  <p>• Public Work Department, Rajasthan</p>
-                  <p>• Airport Authority of India</p>
-                  <p>• Irrigation Department, Rajasthan</p>
-                  <p>• PHED & RIICO, Rajasthan</p>
+                  <p>✓ Central Public Work Department (CPWD)</p>
+                  <p>✓ National Building Construction Corporation (NBCC)</p>
+                  <p>✓ Road & Building Division, Gujarat</p>
+                  <p>✓ Public Work Department, Rajasthan</p>
+                  <p>✓ Airport Authority of India</p>
+                  <p>✓ Irrigation Department, Rajasthan</p>
+                  <p>✓ PHED & RIICO, Rajasthan</p>
                 </div>
               </div>
 
@@ -810,15 +844,15 @@ export function About() {
               <div>
                 <h3 className="font-apfel2 text-xl text-red-600 mb-3">Public Sector & Corporates</h3>
                 <div className="font-neuhas text-gray-600 space-y-2 text-[15px] md:text-[16px]">
-                  <p>• Indian Oil Corporation Ltd. (IOCL)</p>
-                  <p>• Oil & Natural Gas Corporation (ONGC)</p>
-                  <p>• GAIL India Ltd.</p>
-                  <p>• Ircon International Ltd.</p>
-                  <p>• Suzlon Infrastructure Services Ltd.</p>
-                  <p>• Cairn Energy India Pvt. Ltd.</p>
-                  <p>• Gujarat Fluorochemicals Ltd.</p>
-                  <p>• Kintech Synergy Pvt. Ltd.</p>
-                  <p>• Deendayal Port Authority</p>
+                  <p>✓ Indian Oil Corporation Ltd. (IOCL)</p>
+                  <p>✓ Oil & Natural Gas Corporation (ONGC)</p>
+                  <p>✓ GAIL India Ltd.</p>
+                  <p>✓ Ircon International Ltd.</p>
+                  <p>✓ Suzlon Infrastructure Services Ltd.</p>
+                  <p>✓ Cairn Energy India Pvt. Ltd.</p>
+                  <p>✓ Gujarat Fluorochemicals Ltd.</p>
+                  <p>✓ Kintech Synergy Pvt. Ltd.</p>
+                  <p>✓ Deendayal Port Authority</p>
                 </div>
               </div>
             </div>
@@ -828,7 +862,7 @@ export function About() {
 
       {/* CLIENT TESTIMONIALS */}
       <FadeInSection>
-        <section className="py-16 sm:py-20 md:py-28 bg-gray-50 overflow-hidden">
+        <section className="py-16 sm:py-20 md:py-28 overflow-hidden">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mb-12">
             <div className="text-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 mb-4">

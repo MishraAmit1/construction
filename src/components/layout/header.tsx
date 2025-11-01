@@ -2,24 +2,24 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { CtaButton } from "@/app/(site)/slavery-statement/page";
+import { CtaButton } from "@/components/sections/SlaveryStatementPageWrapper";
 import { useRouter, usePathname } from 'next/navigation';
 import { atServices } from "@/lib/data";
 
 const mainNavLinks = [
   { name: "PROJECTS", href: "/projects" },
   { name: "SERVICES", href: "/services" },
-  { name: "COMPANY", href: "/about-us" }, // ✅ Changed from APPROACH to COMPANY
+  { name: "COMPANY", href: "/about-us" },
   { name: "BLOG", href: "/blog" },
   { name: "CAREERS", href: "/careers" },
   { name: "CONTACT", href: "/contact" },
 ];
 
-// Which items open mega - ✅ Changed APPROACH to COMPANY
 const megaEnabled = new Set(["PROJECTS", "SERVICES", "COMPANY", "CAREERS"]);
+
 const INFO_CARDS = [
   {
     title: "Markets",
@@ -29,7 +29,7 @@ const INFO_CARDS = [
   },
 ];
 
-/* ---------- Data: Company (Previously Approach) ---------- */
+/* ---------- Data: Company ---------- */
 const COMPANY_LEFT_LIST = [
   {
     title: "Safety",
@@ -76,7 +76,6 @@ const COMPANY_RIGHT = [
     img: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1400&auto=format&fit=crop",
     href: "/vision-values",
   },
-
   {
     title: "Our Approach",
     desc: "Integrated execution strategy combining engineering excellence and proven project management.",
@@ -121,7 +120,7 @@ export function Header() {
   // Dynamic markets data
   const [marketCategories, setMarketCategories] = useState<any[]>([]);
 
-  // Mega: which one is open - ✅ Updated type
+  // Mega: which one is open
   const [activeMega, setActiveMega] = useState<null | "PROJECTS" | "SERVICES" | "COMPANY" | "CAREERS">(null);
   const megaOpen = !!activeMega;
 
@@ -204,7 +203,6 @@ export function Header() {
 
   const shouldHaveBackground = isHovered || hasScrolled || mobileMenuOpen || megaOpen;
 
-  // ✅ Close mega menu when clicking on a link
   const handleLinkClick = () => {
     setActiveMega(null);
   };
@@ -259,7 +257,6 @@ export function Header() {
             <div className="relative h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32">
               <Image
                 src="/images/logo_design_f__2_-removebg-preview.png"
-
                 alt="A&T Infracon Logo"
                 fill
                 priority
@@ -267,7 +264,6 @@ export function Header() {
               />
               <Image
                 src="/images/logo-removebg-preview (3).png"
-
                 alt="A&T Infracon Logo"
                 fill
                 priority
@@ -297,7 +293,6 @@ export function Header() {
                       if (isMega) setActiveMega(link.name as typeof activeMega);
                     }}
                     onClick={() => {
-                      // Always close mega menu on click
                       setActiveMega(null);
                     }}
                     className={`text-[13px] lg:text-sm xl:text-[15px] tracking-wider transition-colors ${shouldHaveBackground ? "text-[#30454c] hover:text-foreground" : "text-white/90 hover:text-white"
@@ -327,7 +322,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Desktop Mega Panel (Projects / Company / Careers) */}
+      {/* Desktop Mega Panel */}
       <MegaPanel
         open={megaOpen}
         top={headerH}
@@ -338,45 +333,56 @@ export function Header() {
         onLinkClick={handleLinkClick}
       />
 
-      {/* Mobile Menu */}
-      <div className={`font-apfel2 fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-in-out ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+      {/* Mobile Menu - FIXED OVERFLOW & UPDATED STRUCTURE */}
+      <div className={`font-apfel2 fixed inset-0 z-40 lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
         <div className={`absolute inset-0 bg-black transition-opacity duration-500 ${mobileMenuOpen ? "opacity-50" : "opacity-0"}`} onClick={() => setMobileMenuOpen(false)} />
-        <div className={`absolute top-0 left-0 right-0 bg-white shadow-lg transition-transform duration-500 ease-in-out transform ${mobileMenuOpen ? "translate-y-0" : "-translate-y-full"}`}>
+
+        <div className={`absolute top-0 left-0 right-0 bg-white shadow-lg transition-transform duration-500 ease-in-out transform overflow-hidden ${mobileMenuOpen ? "translate-y-0" : "-translate-y-full"}`}>
           <div className="h-16 sm:h-18 md:h-20" />
-          <div className="h-1 bg-red-600" />
-          <nav className="px-4 py-6 sm:px-6 sm:py-8 max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <div className="space-y-1 font-neuhas">
-              {/* Regular Links */}
+          <div className="h-1 bg-red-600 w-full" />
+
+          <nav className="px-4 py-6 sm:px-6 sm:py-8 max-h-[calc(100vh-5rem)] overflow-y-auto overflow-x-hidden">
+            <div className="space-y-1 font-neuhas w-full">
+              {/* HOME */}
               <Link
                 href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileDropdown(null);
+                }}
+                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider w-full"
               >
                 HOME
               </Link>
 
-              {/* Projects Dropdown */}
-              <div>
+              {/* PROJECTS Dropdown */}
+              <div className="w-full">
                 <button
                   onClick={() => setMobileDropdown(mobileDropdown === "PROJECTS" ? null : "PROJECTS")}
                   className="w-full flex items-center justify-between px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
                 >
-                  PROJECTS
-                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "PROJECTS" ? "rotate-180" : ""}`} />
+                  <span>PROJECTS</span>
+                  <ChevronDown className={`h-5 w-5 transition-transform flex-shrink-0 ${mobileDropdown === "PROJECTS" ? "rotate-180" : ""}`} />
                 </button>
                 {mobileDropdown === "PROJECTS" && (
-                  <div className="ml-6 mt-2 space-y-2">
+                  <div className="ml-4 mt-2 space-y-2 w-full">
                     <Link
                       href="/projects"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
-                      View Projects
+                      View All Projects
                     </Link>
                     <Link
-                      href="/projects#market"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      href="/markets"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
                       Markets
                     </Link>
@@ -384,134 +390,159 @@ export function Header() {
                 )}
               </div>
 
-              {/* Services Link */}
-              {/* Services Link - Change to Dropdown */}
-              <div>
+              {/* SERVICES Dropdown */}
+              <div className="w-full">
                 <button
                   onClick={() => setMobileDropdown(mobileDropdown === "SERVICES" ? null : "SERVICES")}
                   className="w-full flex items-center justify-between px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
                 >
-                  SERVICES
-                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "SERVICES" ? "rotate-180" : ""}`} />
+                  <span>SERVICES</span>
+                  <ChevronDown className={`h-5 w-5 transition-transform flex-shrink-0 ${mobileDropdown === "SERVICES" ? "rotate-180" : ""}`} />
                 </button>
                 {mobileDropdown === "SERVICES" && (
-                  <div className="ml-6 mt-2 space-y-2">
+                  <div className="ml-4 mt-2 space-y-2 w-full max-h-[300px] overflow-y-auto">
+                    <Link
+                      href="/services"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
+                    >
+                      View All Services
+                    </Link>
                     {atServices.map((service) => (
-                      <Link
+                      <a
                         key={service.id}
                         href={`/services#service-${service.id}`}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setMobileMenuOpen(false);
+                          setMobileDropdown(null);
+                          router.push('/services');
+                          setTimeout(() => {
+                            const element = document.getElementById(`service-${service.id}`);
+                            if (element) {
+                              const headerOffset = 100;
+                              const elementPosition = element.getBoundingClientRect().top;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                          }, 500);
+                        }}
+                        className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full cursor-pointer"
                       >
                         {service.title}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 )}
               </div>
 
-              {/* Company Dropdown */}
-              <div>
+              {/* COMPANY Dropdown - CLEANED UP */}
+              <div className="w-full">
                 <button
                   onClick={() => setMobileDropdown(mobileDropdown === "COMPANY" ? null : "COMPANY")}
                   className="w-full flex items-center justify-between px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
                 >
-                  COMPANY
-                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "COMPANY" ? "rotate-180" : ""}`} />
+                  <span>COMPANY</span>
+                  <ChevronDown className={`h-5 w-5 transition-transform flex-shrink-0 ${mobileDropdown === "COMPANY" ? "rotate-180" : ""}`} />
                 </button>
                 {mobileDropdown === "COMPANY" && (
-                  <div className="ml-6 mt-2 space-y-2">
+                  <div className="ml-4 mt-2 space-y-2 w-full">
                     <Link
                       href="/about-us"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
                       About Us
                     </Link>
                     <Link
-                      href="/management"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      href="/leadership"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
-                      Management
+                      Leadership
                     </Link>
                     <Link
                       href="/strength"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
                       Our Strength
                     </Link>
                     <Link
                       href="/vision-values"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
                       Vision, Mission & Values
                     </Link>
                     <Link
-                      href="/team"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
-                    >
-                      Leadership
-                    </Link>
-                    <Link
                       href="/approach"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
                     >
                       Our Approach
-                    </Link>
-                    <Link
-                      href="/quality"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
-                    >
-                      Quality
-                    </Link>
-                    <Link
-                      href="/safety"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
-                    >
-                      Safety
-                    </Link>
-                    <Link
-                      href="/sustainability"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded"
-                    >
-                      Sustainability
                     </Link>
                   </div>
                 )}
               </div>
 
+              {/* BLOG */}
               <Link
                 href="/blog"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileDropdown(null);
+                }}
+                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider w-full"
               >
                 BLOG
               </Link>
 
-              {/* Careers Dropdown */}
-              <div>
+              {/* CAREERS Dropdown */}
+              <div className="w-full">
                 <button
                   onClick={() => setMobileDropdown(mobileDropdown === "CAREERS" ? null : "CAREERS")}
                   className="w-full flex items-center justify-between px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
                 >
-                  CAREERS
-                  <ChevronDown className={`h-5 w-5 transition-transform ${mobileDropdown === "CAREERS" ? "rotate-180" : ""}`} />
+                  <span>CAREERS</span>
+                  <ChevronDown className={`h-5 w-5 transition-transform flex-shrink-0 ${mobileDropdown === "CAREERS" ? "rotate-180" : ""}`} />
                 </button>
                 {mobileDropdown === "CAREERS" && (
-                  <div className="ml-6 mt-2 space-y-2">
+                  <div className="ml-4 mt-2 space-y-2 w-full">
+                    <Link
+                      href="/careers"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileDropdown(null);
+                      }}
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full"
+                    >
+                      View Careers
+                    </Link>
                     <a
                       href="/careers#openings"
                       onClick={(e) => {
                         e.preventDefault();
                         setMobileMenuOpen(false);
+                        setMobileDropdown(null);
                         router.push('/careers');
                         setTimeout(() => {
                           const element = document.getElementById('openings');
@@ -523,7 +554,7 @@ export function Header() {
                           }
                         }, 500);
                       }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full cursor-pointer"
                     >
                       Career Opportunities
                     </a>
@@ -532,6 +563,7 @@ export function Header() {
                       onClick={(e) => {
                         e.preventDefault();
                         setMobileMenuOpen(false);
+                        setMobileDropdown(null);
                         router.push('/careers');
                         setTimeout(() => {
                           const element = document.getElementById('life-at-ant');
@@ -543,7 +575,7 @@ export function Header() {
                           }
                         }, 500);
                       }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full cursor-pointer"
                     >
                       Life at A&T Infracon
                     </a>
@@ -552,6 +584,7 @@ export function Header() {
                       onClick={(e) => {
                         e.preventDefault();
                         setMobileMenuOpen(false);
+                        setMobileDropdown(null);
                         router.push('/careers');
                         setTimeout(() => {
                           const element = document.getElementById('testimonials');
@@ -563,7 +596,7 @@ export function Header() {
                           }
                         }, 500);
                       }}
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded cursor-pointer"
+                      className="block px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded w-full cursor-pointer"
                     >
                       Testimonials
                     </a>
@@ -571,16 +604,29 @@ export function Header() {
                 )}
               </div>
 
+              {/* CONTACT */}
               <Link
                 href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileDropdown(null);
+                }}
+                className="block px-4 py-3 text-base sm:text-lg font-semibold text-gray-900 hover:bg-gray-50 hover:text-red-600 rounded-lg tracking-wider w-full"
               >
                 CONTACT
               </Link>
             </div>
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors">
+
+            {/* CTA Button */}
+            <div className="mt-8 pt-6 border-t border-gray-200 w-full">
+              <Link
+                href="/contact"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setMobileDropdown(null);
+                }}
+                className="block w-full text-center px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
+              >
                 GET A QUOTE
               </Link>
             </div>
@@ -591,8 +637,6 @@ export function Header() {
   );
 }
 
-
-/* ---------------- Mega Panel Router ---------------- */
 /* ---------------- Mega Panel Router ---------------- */
 function MegaPanel({
   open,
@@ -605,7 +649,7 @@ function MegaPanel({
 }: {
   open: boolean;
   top: number;
-  which: "PROJECTS" | "SERVICES" | "COMPANY" | "CAREERS" | null; // ✅ Added SERVICES
+  which: "PROJECTS" | "SERVICES" | "COMPANY" | "CAREERS" | null;
   onIntentClose: () => void;
   onCancelClose: () => void;
   marketCategories: any[];
@@ -629,7 +673,7 @@ function MegaPanel({
         <div className="h-full px-8 lg:px-12 xl:px-16 py-10 overflow-y-auto mega-menu-scroll">
           <div className="max-w-[1600px] mx-auto">
             {which === "PROJECTS" && <ProjectsContent marketCategories={marketCategories} onLinkClick={onLinkClick} />}
-            {which === "SERVICES" && <ServicesContent onLinkClick={onLinkClick} />} {/* ✅ Added */}
+            {which === "SERVICES" && <ServicesContent onLinkClick={onLinkClick} />}
             {which === "COMPANY" && <CompanyContent onLinkClick={onLinkClick} />}
             {which === "CAREERS" && <CareersContent onLinkClick={onLinkClick} />}
           </div>
@@ -658,7 +702,7 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
           <div className="text-[12px] font-semibold tracking-wider text-gray-600 uppercase font-apfel2">Our Expertise</div>
           <div className="mt-4 space-y-5">
             {INFO_CARDS.map((it) => (
-              <Link key={it.title} href="/projects#market" onClick={onLinkClick} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
+              <Link key={it.title} href="/markets" onClick={onLinkClick} className="flex items-start gap-4 rounded-lg hover:bg-gray-50 p-2 transition-colors">
                 <div className="relative h-20 w-28 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
                   <Image src={it.img} alt={it.title} fill className="object-cover" />
                 </div>
@@ -707,7 +751,6 @@ function ProjectsContent({ marketCategories, onLinkClick }: { marketCategories: 
   );
 }
 
-/* ---------------- Company Content (Previously Approach) ---------------- */
 /* ---------------- Company Content ---------------- */
 function CompanyContent({ onLinkClick }: { onLinkClick: () => void }) {
   const router = useRouter();
@@ -717,10 +760,9 @@ function CompanyContent({ onLinkClick }: { onLinkClick: () => void }) {
     e.preventDefault();
     const [path, hash] = href.split('#');
 
-    onLinkClick(); // Close mega menu
+    onLinkClick();
 
     if (hash) {
-      // Hash navigation for left side cards
       if (pathname === path) {
         setTimeout(() => {
           const element = document.getElementById(hash);
@@ -744,7 +786,6 @@ function CompanyContent({ onLinkClick }: { onLinkClick: () => void }) {
         }, 500);
       }
     } else {
-      // Direct page navigation for right side cards
       router.push(href);
     }
   };
@@ -789,7 +830,7 @@ function CompanyContent({ onLinkClick }: { onLinkClick: () => void }) {
         </div>
       </div>
 
-      {/* Right - 6 cards */}
+      {/* Right */}
       <div className="col-span-12 lg:col-span-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
           {COMPANY_RIGHT.map((c) => (
@@ -814,39 +855,30 @@ function CompanyContent({ onLinkClick }: { onLinkClick: () => void }) {
   );
 }
 
-/* ---------------- Services Content - UPDATED WITH BETTER VERTICAL SCROLL ---------------- */
-/* ---------------- Services Content - SCROLL DIRECTLY TO CARDS ---------------- */
+/* ---------------- Services Content ---------------- */
 function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, serviceId: number, serviceSlug: string) => {
+  const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, serviceId: number) => {
     e.preventDefault();
-    onLinkClick(); // Close mega menu
+    onLinkClick();
 
-    // If already on services page, just scroll
     if (pathname === '/services') {
       setTimeout(() => {
         const element = document.getElementById(`service-${serviceId}`);
         if (element) {
-          // Get the actual card element position
           const cardRect = element.getBoundingClientRect();
           const cardTop = cardRect.top + window.pageYOffset;
-
-          // Scroll to bring the CARD into view, not just the section
-          const headerOffset = 100; // Header height
-          const extraOffset = 50; // Additional offset to show card nicely
-
-          // This will scroll the PAGE so the card is near the top of viewport
+          const headerOffset = 100;
+          const extraOffset = 50;
           const targetScrollPosition = cardTop - headerOffset - extraOffset;
 
-          // Smooth vertical scroll to the card
           window.scrollTo({
             top: targetScrollPosition,
             behavior: 'smooth'
           });
 
-          // Then handle horizontal scrolling after a delay
           setTimeout(() => {
             const scrollContainer = element.closest('.overflow-x-auto');
             if (scrollContainer) {
@@ -854,31 +886,25 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
               let targetScroll = 0;
 
               if (serviceId <= 2) {
-                // For first 2 cards, minimal scroll
                 targetScroll = cardOffsetInContainer - 20;
               } else if (serviceId <= 4) {
-                // For middle cards, center them
                 const containerWidth = scrollContainer.clientWidth;
                 const cardWidth = element.offsetWidth;
                 targetScroll = cardOffsetInContainer - (containerWidth / 2) + (cardWidth / 2);
               } else {
-                // For last cards, scroll to show them
                 const containerWidth = scrollContainer.clientWidth;
                 const cardWidth = element.offsetWidth;
                 targetScroll = cardOffsetInContainer - containerWidth + cardWidth + 20;
               }
 
-              // Ensure we don't scroll past boundaries
               targetScroll = Math.max(0, targetScroll);
               targetScroll = Math.min(targetScroll, scrollContainer.scrollWidth - scrollContainer.clientWidth);
 
-              // Smooth horizontal scroll
               scrollContainer.scrollTo({
                 left: targetScroll,
                 behavior: 'smooth'
               });
 
-              // Add a highlight effect to the selected card
               element.style.transition = 'all 0.3s ease';
               element.style.transform = 'scale(1.02)';
               element.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.5)';
@@ -892,18 +918,13 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
         }
       }, 100);
     } else {
-      // Navigate to services page first
       router.push('/services');
 
-      // Then scroll after page loads
       setTimeout(() => {
         const element = document.getElementById(`service-${serviceId}`);
         if (element) {
-          // Get the actual card position
           const cardRect = element.getBoundingClientRect();
           const cardTop = cardRect.top + window.pageYOffset;
-
-          // Scroll directly to the card, bypassing the section header
           const headerOffset = 100;
           const extraOffset = 50;
           const targetScrollPosition = cardTop - headerOffset - extraOffset;
@@ -913,7 +934,6 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
             behavior: 'smooth'
           });
 
-          // Handle horizontal scroll after vertical completes
           setTimeout(() => {
             const scrollContainer = element.closest('.overflow-x-auto');
             if (scrollContainer) {
@@ -922,7 +942,6 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
               const containerWidth = scrollContainer.clientWidth;
               const cardOffsetInContainer = element.offsetLeft;
 
-              // Smart positioning based on card number
               if (serviceId <= 2) {
                 targetScroll = Math.max(0, cardOffsetInContainer - 20);
               } else if (serviceId <= 4) {
@@ -938,7 +957,6 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
                 behavior: 'smooth'
               });
 
-              // Visual feedback
               element.style.transition = 'all 0.3s ease';
               element.style.transform = 'scale(1.02)';
               element.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.5)';
@@ -983,7 +1001,7 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
         </div>
       </div>
 
-      {/* Right - atServices data */}
+      {/* Right */}
       <div className="col-span-12 lg:col-span-8">
         <div className="border-b border-gray-200 w-full mb-6">
           <h3 className="uppercase tracking-wide text-[13px] font-semibold pb-3 text-red-600 border-b-2 border-red-600 inline-block font-apfel2">
@@ -996,7 +1014,7 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
             <a
               key={service.id}
               href={`/services#service-${service.id}`}
-              onClick={(e) => handleServiceClick(e, service.id, service.title.toLowerCase().replace(/\s+/g, '-'))}
+              onClick={(e) => handleServiceClick(e, service.id)}
               className="group block cursor-pointer transition-all duration-300"
             >
               <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-gray-200">
@@ -1020,6 +1038,7 @@ function ServicesContent({ onLinkClick }: { onLinkClick: () => void }) {
     </div>
   );
 }
+
 /* ---------------- Careers Content ---------------- */
 function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
   const router = useRouter();
@@ -1029,7 +1048,7 @@ function CareersContent({ onLinkClick }: { onLinkClick: () => void }) {
     e.preventDefault();
     const [path, hash] = href.split('#');
 
-    onLinkClick(); // Close mega menu
+    onLinkClick();
 
     if (hash) {
       if (pathname === path) {

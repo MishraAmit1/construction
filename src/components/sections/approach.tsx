@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { CtaButton } from "@/app/(site)/slavery-statement/page";
+import { CtaButton } from "@/components/sections/SlaveryStatementPageWrapper";
 
 
 export default function ApproachPage() {

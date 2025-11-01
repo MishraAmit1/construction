@@ -18,7 +18,7 @@ import {
     ChevronRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { CtaButton } from "../../slavery-statement/page";
+import { CtaButton } from "@/components/sections/SlaveryStatementPageWrapper";
 
 // Service detail data structure (same as before)
 const serviceDetailsData: Record<string, ServiceDetail> = {

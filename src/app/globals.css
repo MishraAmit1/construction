@@ -195,7 +195,7 @@ header {
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 28 80% 52%;
+    --accent: 0 100% 50%;
     /* #E67E22 */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;

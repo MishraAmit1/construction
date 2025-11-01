@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowRightCircle, ArrowUpRight, MapPin } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { atServices, services } from "@/lib/data";
-import { CtaButton } from "@/app/(site)/slavery-statement/page";
+import { CtaButton } from "@/components/sections/SlaveryStatementPageWrapper";
 import { cn } from "@/lib/utils";
 
 export default function ServicesPage() {
@@ -137,10 +137,11 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
-                    {/* LEFT IMAGE - Responsive height */}
-                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
+                    {/* LEFT IMAGE - Order 2 on mobile, Order 1 on desktop */}
+                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px] order-2 lg:order-1">
                         <img
                             src="/images/image1.png"
                             alt="Project site"
@@ -148,14 +149,12 @@ export default function ServicesPage() {
                         />
                     </div>
 
-                    {/* RIGHT TEXT - Responsive spacing */}
-
-                    <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
-
+                    {/* RIGHT TEXT - Order 1 on mobile, Order 2 on desktop */}
+                    <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12 lg:mt-0 order-1 lg:order-2">
                         <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">ENGINEERING</p>
                         <h2
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-apfel2
-                             font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
+                 font-normal leading-tight mb-4 sm:mb-6 md:mb-9"
                         >
                             Designing for Success
                         </h2>
@@ -216,7 +215,7 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
-            <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 pr-4 sm:pr-6 md:pr-8">
+            <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
@@ -252,11 +251,11 @@ export default function ServicesPage() {
                 </div>
             </section>
             {/* EQUIPMENT PARTNERSHIP SECTION */}
-            <section className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 px-4 sm:px-6 md:px-20 border-t border-gray-200 mb-32">
+            <section className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 px-4 sm:px-6 md:px-20 md:border-t border-gray-200 mb-32">
                 {/* FIRST ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center">
                     {/* LEFT IMAGE */}
-                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px]  overflow-hidden">
+                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden order-1 lg:order-1">
                         <img
                             src="/images/image2.png"
                             alt="Construction Equipment"
@@ -286,7 +285,7 @@ export default function ServicesPage() {
                 {/* SECOND ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center py-10 sm:py-14 md:py-20">
                     {/* LEFT IMAGE */}
-                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px]  overflow-hidden">
+                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] overflow-hidden">
                         <img
                             src="/images/image3.png"
                             alt="Project Execution"
@@ -316,7 +315,7 @@ export default function ServicesPage() {
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
-                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
+                    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px] order-2 lg:order-1">
                         <img
                             src="/images/image4.png"
                             alt="Project site"
@@ -349,10 +348,13 @@ export default function ServicesPage() {
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center ">
                     {/* LEFT TEXT - Centered */}
-                    <div className="flex items-center ">
+                    <div className="flex items-center order-2 lg:order-1">
                         <div className="space-y-3 sm:space-y-4 font-neuhas">
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
-                                Our border infrastructure projects showcase our specialized construction capabilities. The 26.762 KM Composite Earthen Bundh cum Ditch project along the Indo-Pak border in Jammu sector, valued at ₹101.78 Crores, involved constructing earthen embankments, bituminous roads, and RCC Nakas across 135 feet width. Our team completed multiple such strategic projects including fencing, fighting bunkers, and BOPs in sensitive border areas, demonstrating our ability to execute large-scale works under stringent security protocols and challenging terrain conditions.
+                                Our border infrastructure projects showcase our specialized construction capabilities. The 26.762 KM Composite Earthen Bundh cum Ditch project along the Indo-Pak border in Jammu sector, valued at ₹101.78 Crores, involved constructing earthen embankments, bituminous roads, and RCC Nakas across 135 feet width.
+                            </p>
+                            <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
+                                Our team completed multiple such strategic projects including fencing, fighting bunkers, and BOPs in sensitive border areas, demonstrating our ability to execute large-scale works under stringent security protocols and challenging terrain conditions.
                             </p>
                             <div className="mt-6 md:-ml-8">
                                 <CtaButton href="/projects#border-infrastructure">
