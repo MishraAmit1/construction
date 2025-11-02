@@ -573,7 +573,7 @@ function ProjectCard({ project }: { project: ProjectDisplay }) {
                     {/* Title - always visible */}
                     <h4
                         className="font-apfel2 text-2xl sm:text-3xl md:text-[28px]
-                       font-semibold max-w-[85%] md:max-w-[90%]"
+                       max-w-[85%] md:max-w-[90%]"
                     >
                         {project.title}
                     </h4>

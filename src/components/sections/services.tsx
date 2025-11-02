@@ -322,9 +322,7 @@ export default function ServicesPage() {
                             className="absolute inset-0 w-full h-full object-cover object-center "
                         />
                     </div>
-
                     {/* RIGHT TEXT - Responsive spacing */}
-
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
 
                         <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">CONSTRUCTION</p>

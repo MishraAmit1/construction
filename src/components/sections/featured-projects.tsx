@@ -18,7 +18,7 @@ export function FeaturedProjects() {
   useEffect(() => {
     const fetchProjects = async () => {
       setLoading(true);
-      const data = await getFeaturedProjects(9); // 🔥 MAXIMUM 9 LATEST PROJECTS
+      const data = await getFeaturedProjects(10); // 🔥 MAXIMUM 9 LATEST PROJECTS
       setProjects(data || []);
       setLoading(false);
     };
@@ -83,6 +83,7 @@ export function FeaturedProjects() {
                        font-normal leading-tight">
           Featured Projects
         </h2>
+
       </div>
       {loading ? (
         <div className="text-center text-gray-500 py-12">Loading projects…</div>
@@ -141,8 +142,7 @@ export function FeaturedProjects() {
                         <p className="text-yellow-400 uppercase">{project.location}</p>
                         {/* Title - Always visible, fixed position */}
                         <h3 className="font-apfel2 
-                                       text-2xl sm:text-3xl md:text-4xl lg:text-[30px]
-                                       font-semibold">
+                                       text-2xl sm:text-3xl md:text-4xl lg:text-[30px]">
                           {project.project_name}
                         </h3>
 

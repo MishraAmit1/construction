@@ -9,11 +9,7 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       // Add more redirects if needed
-      {
-        source: '/markets/:slug',
-        destination: '/projects#market',
-        permanent: false,
-      },
+
     ]
   },
   typescript: {

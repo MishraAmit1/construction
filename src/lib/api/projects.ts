@@ -85,7 +85,7 @@ export async function getProjectsByCategory(categoryId: number): Promise<Project
 }
 
 // Featured projects
-export async function getFeaturedProjects(limit = 9): Promise<any[]> {
+export async function getFeaturedProjects(limit = 10): Promise<any[]> {
     const { data, error } = await supabase
         .from('projects')
         .select('*')
