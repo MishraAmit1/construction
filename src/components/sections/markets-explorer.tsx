@@ -267,8 +267,8 @@ export default function MarketsExplorer({
 
     return (
         <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 font-apfel2" id="market">
-            {/* MOBILE: NO PADDING, DESKTOP: NORMAL PADDING */}
-            <div className="container mx-auto px-0 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+            {/* ORIGINAL PADDING RESTORED - Normal for all devices */}
+            <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
                 {/* Sticky categories bar - DESKTOP ONLY */}
                 <div
                     ref={filterBarRef}
@@ -311,8 +311,7 @@ export default function MarketsExplorer({
                                         top: headerVisible ? '65px' : '0px',
                                     }}
                                 >
-                                    {/* Mobile header ke liye padding chahiye text ke liye */}
-                                    <div className="px-4">
+                                    <div className="container mx-auto px-4 sm:px-6">
                                         <div className="py-3">
                                             <span className="font-neuhas font-semibold text-gray-900 uppercase tracking-wider">
                                                 SELECT {m.title.toUpperCase()} PROJECTS
@@ -321,16 +320,16 @@ export default function MarketsExplorer({
                                     </div>
                                 </div>
 
-                                {/* Grid - NO PADDING ON MOBILE */}
+                                {/* Grid - Normal gap and spacing */}
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-                                    {/* Left sticky hero */}
-                                    <div className="lg:col-span-6" id={`hero-${m.key}`}>
+                                    {/* Left sticky hero - NEGATIVE MARGIN ON MOBILE FOR EDGE-TO-EDGE */}
+                                    <div className="lg:col-span-6 -mx-4 sm:mx-0" id={`hero-${m.key}`}>
                                         <div className="lg:sticky lg:top-36">
                                             <MarketHeroCard market={m} />
                                         </div>
                                     </div>
 
-                                    {/* Right project list */}
+                                    {/* Right project list - NORMAL PADDING */}
                                     <div className="lg:col-span-6">
                                         {/* Title - hide on mobile */}
                                         <div className="hidden lg:flex mb-4 sm:mb-6 items-end justify-between">
@@ -340,13 +339,13 @@ export default function MarketsExplorer({
                                             <div className="h-px bg-border w-1/2" />
                                         </div>
 
-                                        {/* PROJECT CARDS - NO PADDING ON MOBILE */}
+                                        {/* PROJECT CARDS - NORMAL SPACING */}
                                         <div className="space-y-4 sm:space-y-5 md:space-y-6">
                                             {list.slice(0, 5).map((p) => (
                                                 <ProjectCard key={p.id} project={p} />
                                             ))}
                                             {list.length === 0 && (
-                                                <div className="mx-4 sm:mx-0 rounded-xl border bg-card text-muted-foreground p-4 sm:p-6">
+                                                <div className="rounded-xl border bg-card text-muted-foreground p-4 sm:p-6">
                                                     No projects found in {m.title}.
                                                 </div>
                                             )}
@@ -499,7 +498,10 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
                     <h2 className="text-white text-2xl md:text-4xl leading-[30px] drop-shadow font-apfel2">
                         {market.title}
                     </h2>
-                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] md:leading-[20px] text-white/85 max-w-[85%] sm:max-w-md font-neuhas">
+                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] md:leading-[20px] text-white/85 
+                        max-w-[85%] sm:max-w-md 
+                        line-clamp-2 sm:line-clamp-none 
+                        font-neuhas">
                         {market.description}
                     </p>
                 </div>
@@ -520,8 +522,8 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
 
 function ProjectCard({ project }: { project: ProjectDisplay }) {
     return (
-        // MOBILE: NO ROUNDED CORNERS, DESKTOP: ROUNDED
-        <div className="group relative overflow-hidden rounded-none sm:rounded-2xl bg-card shadow-md transition-all duration-500 ease-in-out">
+        // ORIGINAL - ROUNDED on all screens with normal padding
+        <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-500 ease-in-out">
             <div className="relative aspect-[4/3] w-full">
                 <Image
                     src={project.image.imageUrl}
