@@ -15,7 +15,7 @@ import {
     LucideArrowRightToLine,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Category } from "@/lib/api/categories"; // adjust import path if needed
+import type { Category } from "@/lib/api/categories";
 
 /* ---------------- Types ---------------- */
 
@@ -137,7 +137,6 @@ export default function MarketsExplorer({
         const onScroll = () => {
             const cur = window.scrollY;
 
-            // For desktop sticky bar
             if (cur < last) {
                 setTopOffset(80);
                 setHeaderVisible(true);
@@ -164,7 +163,6 @@ export default function MarketsExplorer({
                     const heroRect = heroEl.getBoundingClientRect();
                     const sectionRect = sectionEl.getBoundingClientRect();
 
-                    // Show sticky header when hero is scrolled past but section is still visible
                     if (heroRect.bottom < 80 && sectionRect.bottom > 100) {
                         newVisible.add(m.key);
                     }
@@ -183,30 +181,24 @@ export default function MarketsExplorer({
             window.removeEventListener("resize", checkMobileHeaders);
         };
     }, [markets]);
+
     useEffect(() => {
         function updateActive() {
-            // Get viewport height and account for sticky header
             const viewportHeight = window.innerHeight;
-            const stickyHeaderOffset = 100; // Adjust based on your sticky header height
+            const stickyHeaderOffset = 100;
 
-            // First check if current selected market is still visible
             if (selectedMarket) {
                 const currentEl = sectionRefs.current[selectedMarket];
                 if (currentEl) {
                     const rect = currentEl.getBoundingClientRect();
-
-                    // Check if ANY part of current section is still visible
-                    // Section is visible if bottom is below sticky header AND top is below viewport bottom
                     const isStillVisible = rect.bottom > stickyHeaderOffset && rect.top < viewportHeight;
 
                     if (isStillVisible) {
-                        // Current section is still visible, don't change
                         return;
                     }
                 }
             }
 
-            // Current section is not visible anymore, find the next visible one
             const visibleSections: { key: MarketKey; visiblePercentage: number; rect: DOMRect }[] = [];
 
             markets.forEach((m) => {
@@ -214,8 +206,6 @@ export default function MarketsExplorer({
                 if (!el) return;
 
                 const rect = el.getBoundingClientRect();
-
-                // Section is visible if it overlaps with viewport
                 const isVisible = rect.bottom > stickyHeaderOffset && rect.top < viewportHeight;
 
                 if (isVisible) {
@@ -230,18 +220,13 @@ export default function MarketsExplorer({
             });
 
             if (visibleSections.length > 0) {
-                // Pick the section that's most prominent in the viewport
-                // Prioritize sections that start near the top of viewport
                 const bestSection = visibleSections.reduce((best, current) => {
-                    // If a section starts at or above the sticky header area, prefer it
                     if (current.rect.top <= stickyHeaderOffset + 50 && best.rect.top > stickyHeaderOffset + 50) {
                         return current;
                     }
                     if (best.rect.top <= stickyHeaderOffset + 50 && current.rect.top > stickyHeaderOffset + 50) {
                         return best;
                     }
-
-                    // Otherwise pick the one with more visible percentage
                     return current.visiblePercentage > best.visiblePercentage ? current : best;
                 }, visibleSections[0]);
 
@@ -251,7 +236,6 @@ export default function MarketsExplorer({
             }
         }
 
-        // Debounce the scroll event for better performance
         let scrollTimeout: NodeJS.Timeout;
         const debouncedUpdateActive = () => {
             clearTimeout(scrollTimeout);
@@ -270,6 +254,7 @@ export default function MarketsExplorer({
             clearTimeout(scrollTimeout);
         };
     }, [markets, selectedMarket]);
+
     if (markets.length === 0) {
         return (
             <section className="py-20">
@@ -282,7 +267,8 @@ export default function MarketsExplorer({
 
     return (
         <section className="relative py-8 sm:py-12 md:py-16 lg:py-20 font-apfel2" id="market">
-            <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+            {/* MOBILE: NO PADDING, DESKTOP: NORMAL PADDING */}
+            <div className="container mx-auto px-0 sm:px-6 md:px-8 lg:px-12 xl:px-20">
                 {/* Sticky categories bar - DESKTOP ONLY */}
                 <div
                     ref={filterBarRef}
@@ -313,7 +299,7 @@ export default function MarketsExplorer({
                                 ref={(el) => (sectionRefs.current[m.key] = el)}
                                 className="scroll-mt-24 sm:scroll-mt-28 relative"
                             >
-                                {/* Mobile-only sticky header for each market */}
+                                {/* Mobile-only sticky header */}
                                 <div
                                     className={cn(
                                         "lg:hidden fixed left-0 right-0 z-40 bg-white border-b border-gray-200 transition-all duration-300",
@@ -322,10 +308,11 @@ export default function MarketsExplorer({
                                             : "-translate-y-full opacity-0"
                                     )}
                                     style={{
-                                        top: headerVisible ? '65px' : '0px', // Dynamic top position
+                                        top: headerVisible ? '65px' : '0px',
                                     }}
                                 >
-                                    <div className="container mx-auto px-4 sm:px-6">
+                                    {/* Mobile header ke liye padding chahiye text ke liye */}
+                                    <div className="px-4">
                                         <div className="py-3">
                                             <span className="font-neuhas font-semibold text-gray-900 uppercase tracking-wider">
                                                 SELECT {m.title.toUpperCase()} PROJECTS
@@ -334,6 +321,7 @@ export default function MarketsExplorer({
                                     </div>
                                 </div>
 
+                                {/* Grid - NO PADDING ON MOBILE */}
                                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
                                     {/* Left sticky hero */}
                                     <div className="lg:col-span-6" id={`hero-${m.key}`}>
@@ -344,7 +332,7 @@ export default function MarketsExplorer({
 
                                     {/* Right project list */}
                                     <div className="lg:col-span-6">
-                                        {/* Title - hide on mobile, always show on desktop */}
+                                        {/* Title - hide on mobile */}
                                         <div className="hidden lg:flex mb-4 sm:mb-6 items-end justify-between">
                                             <h3 className="text-[10px] sm:text-xs font-semibold tracking-widest text-foreground/70 uppercase">
                                                 {m.title} Projects
@@ -352,12 +340,13 @@ export default function MarketsExplorer({
                                             <div className="h-px bg-border w-1/2" />
                                         </div>
 
+                                        {/* PROJECT CARDS - NO PADDING ON MOBILE */}
                                         <div className="space-y-4 sm:space-y-5 md:space-y-6">
                                             {list.slice(0, 5).map((p) => (
                                                 <ProjectCard key={p.id} project={p} />
                                             ))}
                                             {list.length === 0 && (
-                                                <div className="rounded-xl border bg-card text-muted-foreground p-4 sm:p-6">
+                                                <div className="mx-4 sm:mx-0 rounded-xl border bg-card text-muted-foreground p-4 sm:p-6">
                                                     No projects found in {m.title}.
                                                 </div>
                                             )}
@@ -372,7 +361,9 @@ export default function MarketsExplorer({
         </section>
     );
 }
+
 /* ---------------- Components ---------------- */
+
 function CategoriesBar({
     markets,
     selected,
@@ -387,7 +378,6 @@ function CategoriesBar({
     const [showRightArrow, setShowRightArrow] = useState(true);
     const buttonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
-    // Auto-scroll to active button when selected changes
     useEffect(() => {
         if (!selected || !scrollRef.current) return;
 
@@ -398,12 +388,10 @@ function CategoriesBar({
         const containerRect = container.getBoundingClientRect();
         const buttonRect = activeButton.getBoundingClientRect();
 
-        // Calculate if button is out of view
         const buttonLeft = buttonRect.left - containerRect.left + container.scrollLeft;
         const buttonRight = buttonLeft + buttonRect.width;
         const containerWidth = container.clientWidth;
 
-        // Scroll to center the active button
         const scrollTarget = buttonLeft - (containerWidth / 2) + (buttonRect.width / 2);
 
         container.scrollTo({
@@ -442,7 +430,6 @@ function CategoriesBar({
     return (
         <div className="relative bg-background overflow-x-hidden -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-20">
             <div className="relative">
-                {/* Scrollbar element with custom height */}
                 <div
                     ref={scrollRef}
                     className="overflow-x-auto overflow-y-hidden scroll-smooth w-full
@@ -455,7 +442,6 @@ function CategoriesBar({
                         scrollbarColor: "#dc2626 #fee2e2",
                     }}
                 >
-                    {/* Content wrapper with padding so buttons align with page content */}
                     <div className="px-4 sm:px-6 md:pl-8 lg:pl-12 xl:pl-20">
                         <div className="flex items-center space-x-3 sm:space-x-5 py-5 sm:py-7">
                             {markets.map((m) => {
@@ -495,7 +481,8 @@ function CategoriesBar({
 
 function MarketHeroCard({ market }: { market: MarketContent }) {
     return (
-        <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md">
+        // MOBILE: NO ROUNDED CORNERS, DESKTOP: ROUNDED
+        <div className="group relative overflow-hidden rounded-none sm:rounded-2xl bg-card shadow-md">
             <div className="relative h-[350px] sm:h-[400px] md:h-[500px] w-full -mt-10">
                 <Image
                     src={market.hero.imageUrl}
@@ -505,23 +492,18 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                 />
 
-                {/* Base gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
-
-                {/* Hover overlay (soft black tint) */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500 ease-out" />
 
-                {/* Text content */}
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 z-10">
                     <h2 className="text-white text-2xl md:text-4xl leading-[30px] drop-shadow font-apfel2">
                         {market.title}
                     </h2>
-                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] md:leading-[20px] text-white/85 max-w-md font-neuhas">
+                    <p className="mt-2 sm:mt-3 text-sm sm:text-[17px] md:leading-[20px] text-white/85 max-w-[85%] sm:max-w-md font-neuhas">
                         {market.description}
                     </p>
                 </div>
 
-                {/* Arrow button */}
                 <Link
                     href={`/markets/${market.key}`}
                     aria-label={`${market.title} details`}
@@ -536,13 +518,11 @@ function MarketHeroCard({ market }: { market: MarketContent }) {
     );
 }
 
-/* ---------------- ProjectCard (Fixed spacing) ---------------- */
-
 function ProjectCard({ project }: { project: ProjectDisplay }) {
     return (
-        <div className="group relative overflow-hidden rounded-2xl bg-card shadow-md transition-all duration-500 ease-in-out">
+        // MOBILE: NO ROUNDED CORNERS, DESKTOP: ROUNDED
+        <div className="group relative overflow-hidden rounded-none sm:rounded-2xl bg-card shadow-md transition-all duration-500 ease-in-out">
             <div className="relative aspect-[4/3] w-full">
-                {/* Fixed image (no zoom, no transform) */}
                 <Image
                     src={project.image.imageUrl}
                     alt={project.image.description || project.title}
@@ -551,59 +531,33 @@ function ProjectCard({ project }: { project: ProjectDisplay }) {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
 
-                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-
-                {/* Hover Overlay (blackish fade-in) */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500 ease-in-out" />
 
-                {/* Text + Content section */}
-                <div
-                    className="absolute left-0 right-0 bottom-6 
-                     px-4 sm:px-5 md:px-6 
-                     text-white"
-                >
-                    {/* Location - Similar to your tagline / subtext */}
+                <div className="absolute left-0 right-0 bottom-6 px-4 sm:px-5 md:px-6 text-white">
                     {project.location && (
                         <div className="font-neuhas text-yellow-400 uppercase text-[10px] sm:text-xs md:text-[13px] font-medium tracking-widest mb-1">
                             {project.location}
                         </div>
                     )}
 
-                    {/* Title - always visible */}
-                    <h4
-                        className="font-apfel2 text-2xl sm:text-3xl md:text-[28px]
-                       max-w-[85%] md:max-w-[90%]"
-                    >
+                    <h4 className="font-apfel2 text-2xl sm:text-3xl md:text-[28px] max-w-[85%] md:max-w-[90%]">
                         {project.title}
                     </h4>
 
-                    {/* Description - reveal from bottom like in FeaturedProjects */}
                     {project.description && (
-                        <div
-                            className="overflow-hidden 
-                         max-h-0 group-hover:max-h-32 sm:group-hover:max-h-40 md:group-hover:max-h-48
-                         transition-all duration-500 ease-in-out mt-2"
-                        >
-                            <p
-                                className="text-sm sm:text-base md:text-[16px]
-                           font-neuhas text-white/90 leading-relaxed 
-                           opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out
-                           max-w-[85%] sm:max-w-[80%] md:max-w-[80%]"
-                            >
+                        <div className="overflow-hidden max-h-0 group-hover:max-h-32 sm:group-hover:max-h-40 md:group-hover:max-h-48 transition-all duration-500 ease-in-out mt-2">
+                            <p className="text-sm sm:text-base md:text-[16px] font-neuhas text-white/90 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out max-w-[85%] sm:max-w-[80%] md:max-w-[80%]">
                                 {project.description}
                             </p>
                         </div>
                     )}
 
-                    {/* Red circular arrow icon — bottom right, same style */}
                     <div className="absolute bottom-0 right-4 sm:right-5 md:right-6">
                         <Link
                             href={project.href || `/projects/${project.id}`}
                             aria-label={`${project.title} details`}
-                            className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
-                         rounded-full bg-red-600 text-white flex items-center justify-center
-                         shadow-lg transition-all duration-300 group-hover:bg-red-700 -rotate-45"
+                            className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg transition-all duration-300 group-hover:bg-red-700 -rotate-45"
                         >
                             <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                         </Link>

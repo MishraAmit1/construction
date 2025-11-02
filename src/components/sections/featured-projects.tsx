@@ -79,11 +79,9 @@ export function FeaturedProjects() {
     <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30 overflow-x-hidden">
       {/* Header */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-10 sm:mb-12 md:mb-16 lg:mb-20">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2
-                       font-normal leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-apfel2 font-normal leading-tight">
           Featured Projects
         </h2>
-
       </div>
       {loading ? (
         <div className="text-center text-gray-500 py-12">Loading projects…</div>
@@ -142,7 +140,7 @@ export function FeaturedProjects() {
                         <p className="text-yellow-400 uppercase">{project.location}</p>
                         {/* Title - Always visible, fixed position */}
                         <h3 className="font-apfel2 
-                                       text-2xl sm:text-3xl md:text-4xl lg:text-[30px]">
+                                       text-2xl sm:text-3xl md:text-4xl lg:text-[30px]  max-w-[85%] sm:max-w-sm">
                           {project.project_name}
                         </h3>
 

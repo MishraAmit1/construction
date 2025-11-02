@@ -55,7 +55,6 @@ export function Hero() {
     api.on('select', () => {
       setCurrent(api.selectedScrollSnap());
     });
-
     const id = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
