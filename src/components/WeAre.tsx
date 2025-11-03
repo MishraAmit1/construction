@@ -9,7 +9,7 @@ export function WeAre() {
       {/* Image with subtle zoom animation */}
       <div className="absolute inset-0 scale-105 animate-[zoom_20s_ease-in-out_infinite]">
         <Image
-          src="/images/cons3.png"
+          src="/images/cons3.webp"
           alt={weAreVeritasImage.description}
           fill
           className="object-cover"

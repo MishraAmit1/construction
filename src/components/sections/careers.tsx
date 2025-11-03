@@ -152,42 +152,42 @@ export function Careers() {
     {
       id: 1,
       title: 'Benefits & Perks',
-      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80',
+      image: '/images/careersbenefits.webp',
       shortDesc: 'Competitive compensation, health benefits, and professional growth opportunities.',
       description: 'At A&T Infracon, we believe in taking care of our people. We offer competitive salaries aligned with industry standards, comprehensive health insurance coverage for you and your family, retirement benefits, and performance-based incentives. Our commitment to work-life balance ensures you have time for what matters most while building critical infrastructure for the nation.'
     },
     {
       id: 2,
       title: 'Career Development',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
+      image: '/images/careerstraining.webp',
       shortDesc: 'Continuous learning through on-site training and skill development programs.',
       description: 'With 35+ years of experience, A&T Infracon invests in developing our workforce through comprehensive training programs. From operating specialized equipment like our Hot Mix Plants and Concrete Batching Plants to advanced civil engineering techniques, we provide hands-on training that builds careers. Our experienced senior engineers mentor newcomers, ensuring knowledge transfer and professional growth.'
     },
     {
       id: 3,
       title: 'Challenging Projects',
-      image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&q=80',
+      image: '/images/careersprojects.webp',
       shortDesc: 'Work on prestigious projects in India\'s most challenging terrains.',
       description: 'Join a team that builds infrastructure in extreme conditions - from 15,000+ feet altitude in Ladakh to the deserts of Rajasthan and the Rann of Kutch. Work on strategic border infrastructure projects for BSF and ITBP, construct high-altitude roads, and contribute to national security. Our portfolio of ₹586+ crores in recent projects offers unmatched experience and career growth.'
     },
     {
       id: 4,
       title: 'Work-Life Balance',
-      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',
+      image: '/images/careersbenifts.webp',
       shortDesc: 'Structured work schedules with adequate rest periods and family time.',
       description: 'Despite the challenging nature of our projects, we maintain structured work schedules that respect your personal time. Our site rotation policies ensure adequate rest periods between assignments. We understand the importance of family and provide appropriate leave policies, festival holidays, and support for maintaining connections with loved ones even during remote project assignments.'
     },
     {
       id: 5,
       title: 'Safety First Culture',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
+      image: '/images/careerssafety.webp',
       shortDesc: 'Industry-leading safety standards and comprehensive equipment training.',
       description: 'Your safety is our top priority. A&T Infracon maintains rigorous safety protocols across all project sites, provides comprehensive PPE (Personal Protective Equipment), conducts regular safety training sessions, and ensures strict compliance with safety regulations. Our modern equipment fleet is regularly maintained to highest safety standards, and we have dedicated safety officers on every major project site.'
     },
     {
       id: 6,
       title: 'Multi-Location Opportunities',
-      image: 'https://images.unsplash.com/photo-1488085061387-422e29b40080?w=800&q=80',
+      image: '/images/careerslocation.webp',
       shortDesc: 'Work across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.',
       description: 'With offices in Ahmedabad and Barmer, and active projects across four states, A&T Infracon offers diverse geographical opportunities. Experience working in different terrains - coastal areas of Kutch, desert regions of Barmer and Jaisalmer, high-altitude zones of Ladakh, and strategic border areas. Each location offers unique challenges and learning experiences that shape well-rounded civil engineering professionals.'
     }
@@ -254,7 +254,7 @@ export function Careers() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
-                    src="/images/Careers1.png"
+                    src="/images/Careers1.webp"
                     alt="A&T Infracon Equipment"
                     fill
                     className="object-cover"
@@ -262,8 +262,7 @@ export function Careers() {
                 </div>
                 <div className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-md">
                   <Image
-                    src="/images/Careers2.png"
-
+                    src="/images/Careers3.jpg"
                     alt="Border Infrastructure Project"
                     fill
                     className="object-cover"
@@ -272,7 +271,7 @@ export function Careers() {
               </div>
               <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-md">
                 <Image
-                  src="/images/Careers3.png"
+                  src="/images/Careers2.webp"
 
                   alt="Road Construction"
                   fill
@@ -324,7 +323,7 @@ export function Careers() {
                 return (
                   <Link
                     key={dept.id}
-                    href={`/careers/department/${dept.id}`}
+                    href={`/careers/department/${dept.slug}`} // ✅ CHANGE THIS
                     className="group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-red-600"
                   >
                     <div className="flex items-start justify-between mb-4">

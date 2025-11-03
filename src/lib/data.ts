@@ -5,13 +5,13 @@ import { Bolt, Leaf, Factory, Pickaxe, Shield, Atom } from "lucide-react";
 
 // ✅ String paths for local images (move to public/images/)
 const localImages = {
-  hero: "/images/hero.png",
+  hero: "/images/hero.webp",
   states: {
-    gujarat: "/images/gujarat-img.png",        // renamed from Gujarat_Img_1[1].png
-    rajasthan: "/images/rajasthan-img.png",    // renamed from rajasthan_Img_1[1].png
-    jammu: "/images/jammu-img.png",            // renamed from jammu_Img_1[1].png
-    ladakh: "/images/ladakh-img.png",          // renamed from ladakh_Img_1[1].png
-    sikkim: "/images/sikkim-img.png"           // renamed from sikkim_Img_1[1].png
+    gujarat: "/images/gujarat-img.webp",        // renamed from Gujarat_Img_1[1].webp
+    rajasthan: "/images/rajasthan-img.webp",    // renamed from rajasthan_Img_1[1].webp
+    jammu: "/images/jammu-img.webp",            // renamed from jammu_Img_1[1].webp
+    ladakh: "/images/ladakh-img.webp",          // renamed from ladakh_Img_1[1].webp
+    sikkim: "/images/sikkim-img.webp"           // renamed from sikkim_Img_1[1].webp
   }
 };
 
@@ -146,7 +146,7 @@ export const demoProjects = [
       "A large‑scale LNG export facility delivering energy to global markets.",
     image: {
       imageUrl:
-        "https://www.bechtel.com/wp-content/uploads/2024/11/2_Overview-rendering-of-RGLNG.png",
+        "https://www.bechtel.com/wp-content/uploads/2024/11/2_Overview-rendering-of-RGLNG.webp",
       description: "Rio Grande LNG terminal",
     },
   },
@@ -184,7 +184,7 @@ export const atServices = [
     title: 'Road Construction',
     description: 'Specialist in constructing challenging roads across diverse terrains - from high-altitude hill roads at 15,000+ feet to PMGSY rural connectivity projects. Our expertise includes CRF highways, link roads, and strategic border roads executed in extreme weather conditions from the deserts of Rajasthan to the mountains of Ladakh.',
     image: {
-      imageUrl: "/images/services1.png",
+      imageUrl: "/images/services1.webp",
       description: 'Road Construction Services - Hill Roads, CRF, PMGSY, Link Roads'
     },
     category: 'Infrastructure',
@@ -194,7 +194,7 @@ export const atServices = [
     title: 'Border Security Infrastructure',
     description: 'Trusted by BSF, ITBP, and CPWD for critical border security infrastructure along Indo-Pak and Indo-China borders. We construct fencing systems, bunkers, Border Out Posts (BOPs), earthen embankments, and strategic access roads in sensitive and challenging border areas across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.',
     image: {
-      imageUrl: "/images/services2.png",
+      imageUrl: "/images/services2.webp",
       description: 'Border Security Infrastructure - Fencing, Bunkers, BOPs'
     },
     category: 'Security',
@@ -204,7 +204,7 @@ export const atServices = [
     title: 'Building & Institutional Structures',
     description: 'Construction of administrative buildings, institutional complexes, platoon-level BOPs, and office structures for government departments and PSUs. Our building works portfolio includes projects for CPWD, NBCC, and various government organizations, executed with precision in remote and challenging locations.',
     image: {
-      imageUrl: "/images/services3.png",
+      imageUrl: "/images/services3.webp",
       description: 'Building & Institutional Structures'
     },
     category: 'Construction',
@@ -224,7 +224,7 @@ export const atServices = [
     title: 'Wind & Solar Power Infrastructure',
     description: 'Developing renewable energy infrastructure including Wind Turbine Generator (WTG) foundations and solar power installations. We\'ve executed projects for leading companies like Suzlon, Gujarat Fluorochemicals, and Kintech Synergy, contributing to India\'s clean energy transition with specialized civil and foundation works.',
     image: {
-      imageUrl: "/images/services5.png",
+      imageUrl: "/images/services5.webp",
 
       description: 'Wind & Solar Power Infrastructure'
     },
@@ -235,14 +235,708 @@ export const atServices = [
     title: 'Civil Projects for PSUs & Private Sector',
     description: 'Comprehensive civil engineering solutions for Public Sector Undertakings and private enterprises. Our clientele includes IOCL, ONGC, GAIL, Cairn Energy, and industrial companies requiring robust infrastructure in challenging locations. From industrial estates to specialized facilities, we deliver excellence.',
     image: {
-      imageUrl: "/images/services6.png",
+      imageUrl: "/images/services6.webp",
 
       description: 'Civil Projects for PSUs and Private Sector'
     },
     category: 'Industrial',
   },
 ];
+// lib/data.ts mein add karo
 
+export const serviceDetailsData: Record<string, any> = {
+  "road-construction": {
+    id: "road-construction",
+    title: "Road Construction",
+    tagline: "Building Connections Across Challenging Terrains",
+    heroImage: "/images/services1.webp",
+    description: "Specialist in constructing challenging roads across diverse terrains - from high-altitude hill roads at 15,000+ feet to PMGSY rural connectivity projects.",
+    longDescription: "A&T Infracon's road construction expertise spans 35+ years of building critical infrastructure across India's most challenging environments. From the deserts of Rajasthan to the high-altitude regions of Ladakh, we've successfully completed highway projects, border roads, rural connectivity initiatives, and strategic access roads that connect remote communities and secure national borders.",
+
+    keyFeatures: [
+      {
+        icon: "Mountain",
+        title: "High-Altitude Expertise",
+        description: "Construction at 15,000+ feet in extreme weather conditions"
+      },
+      {
+        icon: "Route",
+        title: "CRF & Highway Projects",
+        description: "Major road widening and strengthening projects across Gujarat"
+      },
+      {
+        icon: "Network",
+        title: "PMGSY Rural Roads",
+        description: "Connecting remote villages with all-weather road access"
+      },
+      {
+        icon: "Shield",
+        title: "Border Access Roads",
+        description: "Strategic roads for defense forces along Indo-Pak and Indo-China borders"
+      }
+    ],
+
+    capabilities: [
+      "High-Altitude Hill Road Construction",
+      "CRF Highway Development",
+      "PMGSY Rural Connectivity",
+      "Border Road Construction",
+      "Road Widening & Strengthening",
+      "Bituminous Pavement Works",
+      "WMM & Granular Sub-Base",
+      "Cross Drainage Structures",
+      "Road Maintenance & Repairs"
+    ],
+
+    statistics: [
+      { value: "₹112.37 Cr", label: "Largest Project", description: "Ladakh Hill Road to Indo-China Border" },
+      { value: "200+ Km", label: "Roads Built", description: "Across challenging terrains" },
+      { value: "15,000 ft", label: "Altitude", description: "Highest construction elevation" },
+      { value: "35+ Years", label: "Experience", description: "In road construction" }
+    ],
+
+    majorProjects: [
+      {
+        title: "High Altitude Hill Road to Indo-China Border",
+        location: "Ladakh, UT",
+        value: "₹112.37 Crore",
+        description: "Construction of strategic hill road from Silungla Base to ITBP Post at extreme altitude",
+        image: "/images/sr1.webp",
+        highlights: [
+          "12.42 km at 14,832 to 15,331 feet altitude",
+          "Extreme weather construction (-40°C)",
+          "Strategic defense infrastructure",
+          "EPC Mode-III execution"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Dehgam Bayad Road Widening",
+        location: "Gujarat",
+        value: "₹28.33 Crore",
+        description: "Widening from 6.10m to 10.0m for 43.8 km stretch under CRF 2017-18",
+        image: "/images/sr2.webp",
+        highlights: [
+          "43.8 km road widening",
+          "Major bridge construction",
+          "CRF specifications",
+          "Heavy traffic corridor"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Border Roads Gujarat Sector",
+        location: "Rann of Kutch, Gujarat",
+        value: "₹58.93 Crore (Ongoing)",
+        description: "Link road construction with slope protection and culvert works",
+        image: "/images/sr3.webp",
+        highlights: [
+          "25 km border access road",
+          "Slope protection works",
+          "Multiple culverts",
+          "Marshy terrain construction"
+        ],
+        link: "/projects"
+      }
+    ],
+
+    equipment: [
+      "Hot Mix Plants (Batch & Drum Type)",
+      "WMM Plants",
+      "Bituminous Pavers",
+      "Soil Compactors & Rollers",
+      "Motor Graders",
+      "Excavators & Loaders"
+    ],
+
+    relatedServices: ["border-security-infrastructure", "bridges-culverts"],
+
+    testimonial: {
+      quote: "A&T Infracon's expertise in high-altitude road construction has been instrumental in providing all-weather connectivity to our forward posts in Ladakh.",
+      author: "ITBP Project Director",
+      company: "Indo-Tibetan Border Police"
+    }
+  },
+
+  "border-security-infrastructure": {
+    id: "border-security-infrastructure",
+    title: "Border Security Infrastructure",
+    tagline: "Securing India's Frontiers",
+    heroImage: "/images/services2.webp",
+    description: "Trusted by BSF, ITBP, and CPWD for critical border security infrastructure along Indo-Pak and Indo-China borders.",
+    longDescription: "For over three decades, A&T Infracon has been the trusted partner for India's border security forces in constructing critical infrastructure along sensitive international borders. Our specialized expertise in building fencing systems, bunkers, Border Out Posts (BOPs), earthen embankments, and strategic access roads has secured thousands of kilometers of India's frontiers across Gujarat, Rajasthan, Jammu & Kashmir, and Ladakh.",
+
+    keyFeatures: [
+      {
+        icon: "Shield",
+        title: "BSF & ITBP Projects",
+        description: "Trusted contractor for border security forces"
+      },
+      {
+        icon: "Building2",
+        title: "Border Out Posts",
+        description: "Complete BOP complexes with modern facilities"
+      },
+      {
+        icon: "Lock",
+        title: "Fencing Systems",
+        description: "Multi-row fencing with advanced detection systems"
+      },
+      {
+        icon: "Mountain",
+        title: "Extreme Conditions",
+        description: "Desert heat to Himalayan cold construction"
+      }
+    ],
+
+    capabilities: [
+      "Border Fencing (Multi-row Systems)",
+      "Border Out Posts (BOPs) - Platoon Level",
+      "Fighting Bunkers & Machans",
+      "Earthen Embankments & Ditches",
+      "Border Access Roads",
+      "RCC Nakas (G+1 Structures)",
+      "Watchtowers & Observation Posts",
+      "Perimeter Security Systems",
+      "Camp & Accommodation Facilities"
+    ],
+
+    statistics: [
+      { value: "₹101.78 Cr", label: "Major Project", description: "26.76 km Earthen Bundh Jammu Sector" },
+      { value: "100+ Km", label: "Fencing", description: "Along Indo-Pak border" },
+      { value: "50+ BOPs", label: "Constructed", description: "For BSF & ITBP" },
+      { value: "4 States", label: "Coverage", description: "Gujarat, Rajasthan, J&K, Ladakh" }
+    ],
+
+    majorProjects: [
+      {
+        title: "Composite Earthen Bundh - Jammu Sector",
+        location: "Jammu & Kashmir",
+        value: "₹101.78 Crore",
+        description: "26.762 km earthen bundh with ditch, bituminous road and RCC Nakas along Indo-Pak border",
+        image: "/images/sb1.webp",
+        highlights: [
+          "26.76 km composite structure",
+          "135 feet width land strip",
+          "Bituminous road construction",
+          "RCC Naka (G+1) structures",
+          "BP 113 to BP 51 coverage"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Border Out Posts - Gujarat Sector",
+        location: "Kutch, Gujarat",
+        value: "₹22.72 Crore",
+        description: "Construction of 21 Border Out Posts for BSF along Indo-Pak border",
+        image: "/images/sb2.webp",
+        highlights: [
+          "21 platoon-level BOPs",
+          "Modern amenities & facilities",
+          "Coastal & desert terrain",
+          "Strategic locations",
+          "BSF specifications"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Border Fencing - Gujarat Sector",
+        location: "Rann of Kutch, Gujarat",
+        value: "₹12.50 Crore",
+        description: "Multi-row fencing with embankment from BP 976 to BP 1012",
+        image: "/images/sb3.webp",
+        highlights: [
+          "Two-row fencing system",
+          "29 km coverage",
+          "Marshy terrain execution",
+          "Flood-resistant design",
+          "Round-the-year construction"
+        ],
+        link: "/projects"
+      }
+    ],
+
+    equipment: [
+      "Excavators for Bundh Work",
+      "Soil Compactors",
+      "Concrete Batching Plants",
+      "Transit Mixers",
+      "Specialized Border Fencing Equipment"
+    ],
+
+    relatedServices: ["road-construction", "building-institutional-structures"],
+
+    testimonial: {
+      quote: "A&T Infracon has consistently delivered high-quality border infrastructure in the most challenging conditions, ensuring our jawans have the best facilities at the frontline.",
+      author: "Chief Engineer",
+      company: "Border Security Force"
+    }
+  },
+
+  "building-institutional-structures": {
+    id: "building-institutional-structures",
+    title: "Building & Institutional Structures",
+    tagline: "Creating Spaces That Serve the Nation",
+    heroImage: "/images/services3.webp",
+    description: "Construction of administrative buildings, institutional complexes, platoon-level BOPs, and office structures for government departments and PSUs.",
+    longDescription: "A&T Infracon specializes in constructing government buildings, institutional complexes, and administrative structures across challenging locations. Our portfolio includes projects for CPWD, NBCC, and various government organizations. From building Border Out Posts in remote areas to constructing modern office complexes and educational institutions, we deliver structures that combine functionality with durability, executed with precision even in the most remote and challenging locations.",
+
+    keyFeatures: [
+      {
+        icon: "Building2",
+        title: "Government Buildings",
+        description: "Administrative complexes for PSUs and government departments"
+      },
+      {
+        icon: "Users",
+        title: "Institutional Projects",
+        description: "Educational facilities, BRC centers, and KGBV buildings"
+      },
+      {
+        icon: "Shield",
+        title: "Defense Infrastructure",
+        description: "BOPs, bunkers, and accommodation for security forces"
+      },
+      {
+        icon: "Mountain",
+        title: "Remote Construction",
+        description: "Building in challenging terrains from deserts to high altitudes"
+      }
+    ],
+
+    capabilities: [
+      "Government Office Complexes",
+      "Border Out Posts (BOPs)",
+      "Educational Institutions",
+      "Industrial Buildings",
+      "Administrative Blocks",
+      "Residential Complexes",
+      "Community Centers",
+      "Healthcare Facilities",
+      "Multi-story Structures"
+    ],
+
+    statistics: [
+      { value: "₹56.42 Cr", label: "Largest Project", description: "Industrial Estate Kathua" },
+      { value: "50+ BOPs", label: "Built", description: "For BSF across borders" },
+      { value: "100+", label: "Buildings", description: "Completed successfully" },
+      { value: "35 Years", label: "Experience", description: "In building construction" }
+    ],
+
+    majorProjects: [
+      {
+        title: "Industrial Estate Development",
+        location: "Kathua, J&K",
+        value: "₹56.42 Crore",
+        description: "Complete development of New Industrial Estate including admin blocks, boundary walls, CETP, and infrastructure",
+        image: "/images/sbi1.webp",
+        highlights: [
+          "Complete industrial infrastructure",
+          "Administrative blocks construction",
+          "Underground tanks & CETP",
+          "River bund & electrical works",
+          "Modern facilities development"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "BSF Border Out Posts",
+        location: "Kutch, Gujarat",
+        value: "₹20.21 Crore",
+        description: "Construction of multiple platoon-level BOPs for BSF along Indo-Pak border",
+        image: "/images/sbi2.webp",
+        highlights: [
+          "3 Platoon Level BOPs",
+          "Modern amenities",
+          "Strategic locations",
+          "All-weather construction",
+          "Complete infrastructure"
+        ],
+        link: "/projects/bsf-bops-kutch"
+      },
+      {
+        title: "Central University Gujarat",
+        location: "Vadodara, Gujarat",
+        value: "₹8.60 Crore",
+        description: "Construction of permanent campus facilities including labs and office infrastructure",
+        image: "/images/sbi3.webp",
+        highlights: [
+          "Laboratory facilities",
+          "Office furniture works",
+          "Internal electrical works",
+          "Modern campus infrastructure",
+          "Academic block completion"
+        ],
+        link: "/projects"
+      }
+    ],
+
+    equipment: [
+      "Concrete Batching Plants",
+      "Transit Mixers",
+      "Tower Cranes",
+      "Bar Cutting & Bending Machines",
+      "Concrete Pumps",
+      "Material Hoists"
+    ],
+
+    relatedServices: ["border-security-infrastructure", "civil-projects-psus-private-sector"],
+
+    testimonial: {
+      quote: "A&T Infracon delivered our industrial estate project with exceptional quality, completing all phases on schedule despite challenging conditions.",
+      author: "Project Director",
+      company: "Ircon International Ltd."
+    }
+  },
+
+  "bridges-culverts": {
+    id: "bridges-culverts",
+    title: "Bridges & Culverts",
+    tagline: "Connecting Communities, Crossing Barriers",
+    heroImage: "https://i.pinimg.com/736x/f4/38/24/f43824816b9bc690382f2055c69f67d4.jpg",
+    description: "Expert construction of bridges, causeways, and cross-drainage structures across rivers and nallahs.",
+    longDescription: "A&T Infracon brings decades of expertise in constructing bridges, causeways, and culvert systems designed to withstand extreme weather conditions and heavy traffic loads. Our bridge works include major crossings over Tarna River, Khari River, Devak Nallah, and Phag Nallah, along with specialized high-level vented causeways and culvert systems designed for flood-prone areas. We excel in building critical infrastructure that ensures year-round connectivity even in the most challenging terrains.",
+
+    keyFeatures: [
+      {
+        icon: "Route",
+        title: "Major River Crossings",
+        description: "Bridges over Tarna, Khari, and other major rivers"
+      },
+      {
+        icon: "Shield",
+        title: "Strategic Bridges",
+        description: "Border area bridges for defense connectivity"
+      },
+      {
+        icon: "Mountain",
+        title: "Causeway Systems",
+        description: "High-level vented causeways for flood-prone areas"
+      },
+      {
+        icon: "Network",
+        title: "Drainage Solutions",
+        description: "Complex culvert systems for water management"
+      }
+    ],
+
+    capabilities: [
+      "Major Bridge Construction",
+      "Causeway Development",
+      "Box Culverts",
+      "Pipe Culverts",
+      "Slab Culverts",
+      "High-Level Vented Causeways",
+      "River Training Works",
+      "Approach Roads",
+      "Foundation Works in Rivers"
+    ],
+
+    statistics: [
+      { value: "₹14.30 Cr", label: "Largest Bridge", description: "Tarna River Bridge" },
+      { value: "50+", label: "Structures", description: "Bridges & culverts built" },
+      { value: "10+ Rivers", label: "Crossed", description: "Major river crossings" },
+      { value: "500m", label: "Longest", description: "Causeway constructed" }
+    ],
+
+    majorProjects: [
+      {
+        title: "Bridge over Tarna River",
+        location: "Jammu Sector",
+        value: "₹14.30 Crore",
+        description: "Major bridge construction over Tarna River near Bobiya for Indo-Pak border connectivity",
+        image: "/images/sbc1.webp",
+        highlights: [
+          "Strategic border connectivity",
+          "Complex river crossing",
+          "Year-round accessibility",
+          "Heavy load capacity",
+          "Flood-resistant design"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Major Bridge on SH-237",
+        location: "Gujarat",
+        value: "₹9.19 Crore",
+        description: "Construction of major bridge as part of Himatnagar-Talod-Ujediya Road widening",
+        image: "/images/sbc2.webp",
+        highlights: [
+          "Highway standard bridge",
+          "CRF specifications",
+          "Heavy traffic corridor",
+          "Modern design standards",
+          "30.8 km road section"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "High-Level Vented Causeway",
+        location: "Gujarat Border",
+        value: "₹2.39 Crore",
+        description: "Redesigning 500m causeway as high-level vented causeway near BP 1107",
+        image: "/images/sbc3.webp",
+        highlights: [
+          "500m vented causeway",
+          "Flood mitigation design",
+          "CRRI recommendations",
+          "Border road connectivity",
+          "Marshy terrain solution"
+        ],
+        link: "/projects"
+      }
+    ],
+
+    equipment: [
+      "Piling Rigs",
+      "Concrete Pumps",
+      "Batching Plants",
+      "Heavy Cranes",
+      "Launching Girders",
+      "Hydraulic Jacks"
+    ],
+
+    relatedServices: ["road-construction", "border-security-infrastructure"],
+
+    testimonial: {
+      quote: "The bridge constructed by A&T Infracon has transformed connectivity in our border region, standing strong even during heavy floods.",
+      author: "Executive Engineer",
+      company: "CPWD Border Division"
+    }
+  },
+
+  "wind-solar-power-infrastructure": {
+    id: "wind-solar-power-infrastructure",
+    title: "Wind & Solar Power Infrastructure",
+    tagline: "Powering India's Clean Energy Future",
+    heroImage: "/images/services5.webp",
+    description: "Developing renewable energy infrastructure including Wind Turbine Generator foundations and solar power installations.",
+    longDescription: "A&T Infracon is at the forefront of India's renewable energy transition, specializing in wind and solar power infrastructure development. We've executed critical projects for leading companies like Suzlon, Gujarat Fluorochemicals, and Kintech Synergy. Our expertise includes constructing robust WTG foundations capable of withstanding extreme weather conditions, developing solar farm infrastructure, and creating access roads to remote renewable energy sites. We contribute to India's clean energy goals through specialized civil and foundation works that ensure long-term stability and performance.",
+
+    keyFeatures: [
+      {
+        icon: "Zap",
+        title: "WTG Foundations",
+        description: "Heavy foundations for wind turbines up to 2.1 MW capacity"
+      },
+      {
+        icon: "Sun",
+        title: "Solar Infrastructure",
+        description: "Complete civil works for solar power projects"
+      },
+      {
+        icon: "Route",
+        title: "Access Roads",
+        description: "39+ km roads for wind farm connectivity"
+      },
+      {
+        icon: "Building2",
+        title: "Substation Works",
+        description: "Electrical substation civil infrastructure"
+      }
+    ],
+
+    capabilities: [
+      "Wind Turbine Foundations",
+      "Solar Panel Mounting Structures",
+      "Substation Civil Works",
+      "Access Road Construction",
+      "Cable Trenching",
+      "Control Room Buildings",
+      "Transformer Foundations",
+      "Boundary Walls & Security",
+      "Drainage Systems"
+    ],
+
+    statistics: [
+      { value: "10 MW", label: "Solar Projects", description: "Total capacity installed" },
+      { value: "39 Km", label: "Access Roads", description: "For wind farms" },
+      { value: "50+", label: "WTG Foundations", description: "Successfully completed" },
+      { value: "5 Projects", label: "Major Clients", description: "Leading energy companies" }
+    ],
+
+    majorProjects: [
+      {
+        title: "Wind Power Project - Gujarat Fluorochemicals",
+        location: "Jaisalmer, Rajasthan",
+        value: "2.1 MW Capacity",
+        description: "WTG Foundation No. 19 for Gujarat Fluorochemicals wind power project",
+        image: "/images/sws1.webp",
+        highlights: [
+          "2.1 MW turbine foundation",
+          "Desert terrain execution",
+          "Heavy reinforcement work",
+          "Extreme weather resistance",
+          "Precision foundation casting"
+        ],
+        link: "/projects/"
+      },
+      {
+        title: "Solar Power Project - Zamil Industrial",
+        location: "Dahisar, Gujarat",
+        value: "10 MW Project",
+        description: "Complete civil infrastructure for 10 MW solar power installation",
+        image: "/images/sws2.webp",
+        highlights: [
+          "10 MW solar capacity",
+          "Complete civil works",
+          "Mounting structures",
+          "Electrical infrastructure",
+          "Drainage systems"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Suzlon Wind Farm Infrastructure",
+        location: "Kutch, Gujarat",
+        value: "39 Km Roads + WTG",
+        description: "Access roads and WTG foundation for Suzlon Infrastructure Services",
+        image: "/images/sws3.webp",
+        highlights: [
+          "39 km access roads",
+          "2.1 MW WTG foundation",
+          "Complete infrastructure",
+          "Substation works",
+          "Heavy equipment transport roads"
+        ],
+        link: "/projects"
+      }
+    ],
+
+    equipment: [
+      "Heavy Concrete Pumps",
+      "Specialized Foundation Equipment",
+      "Transit Mixers",
+      "Excavators",
+      "Compactors",
+      "Cranes for Heavy Lifting"
+    ],
+
+    relatedServices: ["civil-projects-psus-private-sector", "road-construction"],
+
+    testimonial: {
+      quote: "A&T Infracon's expertise in renewable energy infrastructure has been crucial in establishing our wind farms in challenging desert conditions.",
+      author: "Project Manager",
+      company: "Suzlon Infrastructure Services"
+    }
+  },
+
+  "civil-projects-for-psus-private-sector": {
+    id: "civil-projects-for-psus-private-sector",
+    title: "Civil Projects for PSUs & Private Sector",
+    tagline: "Engineering Excellence for Industry Leaders",
+    heroImage: "/images/services6.webp",
+    description: "Comprehensive civil engineering solutions for Public Sector Undertakings and private enterprises.",
+    longDescription: "A&T Infracon is the trusted partner for India's leading PSUs and private sector companies, delivering complex civil engineering projects in challenging locations. Our prestigious clientele includes IOCL, ONGC, GAIL, Cairn Energy, and major industrial companies. From constructing infrastructure in oil fields to developing industrial estates, we provide end-to-end civil engineering solutions. Our expertise in working in remote locations, adherence to strict safety standards, and ability to meet demanding project schedules makes us the contractor of choice for critical industrial infrastructure.",
+
+    keyFeatures: [
+      {
+        icon: "Building2",
+        title: "Oil & Gas Infrastructure",
+        description: "Projects for IOCL, ONGC, GAIL, and Cairn Energy"
+      },
+      {
+        icon: "Shield",
+        title: "Industrial Estates",
+        description: "Complete industrial park development"
+      },
+      {
+        icon: "Network",
+        title: "PSU Projects",
+        description: "Trusted by major public sector companies"
+      },
+      {
+        icon: "Mountain",
+        title: "Remote Locations",
+        description: "Expertise in challenging industrial sites"
+      }
+    ],
+
+    capabilities: [
+      "Oil Field Infrastructure",
+      "Industrial Building Construction",
+      "Tank Farms & Storage",
+      "Pipeline Support Structures",
+      "Industrial Roads",
+      "Boundary Walls & Security",
+      "Administrative Buildings",
+      "Warehouse Construction",
+      "Utility Infrastructure"
+    ],
+
+    statistics: [
+      { value: "₹56.42 Cr", label: "Largest Project", description: "Industrial Estate J&K" },
+      { value: "10+ PSUs", label: "Clients", description: "Major PSU partnerships" },
+      { value: "₹7.83 Cr", label: "OOT Vadinar", description: "Port infrastructure" },
+      { value: "100+", label: "Projects", description: "Successfully completed" }
+    ],
+
+    majorProjects: [
+      {
+        title: "Industrial Estate Development",
+        location: "Bhagthali, Kathua, J&K",
+        value: "₹56.42 Crore",
+        description: "Complete development of new industrial estate with all infrastructure",
+        image: "/images/scpc1.webp",
+        highlights: [
+          "Admin blocks construction",
+          "Complete infrastructure",
+          "CETP facility",
+          "Electrical works",
+          "River bund protection"
+        ],
+        link: "/projects/"
+      },
+      {
+        title: "OOT Vadinar Port Infrastructure",
+        location: "Vadinar, Gujarat",
+        value: "₹7.83 Crore",
+        description: "Strengthening of road from colony to jetty at Deendayal Port",
+        image: "/images/scpc2.webp",
+        highlights: [
+          "Port road strengthening",
+          "Heavy vehicle corridor",
+          "Special repair works",
+          "Marine environment construction",
+          "Critical port connectivity"
+        ],
+        link: "/projects"
+      },
+      {
+        title: "Cairn Energy Civil Works",
+        location: "Barmer, Rajasthan",
+        value: "Multiple Projects",
+        description: "Various civil works for Cairn Energy's oil field operations",
+        image: "/images/scpc3.webp",
+        highlights: [
+          "Oil field infrastructure",
+          "Desert construction",
+          "Access roads",
+          "Support structures",
+          "Continuous operations support"
+        ],
+        link: "/projects/"
+      }
+    ],
+
+    equipment: [
+      "Heavy Earth Moving Equipment",
+      "Concrete Batching Plants",
+      "Material Handling Equipment",
+      "Specialized Industrial Tools",
+      "Safety Equipment",
+      "Quality Testing Equipment"
+    ],
+
+    relatedServices: ["building-institutional-structures", "wind-solar-power-infrastructure"],
+
+    testimonial: {
+      quote: "A&T Infracon has been our reliable partner for critical infrastructure projects, consistently delivering quality work in our challenging oil field locations.",
+      author: "General Manager",
+      company: "Indian Oil Corporation Ltd."
+    }
+  }
+};
 export const projects = [
   {
     id: 1,

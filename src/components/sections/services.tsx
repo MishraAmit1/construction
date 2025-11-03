@@ -33,7 +33,7 @@ export default function ServicesPage() {
     const handleScroll = () => {
         if (scrollRef.current) {
             const scrollLeft = scrollRef.current.scrollLeft;
-            const itemWidth = scrollRef.current.scrollWidth / services.length;
+            const itemWidth = scrollRef.current.scrollWidth / atServices.length;
             const newIndex = Math.round(scrollLeft / itemWidth);
             setCurrentIndex(newIndex);
         }
@@ -41,7 +41,7 @@ export default function ServicesPage() {
 
     const scrollToIndex = (direction: 'prev' | 'next') => {
         if (scrollRef.current) {
-            const itemWidth = scrollRef.current.scrollWidth / services.length;
+            const itemWidth = scrollRef.current.scrollWidth / atServices.length;
             const currentScroll = scrollRef.current.scrollLeft;
 
             scrollRef.current.scrollTo({
@@ -62,7 +62,7 @@ export default function ServicesPage() {
     }, []);
     return (
         <>
-            {/* HERO SECTION */}
+            {/* HERO SECTION - No changes */}
             <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-center py-12">
                 {/* Background image */}
                 <div className="absolute inset-0">
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                         </p>
 
                         <h1 className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,6.3rem)] leading-[1.05] [text-wrap:balance]">
-                            Our Services
+                            Our Services
                         </h1>
 
                         <p className="font-neuhas text-[15px] sm:text-[16px] md:text-[24px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
@@ -95,7 +95,8 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
-            {/* BREADCRUMB */}
+
+            {/* BREADCRUMB - No changes */}
             <div className="bg-white border-b border-gray-200">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-3 sm:py-4">
                     <nav className="flex items-center text-xs sm:text-sm text-gray-600 font-neuhas tracking-wider">
@@ -103,11 +104,12 @@ export default function ServicesPage() {
                         <span className="mx-1.5 sm:mx-2">/</span>
                         <span className="text-red-600 font-semibold uppercase">
                             OUR SERVICES
-
                         </span>
                     </nav>
                 </div>
             </div>
+
+            {/* EXCELLENCE SECTION - No changes */}
             <section
                 className="py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-white"
                 style={{
@@ -138,12 +140,13 @@ export default function ServicesPage() {
                 </div>
             </section>
 
+            {/* ENGINEERING SECTION - Updated Link */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Order 2 on mobile, Order 1 on desktop */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px] order-2 lg:order-1">
                         <img
-                            src="/images/image1.png"
+                            src="/images/image1.webp"
                             alt="Project site"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
@@ -166,14 +169,16 @@ export default function ServicesPage() {
                                 Our engineers design with construction feasibility and long-term durability in mind. From complex border infrastructure requiring strategic planning to high-altitude roads demanding specialized design considerations, we leverage modern surveying tools, structural analysis software, and proven methodologies to ensure every project is engineered for excellence and built to last.
                             </p>
                         </div>
-                        <div className="mt-6 md:-ml-8">
-                            <CtaButton href="/services/engineering">
-                                Learn More About Engineering
+                        <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                            <CtaButton href="/services/road-construction">
+                                Learn More About Our Services
                             </CtaButton>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* HIGH ALTITUDE PROJECT SECTION - Updated Link */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center ">
                     {/* LEFT TEXT - Centered */}
@@ -188,9 +193,9 @@ export default function ServicesPage() {
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
                                 Our team successfully designed and executed 12.42 km of strategic roadway at altitudes exceeding 14,800 feet, ensuring year-round connectivity for border security forces while navigating challenging terrain and weather constraints.
                             </p>
-                            <div className="mt-6 md:-ml-8">
-                                <CtaButton href="/projects">
-                                    View Our Projects
+                            <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                                <CtaButton href="/services/road-construction">
+                                    View Road Construction Projects
                                 </CtaButton>
                             </div>
                         </div>
@@ -200,14 +205,14 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:gap-6">
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="/images/serviceseright1.png"
+                                src="/images/serviceseright1.webp"
                                 alt="Riyadh Metro project 1"
                                 className="absolute inset-0 w-full h-full object-cover object-center"
                             />
                         </div>
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="/images/serviceseright2.png"
+                                src="/images/serviceseright2.webp"
                                 alt="Riyadh Metro project 2"
                                 className="absolute inset-0 w-full h-full object-cover object-center "
                             />
@@ -215,12 +220,14 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* PROCUREMENT SECTION - No CTA needed */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px]">
                         <img
-                            src="/images/construction1.png"
+                            src="/images/construction1.webp"
                             alt="Project site"
                             className="absolute inset-0 w-full h-full object-cover object-center "
                         />
@@ -250,14 +257,15 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
-            {/* EQUIPMENT PARTNERSHIP SECTION */}
+
+            {/* EQUIPMENT PARTNERSHIP SECTION - Links remain same */}
             <section className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 px-4 sm:px-6 md:px-20 md:border-t border-gray-200 mb-32">
                 {/* FIRST ROW */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center">
                     {/* LEFT IMAGE */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden order-1 lg:order-1">
                         <img
-                            src="/images/image2.png"
+                            src="/images/image2.webp"
                             alt="Construction Equipment"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
@@ -273,9 +281,8 @@ export default function ServicesPage() {
                         </p>
 
                         {/* CTA Button */}
-                        <div className="mt-6 md:-ml-8">
-
-                            <CtaButton href="/about#resources">
+                        <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                            <CtaButton href="/about">
                                 View Our Resources
                             </CtaButton>
                         </div>
@@ -287,7 +294,7 @@ export default function ServicesPage() {
                     {/* LEFT IMAGE */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] overflow-hidden">
                         <img
-                            src="/images/image3.png"
+                            src="/images/image3.webp"
                             alt="Project Execution"
                             className="absolute inset-0 w-full h-full object-cover object-center"
                         />
@@ -303,7 +310,7 @@ export default function ServicesPage() {
                         </p>
 
                         {/* CTA Button */}
-                        <div className="mt-6 md:-ml-8">
+                        <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
                             <CtaButton href="/projects">
                                 View Completed Projects
                             </CtaButton>
@@ -311,13 +318,14 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
-            {/* Content area - Add your services content here */}
+
+            {/* CONSTRUCTION SECTION - Added CTA */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[700px] order-2 lg:order-1">
                         <img
-                            src="/images/image4.png"
+                            src="/images/image4.webp"
                             alt="Project site"
                             className="absolute inset-0 w-full h-full object-cover object-center "
                         />
@@ -340,9 +348,17 @@ export default function ServicesPage() {
                                 We maintain industry-leading safety standards while delivering complex projects on schedule. Our construction teams are trained to work in extreme weather conditions, from Rajasthan's 50°C summers to Ladakh's -40°C winters. With successful completion of projects worth over ₹586 crores in recent years, including border roads, BOPs, bridges, and civil works, we've established ourselves as the contractor of choice for challenging infrastructure projects across Western India.
                             </p>
                         </div>
+                        {/* Added CTA Button */}
+                        <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                            <CtaButton href="/services/building-institutional-structures">
+                                View Building & Construction Services
+                            </CtaButton>
+                        </div>
                     </div>
                 </div>
             </section>
+
+            {/* BORDER INFRASTRUCTURE SECTION - Updated Link */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center ">
                     {/* LEFT TEXT - Centered */}
@@ -354,9 +370,9 @@ export default function ServicesPage() {
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
                                 Our team completed multiple such strategic projects including fencing, fighting bunkers, and BOPs in sensitive border areas, demonstrating our ability to execute large-scale works under stringent security protocols and challenging terrain conditions.
                             </p>
-                            <div className="mt-6 md:-ml-8">
-                                <CtaButton href="/projects#border-infrastructure">
-                                    Border Infrastructure Projects
+                            <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                                <CtaButton href="/services/border-security-infrastructure">
+                                    Border Infrastructure Services
                                 </CtaButton>
                             </div>
                         </div>
@@ -366,15 +382,14 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:gap-6">
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="/images/image5.png"
-
+                                src="/images/image5.webp"
                                 alt="Riyadh Metro project 1"
                                 className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[300px]">
                             <img
-                                src="/images/image6.png"
+                                src="/images/image6.webp"
                                 alt="Riyadh Metro project 2"
                                 className="absolute inset-0 w-full h-full object-cover object-center "
                             />
@@ -382,19 +397,20 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* PROJECT MANAGEMENT SECTION - Added CTA */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[550px]">
                         <img
-                            src="/images/image7.png"
+                            src="/images/image7.webp"
                             alt="Project site"
                             className="absolute inset-0 w-full h-full object-cover object-center "
                         />
                     </div>
 
                     {/* RIGHT TEXT - Responsive spacing */}
-
                     <div className="pr-4 sm:pr-8 md:pr-16 py-4 sm:py-6 md:py-8 lg:py-12 -mt-6 sm:-mt-12">
 
                         <p className="uppercase text-[24px] leading-[31.2px] text-yellow-500 font-necto mb-6">PROJECT MANAGEMENT</p>
@@ -412,9 +428,17 @@ export default function ServicesPage() {
                                 Our project managers leverage modern software tools for planning, monitoring, and control while maintaining the flexibility needed for ground realities. We've successfully managed over 50 major projects simultaneously, with values ranging from ₹5 crores to ₹140 crores, ensuring quality delivery and client satisfaction across all engagements.
                             </p>
                         </div>
+                        {/* Added CTA Button */}
+                        <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                            <CtaButton href="/services/civil-projects-psus-private-sector">
+                                View PSU & Private Sector Projects
+                            </CtaButton>
+                        </div>
                     </div>
                 </div>
             </section>
+
+            {/* ROAD CONSTRUCTION PROJECTS SECTION - Updated Link */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-center ">
                     {/* LEFT TEXT - Centered */}
@@ -426,9 +450,9 @@ export default function ServicesPage() {
                             <p className="text-gray-600 text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] sm:leading-[1.7] md:leading-[30px]">
                                 Similarly, our PMGSY rural road projects and border road maintenance works demonstrate our ability to manage diverse project portfolios while maintaining consistent quality and safety standards across all sites.
                             </p>
-                            <div className="mt-6 md:-ml-8">
-                                <CtaButton href="/projects#road-works">
-                                    Road Construction Projects
+                            <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                                <CtaButton href="/services/road-construction">
+                                    Road Construction Services
                                 </CtaButton>
                             </div>
                         </div>
@@ -438,16 +462,14 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:gap-6">
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[350px]">
                             <img
-                                src="/images/image8.png"
-
+                                src="/images/image8.webp"
                                 alt="Riyadh Metro project 1"
                                 className="absolute inset-0 w-full h-full object-cover object-center "
                             />
                         </div>
                         <div className="relative w-full h-[200px] sm:h-[240px] md:h-[280px] lg:h-[350px]">
                             <img
-                                src="/images/image9.png"
-
+                                src="/images/image9.webp"
                                 alt="Riyadh Metro project 2"
                                 className="absolute inset-0 w-full h-full object-cover object-center "
                             />
@@ -455,12 +477,14 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* ADDITIONAL CAPABILITIES SECTION - Added CTA */}
             <section className="mb-20 sm:mb-32 md:mb-40 lg:mb-52 px-4 sm:px-6 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
                     {/* LEFT IMAGE - Responsive height */}
                     <div className="relative w-full h-[250px] sm:h-[300px] md:h-[450px]">
                         <img
-                            src="/images/image10.png"
+                            src="/images/image10.webp"
                             alt="Project site"
                             className="absolute inset-0 w-full h-full object-cover object-center "
                         />
@@ -479,10 +503,17 @@ export default function ServicesPage() {
                                 Beyond our core competencies, A&T Infracon offers specialized services including renewable energy infrastructure (wind turbine foundations, solar power projects), advanced slope protection using Gabion technology, flood damage remediation, annual road maintenance contracts, and construction in ecologically sensitive areas. Our diverse capabilities and proven track record make us the preferred partner for government agencies and private sector clients undertaking challenging infrastructure projects across Western India.
                             </p>
                         </div>
+                        {/* Added CTA Button */}
+                        <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                            <CtaButton href="/services/wind-solar-power-infrastructure">
+                                Renewable Energy Infrastructure
+                            </CtaButton>
+                        </div>
                     </div>
                 </div>
             </section>
-            {/* OUR SERVICES SECTION - Updated to match WhereWeWork pattern */}
+
+            {/* OUR SERVICES SECTION - Updated with proper links */}
             <section className="font-apfel2 py-12 sm:py-16 md:py-20 lg:py-24 bg-secondary/30 overflow-x-hidden">
                 {/* Header Section - Full width container */}
                 <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 mb-10 sm:mb-12 md:mb-16 lg:mb-20">
@@ -507,6 +538,7 @@ export default function ServicesPage() {
                         </p>
                     </div>
                 </div>
+
                 {/* Scrollable Services Container - No right padding */}
                 <div className="pl-4 sm:pl-6 md:pl-8 lg:pl-12 xl:pl-16">
                     <div
@@ -515,58 +547,66 @@ export default function ServicesPage() {
                      scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-gray-200"
                     >
                         <div className="flex gap-4 sm:gap-5 md:gap-6 lg:gap-8 pb-4">
-                            {atServices.map((service) => (
-                                <Link
-                                    key={service.id}
-                                    id={`service-${service.id}`}
-                                    href={`/services#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-                                    className={cn(
-                                        "group block flex-shrink-0 scroll-mt-32",
-                                        visibleCount === 1
-                                            ? "w-[85vw]"
-                                            : visibleCount === 2
-                                                ? "w-[48vw]"
-                                                : "w-[35vw]"
-                                    )}
-                                >
-                                    <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[700px] 
+                            {atServices.map((service) => {
+                                // Generate proper slug for each service
+                                const serviceSlug = service.title
+                                    .toLowerCase()
+                                    .replace(/&/g, '')
+                                    .replace(/\s+/g, '-')
+                                    .replace(/[^\w-]+/g, '');
+
+                                return (
+                                    <Link
+                                        key={service.id}
+                                        id={`service-${service.id}`}
+                                        href={`/services/${serviceSlug}`}
+                                        className={cn(
+                                            "group block flex-shrink-0 scroll-mt-32",
+                                            visibleCount === 1
+                                                ? "w-[85vw]"
+                                                : visibleCount === 2
+                                                    ? "w-[48vw]"
+                                                    : "w-[35vw]"
+                                        )}
+                                    >
+                                        <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[700px] 
                                       w-full rounded-lg overflow-hidden shadow-md">
-                                        <Image
-                                            src={service.image.imageUrl}
-                                            alt={service.image.description}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 640px) 85vw, 
+                                            <Image
+                                                src={service.image.imageUrl}
+                                                alt={service.image.description}
+                                                fill
+                                                className="object-cover"
+                                                sizes="(max-width: 640px) 85vw, 
                                      (max-width: 1024px) 48vw, 
                                      35vw"
-                                        />
+                                            />
 
-                                        {/* Gradient Overlay */}
-                                        <div className="absolute inset-0 
+                                            {/* Gradient Overlay */}
+                                            <div className="absolute inset-0 
                                           bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-                                        {/* Hover Overlay - for darker effect on hover */}
-                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 
+                                            {/* Hover Overlay - for darker effect on hover */}
+                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 
                                           transition-all duration-500 ease-in-out" />
 
-                                        {/* Content Overlay */}
-                                        <div className="absolute left-0 right-0 bottom-6
+                                            {/* Content Overlay */}
+                                            <div className="absolute left-0 right-0 bottom-6
                                           px-4 sm:px-5 md:px-6 lg:px-8
                                           text-white">
 
-                                            {/* Title - Always visible, fixed position */}
-                                            <h3 className="font-apfel2 
+                                                {/* Title - Always visible, fixed position */}
+                                                <h3 className="font-apfel2 
                                              text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                                              font-semibold">
-                                                {service.title}
-                                            </h3>
+                                                    {service.title}
+                                                </h3>
 
-                                            {/* Description - Smooth slide up from BELOW title */}
-                                            <div className="overflow-hidden 
+                                                {/* Description - Smooth slide up from BELOW title */}
+                                                <div className="overflow-hidden 
                                               max-h-0 group-hover:max-h-32 sm:group-hover:max-h-40 md:group-hover:max-h-48
                                               transition-all duration-500 ease-in-out
                                               mt-2">
-                                                <p className="text-sm sm:text-base md:text-lg
+                                                    <p className="text-sm sm:text-base md:text-lg
                                                 font-neuhas
                                                 text-white/90 
                                                 leading-relaxed
@@ -574,26 +614,27 @@ export default function ServicesPage() {
                                                 max-w-[85%] sm:max-w-[80%] md:max-w-[80%]
                                                 opacity-0 group-hover:opacity-100
                                                 transition-opacity duration-500 ease-in-out">
-                                                    {service.description}
-                                                </p>
-                                            </div>
+                                                        {service.description}
+                                                    </p>
+                                                </div>
 
-                                            {/* Action Button - Absolute positioned */}
-                                            <div className="absolute bottom-0 right-4 sm:right-5 md:right-6 lg:right-8">
-                                                <div className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
+                                                {/* Action Button - Absolute positioned */}
+                                                <div className="absolute bottom-0 right-4 sm:right-5 md:right-6 lg:right-8">
+                                                    <div className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
                                                   rounded-full bg-red-600 
                                                   text-white flex items-center 
                                                   justify-center 
                                                   transition-all duration-300 
                                                   group-hover:bg-red-700
                                                   shadow-lg">
-                                                    <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                                                        <ArrowUpRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            ))}
+                                    </Link>
+                                );
+                            })}
 
                             {/* Invisible spacer div for last card spacing */}
                             <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12 xl:w-16" aria-hidden="true"></div>
@@ -663,6 +704,8 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* CTA SECTION - No changes */}
             <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-24 text-center">
                 <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
                     <h2 className="text-[28px] sm:text-[64px] md:leading-[70.4px] font-apfel2 

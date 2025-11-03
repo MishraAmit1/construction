@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
@@ -167,7 +168,8 @@ export default function VisionValuesCommitments() {
                 </div>
             </section>
             {/* LARGE VIDEO SECTION WITH OVERLAYS */}
-            <section className="relative w-full h-[400vh] sm:h-[350vh] md:h-[300vh]">
+            {/* LARGE VIDEO SECTION WITH OVERLAYS */}
+            <section className="relative w-full h-[200vh] sm:h-[280vh] md:h-[300vh]">
                 {/* Background Video */}
                 <div className="sticky top-0 w-full h-screen">
                     <video
@@ -188,12 +190,10 @@ export default function VisionValuesCommitments() {
                 {/* Scrollable Content Overlays */}
                 <div className="absolute top-0 w-full">
                     {/* Our Vision Section */}
-                    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12">
-                        <div className="text-start text-white max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl ">
-
+                    <div className="md:min-h-screen h-52 flex items-center justify-center px-4 sm:px-6 md:px-12">
+                        <div className="text-start text-white max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl">
                             <p className="text-yellow-400 tracking-widest mb-2 sm:mb-3 text-xs md:text-[18px] uppercase font-neuhas">
                                 Our Vision
-
                             </p>
                             <h2 className="text-2xl sm:text-3xl md:text-[79px] leading-[1.2] md:leading-[90px] font-apfel2">
                                 Extraordinary Teams Building Inspiring Projects
@@ -202,18 +202,18 @@ export default function VisionValuesCommitments() {
                     </div>
 
                     {/* Values & Commitments Cards */}
-                    <div className="min-h-[250vh] sm:min-h-[200vh] md:min-h-[150vh] flex items-center">
+                    <div className="min-h-[100vh] sm:min-h-[180vh] md:min-h-[150vh] flex items-center py-6 sm:py-8 md:py-0">
                         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
-                            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-6 sm:p-8 md:p-12 lg:p-16 max-w-7xl mx-auto">
-                                <div className="space-y-8 sm:space-y-10 md:space-y-12">
+                            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-5 sm:p-8 md:p-12 lg:p-16 max-w-7xl mx-auto">
+                                <div className="space-y-6 sm:space-y-10 md:space-y-12">
                                     {valuesData.map((item, index) => (
-                                        <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 pb-8 sm:pb-10 md:pb-12 border-b border-gray-200 last:border-0">
+                                        <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 pb-6 sm:pb-10 md:pb-12 border-b border-gray-200 last:border-0 last:pb-0">
                                             {/* Value */}
                                             <div>
                                                 <h3 className="text-red-600 text-xs sm:text-sm md:text-[16px] uppercase tracking-widest mb-2 md:mb-4 font-semibold font-neuhas">
                                                     Value
                                                 </h3>
-                                                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-[55px] font-apfel2 font-normal leading-tight text-gray-900">
+                                                <p className="text-xl sm:text-3xl md:text-4xl lg:text-[55px] font-apfel2 font-normal leading-tight text-gray-900">
                                                     {item.value}
                                                 </p>
                                             </div>
@@ -224,7 +224,7 @@ export default function VisionValuesCommitments() {
                                                 </h3>
                                                 <ul className="space-y-2 sm:space-y-3 list-disc list-outside ml-5">
                                                     {item.commitments.map((commitment, idx) => (
-                                                        <li key={idx} className="text-[15px] sm:text-[16px] md:text-[20px] font-neuhas text-gray-700 leading-[1.6] sm:leading-[1.7] md:leading-[30px] pl-2">
+                                                        <li key={idx} className="text-[14px] sm:text-[16px] md:text-[20px] font-neuhas text-gray-700 leading-[1.5] sm:leading-[1.7] md:leading-[30px] pl-2">
                                                             {commitment}
                                                         </li>
                                                     ))}

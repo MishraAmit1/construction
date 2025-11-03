@@ -25,6 +25,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#dc2626" },
+    { media: "(prefers-color-scheme: dark)", color: "#dc2626" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -72,12 +76,24 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
       { url: "/icon1.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon-128x128.png", sizes: "128x128", type: "image/png" },
+      { url: "/favicon-256x256.png", sizes: "256x256", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
-    shortcut: "/favicon.ico",
+    shortcut: ["/favicon-32x32.png"],
+    apple: [
+      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon-128x128.png", sizes: "128x128", type: "image/png" },
+      { url: "/favicon-256x256.png", sizes: "256x256", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/favicon-256x256.png",
+      },
+    ],
   },
-  manifest: "/manifest.json",
 };
 
 // Organization Schema
@@ -100,7 +116,9 @@ const organizationSchema = {
     "@type": "ContactPoint",
     telephone: "+91-79357-03085",
     contactType: "customer service",
-    email: "atinfracon@gmail.com"
+    email: "atinfracon@gmail.com",
+    areaServed: "IN",
+    availableLanguage: ["en", "hi", "gu"]
   },
   areaServed: "IN",
   foundingDate: "1989"
@@ -120,14 +138,20 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Condensed:wght@700&display=swap"
-          rel="stylesheet"
-        />
 
+        <link rel="preconnect" href="https://hdurfgtlqgpgjjnlbctu.supabase.co" />
+        <link rel="dns-prefetch" href="https://hdurfgtlqgpgjjnlbctu.supabase.co" />
+
+        {/* Additional Favicon Support */}
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png" />
+        <link rel="apple-touch-icon" sizes="128x128" href="/favicon-128x128.png" />
+        <link rel="apple-touch-icon" sizes="256x256" href="/favicon-256x256.png" />
         <Script
           id="organization-schema"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}

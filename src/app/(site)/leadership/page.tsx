@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         title: 'Leadership Team - A&T Infracon',
         description: 'Experienced professionals leading infrastructure excellence',
         url: 'https://atinfracon.com/team',
-        images: [{ url: '/images/Careers1.png', width: 1200, height: 630 }],
+        images: [{ url: '/images/Careers1.webp', width: 1200, height: 630 }],
     },
     alternates: { canonical: 'https://atinfracon.com/team' },
 };

@@ -304,7 +304,7 @@ export default function ApproachPage() {
                     </div>
 
                     {/* RIGHT IMAGE - Responsive */}
-                    <div className="w-full h-full">
+                    <div className="relative w-full h-full">
                         <img
                             src="https://www.bechtel.com/wp-content/uploads/2024/11/1_RGLNG-berths-rendering-900x507.jpg"
                             alt="Work with us"

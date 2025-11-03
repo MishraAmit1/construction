@@ -72,7 +72,7 @@ export function InspiringProjects() {
                         md:shadow-[0_8px_30px_rgba(0,0,0,0.1)]
                         mx-4 sm:mx-6 md:mx-0">
             <Image
-              src="/images/cons2.png"
+              src="/images/cons2.webp"
               alt="Inspiring Projects visual"
               fill
               className="object-cover object-center"

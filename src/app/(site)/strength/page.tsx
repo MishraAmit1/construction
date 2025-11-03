@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         title: 'Our Strength & Certifications - A&T Infracon',
         description: 'Quality credentials, certifications, and organizational capabilities',
         url: 'https://atinfracon.com/strength',
-        images: [{ url: '/images/cons3.png', width: 1200, height: 630 }],
+        images: [{ url: '/images/cons3.webp', width: 1200, height: 630 }],
     },
     alternates: { canonical: 'https://atinfracon.com/strength' },
     robots: {

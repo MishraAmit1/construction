@@ -70,12 +70,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 priority: 0.7,
             },
             {
-                url: `${baseUrl}/vision-values`,
-                lastModified: new Date(),
-                changeFrequency: 'yearly' as const,
-                priority: 0.6,
-            },
-            {
                 url: `${baseUrl}/approach`,
                 lastModified: new Date(),
                 changeFrequency: 'yearly' as const,

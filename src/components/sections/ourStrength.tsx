@@ -213,7 +213,7 @@ export function OurStrength() {
                         <div className="space-y-4 sm:space-y-6 md:space-y-8 px-0 sm:px-4 md:px-6">
                             <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[450px] overflow-hidden rounded-md">
                                 <Image
-                                    src="/images/strength1.png"
+                                    src="/images/strength1.webp"
                                     alt="35 Years of Excellence"
                                     fill
                                     className="object-cover"
@@ -228,7 +228,7 @@ export function OurStrength() {
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="relative h-[200px] overflow-hidden rounded-md">
                                     <Image
-                                        src="/images/strength2.png"
+                                        src="/images/strength2.webp"
                                         alt="Modern Equipment"
                                         fill
                                         className="object-cover"
@@ -236,7 +236,7 @@ export function OurStrength() {
                                 </div>
                                 <div className="relative h-[200px] overflow-hidden rounded-md">
                                     <Image
-                                        src="/images/strength3.png"
+                                        src="/images/strength3.webp"
                                         alt="Project Execution"
                                         fill
                                         className="object-cover"
@@ -485,7 +485,7 @@ export function OurStrength() {
                             {/* SINGLE TALL IMAGE */}
                             <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-xl">
                                 <Image
-                                    src="/images/strength4.png"
+                                    src="/images/strength4.webp"
                                     alt="Skilled Workforce"
                                     fill
                                     className="object-cover"
@@ -509,7 +509,7 @@ export function OurStrength() {
                             {/* SINGLE TALL IMAGE */}
                             <div className="md:block hidden relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-xl">
                                 <Image
-                                    src="/images/strength5.png"
+                                    src="/images/strength5.webp"
                                     alt="Financial Growth"
                                     fill
                                     className="object-cover"
@@ -738,7 +738,7 @@ export function OurStrength() {
                             {/* SINGLE TALL IMAGE */}
                             <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-lg shadow-xl">
                                 <Image
-                                    src="/images/strength6.png"
+                                    src="/images/strength6.webp"
                                     alt="Client Trust"
                                     fill
                                     className="object-cover"
@@ -798,7 +798,7 @@ export function OurStrength() {
                             <div className="space-y-6">
                                 <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
                                     <Image
-                                        src="/images/strength7.png"
+                                        src="/images/strength7.webp"
                                         alt="Technology & Quality"
                                         fill
                                         className="object-cover"
@@ -807,7 +807,7 @@ export function OurStrength() {
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="relative h-[200px] rounded-lg overflow-hidden shadow-xl">
                                         <Image
-                                            src="/images/strength8.png"
+                                            src="/images/strength8.webp"
                                             alt="Modern Technology"
                                             fill
                                             className="object-cover"
@@ -815,7 +815,7 @@ export function OurStrength() {
                                     </div>
                                     <div className="relative h-[200px] rounded-lg overflow-hidden shadow-xl">
                                         <Image
-                                            src="/images/strength9.png"
+                                            src="/images/image3.webp"
                                             alt="Quality Assurance"
                                             fill
                                             className="object-cover"

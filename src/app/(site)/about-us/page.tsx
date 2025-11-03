@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'A&T Infracon Pvt. Ltd.',
     images: [
       {
-        url: '/images/construction1.png',
+        url: '/images/construction1.webp',
         width: 1200,
         height: 630,
         alt: 'A&T Infracon - About Our Company',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About A&T Infracon - 35+ Years of Infrastructure Excellence',
     description: 'Leading Civil Engineering Contractor | CPWD, NBCC, BSF, ITBP Projects | Gujarat, Rajasthan, J&K, Ladakh',
-    images: ['/images/construction1.png'],
+    images: ['/images/construction1.webp'],
   },
   alternates: {
     canonical: 'https://atinfracon.com/about',

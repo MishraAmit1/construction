@@ -119,7 +119,7 @@ function EquipmentTabs() {
       name: "Production Plants",
       icon: Factory,
       stats: { total: "18", uptime: "94%" },  // 19 se 18 ho jayega
-      image: "/images/about7.png",
+      image: "/images/about7.webp",
       equipment: [
         { name: "Crusher", location: "240 TPH (Banaskantha) & 150 TPH (Kutch)", qty: "4" },
         { name: "Batch Type Hot Mix Plant", location: "Multiple sites", qty: "2" },
@@ -133,7 +133,7 @@ function EquipmentTabs() {
       name: "Earth Moving",
       icon: Truck,
       stats: { total: "90", uptime: "96%" },
-      image: "/images/about8.png",
+      image: "/images/about8.webp",
 
       equipment: [
         { name: "Excavator", location: "0.8 to 2.5 cum capacity", qty: "22" },
@@ -147,7 +147,7 @@ function EquipmentTabs() {
       name: "Concrete Equipment",
       icon: Hammer,
       stats: { total: "20", uptime: "92%" },
-      image: "/images/about9.png",
+      image: "/images/about9.webp",
 
       equipment: [
         { name: "Transit Mixer", location: "7-10 cum capacity", qty: "12" },
@@ -161,7 +161,7 @@ function EquipmentTabs() {
       name: "Paving & Compaction",
       icon: Settings,
       stats: { total: "17", uptime: "95%" },
-      image: "/images/about10.png",
+      image: "/images/about10.webp",
 
       equipment: [
         { name: "Bituminous/WMM Paver", location: "Sensor based", qty: "6" },
@@ -176,7 +176,7 @@ function EquipmentTabs() {
       name: "Support Equipment",
       icon: Wrench,
       stats: { total: "22", uptime: "98%" },
-      image: "/images/about11.png",
+      image: "/images/about11.webp",
 
       equipment: [
         { name: "Bituminous Pressure Sprayer", location: "Mechanical type", qty: "6" },
@@ -378,7 +378,7 @@ export function About() {
             <div className="space-y-4 sm:space-y-6 md:space-y-8 px-0 sm:px-4 md:px-6">
               <div className="relative h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] overflow-hidden rounded-md">
                 <Image
-                  src="/images/about2.png"
+                  src="/images/about2.webp"
                   alt="Our Journey"
                   fill
                   className="object-cover"
@@ -393,7 +393,7 @@ export function About() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative h-[200px] overflow-hidden rounded-md">
                   <Image
-                    src="/images/about1.png"
+                    src="/images/about1.webp"
 
                     alt="Infrastructure Development"
                     fill
@@ -402,7 +402,7 @@ export function About() {
                 </div>
                 <div className="relative h-[200px] overflow-hidden rounded-md">
                   <Image
-                    src="/images/about3.png"
+                    src="/images/about3.webp"
                     alt="Engineering Excellence"
                     fill
                     className="object-cover"
@@ -508,7 +508,7 @@ export function About() {
               <div className="space-y-6">
                 <div className="relative h-[280px] md:h-[440px] rounded-lg overflow-hidden shadow-xl">
                   <Image
-                    src="/images/about4.png"
+                    src="/images/about4.webp"
                     alt="Border Infrastructure"
                     fill
                     className="object-cover"
@@ -517,7 +517,7 @@ export function About() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative h-[200px] rounded-lg overflow-hidden shadow-xl">
                     <Image
-                      src="/images/about5.png"
+                      src="/images/about5.webp"
                       alt="Road Construction"
                       fill
                       className="object-cover"
@@ -525,7 +525,7 @@ export function About() {
                   </div>
                   <div className="relative h-[200px] rounded-lg overflow-hidden shadow-xl">
                     <Image
-                      src="/images/about6.png"
+                      src="/images/about6.webp"
                       alt="Building Projects"
                       fill
                       className="object-cover"

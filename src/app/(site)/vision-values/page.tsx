@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         title: 'Vision, Mission & Values - A&T Infracon',
         description: 'Leading infrastructure development with integrity and innovation',
         url: 'https://atinfracon.com/vision-values',
-        images: [{ url: '/images/hero.png', width: 1200, height: 630 }],
+        images: [{ url: '/images/hero.webp', width: 1200, height: 630 }],
     },
     alternates: { canonical: 'https://atinfracon.com/vision-values' },
     robots: {

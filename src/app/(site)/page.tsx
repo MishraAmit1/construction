@@ -13,8 +13,9 @@ import { WeAre } from '@/components/WeAre';
 
 // Homepage Metadata
 export const metadata: Metadata = {
-  title: 'A&T Infracon Pvt. Ltd. - Leading Infrastructure Company in Gujarat & Rajasthan',
-  description: 'Premier Civil Engineering Contractor with 35+ years experience in Road Construction, Border Infrastructure, CPWD Projects across Gujarat, Rajasthan, J&K and Ladakh. ₹161+ Crore Annual Turnover.',
+  title: 'A&T Infracon Pvt. Ltd. - Leading Infrastructure Company in Gujarat',
+  description:
+    'Premier Civil Engineering Contractor specializing in Road & Border Infrastructure across Gujarat and Rajasthan with 35+ years experience.',
   keywords: [
     'infrastructure company ahmedabad',
     'road construction company gujarat',
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     siteName: 'A&T Infracon Pvt. Ltd.',
     images: [
       {
-        url: '/images/hero.png',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'A&T Infracon - Infrastructure Construction Projects',
@@ -69,7 +70,10 @@ const websiteSchema = {
   "url": "https://atinfracon.com",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://atinfracon.com/search?q={search_term_string}",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://atinfracon.com/search?q={search_term_string}"
+    },
     "query-input": "required name=search_term_string"
   }
 };
@@ -212,6 +216,7 @@ export default async function Home() {
       <Script
         id="website-schema"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(websiteSchema),
         }}
@@ -219,6 +224,7 @@ export default async function Home() {
       <Script
         id="local-business-schema"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(localBusinessSchema),
         }}
@@ -226,6 +232,7 @@ export default async function Home() {
       <Script
         id="services-schema"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(servicesOfferedSchema),
         }}
@@ -233,6 +240,7 @@ export default async function Home() {
       <Script
         id="breadcrumb-schema"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema),
         }}

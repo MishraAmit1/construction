@@ -4,8 +4,9 @@ import Script from 'next/script';
 import Link from "next/link"
 import { getBlogBySlug, getBlogSlugs, getAllBlogs } from "@/lib/api/blogs"
 import { notFound } from "next/navigation"
-import { Calendar, ArrowLeft, Clock, Facebook, Twitter, Linkedin, Mail } from "lucide-react"
+import { Calendar, ArrowLeft, Clock, Facebook, Twitter, Linkedin, Mail, ArrowRight } from "lucide-react"
 import ShareButtons from "@/components/ShareButtons"
+import { cn } from "@/lib/utils";
 
 // Generate static params
 export async function generateStaticParams() {
@@ -180,50 +181,57 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             {/* ---------- HERO SECTION (FEATURED IMAGE) ---------- */}
-            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] flex items-end">
+            <section className="font-apfel2 relative min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[78vh] py-12 flex items-center">
                 {/* Background image */}
-                {blog.featured_image && (
-                    <Image
-                        src={blog.featured_image}
-                        alt={blog.title}
-                        fill
-                        priority
-                        className="object-cover"
-                        sizes="100vw"
-                    />
-                )}
-
-                {/* Overlay — same tone as other heroes */}
-                <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
+                <div className="absolute inset-0">
+                    {blog.featured_image && (
+                        <Image
+                            src={blog.featured_image}
+                            alt={blog.title}
+                            fill
+                            priority
+                            className="object-cover"
+                            sizes="100vw"
+                        />
+                    )}
+                    <div className="absolute inset-0 bg-black/80 sm:bg-black/75 md:bg-black/70" />
+                </div>
 
                 {/* Foreground content */}
-                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-12 sm:pb-16 md:pb-20">
-                    <div className="max-w-4xl text-white">
+                <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-10">
+                    <div className="max-w-xs sm:max-w-lg md:max-w-3xl lg:max-w-4xl text-white">
+                        {/* Category/Tag as yellow label */}
+                        <p className="font-neuhas text-yellow-400 font-thin tracking-widest mb-2 text-sm sm:text-base md:text-[16px] uppercase">
+                            {blog.category || 'BLOG POST'}
+                        </p>
+
                         {/* Title */}
-                        <h1 className="font-apfel2 font-normal mb-4 md:mb-6 text-[clamp(2.4rem,6.3vw,4.4rem)] leading-[1.05]">
+                        <h1 className="text-white font-normal font-apfel2 mb-4 md:mb-6 text-[clamp(2.4rem,5.5vw,6rem)] leading-[1.05] [text-wrap:balance]">
                             {blog.title}
                         </h1>
 
                         {/* Meta data */}
-                        <div className="flex flex-wrap items-center gap-4 text-white/80 text-sm font-neuhas">
-                            <span className="flex items-center gap-1.5">
-                                <Calendar className="w-4 h-4" />
-                                {new Date(blog.created_at).toLocaleDateString('en-US', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric',
-                                })}
-                            </span>
+                        <div className="font-neuhas text-[15px] sm:text-[16px] md:text-[20px] leading-[1.6] md:leading-[36px] font-medium text-white/85 sm:text-white/90 md:max-w-4xl">
+                            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                                <span className="flex items-center gap-1.5 sm:gap-2">
+                                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+                                    {new Date(blog.created_at).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                    })}
+                                </span>
 
-                            {blog.reading_time && (
-                                <>
-                                    <span className="text-white/50">•</span>
-                                    <span className="flex items-center gap-1.5">
-                                        <Clock className="w-4 h-4" />
-                                        {blog.reading_time} min read
-                                    </span>
-                                </>
-                            )}
+                                {blog.reading_time && (
+                                    <>
+                                        <span className="text-white/50">•</span>
+                                        <span className="flex items-center gap-1.5 sm:gap-2">
+                                            <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                                            {blog.reading_time} min read
+                                        </span>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -286,7 +294,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
                             {/* Main content from Jodit */}
                             <div
-                                className="prose prose-lg max-w-none prose-h2:font-semibold prose-h2:text-gray-800 prose-a:text-red-600 prose-img:rounded-lg prose-img:shadow-md"
+                                className="prose prose-lg max-w-none prose-h2:font-semibold prose-h2:text-gray-800 prose-a:text-red-600 prose-img:rounded-lg prose-img:shadow-md font-neuhas"
                                 dangerouslySetInnerHTML={{ __html: blog.content }}
                             />
 
@@ -388,12 +396,34 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                                 <p className="text-sm mb-6">
                                     Let's turn your vision into reality. Contact our experts today for a consultation.
                                 </p>
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
-                                >
-                                    Get in Touch
-                                </Link>
+
+                                <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8 hover:md:ml-0 transition-all duration-300">
+                                    <Link
+                                        href="/contact"
+                                        className={cn(
+                                            'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                                            'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                                            'text-sm sm:text-[20px] font-semibold text-red-600',
+                                            'transition-all duration-500 ease-out',
+                                            'min-h-[44px] sm:min-h-[48px]',
+                                            'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                                        )}
+                                    >
+                                        <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                                        <span className="relative z-10 flex items-center justify-center md:justify-start">
+                                            <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                                                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                                            </span>
+                                            <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
+                                                Get in Touch
+
+
+                                            </span>
+                                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                                        </span>
+                                    </Link>
+                                </div>
                             </div>
                         </aside>
                     </div>
@@ -402,13 +432,33 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
             {/* ---------- "Back to Blog" CTA ---------- */}
             <section className="bg-[#edf3f5] py-12 text-center">
-                <div className="container mx-auto px-4">
+
+                <div className="mt-8 sm:mt-10 md:mt-12 md:-ml-8 hover:md:ml-0 transition-all duration-300">
                     <Link
                         href="/blog"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-800 font-semibold rounded-full hover:bg-gray-100 transition-colors shadow-md"
+                        className={cn(
+                            'group relative inline-flex items-center justify-center overflow-hidden rounded-full',
+                            'px-4 sm:px-5 md:px-6 py-2 sm:py-2.5',
+                            'text-sm sm:text-[20px] font-semibold text-red-600',
+                            'transition-all duration-500 ease-out',
+                            'min-h-[44px] sm:min-h-[48px]',
+                            'w-full sm:w-auto max-w-xs sm:max-w-none mx-auto md:mx-0'
+                        )}
                     >
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to All Posts
+                        <span className="absolute inset-0 rounded-full bg-red-600 scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-500 ease-out" />
+                        <span className="relative z-10 flex items-center justify-center md:justify-start">
+                            <span className="flex items-center justify-center rounded-full bg-red-600 text-white transition-all duration-500 group-hover:w-0 group-hover:opacity-0 group-hover:scale-0 mr-2 sm:mr-3 group-hover:mr-0 h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0">
+                                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                            </span>
+                            <span className="whitespace-nowrap transition-colors duration-500 group-hover:text-white font-neuhas">
+
+                                Back to All Posts
+
+
+
+                            </span>
+                            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 opacity-0 transition-all duration-500 group-hover:w-4 sm:group-hover:w-5 group-hover:opacity-100 group-hover:text-white group-hover:ml-2 sm:group-hover:ml-3" />
+                        </span>
                     </Link>
                 </div>
             </section>

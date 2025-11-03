@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, ReactNode } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -256,17 +256,19 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="relative h-10 w-24 sm:h-12 sm:w-28 md:h-14 md:w-32">
               <Image
-                src="/images/logo_design_f__2_-removebg-preview.png"
+                src="/images/logo_design_removebg-preview.png"
                 alt="A&T Infracon Logo"
                 fill
+                sizes="(max-width: 768px) 100px, 140px"
                 priority
                 className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-0" : "opacity-100"}`}
               />
               <Image
-                src="/images/logo-removebg-preview (3).png"
+                src="/images/logo-removebg-preview.png"
                 alt="A&T Infracon Logo"
                 fill
                 priority
+                sizes="(max-width: 768px) 100px, 140px"
                 className={`object-contain transition-opacity duration-300 ${shouldHaveBackground ? "opacity-100" : "opacity-0"}`}
               />
             </div>

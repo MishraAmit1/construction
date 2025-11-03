@@ -269,10 +269,11 @@ export function Footer() {
                         <div className="space-y-4 w-full">
                             <Link href="/">
                                 <Image
-                                    src="/images/logo_design_f__2_-removebg-preview.png"
+                                    src="/images/logo_design_removebg-preview.png"
                                     alt="A&T Infracon Logo"
                                     width={120}
                                     height={50}
+                                    sizes="(max-width: 768px) 100px, 140px"
                                     className="mb-4"
                                 />
                             </Link>

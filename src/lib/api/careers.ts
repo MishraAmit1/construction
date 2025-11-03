@@ -2,6 +2,7 @@ import { supabase } from '@/lib/supabase';
 
 export interface Department {
     id: string;
+    slug: string;
     name: string;
     description?: string;
     created_at: string;
@@ -9,6 +10,7 @@ export interface Department {
 
 export interface Job {
     id: string;
+    slug: string;
     department_id: string;
     title: string;
     location?: string;
@@ -205,4 +207,84 @@ export async function uploadResume(file: File): Promise<{ data?: string; error?:
         .getPublicUrl(filePath)
 
     return { data: publicUrl }
+}
+// src/lib/api/careers.ts (ADD these new functions at the end)
+
+// ✅ Get department by slug
+export async function getDepartmentBySlug(slug: string): Promise<Department | null> {
+    const { data, error } = await supabase
+        .from('departments')
+        .select('*')
+        .eq('slug', slug)
+        .single();
+
+    if (error) {
+        console.error('Error fetching department by slug:', error);
+        return null;
+    }
+
+    return data;
+}
+
+// ✅ Get job by slug
+export async function getJobBySlug(slug: string): Promise<Job | null> {
+    const { data, error } = await supabase
+        .from('jobs')
+        .select(`
+            *,
+            departments (
+                id,
+                slug,
+                name,
+                description
+            )
+        `)
+        .eq('slug', slug)
+        .eq('is_active', true)
+        .single();
+
+    if (error) {
+        console.error('Error fetching job by slug:', error);
+        return null;
+    }
+
+    return data;
+}
+
+// ✅ Get jobs by department slug
+export async function getJobsByDepartmentSlug(slug: string): Promise<Job[]> {
+    // First get department by slug
+    const department = await getDepartmentBySlug(slug);
+    if (!department) return [];
+
+    return getJobsByDepartment(department.id);
+}
+
+// ✅ Get all department slugs (for static generation)
+export async function getDepartmentSlugs(): Promise<string[]> {
+    const { data, error } = await supabase
+        .from('departments')
+        .select('slug');
+
+    if (error) {
+        console.error('Error fetching department slugs:', error);
+        return [];
+    }
+
+    return data.map(d => d.slug) || [];
+}
+
+// ✅ Get all job slugs (for static generation) 
+export async function getJobSlugs(): Promise<string[]> {
+    const { data, error } = await supabase
+        .from('jobs')
+        .select('slug')
+        .eq('is_active', true);
+
+    if (error) {
+        console.error('Error fetching job slugs:', error);
+        return [];
+    }
+
+    return data.map(j => j.slug) || [];
 }

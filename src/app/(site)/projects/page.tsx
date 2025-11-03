@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: 'Infrastructure Projects Portfolio - A&T Infracon',
     description: '100+ completed projects across challenging terrains',
     url: 'https://atinfracon.com/projects',
-    images: [{ url: '/images/construction1.png', width: 1200, height: 630 }],
+    images: [{ url: '/images/construction1.webp', width: 1200, height: 630 }],
   },
   alternates: { canonical: 'https://atinfracon.com/projects' },
   robots: {

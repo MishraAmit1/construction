@@ -70,7 +70,7 @@ export function Hero() {
     <section className="relative min-h-screen h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/hero.png"
+        src="/images/hero.webp"
         alt={heroImage.description}
         fill
         priority

@@ -55,6 +55,22 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  compress: true, // Enable gzip compression
+  poweredByHeader: false, // Remove X-Powered-By header
+  reactStrictMode: true, // Enable React strict mode
+  swcMinify: true, // Use SWC for minification (faster)
+  experimental: {
+    optimizeCss: true, // CSS optimization
+    optimizePackageImports: [
+      'lucide-react',
+      '@radix-ui',
+      'date-fns',
+    ],
+    // Enable partial prerendering (if using App Router)
+    ppr: true,
+    // Optimize server components
+    serverComponentsExternalPackages: ['sharp'],
+  },
 };
 
 export default nextConfig;
