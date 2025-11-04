@@ -278,7 +278,7 @@ export default function VisionValuesCommitments() {
                                 To The Extraordinary
                             </h2>
                             <Link
-                                href="#"
+                                href="https://www.bechtel.com/wp-content/uploads/2024/10/cc1f-461f-8141-e11ff17d8f6f-edited.mp4"
                                 className="group inline-flex items-center gap-2 sm:gap-3 text-white font-semibold hover:gap-3 sm:hover:gap-4 transition-all duration-300"
                             >
                                 <span className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full bg-red-600 flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">

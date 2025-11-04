@@ -105,7 +105,7 @@ export function WhereWeWork() {
                         {projects.map((project) => (
                             <Link
                                 key={project.id}
-                                href="#"
+                                href="/projects"
                                 className={cn(
                                     "group block flex-shrink-0",
                                     visibleCount === 1

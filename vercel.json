@@ -1,14 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.ant-silk.vercel.app"
-        }
-      ],
-      "destination": "https://ant-silk.vercel.app/$1",
+      "source": "https://www.ant-silk.vercel.app/:path*",
+      "destination": "https://ant-silk.vercel.app/:path*",
       "permanent": true
     }
   ],
@@ -21,12 +15,8 @@
           "value": "nosniff"
         },
         {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
         }
       ]
     }
