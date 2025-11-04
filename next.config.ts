@@ -14,12 +14,6 @@ const nextConfig: NextConfig = {
         permanent: true
       },
       {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'ant-silk.vercel.app' }],
-        destination: 'https://ant-silk.vercel.app/:path*',
-        permanent: false
-      },
-      {
         source: '/markets',
         destination: '/projects#market',
         permanent: false,
