@@ -11,8 +11,8 @@ import { getCategories } from '@/lib/api/categories';
 import { getProjectsWithCategory } from '@/lib/api/projects';
 
 export const metadata: Metadata = {
-  title: 'Our Projects - Road Construction & Infrastructure Portfolio | A&T Infracon',
-  description: 'Explore A&T Infracon\'s completed infrastructure projects worth ₹500+ Crores. Road construction, border infrastructure, buildings, and bridges across Gujarat, Rajasthan, J&K & Ladakh.',
+  title: 'Our Projects - Infrastructure Portfolio | A&T Infracon',
+  description: 'Explore 100+ completed projects worth ₹500+ Cr. Road construction, border infrastructure across Gujarat, Rajasthan, J&K & Ladakh.',
   keywords: 'infrastructure projects portfolio, road construction projects, border infrastructure projects, CPWD projects, NBCC projects, completed construction projects, government infrastructure projects',
   openGraph: {
     title: 'Infrastructure Projects Portfolio - A&T Infracon',

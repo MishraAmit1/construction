@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Contact Us - Get in Touch for Infrastructure Projects | A&T Infracon',
-    description: 'Contact A&T Infracon for road construction, border infrastructure, and civil engineering projects. Office in Ahmedabad & Barmer. Call +91-79357-03085 or email atinfracon@gmail.com',
+    title: 'Contact Us - Infrastructure Projects | A&T Infracon',
+    description: 'Contact A&T Infracon for road & border infrastructure projects. Ahmedabad & Barmer offices. Call +91-79357-03085 or email atinfracon@gmail.com',
     keywords: 'contact A&T Infracon, construction company ahmedabad contact, infrastructure contractor contact, civil engineering enquiry, project quote request',
     openGraph: {
         title: 'Contact A&T Infracon - Infrastructure Enquiries',

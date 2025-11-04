@@ -6,7 +6,7 @@ import Script from 'next/script';
 // SEO Metadata
 export const metadata: Metadata = {
   title: 'About Us - 35+ Years of Excellence in Civil Engineering',
-  description: 'A&T Infracon Pvt. Ltd. - Leading Civil Engineering Contractor since 1989. 200+ skilled professionals, ₹161+ Cr turnover, 100+ projects across Gujarat, Rajasthan, J&K & Ladakh.',
+  description: 'A&T Infracon Pvt. Ltd. - Leading Civil Engineering Contractor since 1989. 200+ skilled professionals, 100+ projects.',
   keywords: [
     'about A&T Infracon',
     'civil engineering company ahmedabad',

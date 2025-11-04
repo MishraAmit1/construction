@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Certifications & Our Strength - Quality Credentials | A&T Infracon',
-    description: 'A&T Infracon\'s certifications, licenses, and organizational strength. CPWD approved, registered with government departments, modern equipment fleet, and skilled workforce of 200+ professionals.',
+    title: 'Certifications & Strength - Quality Credentials | A&T Infracon',
+    description: 'CPWD approved contractor with government certifications, modern equipment fleet, and 200+ skilled professionals. Quality credentials you can trust.',
     keywords: 'construction certifications, CPWD approval, contractor licenses, quality certifications, infrastructure credentials, government approved contractor',
     openGraph: {
         title: 'Our Strength & Certifications - A&T Infracon',

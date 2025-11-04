@@ -2,7 +2,6 @@
 import PrivacyPolicyPage from "@/components/sections/privacyPolicy";
 import { Metadata } from 'next';
 import Script from 'next/script';
-
 export const metadata: Metadata = {
     title: 'Privacy Policy - Data Protection & User Privacy | A&T Infracon',
     description: 'A&T Infracon Privacy Policy - How we collect, use, and protect your personal information. Read our commitment to data security and privacy compliance.',

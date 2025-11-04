@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Our Leadership Team - Experienced Infrastructure Professionals | A&T Infracon',
+    title: 'Our Leadership Team - Experienced Infrastructure Professionals',
     description: 'Meet the leadership team at A&T Infracon with decades of experience in civil engineering, road construction, and infrastructure development across challenging terrains.',
     keywords: 'A&T Infracon leadership, construction company team, civil engineering experts, infrastructure management team, experienced contractors',
     openGraph: {
