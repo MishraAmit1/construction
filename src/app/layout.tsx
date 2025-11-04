@@ -34,13 +34,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "A&T Infracon - Engineering Infrastructure, Building the Future",
+    default: "A&T Infracon - Infrastructure Company in Gujarat",
     template: "%s | A&T Infracon",
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: "A&T Infracon Pvt. Ltd." }],
   creator: "A&T Infracon",
+  alternates: {
+    canonical: siteConfig.url,
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -96,14 +99,19 @@ export const metadata: Metadata = {
   },
 };
 
-// Organization Schema
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Corporation",
   name: "A&T Infracon Pvt. Ltd.",
+  alternateName: "A&T Infracon",
   url: siteConfig.url,
   logo: `${siteConfig.url}/images/logo.png`,
   description: siteConfig.description,
+  foundingDate: "1989",
+  founders: [{
+    "@type": "Person",
+    "name": "Founder Name"
+  }],
   address: {
     "@type": "PostalAddress",
     streetAddress: "506, 5th floor, Aagam Avenue, Acher, Sabarmati",
@@ -120,9 +128,42 @@ const organizationSchema = {
     areaServed: "IN",
     availableLanguage: ["en", "hi", "gu"]
   },
-  areaServed: "IN",
-  foundingDate: "1989"
+  sameAs: [
+    "https://www.linkedin.com/company/atinfracon",
+    "https://www.facebook.com/atinfracon"
+  ],
+  areaServed: ["Gujarat", "Rajasthan", "Jammu & Kashmir", "Ladakh"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    "name": "Infrastructure Services",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "Road Construction",
+        "description": "Highway and border road construction"
+      },
+      {
+        "@type": "Service",
+        "name": "Civil Engineering",
+        "description": "Building and infrastructure development"
+      }
+    ]
+  }
 };
+
+// ✅ ADDED: WebSite Schema for better search
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": siteConfig.url,
+  "name": "A&T Infracon",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteConfig.url}/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
+
 
 export default function RootLayout({
   children,
@@ -138,7 +179,8 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-
+        {/* ✅ ADDED: Canonical URL */}
+        <link rel="canonical" href={siteConfig.url} />
         <link rel="preconnect" href="https://hdurfgtlqgpgjjnlbctu.supabase.co" />
         <link rel="dns-prefetch" href="https://hdurfgtlqgpgjjnlbctu.supabase.co" />
 
@@ -154,6 +196,14 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
           }}
         />
       </head>

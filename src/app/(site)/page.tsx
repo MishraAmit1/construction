@@ -13,7 +13,7 @@ import { WeAre } from '@/components/WeAre';
 
 // Homepage Metadata
 export const metadata: Metadata = {
-  title: 'A&T Infracon Pvt. Ltd. - Leading Infrastructure Company in Gujarat',
+  title: 'A&T Infracon - Infrastructure Company Gujarat',
   description:
     'Premier Civil Engineering Contractor specializing in Road & Border Infrastructure across Gujarat and Rajasthan with 35+ years experience.',
   keywords: [

@@ -1,15 +1,46 @@
 import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
+  swcMinify: true,
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
   /* config options here */
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.ant-silk.vercel.app' }],
+        destination: 'https://ant-silk.vercel.app/:path*',
+        permanent: true
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'ant-silk.vercel.app' }],
+        destination: 'https://ant-silk.vercel.app/:path*',
+        permanent: false
+      },
       {
         source: '/markets',
         destination: '/projects#market',
         permanent: false,
       },
-      // Add more redirects if needed
-
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+        ],
+      },
     ]
   },
   typescript: {
@@ -55,10 +86,6 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  compress: true, // Enable gzip compression
-  poweredByHeader: false, // Remove X-Powered-By header
-  reactStrictMode: true, // Enable React strict mode
-  swcMinify: true, // Use SWC for minification (faster)
 };
 
 export default nextConfig;
