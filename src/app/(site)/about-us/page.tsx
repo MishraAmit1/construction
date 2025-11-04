@@ -6,7 +6,7 @@ import Script from 'next/script';
 // SEO Metadata
 export const metadata: Metadata = {
   title: 'About Us - 35+ Years of Excellence in Civil Engineering',
-  description: 'A&T Infracon Pvt. Ltd. - Leading Civil Engineering Contractor since 1989. 200+ skilled professionals, ₹161+ Cr turnover, 100+ projects across Gujarat, Rajasthan, J&K & Ladakh. Specialists in Road Construction, Border Infrastructure & Government Contracts.',
+  description: 'A&T Infracon Pvt. Ltd. - Leading Civil Engineering Contractor since 1989. 200+ skilled professionals, ₹161+ Cr turnover, 100+ projects across Gujarat, Rajasthan, J&K & Ladakh.',
   keywords: [
     'about A&T Infracon',
     'civil engineering company ahmedabad',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About A&T Infracon - Engineering Infrastructure Since 1989',
     description: '35+ years of excellence | 200+ professionals | ₹161+ Cr turnover | Specialists in challenging terrains from deserts to high-altitude borders',
-    url: 'https://ant-silk.vercel.app/about',
+    url: 'https://ant-silk.vercel.app/about-us',
     siteName: 'A&T Infracon Pvt. Ltd.',
     images: [
       {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     images: ['/images/construction1.webp'],
   },
   alternates: {
-    canonical: 'https://ant-silk.vercel.app/about',
+    canonical: 'https://ant-silk.vercel.app/about-us',
   },
   robots: {
     index: true,
@@ -60,7 +60,7 @@ const aboutPageSchema = {
   "@type": "AboutPage",
   "name": "About A&T Infracon Pvt. Ltd.",
   "description": "Learn about A&T Infracon's 35+ years journey in infrastructure development across Western India",
-  "url": "https://ant-silk.vercel.app/about",
+  "url": "https://ant-silk.vercel.app/about-us",
   "mainEntity": {
     "@type": "Organization",
     "name": "A&T Infracon Pvt. Ltd.",
@@ -198,7 +198,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "About Us",
-      "item": "https://ant-silk.vercel.app/about"
+      "item": "https://ant-silk.vercel.app/about-us"
     }
   ]
 };

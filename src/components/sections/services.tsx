@@ -282,7 +282,7 @@ export default function ServicesPage() {
 
                         {/* CTA Button */}
                         <div className="mt-6 md:-ml-8 hover:md:ml-0 transition-all duration-300">
-                            <CtaButton href="/about">
+                            <CtaButton href="/about-us">
                                 View Our Resources
                             </CtaButton>
                         </div>

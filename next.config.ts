@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   swcMinify: true,
   compress: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
   poweredByHeader: false,
   reactStrictMode: true,
   /* config options here */
@@ -17,6 +20,11 @@ const nextConfig: NextConfig = {
         source: '/markets',
         destination: '/projects#market',
         permanent: false,
+      },
+      {
+        source: '/about',
+        destination: '/about-us',
+        permanent: true,
       },
     ]
   },
