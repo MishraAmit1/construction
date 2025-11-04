@@ -7,7 +7,7 @@ import Script from 'next/script';
 const siteConfig = {
   name: "A&T Infracon Pvt. Ltd.",
   description: "Leading Civil Engineering Contractor for Road and Building Works since 35+ years. Specializing in Border Infrastructure, CPWD Projects across Gujarat, Rajasthan, J&K and Ladakh.",
-  url: "https://atinfracon.com",
+  url: "https://ant-silk.vercel.app",
   keywords: [
     "road construction company ahmedabad",
     "civil contractor gujarat",

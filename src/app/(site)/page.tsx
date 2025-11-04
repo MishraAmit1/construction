@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'A&T Infracon - Engineering Infrastructure, Building the Future',
     description: 'Leading Civil Engineering Contractor specializing in Road Construction, Border Infrastructure & Government Projects since 35+ years.',
-    url: 'https://atinfracon.com',
+    url: 'https://ant-silk.vercel.app',
     siteName: 'A&T Infracon Pvt. Ltd.',
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     images: ['/images/hero.png'],
   },
   alternates: {
-    canonical: 'https://atinfracon.com',
+    canonical: 'https://ant-silk.vercel.app',
   },
   robots: {
     index: true,
@@ -67,12 +67,12 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "A&T Infracon Pvt. Ltd.",
-  "url": "https://atinfracon.com",
+  "url": "https://ant-silk.vercel.app",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://atinfracon.com/search?q={search_term_string}"
+      "urlTemplate": "https://ant-silk.vercel.app/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -82,9 +82,9 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
   "name": "A&T Infracon Pvt. Ltd.",
-  "image": "https://atinfracon.com/images/logo.png",
-  "@id": "https://atinfracon.com",
-  "url": "https://atinfracon.com",
+  "image": "https://ant-silk.vercel.app/images/logo.png",
+  "@id": "https://ant-silk.vercel.app",
+  "url": "https://ant-silk.vercel.app",
   "telephone": "+91-79357-03085",
   "email": "atinfracon@gmail.com",
   "priceRange": "₹₹₹",
@@ -202,7 +202,7 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://atinfracon.com"
+      "item": "https://ant-silk.vercel.app"
     }
   ]
 };

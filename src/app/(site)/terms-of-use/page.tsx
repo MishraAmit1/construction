@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Terms of Use - A&T Infracon',
         description: 'Website terms and conditions',
-        url: 'https://atinfracon.com/terms-of-use',
+        url: 'https://ant-silk.vercel.app/terms-of-use',
     },
-    alternates: { canonical: 'https://atinfracon.com/terms-of-use' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/terms-of-use' },
     robots: {
         index: true,
         follow: true,
@@ -25,7 +25,7 @@ const webPageSchema = {
     "@type": "WebPage",
     "name": "Terms of Use",
     "description": "Website terms and conditions",
-    "url": "https://atinfracon.com/terms-of-use",
+    "url": "https://ant-silk.vercel.app/terms-of-use",
     "datePublished": "2024-01-01",
     "dateModified": new Date().toISOString().split('T')[0],
     "publisher": {
@@ -33,7 +33,7 @@ const webPageSchema = {
         "name": "A&T Infracon Pvt. Ltd.",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://atinfracon.com/images/logo.png"
+            "url": "https://ant-silk.vercel.app/images/logo.png"
         }
     },
     "inLanguage": "en-IN"
@@ -48,13 +48,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Terms of Use",
-            "item": "https://atinfracon.com/terms-of-use"
+            "item": "https://ant-silk.vercel.app/terms-of-use"
         }
     ]
 };

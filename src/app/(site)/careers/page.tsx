@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Join A&T Infracon - Build Your Career in Infrastructure',
     description: 'Be part of 35+ years of infrastructure excellence. Explore career opportunities.',
-    url: 'https://atinfracon.com/careers',
+    url: 'https://ant-silk.vercel.app/careers',
     images: [{ url: '/images/Careers1.webp', width: 1200, height: 630 }],
     type: 'website',
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: 'Join our team of infrastructure professionals',
     images: ['/images/Careers1.webp'],
   },
-  alternates: { canonical: 'https://atinfracon.com/careers' },
+  alternates: { canonical: 'https://ant-silk.vercel.app/careers' },
   robots: {
     index: true,
     follow: true,
@@ -32,8 +32,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "A&T Infracon Pvt. Ltd.",
-  "url": "https://atinfracon.com",
-  "logo": "https://atinfracon.com/images/logo.png",
+  "url": "https://ant-silk.vercel.app",
+  "logo": "https://ant-silk.vercel.app/images/logo.png",
   "description": "Leading Civil Engineering Contractor specializing in Infrastructure Development",
   "address": {
     "@type": "PostalAddress",
@@ -61,11 +61,11 @@ const jobListingSchema = {
   "@type": "CollectionPage",
   "name": "Careers at A&T Infracon",
   "description": "Current job openings at A&T Infracon Pvt. Ltd.",
-  "url": "https://atinfracon.com/careers",
+  "url": "https://ant-silk.vercel.app/careers",
   "publisher": {
     "@type": "Organization",
     "name": "A&T Infracon Pvt. Ltd.",
-    "logo": "https://atinfracon.com/images/logo.png"
+    "logo": "https://ant-silk.vercel.app/images/logo.png"
   }
 };
 
@@ -78,13 +78,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://atinfracon.com"
+      "item": "https://ant-silk.vercel.app"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Careers",
-      "item": "https://atinfracon.com/careers"
+      "item": "https://ant-silk.vercel.app/careers"
     }
   ]
 };

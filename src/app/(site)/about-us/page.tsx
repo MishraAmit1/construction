@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About A&T Infracon - Engineering Infrastructure Since 1989',
     description: '35+ years of excellence | 200+ professionals | ₹161+ Cr turnover | Specialists in challenging terrains from deserts to high-altitude borders',
-    url: 'https://atinfracon.com/about',
+    url: 'https://ant-silk.vercel.app/about',
     siteName: 'A&T Infracon Pvt. Ltd.',
     images: [
       {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     images: ['/images/construction1.webp'],
   },
   alternates: {
-    canonical: 'https://atinfracon.com/about',
+    canonical: 'https://ant-silk.vercel.app/about',
   },
   robots: {
     index: true,
@@ -60,13 +60,13 @@ const aboutPageSchema = {
   "@type": "AboutPage",
   "name": "About A&T Infracon Pvt. Ltd.",
   "description": "Learn about A&T Infracon's 35+ years journey in infrastructure development across Western India",
-  "url": "https://atinfracon.com/about",
+  "url": "https://ant-silk.vercel.app/about",
   "mainEntity": {
     "@type": "Organization",
     "name": "A&T Infracon Pvt. Ltd.",
     "alternateName": "A&T Infracon",
-    "url": "https://atinfracon.com",
-    "logo": "https://atinfracon.com/images/logo.png",
+    "url": "https://ant-silk.vercel.app",
+    "logo": "https://ant-silk.vercel.app/images/logo.png",
     "foundingDate": "1989",
     "slogan": "Engineering Infrastructure. Building the Future.",
     "description": "Civil Engineering Contractor for Road and Building Works since 35 years. Executing large development works in Western India particularly in Gujarat, Rajasthan, Jammu & Kashmir and Leh Ladakh.",
@@ -192,13 +192,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://atinfracon.com"
+      "item": "https://ant-silk.vercel.app"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "About Us",
-      "item": "https://atinfracon.com/about"
+      "item": "https://ant-silk.vercel.app/about"
     }
   ]
 };

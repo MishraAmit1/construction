@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Our Strength & Certifications - A&T Infracon',
         description: 'Quality credentials, certifications, and organizational capabilities',
-        url: 'https://atinfracon.com/strength',
+        url: 'https://ant-silk.vercel.app/strength',
         images: [{ url: '/images/cons3.webp', width: 1200, height: 630 }],
     },
-    alternates: { canonical: 'https://atinfracon.com/strength' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/strength' },
     robots: {
         index: true,
         follow: true,
@@ -24,7 +24,7 @@ const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "A&T Infracon Pvt. Ltd.",
-    "url": "https://atinfracon.com",
+    "url": "https://ant-silk.vercel.app",
     "identifier": {
         "@type": "PropertyValue",
         "propertyID": "CIN",
@@ -64,7 +64,7 @@ const webPageSchema = {
     "@type": "WebPage",
     "name": "Certifications & Our Strength",
     "description": "Organization credentials, strength, and capabilities",
-    "url": "https://atinfracon.com/strength",
+    "url": "https://ant-silk.vercel.app/strength",
     "mainEntity": {
         "@type": "ItemList",
         "name": "Our Strengths",
@@ -102,13 +102,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Certifications",
-            "item": "https://atinfracon.com/strength"
+            "item": "https://ant-silk.vercel.app/strength"
         }
     ]
 };

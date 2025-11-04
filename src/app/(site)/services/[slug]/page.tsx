@@ -48,10 +48,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         openGraph: {
             title: `${service.title} | A&T Infracon`,
             description: service.tagline,
-            url: `https://atinfracon.com/services/${slug}`,
+            url: `https://ant-silk.vercel.app/services/${slug}`,
             images: [{ url: service.heroImage || '/images/og-image.jpg' }],
         },
-        alternates: { canonical: `https://atinfracon.com/services/${slug}` },
+        alternates: { canonical: `https://ant-silk.vercel.app/services/${slug}` },
     };
 }
 // Generate static params for all services

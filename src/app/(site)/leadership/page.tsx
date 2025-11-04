@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Leadership Team - A&T Infracon',
         description: 'Experienced professionals leading infrastructure excellence',
-        url: 'https://atinfracon.com/team',
+        url: 'https://ant-silk.vercel.app/team',
         images: [{ url: '/images/Careers1.webp', width: 1200, height: 630 }],
     },
-    alternates: { canonical: 'https://atinfracon.com/team' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/team' },
 };
 
 // Schema 1: WebPage
@@ -22,7 +22,7 @@ const webPageSchema = {
     "@type": "WebPage",
     "name": "Leadership Team",
     "description": "Meet the experienced leadership team at A&T Infracon",
-    "url": "https://atinfracon.com/team"
+    "url": "https://ant-silk.vercel.app/team"
 };
 
 // Schema 2: Organization with Team Members
@@ -30,7 +30,7 @@ const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "A&T Infracon Pvt. Ltd.",
-    "url": "https://atinfracon.com",
+    "url": "https://ant-silk.vercel.app",
     "employee": [
         {
             "@type": "Person",
@@ -53,13 +53,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Leadership",
-            "item": "https://atinfracon.com/team"
+            "item": "https://ant-silk.vercel.app/team"
         }
     ]
 };

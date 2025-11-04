@@ -114,19 +114,19 @@ export default function DepartmentJobsClient({ departmentId, departmentSlug, ini
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://atinfracon.com"
+                "item": "https://ant-silk.vercel.app"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Careers",
-                "item": "https://atinfracon.com/careers"
+                "item": "https://ant-silk.vercel.app/careers"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
                 "name": department.name,
-                "item": `https://atinfracon.com/careers/department/${departmentSlug}`
+                "item": `https://ant-silk.vercel.app/careers/department/${departmentSlug}`
             }
         ]
     };

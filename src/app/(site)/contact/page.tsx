@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Contact A&T Infracon - Infrastructure Enquiries',
         description: 'Get in touch for your next infrastructure project',
-        url: 'https://atinfracon.com/contact',
+        url: 'https://ant-silk.vercel.app/contact',
         images: [{ url: '/images/contactbanner.webp', width: 1200, height: 630 }],
     },
-    alternates: { canonical: 'https://atinfracon.com/contact' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/contact' },
 };
 
 // Schema 1: LocalBusiness (Most Important for Contact Page)
@@ -21,8 +21,8 @@ const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "GeneralContractor",
     "name": "A&T Infracon Pvt. Ltd.",
-    "image": "https://atinfracon.com/images/logo.png",
-    "url": "https://atinfracon.com",
+    "image": "https://ant-silk.vercel.app/images/logo.png",
+    "url": "https://ant-silk.vercel.app",
     "telephone": "+91-79357-03085",
     "email": "atinfracon@gmail.com",
     "address": {
@@ -71,7 +71,7 @@ const contactPageSchema = {
     "@type": "ContactPage",
     "name": "Contact A&T Infracon",
     "description": "Get in touch for infrastructure and construction projects",
-    "url": "https://atinfracon.com/contact",
+    "url": "https://ant-silk.vercel.app/contact",
     "mainEntity": {
         "@type": "Organization",
         "name": "A&T Infracon Pvt. Ltd.",
@@ -97,13 +97,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Contact Us",
-            "item": "https://atinfracon.com/contact"
+            "item": "https://ant-silk.vercel.app/contact"
         }
     ]
 };

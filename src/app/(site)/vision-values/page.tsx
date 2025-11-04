@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Vision, Mission & Values - A&T Infracon',
         description: 'Leading infrastructure development with integrity and innovation',
-        url: 'https://atinfracon.com/vision-values',
+        url: 'https://ant-silk.vercel.app/vision-values',
         images: [{ url: '/images/hero.webp', width: 1200, height: 630 }],
     },
-    alternates: { canonical: 'https://atinfracon.com/vision-values' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/vision-values' },
     robots: {
         index: true,
         follow: true,
@@ -25,7 +25,7 @@ const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "A&T Infracon Pvt. Ltd.",
-    "url": "https://atinfracon.com",
+    "url": "https://ant-silk.vercel.app",
     "slogan": "Engineering Infrastructure. Building the Future.",
     "description": "Leading infrastructure development across India's most challenging regions",
     "mission": "To lead infrastructure development by delivering robust, sustainable, and secure civil engineering solutions with excellence in quality, safety, and innovation",
@@ -50,7 +50,7 @@ const webPageSchema = {
     "@type": "WebPage",
     "name": "Vision, Mission & Values",
     "description": "Our vision, mission, and core values guiding infrastructure excellence",
-    "url": "https://atinfracon.com/vision-values",
+    "url": "https://ant-silk.vercel.app/vision-values",
     "mainEntity": {
         "@type": "ItemList",
         "name": "Core Values",
@@ -92,13 +92,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Vision & Values",
-            "item": "https://atinfracon.com/vision-values"
+            "item": "https://ant-silk.vercel.app/vision-values"
         }
     ]
 };

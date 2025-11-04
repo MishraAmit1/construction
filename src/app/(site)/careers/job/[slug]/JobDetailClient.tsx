@@ -144,7 +144,7 @@ export default function JobDetailClient({ jobId, jobSlug, initialJob }: Props) {
 
     // Generate schemas
     const generateJobSchema = (job: Job) => {
-        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://atinfracon.com';
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ant-silk.vercel.app';
 
         return {
             "@context": "https://schema.org",
@@ -162,7 +162,7 @@ export default function JobDetailClient({ jobId, jobSlug, initialJob }: Props) {
             "hiringOrganization": {
                 "@type": "Organization",
                 "name": "A&T Infracon Pvt. Ltd.",
-                "sameAs": "https://atinfracon.com",
+                "sameAs": "https://ant-silk.vercel.app",
                 "logo": `${baseUrl}/images/logo.png`
             },
             "jobLocation": {
@@ -205,25 +205,25 @@ export default function JobDetailClient({ jobId, jobSlug, initialJob }: Props) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://atinfracon.com"
+                "item": "https://ant-silk.vercel.app"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Careers",
-                "item": "https://atinfracon.com/careers"
+                "item": "https://ant-silk.vercel.app/careers"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
                 "name": job.departments?.name || "Department",
-                "item": `https://atinfracon.com/careers/department/${job.departments?.slug}`
+                "item": `https://ant-silk.vercel.app/careers/department/${job.departments?.slug}`
             },
             {
                 "@type": "ListItem",
                 "position": 4,
                 "name": job.title,
-                "item": `https://atinfracon.com/careers/job/${job.slug}`
+                "item": `https://ant-silk.vercel.app/careers/job/${job.slug}`
             }
         ]
     };

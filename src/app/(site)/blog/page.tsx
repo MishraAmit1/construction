@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Blog - A&T Infracon Insights & Updates',
         description: 'Expert insights on infrastructure development and construction',
-        url: 'https://atinfracon.com/blog',
+        url: 'https://ant-silk.vercel.app/blog',
         images: [{ url: '/images/hero.png', width: 1200, height: 630 }],
     },
-    alternates: { canonical: 'https://atinfracon.com/blog' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/blog' },
     robots: {
         index: true,
         follow: true,
@@ -26,13 +26,13 @@ const blogSchema = {
     "@type": "Blog",
     "name": "A&T Infracon Blog",
     "description": "Infrastructure insights, construction updates, and industry trends",
-    "url": "https://atinfracon.com/blog",
+    "url": "https://ant-silk.vercel.app/blog",
     "publisher": {
         "@type": "Organization",
         "name": "A&T Infracon Pvt. Ltd.",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://atinfracon.com/images/logo.png"
+            "url": "https://ant-silk.vercel.app/images/logo.png"
         }
     },
     "inLanguage": "en-IN"
@@ -47,13 +47,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Blog",
-            "item": "https://atinfracon.com/blog"
+            "item": "https://ant-silk.vercel.app/blog"
         }
     ]
 };

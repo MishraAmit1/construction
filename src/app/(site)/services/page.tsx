@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Our Infrastructure Services - A&T Infracon',
         description: 'Expertise in Road Construction, Border Infrastructure, and large-scale Civil Projects.',
-        url: 'https://atinfracon.com/services',
+        url: 'https://ant-silk.vercel.app/services',
     },
-    alternates: { canonical: 'https://atinfracon.com/services' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/services' },
     robots: {
         index: true,
         follow: true,
@@ -32,7 +32,7 @@ const servicesSchema = {
             "@type": "Service",
             "name": service.title,
             "description": service.description,
-            "url": `https://atinfracon.com/services/${service.id}`
+            "url": `https://ant-silk.vercel.app/services/${service.id}`
         }
     }))
 };
@@ -42,8 +42,8 @@ const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://atinfracon.com" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://atinfracon.com/services" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ant-silk.vercel.app" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://ant-silk.vercel.app/services" }
     ]
 };
 

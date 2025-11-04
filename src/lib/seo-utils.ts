@@ -18,7 +18,7 @@ export function generateSEO({
     noIndex = false,
     canonical,
 }: SEOProps): Metadata {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://atinfracon.com';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ant-silk.vercel.app';
     const defaultOgImage = '/images/og-image.png';
 
     return {

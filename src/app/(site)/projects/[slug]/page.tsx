@@ -51,7 +51,7 @@ export async function generateMetadata({
         openGraph: {
             title: project.og_title || title,
             description: project.og_description || description,
-            url: `https://atinfracon.com/projects/${project.project_slug}`,
+            url: `https://ant-silk.vercel.app/projects/${project.project_slug}`,
             images: [
                 {
                     url:
@@ -78,7 +78,7 @@ export async function generateMetadata({
             ],
         },
         alternates: {
-            canonical: `https://atinfracon.com/projects/${project.project_slug}`,
+            canonical: `https://ant-silk.vercel.app/projects/${project.project_slug}`,
         },
         robots: {
             index: project.is_active,
@@ -108,12 +108,12 @@ export default async function ProjectPage({
         "@type": "Project",
         name: project.project_name,
         description: project.tagline || project.section1_heading,
-        url: `https://atinfracon.com/projects/${project.project_slug}`,
+        url: `https://ant-silk.vercel.app/projects/${project.project_slug}`,
         image: project.banner_image || project.thumbnail_image,
         provider: {
             "@type": "Organization",
             name: "A&T Infracon Pvt. Ltd.",
-            url: "https://atinfracon.com",
+            url: "https://ant-silk.vercel.app",
         },
         location: {
             "@type": "Place",
@@ -136,19 +136,19 @@ export default async function ProjectPage({
         author: {
             "@type": "Organization",
             name: "A&T Infracon Pvt. Ltd.",
-            url: "https://atinfracon.com",
+            url: "https://ant-silk.vercel.app",
         },
         publisher: {
             "@type": "Organization",
             name: "A&T Infracon Pvt. Ltd.",
             logo: {
                 "@type": "ImageObject",
-                url: "https://atinfracon.com/images/logo.png",
+                url: "https://ant-silk.vercel.app/images/logo.png",
             },
         },
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `https://atinfracon.com/projects/${project.project_slug}`,
+            "@id": `https://ant-silk.vercel.app/projects/${project.project_slug}`,
         },
     };
 
@@ -161,19 +161,19 @@ export default async function ProjectPage({
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://atinfracon.com",
+                item: "https://ant-silk.vercel.app",
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: "Projects",
-                item: "https://atinfracon.com/projects",
+                item: "https://ant-silk.vercel.app/projects",
             },
             {
                 "@type": "ListItem",
                 position: 3,
                 name: project.project_name,
-                item: `https://atinfracon.com/projects/${project.project_slug}`,
+                item: `https://ant-silk.vercel.app/projects/${project.project_slug}`,
             },
         ],
     };

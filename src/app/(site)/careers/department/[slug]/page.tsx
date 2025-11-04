@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             openGraph: {
                 title,
                 description,
-                url: `https://atinfracon.com/careers/department/${slug}`,
+                url: `https://ant-silk.vercel.app/careers/department/${slug}`,
                 images: [{ url: '/images/Careers2.jpg', width: 1200, height: 630 }],
             },
         };

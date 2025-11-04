@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Privacy Policy - A&T Infracon',
         description: 'Our commitment to protecting your privacy and personal data',
-        url: 'https://atinfracon.com/privacy',
+        url: 'https://ant-silk.vercel.app/privacy',
     },
-    alternates: { canonical: 'https://atinfracon.com/privacy' },
+    alternates: { canonical: 'https://ant-silk.vercel.app/privacy' },
     robots: {
         index: true,
         follow: true,
@@ -25,7 +25,7 @@ const webPageSchema = {
     "@type": "WebPage",
     "name": "Privacy Policy",
     "description": "Privacy policy and data protection information",
-    "url": "https://atinfracon.com/privacy",
+    "url": "https://ant-silk.vercel.app/privacy",
     "datePublished": "2024-01-01",
     "dateModified": new Date().toISOString().split('T')[0],
     "publisher": {
@@ -33,7 +33,7 @@ const webPageSchema = {
         "name": "A&T Infracon Pvt. Ltd.",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://atinfracon.com/images/logo.png"
+            "url": "https://ant-silk.vercel.app/images/logo.png"
         }
     }
 };
@@ -47,13 +47,13 @@ const breadcrumbSchema = {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://atinfracon.com"
+            "item": "https://ant-silk.vercel.app"
         },
         {
             "@type": "ListItem",
             "position": 2,
             "name": "Privacy Policy",
-            "item": "https://atinfracon.com/privacy"
+            "item": "https://ant-silk.vercel.app/privacy"
         }
     ]
 };

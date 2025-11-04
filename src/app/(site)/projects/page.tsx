@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Infrastructure Projects Portfolio - A&T Infracon',
     description: '100+ completed projects across challenging terrains',
-    url: 'https://atinfracon.com/projects',
+    url: 'https://ant-silk.vercel.app/projects',
     images: [{ url: '/images/construction1.webp', width: 1200, height: 630 }],
   },
-  alternates: { canonical: 'https://atinfracon.com/projects' },
+  alternates: { canonical: 'https://ant-silk.vercel.app/projects' },
   robots: {
     index: true,
     follow: true,
@@ -37,11 +37,11 @@ export default async function ProjectsPage() {
     "@type": "CollectionPage",
     "name": "Our Projects",
     "description": "Portfolio of infrastructure projects completed by A&T Infracon",
-    "url": "https://atinfracon.com/projects",
+    "url": "https://ant-silk.vercel.app/projects",
     "publisher": {
       "@type": "Organization",
       "name": "A&T Infracon Pvt. Ltd.",
-      "logo": "https://atinfracon.com/images/logo.png"
+      "logo": "https://ant-silk.vercel.app/images/logo.png"
     }
   };
 
@@ -56,7 +56,7 @@ export default async function ProjectsPage() {
       "item": {
         "@type": "Project",
         "name": project.project_name,
-        "url": `https://atinfracon.com/projects/${project.project_slug}`,
+        "url": `https://ant-silk.vercel.app/projects/${project.project_slug}`,
         "description": project.tagline || project.project_name,
         "image": project.thumbnail_image,
         "location": {
@@ -76,13 +76,13 @@ export default async function ProjectsPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://atinfracon.com"
+        "item": "https://ant-silk.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://atinfracon.com/projects"
+        "item": "https://ant-silk.vercel.app/projects"
       }
     ]
   };

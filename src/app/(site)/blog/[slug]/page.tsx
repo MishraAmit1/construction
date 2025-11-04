@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         openGraph: {
             title,
             description,
-            url: `https://atinfracon.com/blog/${blog.slug}`,
+            url: `https://ant-silk.vercel.app/blog/${blog.slug}`,
             images: [
                 {
                     url: blog.featured_image || '/images/og-image.png',
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             images: [blog.featured_image || '/images/og-image.png'],
         },
         alternates: {
-            canonical: `https://atinfracon.com/blog/${blog.slug}`,
+            canonical: `https://ant-silk.vercel.app/blog/${blog.slug}`,
         },
         robots: {
             index: blog.is_published,
@@ -78,7 +78,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         .filter(b => b.slug !== blog.slug)
         .slice(0, 3);
 
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://atinfracon.com';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ant-silk.vercel.app';
     const fullUrl = `${baseUrl}/blog/${slug}`; // ← use slug variable
 
     // Schema 1: BlogPosting
@@ -93,14 +93,14 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         "author": {
             "@type": "Organization",
             "name": "A&T Infracon Pvt. Ltd.",
-            "url": "https://atinfracon.com"
+            "url": "https://ant-silk.vercel.app"
         },
         "publisher": {
             "@type": "Organization",
             "name": "A&T Infracon Pvt. Ltd.",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://atinfracon.com/images/logo.png"
+                "url": "https://ant-silk.vercel.app/images/logo.png"
             }
         },
         "mainEntityOfPage": {
@@ -131,7 +131,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             "name": "A&T Infracon Pvt. Ltd.",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://atinfracon.com/images/logo.png"
+                "url": "https://ant-silk.vercel.app/images/logo.png"
             }
         }
     };
@@ -145,13 +145,13 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://atinfracon.com"
+                "item": "https://ant-silk.vercel.app"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Blog",
-                "item": "https://atinfracon.com/blog"
+                "item": "https://ant-silk.vercel.app/blog"
             },
             {
                 "@type": "ListItem",
