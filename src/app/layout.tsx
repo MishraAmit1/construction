@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [{
-      url: "/images/og-image.jpg",
+      url: "https://i.postimg.cc/MZDskHTZ/Screenshot-2025-11-03-181739-1.png",
       width: 1200,
       height: 630,
       alt: "A&T Infracon - Infrastructure Company",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: ["/images/og-image.jpg"],
+    images: ["https://i.postimg.cc/MZDskHTZ/Screenshot-2025-11-03-181739-1.png"],
   },
   robots: {
     index: true,
