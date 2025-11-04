@@ -1,7 +1,7 @@
 // src/app/(site)/blog/page.tsx
 import { Metadata } from 'next';
-import Script from 'next/script';
-import BlogPage from '@/components/sections/blogPage';
+import { getAllBlogs } from "@/lib/api/blogs";
+import BlogPageClient from '@/components/sections/blogPageClient';
 
 export const metadata: Metadata = {
     title: 'Blog - Infrastructure Insights & Construction Updates',
@@ -58,20 +58,45 @@ const breadcrumbSchema = {
     ]
 };
 
-export default function BlogPageWrapper() {
+// ✅ Server component - SEO friendly
+interface Blog {
+    title: string;
+    slug: string;
+    id: string;
+    created_at: string;
+}
+
+export default async function BlogPage() {
+    // ✅ Server-side data fetch with error handling
+    let blogs: Blog[] = [];
+    try {
+        const data = await getAllBlogs();
+        blogs = data || []; // ✅ Fallback to empty array
+    } catch (error) {
+        console.error("Error fetching blogs:", error);
+        blogs = []; // ✅ Fallback on error
+    }
+
     return (
         <>
-            <Script
-                id="blog-schema"
+            {/* Schema scripts - SEO ke liye */}
+            <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
             />
-            <Script
-                id="breadcrumb-schema"
+            <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
-            <BlogPage />
+
+            {/* ✅ SEO-friendly headings server-side render */}
+            <div className="sr-only">
+                <h1>A&T Infracon Blog - Infrastructure Insights & Construction Updates</h1>
+                <h2>Latest Blog Posts</h2>
+            </div>
+
+            {/* ✅ Client component for interactivity - blogs guaranteed to be array */}
+            <BlogPageClient initialBlogs={blogs} />
         </>
     );
 }
