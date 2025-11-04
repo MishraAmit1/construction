@@ -596,8 +596,7 @@ export default function ServicesPage() {
 
                                                 {/* Title - Always visible, fixed position */}
                                                 <h3 className="font-apfel2 
-                                             text-2xl sm:text-3xl md:text-4xl lg:text-5xl
-                                             font-semibold">
+                                             text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                                                     {service.title}
                                                 </h3>
 
@@ -619,7 +618,7 @@ export default function ServicesPage() {
                                                 </div>
 
                                                 {/* Action Button - Absolute positioned */}
-                                                <div className="absolute bottom-0 right-4 sm:right-5 md:right-6 lg:right-8">
+                                                <div className="absolute -bottom-3 right-4 sm:right-5 md:right-6 lg:right-3">
                                                     <div className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12
                                                   rounded-full bg-red-600 
                                                   text-white flex items-center 

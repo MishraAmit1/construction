@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             supabase.from('projects').select('project_slug, updated_at').eq('is_active', true),
             supabase.from('categories').select('category_slug, updated_at').eq('is_active', true),
             supabase.from('blogs').select('slug, updated_at').eq('is_published', true),
-            supabase.from('jobs').select('id, created_at').eq('is_active', true),
+            supabase.from('jobs').select('id, created_at, slug').eq('is_active', true),
         ]);
 
         // Static pages - MATCH YOUR ACTUAL ROUTES
@@ -40,6 +40,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 priority: 0.9,
             },
             {
+                url: `${baseUrl}/services/road-construction`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.9,
+            },
+            {
+                url: `${baseUrl}/services/border-security-infrastructure`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.9,
+            },
+            {
+                url: `${baseUrl}/services/building-institutional-structures`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.9,
+            },
+            {
+                url: `${baseUrl}/services/bridges-culverts`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.9,
+            },
+            {
+                url: `${baseUrl}/services/wind-solar-power-infrastructure`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.9,
+            },
+            {
+                url: `${baseUrl}/services/civil-projects-for-psus-private-sector`,
+                lastModified: new Date(),
+                changeFrequency: 'monthly' as const,
+                priority: 0.9,
+            },
+            {
                 url: `${baseUrl}/projects`,
                 lastModified: new Date(),
                 changeFrequency: 'weekly' as const,
@@ -53,6 +89,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             },
             {
                 url: `${baseUrl}/strength`,
+                lastModified: new Date(),
+                changeFrequency: 'weekly' as const,
+                priority: 0.8,
+            },
+            {
+                url: `${baseUrl}/team`,
                 lastModified: new Date(),
                 changeFrequency: 'weekly' as const,
                 priority: 0.8,
@@ -87,6 +129,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 changeFrequency: 'yearly' as const,
                 priority: 0.5,
             },
+            {
+                url: `${baseUrl}/privacy`,
+                lastModified: new Date(),
+                changeFrequency: 'yearly' as const,
+                priority: 0.4,
+            },
+            {
+                url: `${baseUrl}/terms-of-use`,
+                lastModified: new Date(),
+                changeFrequency: 'yearly' as const,
+                priority: 0.4,
+            },
+            {
+                url: `${baseUrl}/slavery-statement`,
+                lastModified: new Date(),
+                changeFrequency: 'yearly' as const,
+                priority: 0.4,
+            },
         ];
 
         // Dynamic project pages
@@ -115,7 +175,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         // Dynamic job pages
         const jobPages = jobs.data?.map((job) => ({
-            url: `${baseUrl}/careers/job/${job.id}`,
+            url: `${baseUrl}/careers/job/${job.slug}`,
             lastModified: new Date(job.created_at),
             changeFrequency: 'weekly' as const,
             priority: 0.6,

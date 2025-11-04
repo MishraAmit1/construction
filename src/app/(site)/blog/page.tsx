@@ -89,12 +89,6 @@ export default async function BlogPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
 
-            {/* ✅ SEO-friendly headings server-side render */}
-            <div className="sr-only">
-                <h1>A&T Infracon Blog - Infrastructure Insights & Construction Updates</h1>
-                <h2>Latest Blog Posts</h2>
-            </div>
-
             {/* ✅ Client component for interactivity - blogs guaranteed to be array */}
             <BlogPageClient initialBlogs={blogs} />
         </>
