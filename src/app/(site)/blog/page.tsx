@@ -4,8 +4,8 @@ import Script from 'next/script';
 import BlogPage from '@/components/sections/blogPage';
 
 export const metadata: Metadata = {
-    title: 'Blog - Infrastructure Insights & Construction Updates | A&T Infracon',
-    description: 'Latest insights on infrastructure development, construction technology, project updates, and industry trends from A&T Infracon. Expert perspectives on road construction, border infrastructure, and civil engineering.',
+    title: 'Blog - Infrastructure Insights & Construction Updates',
+    description: 'Latest insights on infrastructure development, construction technology, project updates, and industry trends from A&T Infracon.',
     keywords: 'infrastructure blog, construction insights, civil engineering articles, project updates, construction technology, infrastructure development news',
     openGraph: {
         title: 'Blog - A&T Infracon Insights & Updates',

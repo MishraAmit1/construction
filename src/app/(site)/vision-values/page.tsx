@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Vision, Mission & Values - Our Commitments | A&T Infracon',
+    title: 'Vision, Mission & Values - Our Commitments',
     description: 'A&T Infracon\'s vision to lead infrastructure development, mission for quality excellence, and core values of integrity, innovation, and sustainability.',
     keywords: 'company vision, mission statement, core values, corporate commitments, business principles, organizational values',
     openGraph: {

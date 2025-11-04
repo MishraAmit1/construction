@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Our Approach - Quality & Safety First | A&T Infracon',
+    title: 'Quality & Safety Approach | A&T Infracon',
     description: 'A&T Infracon\'s systematic approach to infrastructure: Quality engineering, safety protocols, modern technology, and sustainable practices.',
     keywords: 'construction approach, quality assurance, safety protocols, project management, sustainable construction',
     alternates: { canonical: 'https://ant-silk.vercel.app/approach' },

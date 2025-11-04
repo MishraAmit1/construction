@@ -5,7 +5,7 @@ import ServicesPage from '@/components/sections/services';
 import { serviceDetailsData } from '@/lib/data'; // ✅ IMPORT STATIC DATA
 
 export const metadata: Metadata = {
-    title: 'Infrastructure Services - Road & Civil Works | A&T Infracon',
+    title: 'Infrastructure Services - Road & Civil Works',
     description: 'Civil engineering services: Road construction, border infrastructure, building contracts & renewable energy. 35+ years expertise in challenging terrains.',
     keywords: 'civil engineering services, road construction company, border infrastructure contractor, building construction, renewable energy infrastructure, A&T Infracon services',
     openGraph: {

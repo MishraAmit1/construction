@@ -3,7 +3,7 @@ import PrivacyPolicyPage from "@/components/sections/privacyPolicy";
 import { Metadata } from 'next';
 import Script from 'next/script';
 export const metadata: Metadata = {
-    title: 'Privacy Policy - Data Protection & User Privacy | A&T Infracon',
+    title: 'Privacy Policy - Data Protection & User Privacy',
     description: 'A&T Infracon Privacy Policy - How we collect, use, and protect your personal information. Read our commitment to data security and privacy compliance.',
     keywords: 'privacy policy, data protection, GDPR compliance, personal information, data security, privacy statement',
     openGraph: {

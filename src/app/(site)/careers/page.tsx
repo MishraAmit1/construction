@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { Careers } from '@/components/sections/careers';
 
 export const metadata: Metadata = {
-  title: 'Careers - Join Our Team | A&T Infracon Pvt. Ltd.',
+  title: 'Careers - Join Our Team',
   description: 'Explore exciting career opportunities at A&T Infracon. Join our team of infrastructure professionals building India\'s future. Open positions in Civil Engineering, Project Management, and Construction.',
   keywords: 'infrastructure jobs, civil engineering careers, construction jobs ahmedabad, project manager jobs, site engineer vacancy, A&T Infracon careers, CPWD jobs, infrastructure company jobs',
   openGraph: {

@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Terms of Use - Website Terms & Conditions | A&T Infracon',
+    title: 'Terms of Use - Website Terms & Conditions',
     description: 'Terms and conditions for using A&T Infracon website. Legal terms, user responsibilities, and website usage policies.',
     keywords: 'terms of use, terms and conditions, website terms, legal terms, user agreement, usage policy',
     openGraph: {
